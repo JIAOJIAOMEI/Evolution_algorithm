@@ -136,10 +136,6 @@ def f11(individual):
     return fitness
 
 
-def f12(individual):
-    pass
-
-
 def U(x, a, k, m):
     '''
     :param x:
@@ -155,6 +151,21 @@ def U(x, a, k, m):
     else:
         u = 0
     return u
+
+
+def f12(individual):
+    """
+    :param individual: 1*50
+    :return: fitness
+    """
+    x = individual
+    y=[]
+    for i in x:
+        y.append(1+(i+1)/4)
+    part3 = sum([U(i, 10, 100, 4) for i in x])
+    part2 = sum([((y[i] - 1) ** 2) * (1 + 10*np.square(np.sin(np.pi * y[i+1])) + (y[49]-1)**2) for i in range(49)])
+    fitness = (np.pi/50)*(10*np.sin(np.pi*y[0])+part2)+part3
+    return fitness
 
 
 def f13(individual):
@@ -308,3 +319,4 @@ def f23(individual):
                             np.array([individual[k] - a[i][k] for k in range(4)]).reshape(4, 1)) + c[i])
         fitness.append(c[i] * np.exp(inner))
     return -sum(fitness)
+
