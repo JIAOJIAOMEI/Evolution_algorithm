@@ -80,7 +80,7 @@ def F6(x):
     :return: fitness
     """
     fitness = []
-    for i in range(49):
+    for i in range(len(x)-1):
         fitness.append(power(x[i] + 0.5, 2))
     return sum(fitness)
 
@@ -91,7 +91,7 @@ def F7(x):
     :return: fitness
     """
     fitness = []
-    for i in range(50):
+    for i in range(len(x)):
         m = power(x[i], 4)
         k = (i + 1) * m + random.choice([0, 1])
         fitness.append(k)
@@ -139,7 +139,7 @@ def F11(x):
     :return: fitness
     """
     part1 = sum([power(i, 2) for i in x])
-    part2 = prod([cos(x[i] / sqrt(i + 1)) for i in range(50)])
+    part2 = prod([cos(x[i] / sqrt(i + 1)) for i in range(len(x))])
     fitness = part1 / 4000 - part2 + 1
     return fitness
 
@@ -170,7 +170,7 @@ def F12(x):
     for i in x:
         y.append(1 + (i + 1) / 4)
     part3 = sum([U(i, 10, 100, 4) for i in x])
-    part2 = sum([power(y[i] - 1, 2) * (1 + 10 * power(sin(y[i + 1] * pi), 2) + power(y[-1] - 1, 2)) for i in range(49)])
+    part2 = sum([power(y[i] - 1, 2) * (1 + 10 * power(sin(y[i + 1] * pi), 2) + power(y[-1] - 1, 2)) for i in range(len(x)-1)])
     fitness = (pi / 50) * (10 * sin(pi * y[0]) + part2) + part3
     return fitness
 
@@ -180,7 +180,7 @@ def F13(x):
     :param x: 1*50
     :return: fitness
     """
-    part2 = sum([power(x[i] - 1, 2) * (1 + power(sin(3 * pi * x[i]) + 1, 2)) for i in range(49)])
+    part2 = sum([power(x[i] - 1, 2) * (1 + power(sin(3 * pi * x[i]) + 1, 2)) for i in range(len(x)-1)])
     part3 = power(x[-1] - 1, 2) * (1 + power(sin(2 * pi * x[-1]), 2))
     part4 = sum([U(i, 5, 100, 4) for i in x])
     return 0.1 * (power(sin(3 * pi * x[0]), 2) + part2 + part3) + part4

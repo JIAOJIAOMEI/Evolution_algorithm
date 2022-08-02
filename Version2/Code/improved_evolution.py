@@ -7,7 +7,7 @@ import pandas as pd
 
 from cal_fitness import fitness_single, fitness
 from functions_parameter import choose_func
-from initialization import initialization, Individual2
+from initialization import initialization,Individual
 from offspring import offspring
 
 global_opt = opt = [0, 0, 0, 0, 0, 0, 0, -418.98 * 50, 0, 0, 0, 0, 0, 1, 0.00030, -1.0316, 0.398, 3, -3.86, -3.32,
@@ -30,8 +30,11 @@ def test(function, mode, parameter_list, opt):
     best_generation.append(fit_all[best])
     new_individual = offspring(individuals=individuals, best_fit=best, worst_fit=worst,
                                num_genes=num_genes, mutation_rate=mutation_rate, mode=mode,
-                               range_mutation=range_mutation, crossover_probability=crossover_probability)
-    new = Individual2(genotype=new_individual, num_genes=num_genes, local_search=local_search, m_range=m_range)
+                               range_mutation=range_mutation, crossover_probability=crossover_probability,mutation_type=1,
+                               crossover_type=0)
+    new = Individual(num_genes=num_genes, genotype=new_individual, genotype_range=genotype_range,
+                     local_search=local_search,
+                     m_range=m_range, pattern=0)
 
     del individuals[worst]
     del fit_all[worst]
@@ -60,8 +63,11 @@ def test(function, mode, parameter_list, opt):
             break
         new_individual = offspring(individuals=individuals, best_fit=0, worst_fit=-1,
                                    num_genes=num_genes, mutation_rate=mutation_rate, mode=mode,
-                                   range_mutation=range_mutation, crossover_probability=crossover_probability)
-        new = Individual2(genotype=new_individual, num_genes=num_genes, local_search=local_search, m_range=m_range)
+                                   range_mutation=range_mutation, crossover_probability=crossover_probability,mutation_type=1,
+                                   crossover_type=0)
+        new = Individual(num_genes=num_genes, genotype=new_individual, genotype_range=genotype_range,
+                         local_search=local_search,
+                         m_range=m_range, pattern=0)
         new_fit = fitness_single(individual=new, func=func)
         new_zip = (new, new_fit)
         del sort_zipped[-1]
@@ -101,31 +107,6 @@ def multiple(mode, Times, L, Com):
         result_list_all.append(result_list_col)
     temp = np.array(result_list_all)
     data = pd.DataFrame(data=np.resize(temp, (L[1] - L[0], 23 * Times)).swapaxes(0, 1),
-                        index=pd.MultiIndex.from_product(
-                            [k, ["Times" + str(times + 1) for times in range(Times)]]),
-                        columns=[str(mode) + str(i + 1) for i in range(L[0], L[1], 1)])
-    short_data = data.applymap(lambda x: '{:1.2e}'.format(x))
-    return data, short_data, temp
-
-
-def multiplef(mode, Times, L, Com,function_list):
-    result_list_all = []
-    combination = Com
-    k = ["F" + str(i) for i in function_list]
-    for i in range(L[0], L[1], 1):
-        result_list_col = []
-        for f in function_list:
-            result_list = []
-            for times in range(Times):
-                result = test(function=f, mode=mode, parameter_list=combination[i], opt=global_opt[f - 1])
-                result_list.append(float(result))
-            result_list_col.append(result_list)
-        if (i - L[0]) % 50 == 49:
-            print("\033[0;37;45m Starting from {0}, {1} combinations are tested.\033[0m".format(L[0], i - L[0] + 1))
-            print("\n")
-        result_list_all.append(result_list_col)
-    temp = np.array(result_list_all)
-    data = pd.DataFrame(data=np.resize(temp, (L[1] - L[0], len(function_list) * Times)).swapaxes(0, 1),
                         index=pd.MultiIndex.from_product(
                             [k, ["Times" + str(times + 1) for times in range(Times)]]),
                         columns=[str(mode) + str(i + 1) for i in range(L[0], L[1], 1)])

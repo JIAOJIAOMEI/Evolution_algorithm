@@ -60,32 +60,59 @@ fifth, based on the crossover result, do mutation, the operation is the same as 
 the location for crossover is randomly chosen each time.'''
 
 
-def offspring(individuals, num_genes, best_fit, worst_fit, mutation_rate, range_mutation, crossover_probability):
+def offspring(individuals, num_genes, best_fit, worst_fit, mutation_rate, range_mutation, crossover_probability,
+              mutation_type, crossover_type):
     n = []
     for individual in individuals:
         n.append(individual.phenotype)
-    if np.random.rand() < crossover_probability:
-        cross_location = np.random.randint(0, num_genes)
-        part1 = n[best_fit][:cross_location]
-        part2 = n[best_fit][cross_location:]
+    result = []
+    if crossover_type == 0:  # Probabilistic crossover
+        parent1 = n[best_fit]
         del n[worst_fit]
         partner_index = np.random.randint(0, len(n))
-        pindex_part1 = n[partner_index][:cross_location]
-        pindex_part2 = n[partner_index][cross_location:]
-        result1 = list(itertools.chain(pindex_part1, part2))
-        result2 = list(itertools.chain(part1, pindex_part2))
-    else:
-        result1 = n[best_fit]
+        parent2 = n[partner_index]
+        for j in range(len(parent1)):
+            if np.random.rand() < crossover_probability:
+                result.append(parent1[j])
+            else:
+                result.append(parent2[j])
+    elif crossover_type == 1: # singe-point-crossover
+        if np.random.rand() < crossover_probability:
+            cross_location = np.random.randint(0, num_genes)
+            part1 = n[best_fit][:cross_location]
+            part2 = n[best_fit][cross_location:]
+            del n[worst_fit]
+            partner_index = np.random.randint(0, len(n))
+            pindex_part1 = n[partner_index][:cross_location]
+            pindex_part2 = n[partner_index][cross_location:]
+            result1 = list(itertools.chain(pindex_part1, part2))
+            result2 = list(itertools.chain(part1, pindex_part2))
+            result = random.choice([result1, result2])
+        else:
+            result1 = n[best_fit]
+            del n[worst_fit]
+            result2_index = np.random.randint(0, len(n))
+            result2 = n[result2_index]
+            result = random.choice([result1, result2])
+    elif crossover_type == 2:  # Linear combination crossover
+        parent1 = n[best_fit]
         del n[worst_fit]
-        result2_index = np.random.randint(0, len(n))
-        result2 = n[result2_index]
-
-    result = random.choice([result1, result2])
-
+        partner_index = np.random.randint(0, len(n))
+        parent2 = n[partner_index]
+        for j in range(len(parent1)):
+            new_j = parent1[j] * crossover_probability + parent2[j] * (1 - crossover_probability)
+            result.append(new_j)
+    # numpy.random.rand from uniform (in range [0,1))
+    # numpy.random.normal generates samples from the normal distribution
     mutation_rate = mutation_rate / num_genes
-    for i in range(len(result)):
-        if np.random.rand() < mutation_rate:
-            result[i] = result[i] + np.random.uniform(-range_mutation, range_mutation)
+    if mutation_type == 0:
+        for i in range(len(result)):
+            if np.random.rand() < mutation_rate:
+                result[i] = result[i] + np.random.uniform(-range_mutation,range_mutation)
+    elif mutation_type == 1:
+        for i in range(len(result)):
+            if np.random.rand() < mutation_rate:
+                result[i] = result[i] + np.random.normal(loc=0,scale=2*range_mutation,size=1)-range_mutation
     return result
 
 
@@ -111,55 +138,55 @@ def choose_func(function):
     genotype_range = None
     if function == 1:
         func = improved_fitness_functions.F1
-        num_genes = 50
+        num_genes = 10
         genotype_range = [-100, 100]
     elif function == 2:
         func = improved_fitness_functions.F2
-        num_genes = 50
+        num_genes = 10
         genotype_range = [-100, 100]
     elif function == 3:
         func = improved_fitness_functions.F3
-        num_genes = 50
+        num_genes = 10
         genotype_range = [-100, 100]
     elif function == 4:
         func = improved_fitness_functions.F4
-        num_genes = 50
+        num_genes = 10
         genotype_range = [-100, 100]
     elif function == 5:
         func = improved_fitness_functions.F5
-        num_genes = 50
+        num_genes = 10
         genotype_range = [-30, 30]
     elif function == 6:
         func = improved_fitness_functions.F6
-        num_genes = 50
+        num_genes = 10
         genotype_range = [-100, 100]
     elif function == 7:
         func = improved_fitness_functions.F7
-        num_genes = 50
+        num_genes = 10
         genotype_range = [-1.28, 1.28]
     elif function == 8:
         func = improved_fitness_functions.F8
-        num_genes = 50
+        num_genes = 10
         genotype_range = [-500, 500]
     elif function == 9:
         func = improved_fitness_functions.F9
-        num_genes = 50
+        num_genes = 10
         genotype_range = [-5.12, 5.12]
     elif function == 10:
         func = improved_fitness_functions.F10
-        num_genes = 50
+        num_genes = 10
         genotype_range = [-32, 32]
     elif function == 11:
         func = improved_fitness_functions.F11
-        num_genes = 50
+        num_genes = 10
         genotype_range = [-600, 600]
     elif function == 12:
         func = improved_fitness_functions.F12
-        num_genes = 50
+        num_genes = 10
         genotype_range = [-50, 50]
     elif function == 13:
         func = improved_fitness_functions.F13
-        num_genes = 50
+        num_genes = 10
         genotype_range = [-50, 50]
     elif function == 14:
         func = improved_fitness_functions.F14
@@ -210,9 +237,9 @@ There are 3072 combinations in total.'''
 
 def combination():
     com = []
-    iterations = [500, 1000, 2000, 3000]
+    iterations = [1000000]
     mutation_rate = [0.1, 0.5, 1.0, 2.0]
-    num_individuals = [50, 100, 150]
+    num_individuals = [100, 200]
     range_mutation = [0.5, 1.0, 2.0, 5.0]
     crossover_probability = [0.4, 1.0]
     for a in iterations:
@@ -250,7 +277,7 @@ seventh,calculate the fitness value for the new individual and compare it to oth
 ........continue.....
 return the minimum of all the iterations'''
 
-global_opt = opt = [0, 0, 0, 0, 0, 0, 0, -418.98 * 50, 0, 0, 0, 0, 0, 1, 0.00030, -1.0316, 0.398, 3, -3.86, -3.32,
+global_opt = opt = [0, 0, 0, 0, 0, 0, 0, -418.98 * 10, 0, 0, 0, 0, 0, 1, 0.00030, -1.0316, 0.398, 3, -3.86, -3.32,
                     -10.1532, -10.4028, -10.5363]
 
 
@@ -267,7 +294,7 @@ def test(function, parameter_list, opt):
     best_generation.append(fit_all[best])
     new_individual = offspring(individuals=individuals, best_fit=best, worst_fit=worst,
                                num_genes=num_genes, mutation_rate=mutation_rate, range_mutation=range_mutation,
-                               crossover_probability=crossover_probability)
+                               crossover_probability=crossover_probability, mutation_type=1,crossover_type=2)
     new = Individual(genotype=new_individual, num_genes=num_genes, genotype_range=genotype_range, pattern=1)
 
     del individuals[worst]
@@ -286,7 +313,6 @@ def test(function, parameter_list, opt):
             break
     individuals = [i for i, j in sort_zipped]
     fit_all = [j for i, j in sort_zipped]
-    # print(fit_all)
 
     count = 1
 
@@ -298,11 +324,12 @@ def test(function, parameter_list, opt):
             break
         new_individual = offspring(individuals=individuals, best_fit=0, worst_fit=-1,
                                    num_genes=num_genes, mutation_rate=mutation_rate,
-                                   range_mutation=range_mutation, crossover_probability=crossover_probability)
+                                   range_mutation=range_mutation, crossover_probability=crossover_probability,
+                                   mutation_type=1,crossover_type=2)
         new = Individual(genotype=new_individual, num_genes=num_genes, genotype_range=genotype_range, pattern=1)
         new_fit = fitness_single(individual=new, func=func)
         new_zip = (new, new_fit)
-        # print(new_zip)
+        print(new_zip)
         del sort_zipped[-1]
         del individuals[-1]
         del fit_all[-1]
@@ -318,11 +345,11 @@ def test(function, parameter_list, opt):
                 individuals.append(new)
                 fit_all.append(new_fit)
                 break
-    # print(fit_all)
+    print('\n')
     return min(best_generation)
 
 
-# test(function=1, parameter_list=[100000, 0.01, 400, 50, 0.9], opt=0)
+test(function=20, parameter_list=[1000, 0.01, 5, 5, 0.9], opt=-3.32)
 '''This multiple function is to calculate multiples runs for all the fitness functions and combinations.
 For F12, I use F13 to replace F12 for now.
 For the U function, I set the values to zero if it falls into the unknown interval.
