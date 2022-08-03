@@ -420,13 +420,6 @@ if __name__ == '__main__':
               header=True,
               index=False)
 
-    # data, short_data, temp = multipleF(Times=10, L=[0, len(com[:5])], Com=com[:5], function_list=[1, 18, 22])
-    # print(data)
-    # print("\n")
-    # print(short_data)
-    # print("\n")
-    # print(temp)
-
     data, short_data, temp = multipleF(Times=10, L=[0, len(com[:100])], Com=com[:100], function_list=[1, 18, 22])
     with open("Baseline_3Dlist_short_100.txt", "w") as w:
         w.write(np.array2string(temp, formatter={'float_kind': lambda x: '{:1.2e}'.format(x)}))
