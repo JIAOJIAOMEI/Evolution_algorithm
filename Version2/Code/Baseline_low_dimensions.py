@@ -76,7 +76,7 @@ def offspring(individuals, num_genes, best_fit, worst_fit, mutation_rate, range_
                 result.append(parent1[j])
             else:
                 result.append(parent2[j])
-    elif crossover_type == 1:  # singe-point-crossover
+    elif crossover_type == 1: # singe-point-crossover
         if np.random.rand() < crossover_probability:
             cross_location = np.random.randint(0, num_genes)
             part1 = n[best_fit][:cross_location]
@@ -108,12 +108,11 @@ def offspring(individuals, num_genes, best_fit, worst_fit, mutation_rate, range_
     if mutation_type == 0:
         for i in range(len(result)):
             if np.random.rand() < mutation_rate:
-                result[i] = result[i] + np.random.uniform(-range_mutation, range_mutation)
+                result[i] = result[i] + np.random.uniform(-range_mutation,range_mutation)
     elif mutation_type == 1:
         for i in range(len(result)):
             if np.random.rand() < mutation_rate:
-                result[i] = result[i] + float(
-                    np.random.normal(loc=0, scale=2 * range_mutation, size=1) - range_mutation)
+                result[i] = result[i] + float(np.random.normal(loc=0,scale=2*range_mutation,size=1)-range_mutation)
     return result
 
 
@@ -133,99 +132,99 @@ def initialization(num_genes, num_individual, genotype_range):
 each function has its own dimensions(num_genes) and genotype_range'''
 
 
-def choose_func(function):
+def choose_func(fitness_function):
     func = None
     num_genes = None
     genotype_range = None
-    if function == 1:
+    if fitness_function == 1:
         func = improved_fitness_functions.F1
         num_genes = 10
         genotype_range = [-100, 100]
-    elif function == 2:
+    elif fitness_function == 2:
         func = improved_fitness_functions.F2
         num_genes = 10
         genotype_range = [-100, 100]
-    elif function == 3:
+    elif fitness_function == 3:
         func = improved_fitness_functions.F3
         num_genes = 10
         genotype_range = [-100, 100]
-    elif function == 4:
+    elif fitness_function == 4:
         func = improved_fitness_functions.F4
         num_genes = 10
         genotype_range = [-100, 100]
-    elif function == 5:
+    elif fitness_function == 5:
         func = improved_fitness_functions.F5
         num_genes = 10
         genotype_range = [-30, 30]
-    elif function == 6:
+    elif fitness_function == 6:
         func = improved_fitness_functions.F6
         num_genes = 10
         genotype_range = [-100, 100]
-    elif function == 7:
+    elif fitness_function == 7:
         func = improved_fitness_functions.F7
         num_genes = 10
         genotype_range = [-1.28, 1.28]
-    elif function == 8:
+    elif fitness_function == 8:
         func = improved_fitness_functions.F8
         num_genes = 10
         genotype_range = [-500, 500]
-    elif function == 9:
+    elif fitness_function == 9:
         func = improved_fitness_functions.F9
         num_genes = 10
         genotype_range = [-5.12, 5.12]
-    elif function == 10:
+    elif fitness_function == 10:
         func = improved_fitness_functions.F10
         num_genes = 10
         genotype_range = [-32, 32]
-    elif function == 11:
+    elif fitness_function == 11:
         func = improved_fitness_functions.F11
         num_genes = 10
         genotype_range = [-600, 600]
-    elif function == 12:
+    elif fitness_function == 12:
         func = improved_fitness_functions.F12
         num_genes = 10
         genotype_range = [-50, 50]
-    elif function == 13:
+    elif fitness_function == 13:
         func = improved_fitness_functions.F13
         num_genes = 10
         genotype_range = [-50, 50]
-    elif function == 14:
+    elif fitness_function == 14:
         func = improved_fitness_functions.F14
         num_genes = 2
         genotype_range = [-65, 65]
-    elif function == 15:
+    elif fitness_function == 15:
         func = improved_fitness_functions.F15
         num_genes = 4
         genotype_range = [-5, 5]
-    elif function == 16:
+    elif fitness_function == 16:
         func = improved_fitness_functions.F16
         num_genes = 2
         genotype_range = [-5, 5]
-    elif function == 17:
+    elif fitness_function == 17:
         func = improved_fitness_functions.F17
         num_genes = 2
         genotype_range = [-5, 5]
-    elif function == 18:
+    elif fitness_function == 18:
         func = improved_fitness_functions.F18
         num_genes = 2
         genotype_range = [-2, 2]
-    elif function == 19:
+    elif fitness_function == 19:
         func = improved_fitness_functions.F19
         num_genes = 3
         genotype_range = [1, 3]
-    elif function == 20:
+    elif fitness_function == 20:
         func = improved_fitness_functions.F20
         num_genes = 6
         genotype_range = [0, 1]
-    elif function == 21:
+    elif fitness_function == 21:
         func = improved_fitness_functions.F21
         num_genes = 4
         genotype_range = [0, 10]
-    elif function == 22:
+    elif fitness_function == 22:
         func = improved_fitness_functions.F22
         num_genes = 4
         genotype_range = [0, 10]
-    elif function == 23:
+    elif fitness_function == 23:
         func = improved_fitness_functions.F23
         num_genes = 4
         genotype_range = [0, 10]
@@ -295,7 +294,7 @@ def test(function, parameter_list, opt):
     best_generation.append(fit_all[best])
     new_individual = offspring(individuals=individuals, best_fit=best, worst_fit=worst,
                                num_genes=num_genes, mutation_rate=mutation_rate, range_mutation=range_mutation,
-                               crossover_probability=crossover_probability, mutation_type=1, crossover_type=2)
+                               crossover_probability=crossover_probability, mutation_type=1,crossover_type=2)
     new = Individual(genotype=new_individual, num_genes=num_genes, genotype_range=genotype_range, pattern=1)
 
     del individuals[worst]
@@ -326,7 +325,7 @@ def test(function, parameter_list, opt):
         new_individual = offspring(individuals=individuals, best_fit=0, worst_fit=-1,
                                    num_genes=num_genes, mutation_rate=mutation_rate,
                                    range_mutation=range_mutation, crossover_probability=crossover_probability,
-                                   mutation_type=1, crossover_type=2)
+                                   mutation_type=1,crossover_type=2)
         new = Individual(genotype=new_individual, num_genes=num_genes, genotype_range=genotype_range, pattern=1)
         new_fit = fitness_single(individual=new, func=func)
         new_zip = (new, new_fit)
@@ -349,18 +348,98 @@ def test(function, parameter_list, opt):
 
 
 if __name__ == '__main__':
-    # for i in range(1,24,1):
-    #     time1 = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-    #     print(time1)
-    #     result = test(function=i, parameter_list=[1000000, 0.01, 5, 5, 0.9], opt=global_opt[i-1])
-    #     print(result)
-    #     time1 = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-    #     print(time1)
-
     time1 = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
     print(time1)
-    result = test(function=9, parameter_list=[1000000, 0.01, 5, 5, 0.9], opt=global_opt[9 - 1])
-    print(result)
+#     min = test(function=1, parameter_list=[1000000, 0.01, 5, 5, 0.9], opt=0)
+#     print(min)
+#     time1 = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+#     print(time1)
+#     min_1 = test(function=2, parameter_list=[1000000, 0.01, 5, 5, 0.9], opt=0)
+#     print(min_1)
+#     time1 = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+#     print(time1)
+#     min = test(function=3, parameter_list=[1000000, 0.01, 5, 5, 0.9], opt=0)
+#     print(min)
+#     time1 = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+#     print(time1)
+#     min = test(function=4, parameter_list=[1000000, 0.01, 5, 5, 0.9], opt=0)
+#     print(min)
+#     time1 = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+#     print(time1)
+#     min = test(function=5, parameter_list=[1000000, 0.01, 5, 5, 0.9], opt=0)
+#     print(min)
+#     time1 = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+#     print(time1)
+#     min = test(function=6, parameter_list=[1000000, 0.01, 5, 5, 0.9], opt=0)
+#     print(min)
+#     time1 = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+#     print(time1)
+#     min = test(function=7, parameter_list=[1000000, 0.01, 5, 5, 0.9], opt=0)
+#     print(min)
+#     time1 = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+#     print(time1)
+#     min = test(function=8, parameter_list=[1000000, 0.01, 5, 5, 0.9], opt=-418.98 * 10)
+#     print(min)
+#     time1 = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+#     print(time1)
+    min_1 = test(function=9, parameter_list=[1000000, 0.01, 5, 5, 0.9], opt=0)
+    print(min_1)
+#     time1 = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+#     print(time1)
+#     min = test(function=10, parameter_list=[1000000, 0.01, 5, 5, 0.9], opt=0)
+#     print(min)
+#     time1 = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+#     print(time1)
+#     min = test(function=11, parameter_list=[1000000, 0.01, 5, 5, 0.9], opt=0)
+#     print(min)
+#     time1 = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+#     print(time1)
+#     min = test(function=12, parameter_list=[1000000, 0.01, 5, 5, 0.9], opt=0)
+#     print(min)
+#     time1 = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+#     print(time1)
+#     min = test(function=13, parameter_list=[1000000, 0.01, 5, 5, 0.9], opt=0)
+#     print(min)
+#     time1 = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+#     print(time1)
+#     min = test(function=14, parameter_list=[1000000, 0.01, 5, 5, 0.9], opt=1)
+#     print(min)
+#     time1 = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+#     print(time1)
+#     min = test(function=15, parameter_list=[1000000, 0.01, 5, 5, 0.9], opt=0.0003)
+#     print(min)
+#     time1 = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+#     print(time1)
+#     min = test(function=16, parameter_list=[1000000, 0.01, 5, 5, 0.9], opt=-1.0316)
+#     print(min)
+#     time1 = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+#     print(time1)
+#     min = test(function=17, parameter_list=[1000000, 0.01, 5, 5, 0.9], opt=0.398)
+#     print(min)
+#     time1 = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+#     print(time1)
+#     min = test(function=18, parameter_list=[1000000, 0.01, 5, 5, 0.9], opt=3)
+#     print(min)
+#     time1 = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+#     print(time1)
+#     min = test(function=19, parameter_list=[1000000, 0.01, 5, 5, 0.9], opt=-3.86)
+#     print(min)
+#     time1 = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+#     print(time1)
+#     min = test(function=20, parameter_list=[1000000, 0.01, 5, 5, 0.9], opt=-3.32)
+#     print(min)
+#     time1 = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+#     print(time1)
+#     min = test(function=21, parameter_list=[1000000, 0.01, 5, 5, 0.9], opt=-10.1532)
+#     print(min)
+#     time1 = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+#     print(time1)
+#     min = test(function=22, parameter_list=[1000000, 0.01, 5, 5, 0.9], opt=-10.4028)
+#     print(min)
+#     time1 = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+#     print(time1)
+#     min = test(function=23, parameter_list=[1000000, 0.01, 5, 5, 0.9], opt=-10.5363)
+#     print(min)
     time1 = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
     print(time1)
 
