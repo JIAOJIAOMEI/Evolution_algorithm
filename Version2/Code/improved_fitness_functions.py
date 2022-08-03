@@ -117,7 +117,7 @@ def F9(x):
     """
     fitness = []
     for i in x:
-        k = power(i, 2) - (10 * cos(2 * pi * i) + 10)
+        k = power(i, 2) - (10 * cos(2 * pi * i)) + 10
         fitness.append(k)
     return sum(fitness)
 
