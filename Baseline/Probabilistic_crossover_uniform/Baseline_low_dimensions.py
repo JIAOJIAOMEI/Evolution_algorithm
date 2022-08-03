@@ -1,7 +1,7 @@
 # Name: Mei Jiaojiao
 # Profession: Artificial Intelligence
 # Time and date: 8/1/22 14:30
-import datetime
+
 import itertools
 import random
 import statistics
@@ -112,7 +112,7 @@ def offspring(individuals, num_genes, best_fit, worst_fit, mutation_rate, range_
     elif mutation_type == 1:
         for i in range(len(result)):
             if np.random.rand() < mutation_rate:
-                result[i] = result[i] + float(np.random.normal(loc=0,scale=2*range_mutation,size=1)-range_mutation)
+                result[i] = result[i] + np.random.normal(loc=0,scale=2*range_mutation,size=1)-range_mutation
     return result
 
 
@@ -294,7 +294,7 @@ def test(function, parameter_list, opt):
     best_generation.append(fit_all[best])
     new_individual = offspring(individuals=individuals, best_fit=best, worst_fit=worst,
                                num_genes=num_genes, mutation_rate=mutation_rate, range_mutation=range_mutation,
-                               crossover_probability=crossover_probability, mutation_type=1,crossover_type=2)
+                               crossover_probability=crossover_probability, mutation_type=0,crossover_type=0)
     new = Individual(genotype=new_individual, num_genes=num_genes, genotype_range=genotype_range, pattern=1)
 
     del individuals[worst]
@@ -325,7 +325,7 @@ def test(function, parameter_list, opt):
         new_individual = offspring(individuals=individuals, best_fit=0, worst_fit=-1,
                                    num_genes=num_genes, mutation_rate=mutation_rate,
                                    range_mutation=range_mutation, crossover_probability=crossover_probability,
-                                   mutation_type=1,crossover_type=2)
+                                   mutation_type=0,crossover_type=0)
         new = Individual(genotype=new_individual, num_genes=num_genes, genotype_range=genotype_range, pattern=1)
         new_fit = fitness_single(individual=new, func=func)
         new_zip = (new, new_fit)
@@ -347,13 +347,6 @@ def test(function, parameter_list, opt):
     return min(best_generation)
 
 
-if __name__ == '__main__':
-    time1 = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-    print(time1)
-    min = test(function=20, parameter_list=[1000000, 0.01, 5, 5, 0.9], opt=-3.32)
-    print(min)
-    time1 = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-    print(time1)
 
 '''This multiple function is to calculate multiples runs for all the fitness functions and combinations.
 For F12, I use F13 to replace F12 for now.
@@ -376,7 +369,7 @@ def multiple(Times, L, Com):
                 result = test(function=f, parameter_list=combination[i], opt=global_opt[f - 1])
                 result_list.append(float(result))
             result_list_coloum.append(result_list)
-        if (i - L[0]) % 10 == 0:
+        if (i - L[0]) % 30 == 29:
             print("\033[0;37;45m Starting from {0}, {1} combinations are tested.\033[0m".format(L[0], i - L[0] + 1))
             print("\n")
         result_list_all.append(result_list_coloum)
@@ -391,7 +384,7 @@ def multiple(Times, L, Com):
 
 
 '''The main function is to generate the whole data.'''
-#
+
 # if __name__ == '__main__':
 #     com = combination()
 #     df = pd.DataFrame(data=com, index=["Combination" + str(i + 1) for i in range(len(com))],
@@ -418,3 +411,57 @@ def multiple(Times, L, Com):
 #                 sep=',',
 #                 header=True,
 #                 index=True)
+
+if __name__ == '__main__':
+    com = combination()
+    df = pd.DataFrame(data=com, index=["Combination" + str(i + 1) for i in range(len(com))],
+                      columns=["iterations", "mutation_rate", "num_individuals", "range_mutation",
+                               "crossover_probability"])
+    df.to_csv('combinations_result_baseline.csv',
+              header=True,
+              index=False)
+
+    data, short_data, temp = multiple(Times=1, L=[0, len(com[:100])], Com=com[:100])
+    with open("Baseline_3Dlist_short_100.txt", "w") as w:
+        w.write(np.array2string(temp, formatter={'float_kind': lambda x: '{:1.2e}'.format(x)}))
+    with open("Baseline_3Dlist_long_100.txt", "w") as w:
+        w.write(np.array2string(temp))
+    short_data.to_csv('./Baseline_table_short_100.csv',
+                      sep=',',
+                      header=True,
+                      index=True)
+
+    data.to_csv('./Baseline_table_long_100.csv',
+                sep=',',
+                header=True,
+                index=True)
+
+    data, short_data, temp = multiple(Times=1, L=[0, len(com[100:200])], Com=com[100:200])
+    with open("Baseline_3Dlist_short_100_200.txt", "w") as w:
+        w.write(np.array2string(temp, formatter={'float_kind': lambda x: '{:1.2e}'.format(x)}))
+    with open("Baseline_3Dlist_long_100_200.txt", "w") as w:
+        w.write(np.array2string(temp))
+    short_data.to_csv('./Baseline_table_short_100_200.csv',
+                      sep=',',
+                      header=True,
+                      index=True)
+
+    data.to_csv('./Baseline_table_long_100_200.csv',
+                sep=',',
+                header=True,
+                index=True)
+
+    data, short_data, temp = multiple(Times=1, L=[0, len(com[200:])], Com=com[200:])
+    with open("Baseline_3Dlist_short_200_end.txt", "w") as w:
+        w.write(np.array2string(temp, formatter={'float_kind': lambda x: '{:1.2e}'.format(x)}))
+    with open("Baseline_3Dlist_long_200_end.txt", "w") as w:
+        w.write(np.array2string(temp))
+    short_data.to_csv('./Baseline_table_short_200_end.csv',
+                      sep=',',
+                      header=True,
+                      index=True)
+
+    data.to_csv('./Baseline_table_long_200_end.csv',
+                sep=',',
+                header=True,
+                index=True)
