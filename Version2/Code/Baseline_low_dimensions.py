@@ -76,7 +76,7 @@ def offspring(individuals, num_genes, best_fit, worst_fit, mutation_rate, range_
                 result.append(parent1[j])
             else:
                 result.append(parent2[j])
-    elif crossover_type == 1: # singe-point-crossover
+    elif crossover_type == 1:  # singe-point-crossover
         if np.random.rand() < crossover_probability:
             cross_location = np.random.randint(0, num_genes)
             part1 = n[best_fit][:cross_location]
@@ -108,11 +108,12 @@ def offspring(individuals, num_genes, best_fit, worst_fit, mutation_rate, range_
     if mutation_type == 0:
         for i in range(len(result)):
             if np.random.rand() < mutation_rate:
-                result[i] = result[i] + np.random.uniform(-range_mutation,range_mutation)
+                result[i] = result[i] + np.random.uniform(-range_mutation, range_mutation)
     elif mutation_type == 1:
         for i in range(len(result)):
             if np.random.rand() < mutation_rate:
-                result[i] = result[i] + float(np.random.normal(loc=0,scale=2*range_mutation,size=1)-range_mutation)
+                result[i] = result[i] + float(
+                    np.random.normal(loc=0, scale=2 * range_mutation, size=1) - range_mutation)
     return result
 
 
@@ -294,7 +295,7 @@ def test(function, parameter_list, opt):
     best_generation.append(fit_all[best])
     new_individual = offspring(individuals=individuals, best_fit=best, worst_fit=worst,
                                num_genes=num_genes, mutation_rate=mutation_rate, range_mutation=range_mutation,
-                               crossover_probability=crossover_probability, mutation_type=1,crossover_type=2)
+                               crossover_probability=crossover_probability, mutation_type=1, crossover_type=2)
     new = Individual(genotype=new_individual, num_genes=num_genes, genotype_range=genotype_range, pattern=1)
 
     del individuals[worst]
@@ -325,7 +326,7 @@ def test(function, parameter_list, opt):
         new_individual = offspring(individuals=individuals, best_fit=0, worst_fit=-1,
                                    num_genes=num_genes, mutation_rate=mutation_rate,
                                    range_mutation=range_mutation, crossover_probability=crossover_probability,
-                                   mutation_type=1,crossover_type=2)
+                                   mutation_type=1, crossover_type=2)
         new = Individual(genotype=new_individual, num_genes=num_genes, genotype_range=genotype_range, pattern=1)
         new_fit = fitness_single(individual=new, func=func)
         new_zip = (new, new_fit)
@@ -348,98 +349,18 @@ def test(function, parameter_list, opt):
 
 
 if __name__ == '__main__':
+    # for i in range(1,24,1):
+    #     time1 = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+    #     print(time1)
+    #     result = test(function=i, parameter_list=[1000000, 0.01, 5, 5, 0.9], opt=global_opt[i-1])
+    #     print(result)
+    #     time1 = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+    #     print(time1)
+
     time1 = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
     print(time1)
-#     min = test(function=1, parameter_list=[1000000, 0.01, 5, 5, 0.9], opt=0)
-#     print(min)
-#     time1 = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-#     print(time1)
-#     min = test(function=2, parameter_list=[1000000, 0.01, 5, 5, 0.9], opt=0)
-#     print(min)
-#     time1 = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-#     print(time1)
-#     min = test(function=3, parameter_list=[1000000, 0.01, 5, 5, 0.9], opt=0)
-#     print(min)
-#     time1 = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-#     print(time1)
-#     min = test(function=4, parameter_list=[1000000, 0.01, 5, 5, 0.9], opt=0)
-#     print(min)
-#     time1 = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-#     print(time1)
-#     min = test(function=5, parameter_list=[1000000, 0.01, 5, 5, 0.9], opt=0)
-#     print(min)
-#     time1 = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-#     print(time1)
-#     min = test(function=6, parameter_list=[1000000, 0.01, 5, 5, 0.9], opt=0)
-#     print(min)
-#     time1 = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-#     print(time1)
-#     min = test(function=7, parameter_list=[1000000, 0.01, 5, 5, 0.9], opt=0)
-#     print(min)
-#     time1 = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-#     print(time1)
-#     min = test(function=8, parameter_list=[1000000, 0.01, 5, 5, 0.9], opt=-418.98 * 10)
-#     print(min)
-#     time1 = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-#     print(time1)
-#     min = test(function=9, parameter_list=[1000000, 0.01, 5, 5, 0.9], opt=0)
-#     print(min)
-#     time1 = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-#     print(time1)
-#     min = test(function=10, parameter_list=[1000000, 0.01, 5, 5, 0.9], opt=0)
-#     print(min)
-#     time1 = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-#     print(time1)
-#     min = test(function=11, parameter_list=[1000000, 0.01, 5, 5, 0.9], opt=0)
-#     print(min)
-#     time1 = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-#     print(time1)
-#     min = test(function=12, parameter_list=[1000000, 0.01, 5, 5, 0.9], opt=0)
-#     print(min)
-#     time1 = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-#     print(time1)
-#     min = test(function=13, parameter_list=[1000000, 0.01, 5, 5, 0.9], opt=0)
-#     print(min)
-#     time1 = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-#     print(time1)
-#     min = test(function=14, parameter_list=[1000000, 0.01, 5, 5, 0.9], opt=1)
-#     print(min)
-#     time1 = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-#     print(time1)
-#     min = test(function=15, parameter_list=[1000000, 0.01, 5, 5, 0.9], opt=0.0003)
-#     print(min)
-#     time1 = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-#     print(time1)
-#     min = test(function=16, parameter_list=[1000000, 0.01, 5, 5, 0.9], opt=-1.0316)
-#     print(min)
-#     time1 = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-#     print(time1)
-#     min = test(function=17, parameter_list=[1000000, 0.01, 5, 5, 0.9], opt=0.398)
-#     print(min)
-#     time1 = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-#     print(time1)
-#     min = test(function=18, parameter_list=[1000000, 0.01, 5, 5, 0.9], opt=3)
-#     print(min)
-#     time1 = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-#     print(time1)
-    min = test(function=19, parameter_list=[1000000, 0.01, 5, 5, 0.9], opt=-3.86)
-    print(min)
-#     time1 = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-#     print(time1)
-#     min = test(function=20, parameter_list=[1000000, 0.01, 5, 5, 0.9], opt=-3.32)
-#     print(min)
-#     time1 = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-#     print(time1)
-#     min = test(function=21, parameter_list=[1000000, 0.01, 5, 5, 0.9], opt=-10.1532)
-#     print(min)
-#     time1 = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-#     print(time1)
-#     min = test(function=22, parameter_list=[1000000, 0.01, 5, 5, 0.9], opt=-10.4028)
-#     print(min)
-#     time1 = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-#     print(time1)
-#     min = test(function=23, parameter_list=[1000000, 0.01, 5, 5, 0.9], opt=-10.5363)
-#     print(min)
+    result = test(function=9, parameter_list=[1000000, 0.01, 5, 5, 0.9], opt=global_opt[9 - 1])
+    print(result)
     time1 = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
     print(time1)
 
