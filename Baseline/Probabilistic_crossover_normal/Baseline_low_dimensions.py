@@ -294,7 +294,7 @@ def test(function, parameter_list, opt):
     best_generation.append(fit_all[best])
     new_individual = offspring(individuals=individuals, best_fit=best, worst_fit=worst,
                                num_genes=num_genes, mutation_rate=mutation_rate, range_mutation=range_mutation,
-                               crossover_probability=crossover_probability, mutation_type=1,crossover_type=2)
+                               crossover_probability=crossover_probability, mutation_type=1,crossover_type=0)
     new = Individual(genotype=new_individual, num_genes=num_genes, genotype_range=genotype_range, pattern=1)
 
     del individuals[worst]
@@ -325,7 +325,7 @@ def test(function, parameter_list, opt):
         new_individual = offspring(individuals=individuals, best_fit=0, worst_fit=-1,
                                    num_genes=num_genes, mutation_rate=mutation_rate,
                                    range_mutation=range_mutation, crossover_probability=crossover_probability,
-                                   mutation_type=1,crossover_type=2)
+                                   mutation_type=1,crossover_type=0)
         new = Individual(genotype=new_individual, num_genes=num_genes, genotype_range=genotype_range, pattern=1)
         new_fit = fitness_single(individual=new, func=func)
         new_zip = (new, new_fit)

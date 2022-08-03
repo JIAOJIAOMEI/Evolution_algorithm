@@ -109,10 +109,10 @@ def offspring(individuals, num_genes, best_fit, worst_fit, mutation_rate, range_
         for i in range(len(result)):
             if np.random.rand() < mutation_rate:
                 result[i] = result[i] + np.random.uniform(-range_mutation,range_mutation)
-    elif mutation_type == 1:# normal
+    elif mutation_type == 1:
         for i in range(len(result)):
             if np.random.rand() < mutation_rate:
-                result[i] = result[i] + float(np.random.normal(loc=0,scale=2*range_mutation,size=1)-range_mutation)
+                result[i] = result[i] + np.random.normal(loc=0,scale=2*range_mutation,size=1)-range_mutation
     return result
 
 
@@ -294,7 +294,7 @@ def test(function, parameter_list, opt):
     best_generation.append(fit_all[best])
     new_individual = offspring(individuals=individuals, best_fit=best, worst_fit=worst,
                                num_genes=num_genes, mutation_rate=mutation_rate, range_mutation=range_mutation,
-                               crossover_probability=crossover_probability, mutation_type=1,crossover_type=1)
+                               crossover_probability=crossover_probability, mutation_type=0,crossover_type=0)
     new = Individual(genotype=new_individual, num_genes=num_genes, genotype_range=genotype_range, pattern=1)
 
     del individuals[worst]
@@ -325,7 +325,7 @@ def test(function, parameter_list, opt):
         new_individual = offspring(individuals=individuals, best_fit=0, worst_fit=-1,
                                    num_genes=num_genes, mutation_rate=mutation_rate,
                                    range_mutation=range_mutation, crossover_probability=crossover_probability,
-                                   mutation_type=1,crossover_type=1)
+                                   mutation_type=0,crossover_type=0)
         new = Individual(genotype=new_individual, num_genes=num_genes, genotype_range=genotype_range, pattern=1)
         new_fit = fitness_single(individual=new, func=func)
         new_zip = (new, new_fit)
@@ -412,6 +412,34 @@ def multiple(Times, L, Com):
 #                 header=True,
 #                 index=True)
 
+def multipleF(Times, L, Com, function_list):
+    result_list_all = []
+    combination = Com
+    k = ["F" + str(i) for i in function_list]
+    for i in range(L[0], L[1], 1):
+        result_list_coloum = []
+        for f in function_list:
+            result_list = []
+            for times in range(Times):
+                result = test(function=f, parameter_list=combination[i], opt=global_opt[f - 1])
+                result_list.append(float(result))
+            result_list_coloum.append(result_list)
+        if (i - L[0]) % 30 == 29:
+            print("\033[0;37;45m Starting from {0}, {1} combinations are tested.\033[0m".format(L[0], i - L[0] + 1))
+            print("\n")
+        result_list_all.append(result_list_coloum)
+    temp = np.array(result_list_all)
+    data = pd.DataFrame(data=np.resize(temp, (L[1] - L[0], len(function_list) * Times)).swapaxes(0, 1),
+                        index=pd.MultiIndex.from_product(
+                            [k, ["Times" + str(times + 1) for times in range(Times)]]),
+                        columns=["Combination" + str(i + 1) for i in range(L[0], L[1], 1)]
+                        )
+    short_data = data.applymap(lambda x: '{:1.2e}'.format(x))
+    return data, short_data, temp
+
+
+'''The main function is to generate the whole data.'''
+
 if __name__ == '__main__':
     com = combination()
     df = pd.DataFrame(data=com, index=["Combination" + str(i + 1) for i in range(len(com))],
@@ -421,7 +449,14 @@ if __name__ == '__main__':
               header=True,
               index=False)
 
-    data, short_data, temp = multiple(Times=1, L=[0, len(com[:100])], Com=com[:100])
+    # data, short_data, temp = multipleF(Times=10, L=[0, len(com[:5])], Com=com[:5], function_list=[1, 18, 22])
+    # print(data)
+    # print("\n")
+    # print(short_data)
+    # print("\n")
+    # print(temp)
+
+    data, short_data, temp = multipleF(Times=10, L=[0, len(com[:100])], Com=com[:100], function_list=[1, 18, 22])
     with open("Baseline_3Dlist_short_100.txt", "w") as w:
         w.write(np.array2string(temp, formatter={'float_kind': lambda x: '{:1.2e}'.format(x)}))
     with open("Baseline_3Dlist_long_100.txt", "w") as w:
@@ -436,7 +471,7 @@ if __name__ == '__main__':
                 header=True,
                 index=True)
 
-    data, short_data, temp = multiple(Times=1, L=[0, len(com[100:200])], Com=com[100:200])
+    data, short_data, temp = multipleF(Times=10, L=[0, len(com[100:200])], Com=com[100:200], function_list=[1, 18, 22])
     with open("Baseline_3Dlist_short_100_200.txt", "w") as w:
         w.write(np.array2string(temp, formatter={'float_kind': lambda x: '{:1.2e}'.format(x)}))
     with open("Baseline_3Dlist_long_100_200.txt", "w") as w:
@@ -451,7 +486,7 @@ if __name__ == '__main__':
                 header=True,
                 index=True)
 
-    data, short_data, temp = multiple(Times=1, L=[0, len(com[200:])], Com=com[200:])
+    data, short_data, temp = multipleF(Times=10, L=[0, len(com[200:])], Com=com[200:], function_list=[1, 18, 22])
     with open("Baseline_3Dlist_short_200_end.txt", "w") as w:
         w.write(np.array2string(temp, formatter={'float_kind': lambda x: '{:1.2e}'.format(x)}))
     with open("Baseline_3Dlist_long_200_end.txt", "w") as w:
