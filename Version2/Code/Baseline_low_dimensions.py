@@ -59,12 +59,30 @@ fourth, choose a random result between the two results obtained by crossover,
 fifth, based on the crossover result, do mutation, the operation is the same as local search
 the location for crossover is randomly chosen each time.'''
 
+class Timer():
+    def __init__(self):
+        self.total_time = 0.0
+        self.start_time = None
+
+    def start(self):
+        self.start_time = datetime.datetime.now()
+
+    def end(self):
+        self.total_time += (datetime.datetime.now() - self.start_time).total_seconds()
+
+
+t1 = Timer()
+t2 = Timer()
+t3 = Timer()
 
 def offspring(individuals, num_genes, best_fit, worst_fit, mutation_rate, range_mutation, crossover_probability,
               mutation_type, crossover_type):
+    t1.start()
     n = []
     for individual in individuals:
         n.append(individual.phenotype)
+    t1.end()
+    t2.start()
     result = []
     if crossover_type == 0:  # Probabilistic crossover
         parent1 = n[best_fit]
@@ -76,7 +94,7 @@ def offspring(individuals, num_genes, best_fit, worst_fit, mutation_rate, range_
                 result.append(parent1[j])
             else:
                 result.append(parent2[j])
-    elif crossover_type == 1: # singe-point-crossover
+    elif crossover_type == 1:  # singe-point-crossover
         if np.random.rand() < crossover_probability:
             cross_location = np.random.randint(0, num_genes)
             part1 = n[best_fit][:cross_location]
@@ -104,15 +122,19 @@ def offspring(individuals, num_genes, best_fit, worst_fit, mutation_rate, range_
             result.append(new_j)
     # numpy.random.rand from uniform (in range [0,1))
     # numpy.random.normal generates samples from the normal distribution
+    t2.end()
+    t3.start()
     mutation_rate = mutation_rate / num_genes
     if mutation_type == 0:
         for i in range(len(result)):
             if np.random.rand() < mutation_rate:
-                result[i] = result[i] + np.random.uniform(-range_mutation,range_mutation)
+                result[i] = result[i] + np.random.uniform(-range_mutation, range_mutation)
     elif mutation_type == 1:
         for i in range(len(result)):
             if np.random.rand() < mutation_rate:
-                result[i] = result[i] + float(np.random.normal(loc=0,scale=2*range_mutation,size=1)-range_mutation)
+                result[i] = result[i] + float(
+                    np.random.normal(loc=0, scale=2 * range_mutation, size=1) - range_mutation)
+    t3.end()
     return result
 
 
@@ -281,20 +303,20 @@ global_opt = opt = [0, 0, 0, 0, 0, 0, 0, -418.98 * 10, 0, 0, 0, 0, 0, 1, 0.00030
                     -10.1532, -10.4028, -10.5363]
 
 
-def test(function, parameter_list, opt):
+def t_test(fitness_function, parameter_list, opt):
     iterations = int(parameter_list[0])
     mutation_rate = parameter_list[1]
     num_individuals = int(parameter_list[2])
     range_mutation = parameter_list[3]
     crossover_probability = parameter_list[4]
-    func, num_genes, genotype_range = choose_func(function)
+    func, num_genes, genotype_range = choose_func(fitness_function)
     individuals = initialization(num_genes=num_genes, num_individual=num_individuals, genotype_range=genotype_range)
     best_generation = []
     best, worst, fit_all = fitness(individuals=individuals, func=func)
     best_generation.append(fit_all[best])
     new_individual = offspring(individuals=individuals, best_fit=best, worst_fit=worst,
                                num_genes=num_genes, mutation_rate=mutation_rate, range_mutation=range_mutation,
-                               crossover_probability=crossover_probability, mutation_type=1,crossover_type=2)
+                               crossover_probability=crossover_probability, mutation_type=1, crossover_type=2)
     new = Individual(genotype=new_individual, num_genes=num_genes, genotype_range=genotype_range, pattern=1)
 
     del individuals[worst]
@@ -316,7 +338,11 @@ def test(function, parameter_list, opt):
 
     count = 1
 
+    p1_time = 0.0
+    p2_time = 0.0
+    p3_time = 0.0
     for generation in range(iterations - 1):
+        p1_s = datetime.datetime.now()
         count += 1
         best_individual, best_fv = sort_zipped[0]
         best_generation.append(best_fv)
@@ -325,26 +351,75 @@ def test(function, parameter_list, opt):
         new_individual = offspring(individuals=individuals, best_fit=0, worst_fit=-1,
                                    num_genes=num_genes, mutation_rate=mutation_rate,
                                    range_mutation=range_mutation, crossover_probability=crossover_probability,
-                                   mutation_type=1,crossover_type=2)
+                                   mutation_type=1, crossover_type=2)
+        p1_e = datetime.datetime.now()
+        p1_time += (p1_e - p1_s).total_seconds()
+        p2_s = datetime.datetime.now()
         new = Individual(genotype=new_individual, num_genes=num_genes, genotype_range=genotype_range, pattern=1)
+        p2_e = datetime.datetime.now()
+        p2_time += (p2_e - p2_s).total_seconds()
+        p3_s = datetime.datetime.now()
         new_fit = fitness_single(individual=new, func=func)
+        p3_e = datetime.datetime.now()
+        p3_time += (p3_e - p3_s).total_seconds()
         new_zip = (new, new_fit)
         del sort_zipped[-1]
         del individuals[-1]
         del fit_all[-1]
-        for i in range(len(sort_zipped)):
-            individual, fv = sort_zipped[i]
-            if new_fit < fv:
-                sort_zipped.insert(i, new_zip)
-                individuals.insert(i, new)
-                fit_all.insert(i, new_fit)
-                break
-            elif i == len(sort_zipped) - 1:
-                sort_zipped.append(new_zip)
-                individuals.append(new)
-                fit_all.append(new_fit)
-                break
+        binary_search_insert(sort_zipped, new_fit, individuals, fit_all,new_zip,new)
+        # for i in range(len(sort_zipped)):
+        #     individual, fv = sort_zipped[i]
+        #     if new_fit < fv:
+        #         sort_zipped.insert(i, new_zip)
+        #         individuals.insert(i, new)
+        #         fit_all.insert(i, new_fit)
+        #         break
+        #     elif i == len(sort_zipped) - 1:
+        #         sort_zipped.append(new_zip)
+        #         individuals.append(new)
+        #         fit_all.append(new_fit)
+        #         break
+    print(f"p1 spend {p1_time}")
+    print(f"p2 spend {p2_time}")
+    print(f"p3 spend {p3_time}")
     return min(best_generation)
+
+
+def binary_search_insert(sorted_array: list, inserted_value, individuals, fit_all,new_zip,new):
+    array_length = len(sorted_array)
+    # if array_length == 1:
+    #     if inserted_value < sorted_array[0][1]:
+    #         sorted_array.insert(0, new_zip)
+    #         individuals.insert(0, new)
+    #         fit_all.insert(0, inserted_value)
+    #     else:
+    #         sorted_array.append(new_zip)
+    #         individuals.append(new)
+    #         fit_all.append(inserted_value)
+    left = 0
+    end = array_length - 1
+    right = end
+    middle = left + (right - left) // 2
+    while left < right:
+        middle_value = sorted_array[middle][1]
+        if inserted_value < middle_value:
+            right = middle
+        elif inserted_value > middle_value:
+            left = middle + 1
+        else:
+            left = middle
+            break
+        middle = left + (right - left) // 2
+
+    # uncertian index
+    if left == end and inserted_value > sorted_array[left][1]:
+        sorted_array.append(new_zip)
+        individuals.append(new)
+        fit_all.append(inserted_value)
+    else:
+        sorted_array.insert(left, new_zip)
+        individuals.insert(left, new)
+        fit_all.insert(left, inserted_value)
 
 
 if __name__ == '__main__':
@@ -356,12 +431,15 @@ if __name__ == '__main__':
     #     time1 = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
     #     print(time1)
 
-    time1 = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-    print(time1)
-    result = test(function=9, parameter_list=[1000000, 0.01, 5, 5, 0.9], opt=global_opt[9 - 1])
+    # time1 = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+    # print(time1)
+    result = t_test(fitness_function=9, parameter_list=[1000000, 0.01, 5, 5, 0.9], opt=global_opt[9 - 1])
     print(result)
-    time1 = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-    print(time1)
+    # time1 = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+    # print(time1)
+    print(f"offspring p1 {t1.total_time}")
+    print(f"offspring p2 {t2.total_time}")
+    print(f"offspring p3 {t3.total_time}")
 
 '''This multiple function is to calculate multiples runs for all the fitness functions and combinations.
 For F12, I use F13 to replace F12 for now.
@@ -381,7 +459,7 @@ def multiple(Times, L, Com):
         for f in range(1, 24, 1):
             result_list = []
             for times in range(Times):
-                result = test(function=f, parameter_list=combination[i], opt=global_opt[f - 1])
+                result = t_test(fitness_function=f, parameter_list=combination[i], opt=global_opt[f - 1])
                 result_list.append(float(result))
             result_list_coloum.append(result_list)
         if (i - L[0]) % 10 == 0:
