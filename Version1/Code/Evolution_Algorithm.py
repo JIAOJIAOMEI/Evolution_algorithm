@@ -274,7 +274,7 @@ seventh,calculate the fitness value for the new individual and compare it to oth
 return the minimum of all the iterations'''
 
 
-def test(function, mode, parameter_list,opt):
+def test(function, mode, parameter_list, opt):
     iterations = parameter_list[0]
     mutation_rate = parameter_list[1]
     local_search = parameter_list[2]
@@ -370,70 +370,69 @@ def multiple(mode, Times, L):
 
 '''The main function is to generate the whole data.'''
 
- if __name__ == '__main__':
-     data, data_four, short_data, short_data_four, temp, temp_four = multiple(mode="Baldwin", Times=10, L=[0, 3072])
+if __name__ == '__main__':
+    data, data_four, short_data, short_data_four, temp, temp_four = multiple(mode="Baldwin", Times=10, L=[0, 3072])
 
-     with open("Baldwin_3Dlist_short_1_3072.txt", "w") as w:
-         w.write(np.array2string(temp, formatter={'float_kind': lambda x: '{:1.2e}'.format(x)}))
-     with open("Baldwin_3Dlist_short_four_1_3072.txt", "w") as w:
-         w.write(np.array2string(temp_four, formatter={'float_kind': lambda x: '{:1.2e}'.format(x)}))
+    with open("Baldwin_3Dlist_short_1_3072.txt", "w") as w:
+        w.write(np.array2string(temp, formatter={'float_kind': lambda x: '{:1.2e}'.format(x)}))
+    with open("Baldwin_3Dlist_short_four_1_3072.txt", "w") as w:
+        w.write(np.array2string(temp_four, formatter={'float_kind': lambda x: '{:1.2e}'.format(x)}))
 
-     with open("Baldwin_3Dlist_long_1_3072.txt", "w") as w:
-         w.write(np.array2string(temp))
-     with open("Baldwin_3Dlist_long_four_1_3072.txt", "w") as w:
-         w.write(np.array2string(temp_four))
+    with open("Baldwin_3Dlist_long_1_3072.txt", "w") as w:
+        w.write(np.array2string(temp))
+    with open("Baldwin_3Dlist_long_four_1_3072.txt", "w") as w:
+        w.write(np.array2string(temp_four))
 
-     short_data.to_csv('./Baldwin_table_short_1_3072.csv',
-                       sep=',',
-                       header=True,
-                       index=True)
-     short_data_four.to_csv('./Baldwin_table_short_four_1_3072.csv',
-                            sep=',',
-                            header=True,
-                            index=True)
-
-     data.to_csv('./Baldwin_table_long_1_3072.csv',
-                 sep=',',
-                 header=True,
-                 index=True)
-     data_four.to_csv('./Baldwin_table_long_four_1_3072.csv',
+    short_data.to_csv('./Baldwin_table_short_1_3072.csv',
                       sep=',',
                       header=True,
                       index=True)
+    short_data_four.to_csv('./Baldwin_table_short_four_1_3072.csv',
+                           sep=',',
+                           header=True,
+                           index=True)
 
-     data, data_four, short_data, short_data_four, temp, temp_four = multiple(mode="Lamarck", Times=10, L=[0, 3072])
+    data.to_csv('./Baldwin_table_long_1_3072.csv',
+                sep=',',
+                header=True,
+                index=True)
+    data_four.to_csv('./Baldwin_table_long_four_1_3072.csv',
+                     sep=',',
+                     header=True,
+                     index=True)
 
-     with open("Lamarck_3Dlist_short_1_3072.txt", "w") as w:
-         w.write(np.array2string(temp, formatter={'float_kind': lambda x: '{:1.2e}'.format(x)}))
-     with open("Lamarck_3Dlist_short_four_1_3072.txt", "w") as w:
-         w.write(np.array2string(temp_four, formatter={'float_kind': lambda x: '{:1.2e}'.format(x)}))
+    data, data_four, short_data, short_data_four, temp, temp_four = multiple(mode="Lamarck", Times=10, L=[0, 3072])
 
-     with open("Lamarck_3Dlist_long_1_3072.txt", "w") as w:
-         w.write(np.array2string(temp))
-     with open("Lamarck_3Dlist_long_four_1_3072.txt", "w") as w:
-         w.write(np.array2string(temp_four))
+    with open("Lamarck_3Dlist_short_1_3072.txt", "w") as w:
+        w.write(np.array2string(temp, formatter={'float_kind': lambda x: '{:1.2e}'.format(x)}))
+    with open("Lamarck_3Dlist_short_four_1_3072.txt", "w") as w:
+        w.write(np.array2string(temp_four, formatter={'float_kind': lambda x: '{:1.2e}'.format(x)}))
 
-     short_data.to_csv('./Lamarck_table_short_1_3072.csv',
-                       sep=',',
-                       header=True,
-                       index=True)
-     short_data_four.to_csv('./Lamarck_table_short_four_1_3072.csv',
-                            sep=',',
-                            header=True,
-                            index=True)
+    with open("Lamarck_3Dlist_long_1_3072.txt", "w") as w:
+        w.write(np.array2string(temp))
+    with open("Lamarck_3Dlist_long_four_1_3072.txt", "w") as w:
+        w.write(np.array2string(temp_four))
 
-     data.to_csv('./Lamarck_table_long_1_3072.csv',
-                 sep=',',
-                 header=True,
-                 index=True)
-     data_four.to_csv('./Lamarck_table_long_four_1_3072.csv',
+    short_data.to_csv('./Lamarck_table_short_1_3072.csv',
                       sep=',',
                       header=True,
                       index=True)
+    short_data_four.to_csv('./Lamarck_table_short_four_1_3072.csv',
+                           sep=',',
+                           header=True,
+                           index=True)
 
+    data.to_csv('./Lamarck_table_long_1_3072.csv',
+                sep=',',
+                header=True,
+                index=True)
+    data_four.to_csv('./Lamarck_table_long_four_1_3072.csv',
+                     sep=',',
+                     header=True,
+                     index=True)
 
 # this is for test the time
-#if __name__ == '__main__':
+# if __name__ == '__main__':
 #    import numpy as np
 #    time1 = datetime.datetime.now()
 #    print(time1)
