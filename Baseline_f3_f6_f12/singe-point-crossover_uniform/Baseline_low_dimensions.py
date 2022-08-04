@@ -280,7 +280,7 @@ global_opt = opt = [0, 0, 0, 0, 0, 0, 0, -418.98 * 10, 0, 0, 0, 0, 0, 1, 0.00030
                     -10.1532, -10.4028, -10.5363]
 
 
-def test(function, parameter_list, opt):
+def t_test(function, parameter_list, opt):
     iterations = int(parameter_list[0])
     mutation_rate = parameter_list[1]
     num_individuals = int(parameter_list[2])
@@ -364,7 +364,7 @@ def multiple(Times, L, Com):
         for f in range(1, 24, 1):
             result_list = []
             for times in range(Times):
-                result = test(function=f, parameter_list=combination[i], opt=global_opt[f - 1])
+                result = t_test(function=f, parameter_list=combination[i], opt=global_opt[f - 1])
                 result_list.append(float(result))
             result_list_coloum.append(result_list)
         if (i - L[0]) % 30 == 29:
@@ -420,7 +420,7 @@ def multipleF(Times, L, Com, function_list):
         for f in function_list:
             result_list = []
             for times in range(Times):
-                result = test(function=f, parameter_list=combination[i], opt=global_opt[f - 1])
+                result = t_test(function=f, parameter_list=combination[i], opt=global_opt[f - 1])
                 result_list.append(float(result))
             result_list_coloum.append(result_list)
         if (i - L[0]) % 30 == 29:
