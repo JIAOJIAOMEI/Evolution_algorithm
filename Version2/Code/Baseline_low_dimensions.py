@@ -85,6 +85,7 @@ def offspring(individuals, num_genes, best_fit, worst_fit, mutation_rate, range_
     t2.start()
     result = []
     if crossover_type == 0:  # Probabilistic crossover
+        # todo optimist: result = [0]*len(parent1)
         parent1 = n[best_fit]
         del n[worst_fit]
         partner_index = np.random.randint(0, len(n))
@@ -92,8 +93,10 @@ def offspring(individuals, num_genes, best_fit, worst_fit, mutation_rate, range_
         for j in range(len(parent1)):
             if np.random.rand() < crossover_probability:
                 result.append(parent1[j])
+                # todo optimist: result[j] = parent1[j]
             else:
                 result.append(parent2[j])
+                # todo optimist: result[j] = parent2[j]
     elif crossover_type == 1:  # singe-point-crossover
         if np.random.rand() < crossover_probability:
             cross_location = np.random.randint(0, num_genes)
@@ -113,6 +116,7 @@ def offspring(individuals, num_genes, best_fit, worst_fit, mutation_rate, range_
             result2 = n[result2_index]
             result = random.choice([result1, result2])
     elif crossover_type == 2:  # Linear combination crossover
+        # todo optimist: result = [0]*len(parent1)
         parent1 = n[best_fit]
         del n[worst_fit]
         partner_index = np.random.randint(0, len(n))
@@ -120,6 +124,7 @@ def offspring(individuals, num_genes, best_fit, worst_fit, mutation_rate, range_
         for j in range(len(parent1)):
             new_j = parent1[j] * crossover_probability + parent2[j] * (1 - crossover_probability)
             result.append(new_j)
+            # todo optimist: result[j] = new_j
     # numpy.random.rand from uniform (in range [0,1))
     # numpy.random.normal generates samples from the normal distribution
     t2.end()
