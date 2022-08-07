@@ -1,7 +1,7 @@
 # Name: Mei Jiaojiao
 # Profession: Artificial Intelligence
 # Time and date: 8/1/22 14:30
-import datetime
+
 import itertools
 import random
 import statistics
@@ -59,33 +59,14 @@ fourth, choose a random result between the two results obtained by crossover,
 fifth, based on the crossover result, do mutation, the operation is the same as local search
 the location for crossover is randomly chosen each time.'''
 
-class Timer():
-    def __init__(self):
-        self.total_time = 0.0
-        self.start_time = None
-
-    def start(self):
-        self.start_time = datetime.datetime.now()
-
-    def end(self):
-        self.total_time += (datetime.datetime.now() - self.start_time).total_seconds()
-
-
-t1 = Timer()
-t2 = Timer()
-t3 = Timer()
 
 def offspring(individuals, num_genes, best_fit, worst_fit, mutation_rate, range_mutation, crossover_probability,
               mutation_type, crossover_type):
-    t1.start()
     n = []
     for individual in individuals:
         n.append(individual.phenotype)
-    t1.end()
-    t2.start()
     result = []
     if crossover_type == 0:  # Probabilistic crossover
-        # todo optimist: result = [0]*len(parent1)
         parent1 = n[best_fit]
         del n[worst_fit]
         partner_index = np.random.randint(0, len(n))
@@ -93,10 +74,8 @@ def offspring(individuals, num_genes, best_fit, worst_fit, mutation_rate, range_
         for j in range(len(parent1)):
             if np.random.rand() < crossover_probability:
                 result.append(parent1[j])
-                # todo optimist: result[j] = parent1[j]
             else:
                 result.append(parent2[j])
-                # todo optimist: result[j] = parent2[j]
     elif crossover_type == 1:  # singe-point-crossover
         if np.random.rand() < crossover_probability:
             cross_location = np.random.randint(0, num_genes)
@@ -116,7 +95,6 @@ def offspring(individuals, num_genes, best_fit, worst_fit, mutation_rate, range_
             result2 = n[result2_index]
             result = random.choice([result1, result2])
     elif crossover_type == 2:  # Linear combination crossover
-        # todo optimist: result = [0]*len(parent1)
         parent1 = n[best_fit]
         del n[worst_fit]
         partner_index = np.random.randint(0, len(n))
@@ -124,11 +102,8 @@ def offspring(individuals, num_genes, best_fit, worst_fit, mutation_rate, range_
         for j in range(len(parent1)):
             new_j = parent1[j] * crossover_probability + parent2[j] * (1 - crossover_probability)
             result.append(new_j)
-            # todo optimist: result[j] = new_j
     # numpy.random.rand from uniform (in range [0,1))
     # numpy.random.normal generates samples from the normal distribution
-    t2.end()
-    t3.start()
     mutation_rate = mutation_rate / num_genes
     if mutation_type == 0:
         for i in range(len(result)):
@@ -139,7 +114,6 @@ def offspring(individuals, num_genes, best_fit, worst_fit, mutation_rate, range_
             if np.random.rand() < mutation_rate:
                 result[i] = result[i] + float(
                     np.random.normal(loc=0, scale=2 * range_mutation, size=1) - range_mutation)
-    t3.end()
     return result
 
 
@@ -159,99 +133,99 @@ def initialization(num_genes, num_individual, genotype_range):
 each function has its own dimensions(num_genes) and genotype_range'''
 
 
-def choose_func(fitness_function):
+def choose_func(function):
     func = None
     num_genes = None
     genotype_range = None
-    if fitness_function == 1:
+    if function == 1:
         func = improved_fitness_functions.F1
         num_genes = 10
         genotype_range = [-100, 100]
-    elif fitness_function == 2:
+    elif function == 2:
         func = improved_fitness_functions.F2
         num_genes = 10
         genotype_range = [-100, 100]
-    elif fitness_function == 3:
+    elif function == 3:
         func = improved_fitness_functions.F3
         num_genes = 10
         genotype_range = [-100, 100]
-    elif fitness_function == 4:
+    elif function == 4:
         func = improved_fitness_functions.F4
         num_genes = 10
         genotype_range = [-100, 100]
-    elif fitness_function == 5:
+    elif function == 5:
         func = improved_fitness_functions.F5
         num_genes = 10
         genotype_range = [-30, 30]
-    elif fitness_function == 6:
+    elif function == 6:
         func = improved_fitness_functions.F6
         num_genes = 10
         genotype_range = [-100, 100]
-    elif fitness_function == 7:
+    elif function == 7:
         func = improved_fitness_functions.F7
         num_genes = 10
         genotype_range = [-1.28, 1.28]
-    elif fitness_function == 8:
+    elif function == 8:
         func = improved_fitness_functions.F8
         num_genes = 10
         genotype_range = [-500, 500]
-    elif fitness_function == 9:
+    elif function == 9:
         func = improved_fitness_functions.F9
         num_genes = 10
         genotype_range = [-5.12, 5.12]
-    elif fitness_function == 10:
+    elif function == 10:
         func = improved_fitness_functions.F10
         num_genes = 10
         genotype_range = [-32, 32]
-    elif fitness_function == 11:
+    elif function == 11:
         func = improved_fitness_functions.F11
         num_genes = 10
         genotype_range = [-600, 600]
-    elif fitness_function == 12:
+    elif function == 12:
         func = improved_fitness_functions.F12
         num_genes = 10
         genotype_range = [-50, 50]
-    elif fitness_function == 13:
+    elif function == 13:
         func = improved_fitness_functions.F13
         num_genes = 10
         genotype_range = [-50, 50]
-    elif fitness_function == 14:
+    elif function == 14:
         func = improved_fitness_functions.F14
         num_genes = 2
         genotype_range = [-65, 65]
-    elif fitness_function == 15:
+    elif function == 15:
         func = improved_fitness_functions.F15
         num_genes = 4
         genotype_range = [-5, 5]
-    elif fitness_function == 16:
+    elif function == 16:
         func = improved_fitness_functions.F16
         num_genes = 2
         genotype_range = [-5, 5]
-    elif fitness_function == 17:
+    elif function == 17:
         func = improved_fitness_functions.F17
         num_genes = 2
         genotype_range = [-5, 5]
-    elif fitness_function == 18:
+    elif function == 18:
         func = improved_fitness_functions.F18
         num_genes = 2
         genotype_range = [-2, 2]
-    elif fitness_function == 19:
+    elif function == 19:
         func = improved_fitness_functions.F19
         num_genes = 3
         genotype_range = [1, 3]
-    elif fitness_function == 20:
+    elif function == 20:
         func = improved_fitness_functions.F20
         num_genes = 6
         genotype_range = [0, 1]
-    elif fitness_function == 21:
+    elif function == 21:
         func = improved_fitness_functions.F21
         num_genes = 4
         genotype_range = [0, 10]
-    elif fitness_function == 22:
+    elif function == 22:
         func = improved_fitness_functions.F22
         num_genes = 4
         genotype_range = [0, 10]
-    elif fitness_function == 23:
+    elif function == 23:
         func = improved_fitness_functions.F23
         num_genes = 4
         genotype_range = [0, 10]
@@ -308,13 +282,13 @@ global_opt = opt = [0, 0, 0, 0, 0, 0, 0, -418.98 * 10, 0, 0, 0, 0, 0, 1, 0.00030
                     -10.1532, -10.4028, -10.5363]
 
 
-def t_test(fitness_function, parameter_list, opt):
+def t_test(function, parameter_list, opt):
     iterations = int(parameter_list[0])
     mutation_rate = parameter_list[1]
     num_individuals = int(parameter_list[2])
     range_mutation = parameter_list[3]
     crossover_probability = parameter_list[4]
-    func, num_genes, genotype_range = choose_func(fitness_function)
+    func, num_genes, genotype_range = choose_func(function)
     individuals = initialization(num_genes=num_genes, num_individual=num_individuals, genotype_range=genotype_range)
     best_generation = []
     best, worst, fit_all = fitness(individuals=individuals, func=func)
@@ -343,11 +317,7 @@ def t_test(fitness_function, parameter_list, opt):
 
     count = 1
 
-    p1_time = 0.0
-    p2_time = 0.0
-    p3_time = 0.0
     for generation in range(iterations - 1):
-        p1_s = datetime.datetime.now()
         count += 1
         best_individual, best_fv = sort_zipped[0]
         best_generation.append(best_fv)
@@ -357,94 +327,26 @@ def t_test(fitness_function, parameter_list, opt):
                                    num_genes=num_genes, mutation_rate=mutation_rate,
                                    range_mutation=range_mutation, crossover_probability=crossover_probability,
                                    mutation_type=1, crossover_type=2)
-        p1_e = datetime.datetime.now()
-        p1_time += (p1_e - p1_s).total_seconds()
-        p2_s = datetime.datetime.now()
         new = Individual(genotype=new_individual, num_genes=num_genes, genotype_range=genotype_range, pattern=1)
-        p2_e = datetime.datetime.now()
-        p2_time += (p2_e - p2_s).total_seconds()
-        p3_s = datetime.datetime.now()
         new_fit = fitness_single(individual=new, func=func)
-        p3_e = datetime.datetime.now()
-        p3_time += (p3_e - p3_s).total_seconds()
         new_zip = (new, new_fit)
         del sort_zipped[-1]
         del individuals[-1]
         del fit_all[-1]
-        binary_search_insert(sort_zipped, new_fit, individuals, fit_all,new_zip,new)
-        # for i in range(len(sort_zipped)):
-        #     individual, fv = sort_zipped[i]
-        #     if new_fit < fv:
-        #         sort_zipped.insert(i, new_zip)
-        #         individuals.insert(i, new)
-        #         fit_all.insert(i, new_fit)
-        #         break
-        #     elif i == len(sort_zipped) - 1:
-        #         sort_zipped.append(new_zip)
-        #         individuals.append(new)
-        #         fit_all.append(new_fit)
-        #         break
-    print(f"p1 spend {p1_time}")
-    print(f"p2 spend {p2_time}")
-    print(f"p3 spend {p3_time}")
+        for i in range(len(sort_zipped)):
+            individual, fv = sort_zipped[i]
+            if new_fit < fv:
+                sort_zipped.insert(i, new_zip)
+                individuals.insert(i, new)
+                fit_all.insert(i, new_fit)
+                break
+            elif i == len(sort_zipped) - 1:
+                sort_zipped.append(new_zip)
+                individuals.append(new)
+                fit_all.append(new_fit)
+                break
     return min(best_generation)
 
-
-def binary_search_insert(sorted_array: list, inserted_value, individuals, fit_all,new_zip,new):
-    array_length = len(sorted_array)
-    # if array_length == 1:
-    #     if inserted_value < sorted_array[0][1]:
-    #         sorted_array.insert(0, new_zip)
-    #         individuals.insert(0, new)
-    #         fit_all.insert(0, inserted_value)
-    #     else:
-    #         sorted_array.append(new_zip)
-    #         individuals.append(new)
-    #         fit_all.append(inserted_value)
-    left = 0
-    end = array_length - 1
-    right = end
-    middle = left + (right - left) // 2
-    while left < right:
-        middle_value = sorted_array[middle][1]
-        if inserted_value < middle_value:
-            right = middle
-        elif inserted_value > middle_value:
-            left = middle + 1
-        else:
-            left = middle
-            break
-        middle = left + (right - left) // 2
-
-    # uncertian index
-    if left == end and inserted_value > sorted_array[left][1]:
-        sorted_array.append(new_zip)
-        individuals.append(new)
-        fit_all.append(inserted_value)
-    else:
-        sorted_array.insert(left, new_zip)
-        individuals.insert(left, new)
-        fit_all.insert(left, inserted_value)
-
-
-if __name__ == '__main__':
-    # for i in range(1,24,1):
-    #     time1 = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-    #     print(time1)
-    #     result = test(function=i, parameter_list=[1000000, 0.01, 5, 5, 0.9], opt=global_opt[i-1])
-    #     print(result)
-    #     time1 = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-    #     print(time1)
-
-    # time1 = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-    # print(time1)
-    result = t_test(fitness_function=9, parameter_list=[1000000, 0.01, 5, 5, 0.9], opt=global_opt[9 - 1])
-    print(result)
-    # time1 = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-    # print(time1)
-    print(f"offspring p1 {t1.total_time}")
-    print(f"offspring p2 {t2.total_time}")
-    print(f"offspring p3 {t3.total_time}")
 
 '''This multiple function is to calculate multiples runs for all the fitness functions and combinations.
 For F12, I use F13 to replace F12 for now.
@@ -464,10 +366,10 @@ def multiple(Times, L, Com):
         for f in range(1, 24, 1):
             result_list = []
             for times in range(Times):
-                result = t_test(fitness_function=f, parameter_list=combination[i], opt=global_opt[f - 1])
+                result = t_test(function=f, parameter_list=combination[i], opt=global_opt[f - 1])
                 result_list.append(float(result))
             result_list_coloum.append(result_list)
-        if (i - L[0]) % 10 == 0:
+        if (i - L[0]) % 30 == 29:
             print("\033[0;37;45m Starting from {0}, {1} combinations are tested.\033[0m".format(L[0], i - L[0] + 1))
             print("\n")
         result_list_all.append(result_list_coloum)
@@ -481,31 +383,84 @@ def multiple(Times, L, Com):
     return data, short_data, temp
 
 
+def multipleF(Times, L, Com, function_list):
+    result_list_all = []
+    combination = Com
+    k = ["F" + str(i) for i in function_list]
+    for i in range(L[0], L[1], 1):
+        result_list_coloum = []
+        for f in function_list:
+            result_list = []
+            for times in range(Times):
+                result = t_test(function=f, parameter_list=combination[i], opt=global_opt[f - 1])
+                result_list.append(float(result))
+            result_list_coloum.append(result_list)
+        if (i - L[0]) % 30 == 29:
+            print("\033[0;37;45m Starting from {0}, {1} combinations are tested.\033[0m".format(L[0], i - L[0] + 1))
+            print("\n")
+        result_list_all.append(result_list_coloum)
+    temp = np.array(result_list_all)
+    data = pd.DataFrame(data=np.resize(temp, (L[1] - L[0], len(function_list) * Times)).swapaxes(0, 1),
+                        index=pd.MultiIndex.from_product(
+                            [k, ["Times" + str(times + 1) for times in range(Times)]]),
+                        columns=["Combination" + str(i + 1) for i in range(L[0], L[1], 1)]
+                        )
+    short_data = data.applymap(lambda x: '{:1.2e}'.format(x))
+    return data, short_data, temp
+
+
 '''The main function is to generate the whole data.'''
-#
-# if __name__ == '__main__':
-#     com = combination()
-#     df = pd.DataFrame(data=com, index=["Combination" + str(i + 1) for i in range(len(com))],
-#                       columns=["iterations", "mutation_rate", "num_individuals", "range_mutation",
-#                                "crossover_probability"])
-#     df.to_csv('combinations_result_baseline.csv',
-#               header=True,
-#               index=False)
-#
-#     data, short_data, temp = multiple(Times=10, L=[0, len(com)], Com=com)
-#
-#     with open("Baseline_3Dlist_short.txt", "w") as w:
-#         w.write(np.array2string(temp, formatter={'float_kind': lambda x: '{:1.2e}'.format(x)}))
-#
-#     with open("Baseline_3Dlist_long.txt", "w") as w:
-#         w.write(np.array2string(temp))
-#
-#     short_data.to_csv('./Baseline_table_short.csv',
-#                       sep=',',
-#                       header=True,
-#                       index=True)
-#
-#     data.to_csv('./Baseline_table_long.csv',
-#                 sep=',',
-#                 header=True,
-#                 index=True)
+
+if __name__ == '__main__':
+    com = combination()
+    df = pd.DataFrame(data=com, index=["Combination" + str(i + 1) for i in range(len(com))],
+                      columns=["iterations", "mutation_rate", "num_individuals", "range_mutation",
+                               "crossover_probability"])
+    df.to_csv('combinations_result_baseline.csv',
+              header=True,
+              index=False)
+
+    data, short_data, temp = multipleF(Times=10, L=[0, len(com[:100])], Com=com[:100], function_list=[3,6,12])
+    with open("Baseline_3Dlist_short_100.txt", "w") as w:
+        w.write(np.array2string(temp, formatter={'float_kind': lambda x: '{:1.2e}'.format(x)}))
+    with open("Baseline_3Dlist_long_100.txt", "w") as w:
+        w.write(np.array2string(temp))
+    short_data.to_csv('./Baseline_table_short_100.csv',
+                      sep=',',
+                      header=True,
+                      index=True)
+
+    data.to_csv('./Baseline_table_long_100.csv',
+                sep=',',
+                header=True,
+                index=True)
+
+    data, short_data, temp = multipleF(Times=10, L=[0, len(com[100:200])], Com=com[100:200], function_list=[3,6,12])
+    with open("Baseline_3Dlist_short_100_200.txt", "w") as w:
+        w.write(np.array2string(temp, formatter={'float_kind': lambda x: '{:1.2e}'.format(x)}))
+    with open("Baseline_3Dlist_long_100_200.txt", "w") as w:
+        w.write(np.array2string(temp))
+    short_data.to_csv('./Baseline_table_short_100_200.csv',
+                      sep=',',
+                      header=True,
+                      index=True)
+
+    data.to_csv('./Baseline_table_long_100_200.csv',
+                sep=',',
+                header=True,
+                index=True)
+
+    data, short_data, temp = multipleF(Times=10, L=[0, len(com[200:])], Com=com[200:], function_list=[3,6,12])
+    with open("Baseline_3Dlist_short_200_end.txt", "w") as w:
+        w.write(np.array2string(temp, formatter={'float_kind': lambda x: '{:1.2e}'.format(x)}))
+    with open("Baseline_3Dlist_long_200_end.txt", "w") as w:
+        w.write(np.array2string(temp))
+    short_data.to_csv('./Baseline_table_short_200_end.csv',
+                      sep=',',
+                      header=True,
+                      index=True)
+
+    data.to_csv('./Baseline_table_long_200_end.csv',
+                sep=',',
+                header=True,
+                index=True)
