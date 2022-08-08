@@ -38,7 +38,7 @@ for this baseline function, there are 6 combinations of different mutation_types
 
 each parameter combiantion, **10** runs.
 
-==there maybe some errors with functions 12, because some values appear to be smaller than zero which is supposed to be to optimal.I will chekc it again and find the reason.and for function 18, as i remember, two solutions are lower than the optimal, I don't understand.==
+==there maybe some errors with function 12, because some values appear to be smaller than zero which is supposed to be to optimal.I will chekc it again and find the reason.and for function 18, as i remember, two solutions are lower than the optimal, I don't understand.The rest combinations are still running.==
 
 ```
 1000000,0.1,100,0.01,0.5,
