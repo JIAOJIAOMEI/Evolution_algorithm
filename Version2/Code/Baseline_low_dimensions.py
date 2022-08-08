@@ -142,7 +142,6 @@ def offspring(individuals, num_genes, best_fit, worst_fit, mutation_rate, range_
     t3.end()
     return result
 
-
 '''This initialization function is to generate the initial group
 for each individual in the group, generate the genotype and the phenotype'''
 
