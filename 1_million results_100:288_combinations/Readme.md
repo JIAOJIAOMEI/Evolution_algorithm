@@ -38,7 +38,18 @@ for this baseline function, there are 6 combinations of different mutation_types
 
 each parameter combiantion, **10** runs.
 
-==there maybe some errors with function 12, because some values appear to be smaller than zero which is supposed to be to optimal.I will chekc it again and find the reason.and for function 18, as i remember, two solutions are lower than the optimal, I don't understand.The rest combinations are still running.==
+## conclusion
+
+generally speaking,
+
+1. regarding mutation_type, normal distribution is obviously better than uniform distribution.
+2. regarding crossover_type. Linear_combination_crossover > Probabilistic_crossover > singe_point_crossover
+3. for the 6 functions, 
+   f1 f3 f6 and f18 can find the optimal solution in most cases.
+   f22 does not perfrom very well, the percentage is like 40%.
+   I think f12 has some errors because some values appear to be smaller than zero which is supposed to be to optimal. I will chekc it again and find the reason.and for function 18, as i remember, two solutions are lower than the optimal, I don't understand see data_analysis_f18.pdf .The rest combinations are still running.
+
+
 
 ```
 1000000,0.1,100,0.01,0.5,
