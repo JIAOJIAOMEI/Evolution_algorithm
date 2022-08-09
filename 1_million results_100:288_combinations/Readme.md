@@ -48,6 +48,7 @@ generally speaking,
    f1 f3 f6 and f18 can find the optimal solution in most cases.
    f22 does not perfrom very well, the percentage is like 40%.
    I think f12 has some errors because some values appear to be smaller than zero which is supposed to be to optimal. I will chekc it again and find the reason.and for function 18, as i remember, two solutions are lower than the optimal, I don't understand see data_analysis_f18.pdf .The rest combinations are still running.
+4. About the barplot, I still need to think about it.
 
 
 
