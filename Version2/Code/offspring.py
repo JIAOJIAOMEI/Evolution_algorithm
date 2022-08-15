@@ -7,7 +7,7 @@ import numpy as np
 
 
 def offspring(individuals, num_genes, best_fit, worst_fit, mutation_rate, mode, range_mutation, crossover_probability,
-              mutation_type, crossover_type):
+              mutation_type, crossover_type,genotype_range):
     n = []
     if mode == "Lamarck":
         for individual in individuals:
@@ -60,8 +60,16 @@ def offspring(individuals, num_genes, best_fit, worst_fit, mutation_rate, mode, 
         for i in range(len(result)):
             if np.random.rand() < mutation_rate:
                 result[i] = result[i] + np.random.uniform(-range_mutation, range_mutation)
+            if result[i] < genotype_range[0]: # check domain
+                result[i] = genotype_range[0]
+            elif result[i] > genotype_range[1]:
+                result[i] = genotype_range[1]
     elif mutation_type == 1:
         for i in range(len(result)):
             if np.random.rand() < mutation_rate:
                 result[i] = result[i] + np.random.normal(loc=0, scale=2 * range_mutation, size=1) - range_mutation
+            if result[i] < genotype_range[0]: # check domain
+                result[i] = genotype_range[0]
+            elif result[i] > genotype_range[1]:
+                result[i] = genotype_range[1]
     return result

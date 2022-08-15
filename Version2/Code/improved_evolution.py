@@ -31,7 +31,7 @@ def test(function, mode, parameter_list, opt):
     new_individual = offspring(individuals=individuals, best_fit=best, worst_fit=worst,
                                num_genes=num_genes, mutation_rate=mutation_rate, mode=mode,
                                range_mutation=range_mutation, crossover_probability=crossover_probability,mutation_type=1,
-                               crossover_type=0)
+                               crossover_type=0,genotype_range=genotype_range)
     new = Individual(num_genes=num_genes, genotype=new_individual, genotype_range=genotype_range,
                      local_search=local_search,
                      m_range=m_range, pattern=0)
@@ -64,7 +64,7 @@ def test(function, mode, parameter_list, opt):
         new_individual = offspring(individuals=individuals, best_fit=0, worst_fit=-1,
                                    num_genes=num_genes, mutation_rate=mutation_rate, mode=mode,
                                    range_mutation=range_mutation, crossover_probability=crossover_probability,mutation_type=1,
-                                   crossover_type=0)
+                                   crossover_type=0,genotype_range=genotype_range)
         new = Individual(num_genes=num_genes, genotype=new_individual, genotype_range=genotype_range,
                          local_search=local_search,
                          m_range=m_range, pattern=0)

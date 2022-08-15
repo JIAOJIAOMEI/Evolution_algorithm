@@ -5,15 +5,16 @@
 import math
 import random
 import numpy as np
+from sympy import sin, cos, exp, prod, sqrt,pi
 
 power = math.pow
-cos = math.cos
-sin = math.sin
-pi = math.pi
-exp = math.exp
-sqrt = math.sqrt
-e = math.e
-prod = math.prod
+# cos = math.cos
+# sin = math.sin
+# pi = math.pi
+# exp = math.exp
+# sqrt = math.sqrt
+e = exp(1)
+# prod = math.prod
 
 
 def F1(x):
@@ -21,9 +22,7 @@ def F1(x):
         :param x: 1*50
         :return: fitness
         """
-    fitness = []
-    for i in x:
-        fitness.append(power(i, 2))
+    fitness = [power(i, 2) for i in x]
     return sum(fitness)
 
 
@@ -32,12 +31,9 @@ def F2(x):
     :param x: 1*50
     :return: fitness
     """
-    fitness = []
-    for i in x:
-        fitness.append(abs(i))
-    part1 = sum(fitness)
-    part2 = prod(fitness)
-    return part1 + part2
+    x = np.array(x)
+    fitness = sum(abs(x)) + prod(abs(x))
+    return fitness
 
 
 def F3(x):
@@ -45,9 +41,7 @@ def F3(x):
     :param x: 1*50
     :return: fitness
     """
-    fitness = []
-    for i in x:
-        fitness.append(power(i, 2))
+    fitness = [power(i, 2) for i in x]
     return 50 * sum(fitness)
 
 
@@ -56,10 +50,8 @@ def F4(x):
     :param x: 1*50
     :return: fitness
     """
-    fitness = []
-    for i in x:
-        fitness.append(abs(i))
-    return max(fitness)
+    x = np.array(x)
+    return max(abs(x))
 
 
 def F5(x):
@@ -67,10 +59,7 @@ def F5(x):
     :param x: 1*50
     :return: fitness
     """
-    fitness = []
-    for i in range(len(x) - 1):
-        k = 100 * power(x[i + 1] - power(x[i], 2), 2) + power(x[i] - 1, 2)
-        fitness.append(k)
+    fitness = [100 * power(x[i + 1] - power(x[i], 2), 2) + power(x[i] - 1, 2) for i in range(len(x) - 1)]
     return sum(fitness)
 
 
@@ -79,9 +68,7 @@ def F6(x):
     :param x: 1*50
     :return: fitness
     """
-    fitness = []
-    for i in range(len(x)-1):
-        fitness.append(power(x[i] + 0.5, 2))
+    fitness = [power(x[i] + 0.5, 2) for i in range(len(x)-1)]
     return sum(fitness)
 
 
@@ -90,11 +77,7 @@ def F7(x):
     :param x: 1*50
     :return: fitness
     """
-    fitness = []
-    for i in range(len(x)):
-        m = power(x[i], 4)
-        k = (i + 1) * m + random.choice([0, 1])
-        fitness.append(k)
+    fitness = [power(x[i],4)*(i+1)+random.choice([0, 1]) for i in range(len(x))]
     return sum(fitness)
 
 
@@ -103,11 +86,9 @@ def F8(x):
     :param x: 1*50
     :return: fitness
     """
-    fitness = []
-    for i in x:
-        k = (-1) * i * sin(sqrt(abs(i)))
-        fitness.append(k)
-    return sum(fitness)
+    k = [(-1) * i * sin(sqrt(abs(i))) for i in x]
+    fitness = sum(k).evalf()
+    return fitness
 
 
 def F9(x):
@@ -115,11 +96,8 @@ def F9(x):
     :param x: 1*50
     :return: fitness
     """
-    fitness = []
-    for i in x:
-        k = power(i, 2) - (10 * cos(2 * pi * i)) + 10
-        fitness.append(k)
-    return sum(fitness)
+    fitness = [power(i, 2) - (10 * cos(2 * pi * i)) + 10 for i in x]
+    return sum(fitness).evalf()
 
 
 def F10(x):
@@ -129,8 +107,8 @@ def F10(x):
     """
     part1 = sum([power(i, 2) for i in x])
     part2 = sum([cos(2 * pi * i) for i in x])
-    fitness = (-20) * exp(-0.2 * sqrt(0.02 * part1)) - exp(0.02 * part2) + 20 + e
-    return fitness
+    fitness = (-20) * exp(-0.2 * sqrt(0.02 * part1)) + (-exp(0.02 * part2) + 20 + e)
+    return fitness.evalf()
 
 
 def F11(x):
@@ -141,7 +119,7 @@ def F11(x):
     part1 = sum([power(i, 2) for i in x])
     part2 = prod([cos(x[i] / sqrt(i + 1)) for i in range(len(x))])
     fitness = part1 / 4000 - part2 + 1
-    return fitness
+    return fitness.evalf()
 
 
 def U(x, a, k, m):
@@ -166,13 +144,11 @@ def F12(x):
     :param x: 1*50
     :return: fitness
     """
-    y = []
-    for i in x:
-        y.append(1 + (i + 1) / 4)
+    y = [1 + (i + 1) / 4 for i in x]
     part3 = sum([U(i, 10, 100, 4) for i in x])
-    part2 = sum([power(y[i] - 1, 2) * (1 + 10 * power(sin(y[i + 1] * pi), 2) + power(y[-1] - 1, 2)) for i in range(len(x)-1)])
-    fitness = (pi / 50) * (10 * sin(pi * y[0]) + part2) + part3
-    return fitness
+    part2 = sum([power(y[i] - 1, 2) * (1 + 10 * power(sin(y[i + 1] * pi), 2)) for i in range(len(x) - 1)])
+    fitness = (pi / 50) * (10 * power(sin(y[0] * pi), 2) + part2 + power(y[-1] - 1, 2)) + part3
+    return fitness.evalf()
 
 
 def F13(x):
@@ -183,7 +159,8 @@ def F13(x):
     part2 = sum([power(x[i] - 1, 2) * (1 + power(sin(3 * pi * x[i]) + 1, 2)) for i in range(len(x)-1)])
     part3 = power(x[-1] - 1, 2) * (1 + power(sin(2 * pi * x[-1]), 2))
     part4 = sum([U(i, 5, 100, 4) for i in x])
-    return 0.1 * (power(sin(3 * pi * x[0]), 2) + part2 + part3) + part4
+    fitness = 0.1 * (power(sin(3 * pi * x[0]), 2) + part2 + part3) + part4
+    return fitness
 
 
 def F14(x):
@@ -235,7 +212,7 @@ def F17(x):
     x2 = x[1]
     fitness = power(x2 - 5.1 / (4 * power(pi, 2)) * power(x1, 2) + 5 / pi * x1 - 6, 2) + 10 * (
             1 - (1 / (8 * pi))) * cos(x1) + 10
-    return fitness
+    return fitness.evalf()
 
 
 def F18(x):
@@ -248,7 +225,8 @@ def F18(x):
     part1 = 1 + power(x1 + x2 + 1, 2) * (19 - 14 * x1 + 3 * power(x1, 2) - 14 * x2 + 6 * x1 * x2 + 3 * power(x2, 2))
     part2 = 30 + power(2 * x1 - 3 * x2, 2) * (
             18 - 32 * x1 + 12 * power(x1, 2) + 48 * x2 - 36 * x1 * x2 + 27 * power(x2, 2))
-    return part1 * part2
+    fitness = part1 * part2
+    return fitness
 
 
 def F19(x):
@@ -292,7 +270,7 @@ def F21(x):
     fitness = []
     for i in range(5):
         inner = power(np.dot(np.array([x[k] - a[i][k] for k in range(4)]),
-                             np.array([x[k] - a[i][k] for k in range(4)]).reshape(4, 1)) + c[i], -1)
+                             np.array([x[k] - a[i][k] for k in range(4)]).T) + c[i], -1)
         fitness.append(inner)
     return -sum(fitness)
 
@@ -307,7 +285,7 @@ def F22(x):
     fitness = []
     for i in range(7):
         inner = power(np.dot(np.array([x[k] - a[i][k] for k in range(4)]),
-                             np.array([x[k] - a[i][k] for k in range(4)]).reshape(4, 1)) + c[i], -1)
+                             np.array([x[k] - a[i][k] for k in range(4)]).T) + c[i], -1)
         fitness.append(inner)
     return -sum(fitness)
 
@@ -323,6 +301,6 @@ def F23(x):
     fitness = []
     for i in range(10):
         inner = power(np.dot(np.array([x[k] - a[i][k] for k in range(4)]),
-                             np.array([x[k] - a[i][k] for k in range(4)]).reshape(4, 1)) + c[i], -1)
+                             np.array([x[k] - a[i][k] for k in range(4)]).T) + c[i], -1)
         fitness.append(inner)
     return -sum(fitness)
