@@ -1,3 +1,53 @@
+# version 2
+
+for this baseline function, there are 6 combinations of different mutation_types and crossover_types:
+
+1. "Linear_combination_crossover_normal" 
+2. "Linear_combination_crossover_uniform"
+3. "Probabilistic_crossover_normal"
+4. "Probabilistic_crossover_uniform"
+5. "singe_point_crossover_normal"
+6. "singe_point_crossover_uniform"
+
+```
+Sequence for iterations : [1000000]
+Sequence for mutation_rate : [0.1, 0.18, 0.2, 0.5, 1.0, 2.0, 5.0, 10.0]
+Sequence for num_individuals : [100, 200]
+Sequence for range_mutation : [0.01, 0.25, 0.55, 0.9, 2.0, 5.0]
+Sequence for crossover_probability : [0.5, 0.6, 0.7]
+```
+
+==for the bar-plots:==
+
+- One million iterations, there is nothing to analyze about this.
+
+- For the mutation rate parameter, as the value of mutation rate rises, f1 f3 f6 12 and f18 have a tendency to fall first and then rise, basically reaching a minimum at about 0.5 and then start to rise. So I think the best value for the mutation rate is not to exceed 0.5.
+- For the parameter num_individuals, since there are only 100 and 200, but basically it is observed that the performance of 200 is much better than 100, showing a decreasing trend.
+- For the mutation range parameter, most of the functions still show a decreasing and then increasing trend, with the inflection point at 0.9.
+- Finally, the crossover probabilities are all downward trending.
+
+barplots each picture I have marked, you can take a look.
+
+==for data_analyis plots:==
+
+The data analysis diagram is differentiated according to each parameter combination, with the horizontal coordinate representing the actual calculated solution and the vertical coordinate representing the number.
+
+In general, the performance of singe_point_crossover_uniform is very bad, and there is a big gap between it and the other ones.
+
+However, given the combinations 111,129,145, 146, 147, 163, 164, 165, 181, 182, 183, 199 and 200, even the poor performing singe_point_crossover_uniform can find the minimum value.
+There are other parameters that perform well, but not as significantly.
+
+I think this information is useful.
+
+==for percent csv==:
+
+generally speaking,
+
+1. regarding mutation_type, normal distribution is obviously better than uniform distribution.
+2. regarding crossover_type. Linear_combination_crossover > Probabilistic_crossover > singe_point_crossover
+
+# version 1
+
 **six functions**: f1 f3 f6 f12 f18 f22
 
 **Dimensions**: 50 dimensinal functions are downgraded to 10
@@ -153,5 +203,105 @@ generally speaking,
 1000000,0.2,200,0.55,0.6,
 1000000,0.2,200,0.55,0.7,
 1000000,0.2,200,0.9,0.5,
+1000000,0.2,200,0.9,0.6,
+1000000,0.2,200,0.9,0.7,
+1000000,0.2,200,2.0,0.5,
+1000000,0.2,200,2.0,0.6,
+1000000,0.2,200,2.0,0.7,
+1000000,0.2,200,5.0,0.5,
+1000000,0.2,200,5.0,0.6,
+1000000,0.2,200,5.0,0.7,
+1000000,0.5,100,0.01,0.5,
+1000000,0.5,100,0.01,0.6,
+1000000,0.5,100,0.01,0.7,
+1000000,0.5,100,0.25,0.5,
+1000000,0.5,100,0.25,0.6,
+1000000,0.5,100,0.25,0.7,
+1000000,0.5,100,0.55,0.5,
+1000000,0.5,100,0.55,0.6,
+1000000,0.5,100,0.55,0.7,
+1000000,0.5,100,0.9,0.5,
+1000000,0.5,100,0.9,0.6,
+1000000,0.5,100,0.9,0.7,
+1000000,0.5,100,2.0,0.5,
+1000000,0.5,100,2.0,0.6,
+1000000,0.5,100,2.0,0.7,
+1000000,0.5,100,5.0,0.5,
+1000000,0.5,100,5.0,0.6,
+1000000,0.5,100,5.0,0.7,
+1000000,0.5,200,0.01,0.5,
+1000000,0.5,200,0.01,0.6,
+1000000,0.5,200,0.01,0.7,
+1000000,0.5,200,0.25,0.5,
+1000000,0.5,200,0.25,0.6,
+1000000,0.5,200,0.25,0.7,
+1000000,0.5,200,0.55,0.5,
+1000000,0.5,200,0.55,0.6,
+1000000,0.5,200,0.55,0.7,
+1000000,0.5,200,0.9,0.5,
+1000000,0.5,200,0.9,0.6,
+1000000,0.5,200,0.9,0.7,
+1000000,0.5,200,2.0,0.5,
+1000000,0.5,200,2.0,0.6,
+1000000,0.5,200,2.0,0.7,
+1000000,0.5,200,5.0,0.5,
+1000000,0.5,200,5.0,0.6,
+1000000,0.5,200,5.0,0.7,
+1000000,1.0,100,0.01,0.5,
+1000000,1.0,100,0.01,0.6,
+1000000,1.0,100,0.01,0.7,
+1000000,1.0,100,0.25,0.5,
+1000000,1.0,100,0.25,0.6,
+1000000,1.0,100,0.25,0.7,
+1000000,1.0,100,0.55,0.5,
+1000000,1.0,100,0.55,0.6,
+1000000,1.0,100,0.55,0.7,
+1000000,1.0,100,0.9,0.5,
+1000000,1.0,100,0.9,0.6,
+1000000,1.0,100,0.9,0.7,
+1000000,1.0,100,2.0,0.5,
+1000000,1.0,100,2.0,0.6,
+1000000,1.0,100,2.0,0.7,
+1000000,1.0,100,5.0,0.5,
+1000000,1.0,100,5.0,0.6,
+1000000,1.0,100,5.0,0.7,
+1000000,1.0,200,0.01,0.5,
+1000000,1.0,200,0.01,0.6,
+1000000,1.0,200,0.01,0.7,
+1000000,1.0,200,0.25,0.5,
+1000000,1.0,200,0.25,0.6,
+1000000,1.0,200,0.25,0.7,
+1000000,1.0,200,0.55,0.5,
+1000000,1.0,200,0.55,0.6,
+1000000,1.0,200,0.55,0.7,
+1000000,1.0,200,0.9,0.5,
+1000000,1.0,200,0.9,0.6,
+1000000,1.0,200,0.9,0.7,
+1000000,1.0,200,2.0,0.5,
+1000000,1.0,200,2.0,0.6,
+1000000,1.0,200,2.0,0.7,
+1000000,1.0,200,5.0,0.5,
+1000000,1.0,200,5.0,0.6,
+1000000,1.0,200,5.0,0.7,
+1000000,2.0,100,0.01,0.5,
+1000000,2.0,100,0.01,0.6,
+1000000,2.0,100,0.01,0.7,
+1000000,2.0,100,0.25,0.5,
+1000000,2.0,100,0.25,0.6,
+1000000,2.0,100,0.25,0.7,
+1000000,2.0,100,0.55,0.5,
+1000000,2.0,100,0.55,0.6,
+1000000,2.0,100,0.55,0.7,
+1000000,2.0,100,0.9,0.5,
+1000000,2.0,100,0.9,0.6,
+1000000,2.0,100,0.9,0.7,
+1000000,2.0,100,2.0,0.5,
+1000000,2.0,100,2.0,0.6,
+1000000,2.0,100,2.0,0.7,
+1000000,2.0,100,5.0,0.5,
+1000000,2.0,100,5.0,0.6,
+1000000,2.0,100,5.0,0.7,
+1000000,2.0,200,0.01,0.5,
+1000000,2.0,200,0.01,0.6,
 ```
 
