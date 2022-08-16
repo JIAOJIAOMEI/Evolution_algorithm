@@ -457,37 +457,37 @@ if __name__ == '__main__':
     # print("\n")
     # print(temp)
 
-    data, short_data, temp = multipleF(Times=10, L=[0, len(com[:100])], Com=com[:100], function_list=[3,6,12])
-    with open("Baseline_3Dlist_short_100.txt", "w") as w:
-        w.write(np.array2string(temp, formatter={'float_kind': lambda x: '{:1.2e}'.format(x)}))
-    with open("Baseline_3Dlist_long_100.txt", "w") as w:
-        w.write(np.array2string(temp))
-    short_data.to_csv('./Baseline_table_short_100.csv',
-                      sep=',',
-                      header=True,
-                      index=True)
+    # data, short_data, temp = multipleF(Times=10, L=[0, len(com[:100])], Com=com[:100], function_list=[3,6,12])
+    # with open("Baseline_3Dlist_short_100.txt", "w") as w:
+    #     w.write(np.array2string(temp, formatter={'float_kind': lambda x: '{:1.2e}'.format(x)}))
+    # with open("Baseline_3Dlist_long_100.txt", "w") as w:
+    #     w.write(np.array2string(temp))
+    # short_data.to_csv('./Baseline_table_short_100.csv',
+    #                   sep=',',
+    #                   header=True,
+    #                   index=True)
+    #
+    # data.to_csv('./Baseline_table_long_100.csv',
+    #             sep=',',
+    #             header=True,
+    #             index=True)
+    #
+    # data, short_data, temp = multipleF(Times=10, L=[0, len(com[100:200])], Com=com[100:200], function_list=[3,6,12])
+    # with open("Baseline_3Dlist_short_100_200.txt", "w") as w:
+    #     w.write(np.array2string(temp, formatter={'float_kind': lambda x: '{:1.2e}'.format(x)}))
+    # with open("Baseline_3Dlist_long_100_200.txt", "w") as w:
+    #     w.write(np.array2string(temp))
+    # short_data.to_csv('./Baseline_table_short_100_200.csv',
+    #                   sep=',',
+    #                   header=True,
+    #                   index=True)
+    #
+    # data.to_csv('./Baseline_table_long_100_200.csv',
+    #             sep=',',
+    #             header=True,
+    #             index=True)
 
-    data.to_csv('./Baseline_table_long_100.csv',
-                sep=',',
-                header=True,
-                index=True)
-
-    data, short_data, temp = multipleF(Times=10, L=[0, len(com[100:200])], Com=com[100:200], function_list=[3,6,12])
-    with open("Baseline_3Dlist_short_100_200.txt", "w") as w:
-        w.write(np.array2string(temp, formatter={'float_kind': lambda x: '{:1.2e}'.format(x)}))
-    with open("Baseline_3Dlist_long_100_200.txt", "w") as w:
-        w.write(np.array2string(temp))
-    short_data.to_csv('./Baseline_table_short_100_200.csv',
-                      sep=',',
-                      header=True,
-                      index=True)
-
-    data.to_csv('./Baseline_table_long_100_200.csv',
-                sep=',',
-                header=True,
-                index=True)
-
-    data, short_data, temp = multipleF(Times=10, L=[0, len(com[200:])], Com=com[200:], function_list=[3,6,12])
+    data, short_data, temp = multipleF(Times=10, L=[0, len(com[200:])], Com=com[200:], function_list=[3,6])
     with open("Baseline_3Dlist_short_200_end.txt", "w") as w:
         w.write(np.array2string(temp, formatter={'float_kind': lambda x: '{:1.2e}'.format(x)}))
     with open("Baseline_3Dlist_long_200_end.txt", "w") as w:
