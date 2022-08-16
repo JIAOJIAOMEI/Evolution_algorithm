@@ -354,8 +354,8 @@ def test(function, parameter_list, opt):
                 individuals.append(new)
                 fit_all.append(new_fit)
                 break
-    best_individual, best_fv = sort_zipped[0]
-    print(best_individual.phenotype)
+    # best_individual, best_fv = sort_zipped[0]
+    # print(best_individual.phenotype)
     return min(best_generation)
 
 
