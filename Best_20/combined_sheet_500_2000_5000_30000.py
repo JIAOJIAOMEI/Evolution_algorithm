@@ -30,8 +30,9 @@ def read_file(sheetname, path):
 
 path=["Baseline_table_short_best_combination_500.xlsx",
       "Baseline_table_short_best_combination_2000.xlsx",
-      "Baseline_table_short_best_combination_5000.xlsx"]
-iterations =[500,2000,50000]
+      "Baseline_table_short_best_combination_5000.xlsx",
+      "Baseline_table_short_best_combination_30000.xlsx"]
+iterations =[500,2000,5000,30000]
 
 with pd.ExcelWriter("Number.xlsx") as writer:
     for i,pathname in enumerate(path):
@@ -42,7 +43,7 @@ with pd.ExcelWriter("Number.xlsx") as writer:
 
 path3="Number.xlsx"
 data = [read_file(str(name),path3) for name in iterations]
-data = pd.concat(data, axis=0,keys=[500,2000,5000])
+data = pd.concat(data, axis=0,keys=[500,2000,5000,30000])
 data = data.rename_axis(["iterations","Function", "Times"])
 data.columns = sheet_name
 data = data.unstack(level=0)
