@@ -7,13 +7,12 @@ from IPython.core.display_functions import display
 
 # pd.options.display.max_columns = None
 # pd.options.display.max_rows = None
-com_df = pd.read_csv("./best_combination_new.csv",
-                     index_col=[0],
+com_df = pd.read_csv("./combinations_result_baseline.csv",
                      header=0)
-com = com_df.values.tolist()
+# com = com_df.values.tolist()
 index = com_df.index.tolist()
 
-display(com_df.nunique(axis=0))
+# display(com_df.nunique(axis=0))
 sheet_name = ["combination" + str(i) for i in index]
 opt = [0, 0, 0, 0, 0, 0, 0, -418.98 * 50, 0, 0, 0, 0, 0, 1, 0.00030, -1.0316, 0.398, 3, -3.86, -3.32, -10.1532,
        -10.4028, -10.5363]
@@ -27,10 +26,12 @@ def read_file(sheetname, path):
     return df
 
 
-path = "Baseline_table_short_best_combination_500.xlsx"
+path = "Baseline_table_short_best_combination_combination.xlsx"
 df = [read_file(name, path) for name in sheet_name]
 df = pd.concat(df, axis=1)
 df.columns = sheet_name
+
+df.to_csv("./combination_216.csv")
 
 
 def percent(Function, optimal):
@@ -50,4 +51,4 @@ percent_df = [percent(Function="F" + str(i), optimal=opt[i - 1]) for i in functi
 percent_df = pd.concat(percent_df, axis=0)
 percent_df = percent_df.groupby(["Function"]).sum().applymap(lambda x: str(x * 10) + "%")
 display(percent_df)
-percent_df.to_csv("./percent_500.csv")
+percent_df.to_csv("./percent_combination.csv")

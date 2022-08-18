@@ -48,6 +48,31 @@ The key is the mutation operation, the mutation range is [0.01, 0.25] (see combi
 
 I think this is the reason.
 
+Prove:
+
+**In order to prove my hypothesis that the reason for the poor performance of SSGA when power computation is encountered is that the mutation range is too small and the mutation rate is too small, it is difficult for the whole population to produce good genes and the evolution will be very slow.**
+Typical functions containing power computation are 1, 3, 5, 6, 9, etc.
+
+For example, for function 1, domain is -100 to 100 and dimension is 50. As the number of iterations increases, the decrease of num_individuals and crossove_probability is obvious, which is in line with our expectation.
+There are two values of range_mutation, 0.01 and 0.25, and 0.25 shows a significant decrease in solution at 5000 iterations, indicating that this has a significant impact on power computation.
+Although mutation rate has 6 values, overall, mutation rate is relatively low, in other words, the probability of generating new genes is relatively low, which is slow for the evolution of power computation, and the overall trend is downward.
+
+**Other functions containing power computation basically have this problem, and the evolution is slow because the difference between the range of the domain and the range of the mutation is too disparate.**
+
+![barplot_F1](barplot_F1.png)
+
+![barplot_F3](barplot_F3.png)
+
+
+
+![barplot_F5](barplot_F5.png)
+
+![barplot_F6](barplot_F6.png)
+
+
+
+![barplot_F9](barplot_F9.png)
+
 ## combination
 
 |      | iterations | mutation_rate | num_individuals | range_mutation | crossover_probability |
