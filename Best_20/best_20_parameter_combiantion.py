@@ -53,7 +53,7 @@ df = df.sort_index(level="Function")
 
 def best_20(Function):
     dataframe = df.loc[(Function, slice(None)), :]
-    dataframe = dataframe.round(5)
+    dataframe = dataframe.round(4)
     dataframe = pd.DataFrame(data=dataframe.values,
                              columns=dataframe.columns)
     dataframe.loc["sum"] = dataframe.loc[:, dataframe.columns != "Type"].sum(axis=0)

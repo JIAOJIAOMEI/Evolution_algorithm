@@ -3,6 +3,7 @@
 # Time and date: 8/1/22 14:30
 
 import itertools
+import json
 import random
 import statistics
 import sys
@@ -10,6 +11,8 @@ import time
 
 import numpy as np
 import pandas as pd
+from IPython.core.display_functions import display
+from openpyxl import load_workbook
 
 import improved_fitness_functions
 
@@ -62,7 +65,7 @@ the location for crossover is randomly chosen each time.'''
 
 
 def offspring(individuals, num_genes, best_fit, worst_fit, mutation_rate, range_mutation, crossover_probability,
-              mutation_type, crossover_type):
+              mutation_type, crossover_type, genotype_range):
     n = []
     for individual in individuals:
         n.append(individual.phenotype)
@@ -77,7 +80,7 @@ def offspring(individuals, num_genes, best_fit, worst_fit, mutation_rate, range_
                 result.append(parent1[j])
             else:
                 result.append(parent2[j])
-    elif crossover_type == 1: # singe-point-crossover
+    elif crossover_type == 1:  # singe-point-crossover
         if np.random.rand() < crossover_probability:
             cross_location = np.random.randint(0, num_genes)
             part1 = n[best_fit][:cross_location]
@@ -106,14 +109,23 @@ def offspring(individuals, num_genes, best_fit, worst_fit, mutation_rate, range_
     # numpy.random.rand from uniform (in range [0,1))
     # numpy.random.normal generates samples from the normal distribution
     mutation_rate = mutation_rate / num_genes
-    if mutation_type == 0:
+    if mutation_type == 0:  # uniform
         for i in range(len(result)):
             if np.random.rand() < mutation_rate:
-                result[i] = result[i] + np.random.uniform(-range_mutation,range_mutation)
+                result[i] = result[i] + np.random.uniform(-range_mutation, range_mutation)
+            if result[i] < genotype_range[0]:  # check domain
+                result[i] = genotype_range[0]
+            elif result[i] > genotype_range[1]:
+                result[i] = genotype_range[1]
     elif mutation_type == 1:
-        for i in range(len(result)):
+        for i in range(len(result)):  # normal
             if np.random.rand() < mutation_rate:
-                result[i] = result[i] + float(np.random.normal(loc=0,scale=2*range_mutation,size=1)-range_mutation)
+                result[i] = result[i] + float(
+                    np.random.normal(loc=0, scale=2 * range_mutation, size=1) - range_mutation)
+            if result[i] < genotype_range[0]:  # check domain
+                result[i] = genotype_range[0]
+            elif result[i] > genotype_range[1]:
+                result[i] = genotype_range[1]
     return result
 
 
@@ -139,55 +151,55 @@ def choose_func(function):
     genotype_range = None
     if function == 1:
         func = improved_fitness_functions.F1
-        num_genes = 10
+        num_genes = 50
         genotype_range = [-100, 100]
     elif function == 2:
         func = improved_fitness_functions.F2
-        num_genes = 10
+        num_genes = 50
         genotype_range = [-100, 100]
     elif function == 3:
         func = improved_fitness_functions.F3
-        num_genes = 10
+        num_genes = 50
         genotype_range = [-100, 100]
     elif function == 4:
         func = improved_fitness_functions.F4
-        num_genes = 10
+        num_genes = 50
         genotype_range = [-100, 100]
     elif function == 5:
         func = improved_fitness_functions.F5
-        num_genes = 10
+        num_genes = 50
         genotype_range = [-30, 30]
     elif function == 6:
         func = improved_fitness_functions.F6
-        num_genes = 10
+        num_genes = 50
         genotype_range = [-100, 100]
     elif function == 7:
         func = improved_fitness_functions.F7
-        num_genes = 10
+        num_genes = 50
         genotype_range = [-1.28, 1.28]
     elif function == 8:
         func = improved_fitness_functions.F8
-        num_genes = 10
+        num_genes = 50
         genotype_range = [-500, 500]
     elif function == 9:
         func = improved_fitness_functions.F9
-        num_genes = 10
+        num_genes = 50
         genotype_range = [-5.12, 5.12]
     elif function == 10:
         func = improved_fitness_functions.F10
-        num_genes = 10
+        num_genes = 50
         genotype_range = [-32, 32]
     elif function == 11:
         func = improved_fitness_functions.F11
-        num_genes = 10
+        num_genes = 50
         genotype_range = [-600, 600]
     elif function == 12:
         func = improved_fitness_functions.F12
-        num_genes = 10
+        num_genes = 50
         genotype_range = [-50, 50]
     elif function == 13:
         func = improved_fitness_functions.F13
-        num_genes = 10
+        num_genes = 50
         genotype_range = [-50, 50]
     elif function == 14:
         func = improved_fitness_functions.F14
@@ -235,34 +247,33 @@ def choose_func(function):
 '''This combination function is to generate all the combinations for different parameters.
 There are 3072 combinations in total.'''
 
-
-def combination():
-    com = []
-    iterations = [1000]
-    mutation_rate = [0.1, 0.18, 0.2, 0.5, 1.0, 2.0, 5.0, 10.0]
-    num_individuals = [100, 200]
-    range_mutation = [0.01, 0.25, 0.55, 0.9, 2.0, 5.0]
-    crossover_probability = [0.5, 0.6, 0.7]
-    for a in iterations:
-        for b in mutation_rate:
-            for c in num_individuals:
-                for d in range_mutation:
-                    for e in crossover_probability:
-                        G = [a, b, c, d, e]
-                        com.append(G)
-    sequence_list = [str(iterations), str(mutation_rate), str(num_individuals), str(range_mutation),
-                     str(crossover_probability)]
-    name = ["iterations", "mutation_rate", "num_individuals", "range_mutation", "crossover_probability"]
-    with open("combinations_result_baseline.txt", 'w+', encoding='utf-8') as f:
-        for x, sequence in zip(name, sequence_list):
-            f.writelines("Sequence for {0} : {1}".format(x, sequence))
-            f.write("\n")
-        for i in range(len(com)):
-            for j in range(len((com[i]))):
-                f.write(str(com[i][j]))
-                f.write(",")
-            f.write("\n")
-    return com
+# def combination():
+#     com = []
+#     iterations = [1000000]
+#     mutation_rate = [0.1, 0.18, 0.2, 0.5, 1.0, 2.0, 5.0, 10.0]
+#     num_individuals = [100, 200]
+#     range_mutation = [0.01, 0.25, 0.55, 0.9, 2.0, 5.0]
+#     crossover_probability = [0.5, 0.6, 0.7]
+#     for a in iterations:
+#         for b in mutation_rate:
+#             for c in num_individuals:
+#                 for d in range_mutation:
+#                     for e in crossover_probability:
+#                         G = [a, b, c, d, e]
+#                         com.append(G)
+#     sequence_list = [str(iterations), str(mutation_rate), str(num_individuals), str(range_mutation),
+#                      str(crossover_probability)]
+#     name = ["iterations", "mutation_rate", "num_individuals", "range_mutation", "crossover_probability"]
+#     with open("combinations_result_baseline.txt", 'w+', encoding='utf-8') as f:
+#         for x, sequence in zip(name, sequence_list):
+#             f.writelines("Sequence for {0} : {1}".format(x, sequence))
+#             f.write("\n")
+#         for i in range(len(com)):
+#             for j in range(len((com[i]))):
+#                 f.write(str(com[i][j]))
+#                 f.write(",")
+#             f.write("\n")
+#     return com
 
 
 '''This test function is to run a combination for one function.
@@ -278,7 +289,7 @@ seventh,calculate the fitness value for the new individual and compare it to oth
 ........continue.....
 return the minimum of all the iterations'''
 
-global_opt = opt = [0, 0, 0, 0, 0, 0, 0, -418.98 * 10, 0, 0, 0, 0, 0, 1, 0.00030, -1.0316, 0.398, 3, -3.86, -3.32,
+global_opt = opt = [0, 0, 0, 0, 0, 0, 0, -418.98 * 50, 0, 0, 0, 0, 0, 1, 0.00030, -1.0316, 0.398, 3, -3.86, -3.32,
                     -10.1532, -10.4028, -10.5363]
 
 
@@ -295,7 +306,8 @@ def test(function, parameter_list, opt):
     best_generation.append(fit_all[best])
     new_individual = offspring(individuals=individuals, best_fit=best, worst_fit=worst,
                                num_genes=num_genes, mutation_rate=mutation_rate, range_mutation=range_mutation,
-                               crossover_probability=crossover_probability, mutation_type=1,crossover_type=2)
+                               crossover_probability=crossover_probability, mutation_type=1, crossover_type=2,
+                               genotype_range=genotype_range)
     new = Individual(genotype=new_individual, num_genes=num_genes, genotype_range=genotype_range, pattern=1)
 
     del individuals[worst]
@@ -321,12 +333,12 @@ def test(function, parameter_list, opt):
         count += 1
         best_individual, best_fv = sort_zipped[0]
         best_generation.append(best_fv)
-        if best_fv <= opt:
+        if round(best_fv, 6) <= opt:
             break
         new_individual = offspring(individuals=individuals, best_fit=0, worst_fit=-1,
                                    num_genes=num_genes, mutation_rate=mutation_rate,
                                    range_mutation=range_mutation, crossover_probability=crossover_probability,
-                                   mutation_type=1,crossover_type=2)
+                                   mutation_type=1, crossover_type=2, genotype_range=genotype_range)
         new = Individual(genotype=new_individual, num_genes=num_genes, genotype_range=genotype_range, pattern=1)
         new_fit = fitness_single(individual=new, func=func)
         new_zip = (new, new_fit)
@@ -345,6 +357,8 @@ def test(function, parameter_list, opt):
                 individuals.append(new)
                 fit_all.append(new_fit)
                 break
+    # best_individual, best_fv = sort_zipped[0]
+    # print(best_individual.phenotype)
     return min(best_generation)
 
 
@@ -369,9 +383,9 @@ def multiple(Times, L, Com):
                 result = test(function=f, parameter_list=combination, opt=global_opt[f - 1])
                 result_list.append(float(result))
             result_list_coloum.append(result_list)
-        if (i - L[0]) % 30 == 29:
-            print("\033[0;37;45m Starting from {0}, {1} combinations are tested.\033[0m".format(L[0], i - L[0] + 1))
-            print("\n")
+        # if (i - L[0]) % 3 == 2:
+        #     print("\033[0;37;45m Starting from {0}, {1} combinations are tested.\033[0m".format(L[0], i - L[0] + 1))
+        #     print("\n")
         result_list_all.append(result_list_coloum)
     temp = np.array(result_list_all)
     data = pd.DataFrame(data=np.resize(temp, (L[1] - L[0], 23 * Times)).swapaxes(0, 1),
@@ -383,24 +397,88 @@ def multiple(Times, L, Com):
     return data, short_data, temp
 
 
+# def multipleF(Times, L, Com, function_list):
+#     result_list_all = []
+#     combination = Com
+#     k = ["F" + str(i) for i in function_list]
+#     for i in range(L[0], L[1], 1):
+#         result_list_coloum = []
+#         for f in function_list:
+#             result_list = []
+#             for times in range(Times):
+#                 result = test(function=f, parameter_list=combination[i], opt=global_opt[f - 1])
+#                 result_list.append(float(result))
+#             result_list_coloum.append(result_list)
+#         if (i - L[0]) % 30 == 29:
+#             print("\033[0;37;45m Starting from {0}, {1} combinations are tested.\033[0m".format(L[0], i - L[0] + 1))
+#             print("\n")
+#         result_list_all.append(result_list_coloum)
+#     temp = np.array(result_list_all)
+#     data = pd.DataFrame(data=np.resize(temp, (L[1] - L[0], len(function_list) * Times)).swapaxes(0, 1),
+#                         index=pd.MultiIndex.from_product(
+#                             [k, ["Times" + str(times + 1) for times in range(Times)]]),
+#                         columns=["Combination" + str(i + 1) for i in range(L[0], L[1], 1)]
+#                         )
+#     short_data = data.applymap(lambda x: '{:1.2e}'.format(x))
+#     return data, short_data, temp
+
+
 '''The main function is to generate the whole data.'''
 
 if __name__ == '__main__':
-    com = combination()
-    df = pd.DataFrame(data=com, index=["Combination" + str(i + 1) for i in range(len(com))],
-                      columns=["iterations", "mutation_rate", "num_individuals", "range_mutation",
-                               "crossover_probability"])
-    df.to_csv('combinations_result_baseline.csv',
-              header=True,
-              index=False)
+    com_df = pd.read_csv("./combinations_result_baseline.csv",
+                         header=0)
+    index = com_df.index.tolist()
+    com = com_df.values.tolist()
+    # display(com,len(com))
+    # print(com[0])
 
-    with pd.ExcelWriter("Baseline_table_short_best_combination.xlsx") as writer:
-        for i in range(0, 5, 1):
+    with pd.ExcelWriter("Baseline_table_short_best_combination_combination.xlsx") as writer:
+        for i in range(0, len(com), 1):
             print(time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time())))
             data, short_data, temp = multiple(Times=10, L=[0, 1], Com=com[i])
             # with open("Baseline_3Dlist_best_combination.txt", "a") as w:
             #     w.write(json.dumps(temp)+"\n")
-            # print(data)
-            data.to_excel(writer, sheet_name="combination" + str(i))
+            data.to_excel(writer, sheet_name="combination" + str(index[i]))
 
+    # print(time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time())))
+    # data, short_data, temp = multiple(Times=10, L=[0, len(com[10:15])], Com=com[10:15])
+    # with open("Baseline_3Dlist_short_best_combination_15.txt", "w") as w:
+    #     w.write(np.array2string(temp, formatter={'float_kind': lambda x: '{:1.2e}'.format(x)}))
+    # with open("Baseline_3Dlist_long_best_combination_15.txt", "w") as w:
+    #     w.write(np.array2string(temp))
+    # short_data.to_csv('./Baseline_table_short_best_combination_15.csv',
+    #                   sep=',',
+    #                   header=True,
+    #                   index=True)
+    # data.to_csv('./Baseline_table_long_best_combination_15.csv',
+    #             sep=',',
+    #             header=True,
+    #             index=True)
+    # print(time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time())))
 
+    # print(time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time())))
+    # data, short_data, temp = multiple(Times=10, L=[0, len(com[15:])], Com=com[15:])
+    # with open("Baseline_3Dlist_short_best_combination_15.txt", "w") as w:
+    #     w.write(np.array2string(temp, formatter={'float_kind': lambda x: '{:1.2e}'.format(x)}))
+    # with open("Baseline_3Dlist_long_best_combination_20.txt", "w") as w:
+    #     w.write(np.array2string(temp))
+    # short_data.to_csv('./Baseline_table_short_best_combination_20.csv',
+    #                   sep=',',
+    #                   header=True,
+    #                   index=True)
+    # data.to_csv('./Baseline_table_long_best_combination_20.csv',
+    #             sep=',',
+    #             header=True,
+    #             index=True)
+    # print(time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time())))
+
+# if __name__ == '__main__':
+#     import time
+#     for i in range(23):
+#         print("-------------------------------------------------------------")
+#         print(time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time())))
+#         print(i+1)
+#         minima = test(function=i+1, parameter_list=[30000, 0.1, 100, 30.0, 1.0], opt=global_opt[i])
+#         print("minima is {0}".format(minima))
+#         print(time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time())))

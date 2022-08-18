@@ -5,16 +5,16 @@
 import math
 import random
 import numpy as np
-from sympy import sin, cos, exp, prod, sqrt,pi
+# from sympy import sin, cos, exp, prod, sqrt,pi
 
 power = math.pow
-# cos = math.cos
-# sin = math.sin
-# pi = math.pi
-# exp = math.exp
-# sqrt = math.sqrt
-e = exp(1)
-# prod = math.prod
+cos = math.cos
+sin = math.sin
+pi = math.pi
+exp = math.exp
+sqrt = math.sqrt
+e = math.e
+prod = math.prod
 
 
 def F1(x):
@@ -86,9 +86,11 @@ def F8(x):
     :param x: 1*50
     :return: fitness
     """
-    k = [(-1) * i * sin(sqrt(abs(i))) for i in x]
-    fitness = sum(k).evalf()
-    return fitness
+    fitness = []
+    for i in x:
+        k = (-1) * i * sin(sqrt(abs(i)))
+        fitness.append(k)
+    return sum(fitness)
 
 
 def F9(x):
@@ -97,7 +99,7 @@ def F9(x):
     :return: fitness
     """
     fitness = [power(i, 2) - (10 * cos(2 * pi * i)) + 10 for i in x]
-    return sum(fitness).evalf()
+    return sum(fitness)
 
 
 def F10(x):
@@ -108,7 +110,7 @@ def F10(x):
     part1 = sum([power(i, 2) for i in x])
     part2 = sum([cos(2 * pi * i) for i in x])
     fitness = (-20) * exp(-0.2 * sqrt(0.02 * part1)) + (-exp(0.02 * part2) + 20 + e)
-    return fitness.evalf()
+    return fitness
 
 
 def F11(x):
@@ -119,7 +121,7 @@ def F11(x):
     part1 = sum([power(i, 2) for i in x])
     part2 = prod([cos(x[i] / sqrt(i + 1)) for i in range(len(x))])
     fitness = part1 / 4000 - part2 + 1
-    return fitness.evalf()
+    return fitness
 
 
 def U(x, a, k, m):
@@ -148,7 +150,7 @@ def F12(x):
     part3 = sum([U(i, 10, 100, 4) for i in x])
     part2 = sum([power(y[i] - 1, 2) * (1 + 10 * power(sin(y[i + 1] * pi), 2)) for i in range(len(x) - 1)])
     fitness = (pi / 50) * (10 * power(sin(y[0] * pi), 2) + part2 + power(y[-1] - 1, 2)) + part3
-    return fitness.evalf()
+    return fitness
 
 
 def F13(x):
@@ -212,7 +214,7 @@ def F17(x):
     x2 = x[1]
     fitness = power(x2 - 5.1 / (4 * power(pi, 2)) * power(x1, 2) + 5 / pi * x1 - 6, 2) + 10 * (
             1 - (1 / (8 * pi))) * cos(x1) + 10
-    return fitness.evalf()
+    return fitness
 
 
 def F18(x):

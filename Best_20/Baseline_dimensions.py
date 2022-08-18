@@ -3,6 +3,7 @@
 # Time and date: 8/1/22 14:30
 
 import itertools
+import json
 import random
 import statistics
 import sys
@@ -10,6 +11,7 @@ import time
 
 import numpy as np
 import pandas as pd
+from openpyxl import load_workbook
 
 import improved_fitness_functions
 
@@ -377,7 +379,7 @@ def multiple(Times, L, Com):
         for f in range(1, 24, 1):
             result_list = []
             for times in range(Times):
-                result = test(function=f, parameter_list=combination[i], opt=global_opt[f - 1])
+                result = test(function=f, parameter_list=combination, opt=global_opt[f - 1])
                 result_list.append(float(result))
             result_list_coloum.append(result_list)
         # if (i - L[0]) % 3 == 2:
@@ -423,74 +425,51 @@ def multiple(Times, L, Com):
 '''The main function is to generate the whole data.'''
 
 if __name__ == '__main__':
-    com_df = pd.read_csv("./best_combination.csv",
+    com_df = pd.read_csv("./best_combination_new.csv",
                          index_col=[0],
                          header=0)
+    index =com_df.index.tolist()
     com = com_df.values.tolist()
 
-    print(time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time())))
-    data, short_data, temp = multiple(Times=10, L=[0, len(com[:5])], Com=com[:5])
-    with open("Baseline_3Dlist_short_best_combination_5.txt", "w") as w:
-        w.write(np.array2string(temp, formatter={'float_kind': lambda x: '{:1.2e}'.format(x)}))
-    with open("Baseline_3Dlist_long_best_combination_5.txt", "w") as w:
-        w.write(np.array2string(temp))
-    short_data.to_csv('./Baseline_table_short_best_combination_5.csv',
-                      sep=',',
-                      header=True,
-                      index=True)
-    data.to_csv('./Baseline_table_long_best_combination_5.csv',
-                sep=',',
-                header=True,
-                index=True)
-    print(time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time())))
+    with pd.ExcelWriter("Baseline_table_short_best_combination.xlsx") as writer:
+        for i in range(0, len(com), 1):
+            print(time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time())))
+            data, short_data, temp = multiple(Times=10, L=[0, 1], Com=com[i])
+            # with open("Baseline_3Dlist_best_combination.txt", "a") as w:
+            #     w.write(json.dumps(temp)+"\n")
+            data.to_excel(writer, sheet_name="combination" + str(index[i]))
 
-    print(time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time())))
-    data, short_data, temp = multiple(Times=10, L=[0, len(com[5:10])], Com=com[5:10])
-    with open("Baseline_3Dlist_short_best_combination_10.txt", "w") as w:
-        w.write(np.array2string(temp, formatter={'float_kind': lambda x: '{:1.2e}'.format(x)}))
-    with open("Baseline_3Dlist_long_best_combination_10.txt", "w") as w:
-        w.write(np.array2string(temp))
-    short_data.to_csv('./Baseline_table_short_best_combination_10.csv',
-                      sep=',',
-                      header=True,
-                      index=True)
-    data.to_csv('./Baseline_table_long_best_combination_10.csv',
-                sep=',',
-                header=True,
-                index=True)
-    print(time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time())))
+    # print(time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time())))
+    # data, short_data, temp = multiple(Times=10, L=[0, len(com[10:15])], Com=com[10:15])
+    # with open("Baseline_3Dlist_short_best_combination_15.txt", "w") as w:
+    #     w.write(np.array2string(temp, formatter={'float_kind': lambda x: '{:1.2e}'.format(x)}))
+    # with open("Baseline_3Dlist_long_best_combination_15.txt", "w") as w:
+    #     w.write(np.array2string(temp))
+    # short_data.to_csv('./Baseline_table_short_best_combination_15.csv',
+    #                   sep=',',
+    #                   header=True,
+    #                   index=True)
+    # data.to_csv('./Baseline_table_long_best_combination_15.csv',
+    #             sep=',',
+    #             header=True,
+    #             index=True)
+    # print(time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time())))
 
-    print(time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time())))
-    data, short_data, temp = multiple(Times=10, L=[0, len(com[10:15])], Com=com[10:15])
-    with open("Baseline_3Dlist_short_best_combination_15.txt", "w") as w:
-        w.write(np.array2string(temp, formatter={'float_kind': lambda x: '{:1.2e}'.format(x)}))
-    with open("Baseline_3Dlist_long_best_combination_15.txt", "w") as w:
-        w.write(np.array2string(temp))
-    short_data.to_csv('./Baseline_table_short_best_combination_15.csv',
-                      sep=',',
-                      header=True,
-                      index=True)
-    data.to_csv('./Baseline_table_long_best_combination_15.csv',
-                sep=',',
-                header=True,
-                index=True)
-    print(time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time())))
-
-    print(time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time())))
-    data, short_data, temp = multiple(Times=10, L=[0, len(com[15:])], Com=com[15:])
-    with open("Baseline_3Dlist_short_best_combination_15.txt", "w") as w:
-        w.write(np.array2string(temp, formatter={'float_kind': lambda x: '{:1.2e}'.format(x)}))
-    with open("Baseline_3Dlist_long_best_combination_20.txt", "w") as w:
-        w.write(np.array2string(temp))
-    short_data.to_csv('./Baseline_table_short_best_combination_20.csv',
-                      sep=',',
-                      header=True,
-                      index=True)
-    data.to_csv('./Baseline_table_long_best_combination_20.csv',
-                sep=',',
-                header=True,
-                index=True)
-    print(time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time())))
+    # print(time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time())))
+    # data, short_data, temp = multiple(Times=10, L=[0, len(com[15:])], Com=com[15:])
+    # with open("Baseline_3Dlist_short_best_combination_15.txt", "w") as w:
+    #     w.write(np.array2string(temp, formatter={'float_kind': lambda x: '{:1.2e}'.format(x)}))
+    # with open("Baseline_3Dlist_long_best_combination_20.txt", "w") as w:
+    #     w.write(np.array2string(temp))
+    # short_data.to_csv('./Baseline_table_short_best_combination_20.csv',
+    #                   sep=',',
+    #                   header=True,
+    #                   index=True)
+    # data.to_csv('./Baseline_table_long_best_combination_20.csv',
+    #             sep=',',
+    #             header=True,
+    #             index=True)
+    # print(time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time())))
 
 # if __name__ == '__main__':
 #     import time
