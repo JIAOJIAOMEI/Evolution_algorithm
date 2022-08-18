@@ -1,6 +1,8 @@
 I see that you don't seem to have instructions for the 20 parameters I sent you yesterday. I tried these parameters myself.
 The number of iterations was supposed to be one million, but one million is too much, so I tried 500, 2000,and 5000.
 
+if you have some particular parameter combination want me to run, tell me anytime.
+
 - In general, functions 16, 18 perform very well, even with 500 iterations, and some parameter combinations find 100% of the minimum values.
 - Function 17 performed second only to 16 and 18, probably around 60% to 70%.
 - The functions 21, 22, 23 can find the minimum value under 2000 iterations, but the fluctuations are relatively large and the probability is in the interval of 10% to 80%.
@@ -42,7 +44,7 @@ Based on my current observations of the data and functions, I think the SSGA alg
 
 Speaking of power computation, for example, a function with a domain between -100 and 100 is initialized with a uniform random probability, then the best one is selected to produce the offspring, crossover is selected as a linear combination, so that the offspring is already very good, because it will be most likely to inherit the better genes from the parents, compared to other forms of crossover.
 
-The key is the mutation operation, the mutation range is [0.01, 0.25] (see combination in the following), this range is too small to produce any particularly good new genes, because the influence of this range on the domain is too small. Not to mention that the probability of mutation is low. So when it comes to power computation, the SSGA algorithm performs poorly.
+The key is the mutation operation, the mutation range is [0.01, 0.25] (see combination in the following), this range is too small to produce any particularly good new genes if a function contains power computation, because the influence of this range on the domain is too small. Not to mention that the probability of mutation is low. So when it comes to power computation, the SSGA algorithm performs poorly.
 
 I think this is the reason.
 
