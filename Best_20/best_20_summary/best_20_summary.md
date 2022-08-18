@@ -42,9 +42,34 @@ Based on my current observations of the data and functions, I think the SSGA alg
 
 Speaking of power computation, for example, a function with a domain between -100 and 100 is initialized with a uniform random probability, then the best one is selected to produce the offspring, crossover is selected as a linear combination, so that the offspring is already very good, because it will be most likely to inherit the better genes from the parents, compared to other forms of crossover.
 
-The key is the mutation operation, the mutation range is [0.01, 0.25] (see this in the best combination.csv), this range is too small to produce any particularly good new genes, because the influence of this range on the domain is too small. Not to mention that the probability of mutation is low. So when it comes to power computation, the SSGA algorithm performs poorly.
+The key is the mutation operation, the mutation range is [0.01, 0.25] (see combination in the following), this range is too small to produce any particularly good new genes, because the influence of this range on the domain is too small. Not to mention that the probability of mutation is low. So when it comes to power computation, the SSGA algorithm performs poorly.
 
 I think this is the reason.
+
+## combination
+
+|      | iterations | mutation_rate | num_individuals | range_mutation | crossover_probability |
+| ---- | ---------- | ------------- | --------------- | -------------- | --------------------- |
+| 163  | 1000000    | 1             | 200             | 0.01           | 0.6                   |
+| 199  | 1000000    | 2             | 200             | 0.01           | 0.6                   |
+| 198  | 1000000    | 2             | 200             | 0.01           | 0.5                   |
+| 23   | 1000000    | 0.1           | 200             | 0.25           | 0.7                   |
+| 22   | 1000000    | 0.1           | 200             | 0.25           | 0.6                   |
+| 59   | 1000000    | 0.18          | 200             | 0.25           | 0.7                   |
+| 95   | 1000000    | 0.2           | 200             | 0.25           | 0.7                   |
+| 146  | 1000000    | 1             | 100             | 0.01           | 0.7                   |
+| 164  | 1000000    | 1             | 200             | 0.01           | 0.7                   |
+| 162  | 1000000    | 1             | 200             | 0.01           | 0.5                   |
+| 145  | 1000000    | 1             | 100             | 0.01           | 0.6                   |
+| 182  | 1000000    | 2             | 100             | 0.01           | 0.7                   |
+| 144  | 1000000    | 1             | 100             | 0.01           | 0.5                   |
+| 180  | 1000000    | 2             | 100             | 0.01           | 0.5                   |
+| 181  | 1000000    | 2             | 100             | 0.01           | 0.6                   |
+| 5    | 1000000    | 0.1           | 100             | 0.25           | 0.7                   |
+| 41   | 1000000    | 0.18          | 100             | 0.25           | 0.7                   |
+| 21   | 1000000    | 0.1           | 200             | 0.25           | 0.5                   |
+| 110  | 1000000    | 0.5           | 100             | 0.01           | 0.7                   |
+| 128  | 1000000    | 0.5           | 200             | 0.01           | 0.7                   |
 
 ## 500
 
