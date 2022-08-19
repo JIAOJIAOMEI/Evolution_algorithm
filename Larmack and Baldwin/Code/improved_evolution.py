@@ -98,12 +98,12 @@ def multiple(mode, Times, L, Com):
         for f in range(1, 24, 1):
             result_list = []
             for times in range(Times):
-                result = test(function=f, mode=mode, parameter_list=combination[i], opt=global_opt[f - 1])
+                result = test(function=f, mode=mode, parameter_list=combination, opt=global_opt[f - 1])
                 result_list.append(float(result))
             result_list_col.append(result_list)
-        if (i - L[0]) % 50 == 49:
-            print("\033[0;37;45m Starting from {0}, {1} combinations are tested.\033[0m".format(L[0], i - L[0] + 1))
-            print("\n")
+        # if (i - L[0]) % 50 == 49:
+        #     print("\033[0;37;45m Starting from {0}, {1} combinations are tested.\033[0m".format(L[0], i - L[0] + 1))
+        #     print("\n")
         result_list_all.append(result_list_col)
     temp = np.array(result_list_all)
     data = pd.DataFrame(data=np.resize(temp, (L[1] - L[0], 23 * Times)).swapaxes(0, 1),
