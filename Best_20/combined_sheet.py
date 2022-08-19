@@ -60,4 +60,4 @@ percent_df = [percent(Function="F" + str(i), optimal=opt[i - 1]) for i in functi
 percent_df = pd.concat(percent_df, axis=0)
 percent_df = percent_df.groupby(["Function"]).sum().applymap(lambda x: str(x * 10) + "%")
 display(percent_df)
-percent_df.to_csv("./SSGA_percent_f1_f1_one_million_50d.csv")
+percent_df.to_csv("./SSGA_percent_f1_f7_one_million_50d.csv")
