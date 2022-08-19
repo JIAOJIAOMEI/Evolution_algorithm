@@ -27,12 +27,12 @@ def read_file(sheetname, path):
     return df
 
 
-path = "Baseline_table_short_best_combination_f1_f7.xlsx"
+path = "Baseline_table_short_best_combination_30000.xlsx"
 df = [read_file(name, path) for name in sheet_name]
 df = pd.concat(df, axis=1)
 df.columns = sheet_name
 
-# df.to_csv("./combination_216.csv")
+df.to_csv("./SSGA_percent_f1_f24_30000_50d_rawdata.csv")
 
 
 def percent(Function, optimal):
@@ -55,9 +55,12 @@ def percent(Function, optimal):
     return percent_dataframe
 
 
-function_list = np.arange(1, 8, 1)
+function_list = np.arange(1, 24, 1)
 percent_df = [percent(Function="F" + str(i), optimal=opt[i - 1]) for i in function_list]
 percent_df = pd.concat(percent_df, axis=0)
 percent_df = percent_df.groupby(["Function"]).sum().applymap(lambda x: str(x * 10) + "%")
+percent_df.sort_values(by=["Function"],ascending=[True])
+index = ["F"+str(i) for i in range(1,24,1)]
+percent_df.index=index
 display(percent_df)
-percent_df.to_csv("./SSGA_percent_f1_f7_one_million_50d.csv")
+percent_df.to_csv("./SSGA_percent_f1_f24_30000_50d.csv")
