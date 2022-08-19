@@ -27,7 +27,7 @@ def read_file(sheetname, path):
     return df
 
 
-path = "Baseline_table_short_best_combination_30000.xlsx"
+path = "Baseline_table_short_best_combination_100000.xlsx"
 df = [read_file(name, path) for name in sheet_name]
 df = pd.concat(df, axis=1)
 df.columns = sheet_name
@@ -37,7 +37,15 @@ df.columns = sheet_name
 
 def percent(Function, optimal):
     dataframe = df.loc[(Function, slice(None)), :]
-    dataframe = dataframe.round(4)
+    if Function in ["F1", "F2", "F3", "F4", "F5", "F6", "F7", "F9", "F10", "F11", "F12", "F13", "F14", "F18"]:
+        dataframe = dataframe.round(1)
+    elif Function in ["F17"]:
+        dataframe = dataframe.round(3)
+    elif Function in ["F19","F20"]:
+        dataframe = dataframe.round(2)
+    elif Function in ["F8","F15","F16","F21","F22","F23"]:
+        dataframe = dataframe.round(4)
+
     # display(dataframe,optimal)
     dataframe = pd.DataFrame(data=dataframe.values,
                              columns=dataframe.columns)
@@ -52,4 +60,4 @@ percent_df = [percent(Function="F" + str(i), optimal=opt[i - 1]) for i in functi
 percent_df = pd.concat(percent_df, axis=0)
 percent_df = percent_df.groupby(["Function"]).sum().applymap(lambda x: str(x * 10) + "%")
 display(percent_df)
-percent_df.to_csv("./percent_30000.csv")
+percent_df.to_csv("./percent_100000.csv")
