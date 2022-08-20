@@ -32,7 +32,7 @@ df = [read_file(name, path) for name in sheet_name]
 df = pd.concat(df, axis=1)
 df.columns = sheet_name
 
-df.to_csv("./SSGA_percent_f1_f24_30000_50d_rawdata.csv")
+df.to_csv("./SSGA_f1_f24_30000_50d_rawdata.csv")
 
 
 def percent(Function, optimal):
