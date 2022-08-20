@@ -250,7 +250,7 @@ There are 3072 combinations in total.'''
 
 def combination():
     com = []
-    iterations = [1000000]
+    iterations = [1000]
     mutation_rate = [0.1, 0.18, 0.2, 0.5, 1.0, 2.0, 5.0, 10.0]
     num_individuals = [100, 200]
     range_mutation = [0.01, 0.25, 0.55, 0.9, 2.0, 5.0]
@@ -444,7 +444,7 @@ if __name__ == '__main__':
     # display(com)
 
     with pd.ExcelWriter("Baseline_SSGA_50d_24functions.xlsx") as writer:
-        for i in range(0, len(com), 1):
+        for i in range(0, len(com[:3]), 1):
             print(time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time())))
             data, short_data, temp = multiple(Times=10, L=[0, 1], Com=com[i])
             # with open("Baseline_3Dlist_best_combination.txt", "a") as w:
