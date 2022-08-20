@@ -1,25 +1,39 @@
 # Name: Mei Jiaojiao
 # Profession: Artificial Intelligence
 # Time and date: 7/30/22 16:00
+import time
+
 import numpy as np
+import pandas as pd
 
 import improved_evolution
 import parameter_combination
+from parameter_combination import read_file
+
+opt = [0, 0, 0, 0, 0, 0, 0, -418.98 * 50, 0, 0, 0, 0, 0, 1, 0.00030, -1.0316, 0.398, 3, -3.86, -3.32, -10.1532,
+           -10.4028, -10.5363]
 
 if __name__ == '__main__':
     parameter_combination.combination()
-    com = parameter_combination.read_com()
+    com_df = parameter_combination.read_com()
+    com = com_df.values.tolist()
+    index = com_df.index.tolist()
+    type_list = [0, 0, 0]
 
-    data, short_data, temp = improved_evolution.multiple(mode="Lamarck", Times=10, L=[0, len(com)], Com=com)
-    with open("Lamarck_3Dlist_short.txt", "w") as w:
-        w.write(np.array2string(temp, formatter={'float_kind': lambda x: '{:1.2e}'.format(x)}))
-    with open("Lamarck_3Dlist_long.txt", "w") as w:
-        w.write(np.array2string(temp))
-    short_data.to_csv('./Lamarck_table_short.csv',
-                      sep=',',
-                      header=True,
-                      index=True)
-    data.to_csv('./Lamarck_table_long.csv',
-                sep=',',
-                header=True,
-                index=True)
+    with pd.ExcelWriter("Larmack.xlsx") as writer:
+        for i in range(0, len(com), 1):
+            print(time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time())))
+            if i % 10 == 9:
+                print("\033[0;37;45m {0} combinations are tested.\033[0m".format(i+1))
+            data, short_data, temp = improved_evolution.multiple(Times=10, L=[0, 1], Com=com[i],type_list=type_list,mode="Lamarck")
+            data.to_excel(writer, sheet_name="combination" + str(index[i]))
+
+    sheet_name = ["combination" + str(i) for i in index]
+    path = "Larmack.xlsx"
+    df = [read_file(name, path) for name in sheet_name]
+    df = pd.concat(df, axis=1)
+    df.columns = sheet_name
+    df.to_csv("./Larmack.csv")
+
+
+

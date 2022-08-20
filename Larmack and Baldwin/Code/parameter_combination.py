@@ -6,13 +6,13 @@ import pandas as pd
 
 def combination():
     com = []
-    iterations = [10000]
-    mutation_rate = [5.0,10.0]
-    local_search = [0.01,1.0,5.0]
-    num_individuals = [50,400,800]
-    m_range = [0.05,0.35,0.8,1.2]
-    range_mutation = [0.01,0.25,0.55,0.9]
-    crossover_probability = [0.4,1.0]
+    iterations = [100]
+    mutation_rate = [5.0, 10.0]
+    local_search = [0.01, 1.0, 5.0]
+    num_individuals = [50, 400, 800]
+    m_range = [0.05, 0.35, 0.8, 1.2]
+    range_mutation = [0.01, 0.25, 0.55, 0.9]
+    crossover_probability = [0.4, 1.0]
     for a in iterations:
         for b in mutation_rate:
             for c in local_search:
@@ -46,9 +46,15 @@ def combination():
 
 
 def read_com():
-    df = pd.read_csv("./combinations_result.csv",
-                     header=0,
-                     index_col=None)
-    com = df.values
+    com = pd.read_csv("./combinations_result.csv",
+                      header=0,
+                      index_col=None)
     return com
 
+
+def read_file(sheetname, path):
+    df = pd.read_excel(path, sheet_name=sheetname,
+                       header=0,
+                       index_col=[0, 1])
+    df = df.rename_axis(["Function", "Times"])
+    return df
