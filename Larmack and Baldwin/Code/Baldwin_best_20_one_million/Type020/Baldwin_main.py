@@ -16,7 +16,7 @@ opt = [0, 0, 0, 0, 0, 0, 0, -418.98 * 50, 0, 0, 0, 0, 0, 1, 0.00030, -1.0316, 0.
 if __name__ == '__main__':
     # parameter_combination.combination()
     # com_df = parameter_combination.read_com()
-    com_df = pd.read_csv("./best_combination_20.csv",
+    com_df = pd.read_csv("./best_combination_10.csv",
                          index_col=[0],
                          header=0)
     com = com_df.values.tolist()
