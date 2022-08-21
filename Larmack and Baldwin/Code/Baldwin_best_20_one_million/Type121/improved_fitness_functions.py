@@ -31,8 +31,8 @@ def F2(x):
     :param x: 1*50
     :return: fitness
     """
-    x = np.array(x)
-    fitness = sum(abs(x)) + prod(abs(x))
+    x = [abs(i) for i in x]
+    fitness = sum(x) + prod(x)
     return fitness
 
 
@@ -50,8 +50,8 @@ def F4(x):
     :param x: 1*50
     :return: fitness
     """
-    x = np.array(x)
-    return max(abs(x))
+    x = [abs(i) for i in x]
+    return max(x)
 
 
 def F5(x):
@@ -270,6 +270,7 @@ def F21(x):
     a = [[4, 4, 4, 4], [1, 1, 1, 1], [8, 8, 8, 8], [6, 6, 6, 6], [3, 7, 3, 7]]
     c = [.1, .2, .2, .4, .4]
     fitness = []
+
     for i in range(5):
         inner = power(np.dot(np.array([x[k] - a[i][k] for k in range(4)]),
                              np.array([x[k] - a[i][k] for k in range(4)]).T) + c[i], -1)

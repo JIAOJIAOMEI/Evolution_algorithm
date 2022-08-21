@@ -16,7 +16,7 @@ opt = [0, 0, 0, 0, 0, 0, 0, -418.98 * 50, 0, 0, 0, 0, 0, 1, 0.00030, -1.0316, 0.
 if __name__ == '__main__':
     # parameter_combination.combination()
     # com_df = parameter_combination.read_com()
-    com_df = pd.read_csv("./best_combination_10.csv",
+    com_df = pd.read_csv("./best_combination_20.csv",
                          index_col=[0],
                          header=0)
     com = com_df.values.tolist()
@@ -28,7 +28,8 @@ if __name__ == '__main__':
             print(time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time())))
             if i % 10 == 9:
                 print("\033[0;37;45m {0} combinations are tested.\033[0m".format(i+1))
-            data, short_data, temp = improved_evolution.multiple(Times=10, L=[0, 1], Com=com[i],type_list=type_list,mode="Lamarck")
+            data, temp = improved_evolution.multipleF(Times=10, L=[0, 1], Com=com[i],type_list=type_list,mode="Lamarck",
+                                                      function_list=[2,4,5,7])
             data.to_excel(writer, sheet_name="combination" + str(index[i]))
 
     sheet_name = ["combination" + str(i) for i in index]

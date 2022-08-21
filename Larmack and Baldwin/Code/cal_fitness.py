@@ -7,7 +7,9 @@ import numpy as np
 def fitness(individuals, func):
     fit = []
     for individual in individuals:
+        # print(individual.phenotype)
         fit.append(func(individual.phenotype))
+    # print(fit)
     best_fit = np.argmin(fit)
     worst_fit = np.argmax(fit)
     return best_fit, worst_fit, fit

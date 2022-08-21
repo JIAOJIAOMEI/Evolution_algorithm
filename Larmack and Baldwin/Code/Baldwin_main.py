@@ -10,10 +10,10 @@ import improved_evolution
 import parameter_combination
 from parameter_combination import read_file
 
-opt = [0, 0, 0, 0, 0, 0, 0, -418.98 * 50, 0, 0, 0, 0, 0, 1, 0.00030, -1.0316, 0.398, 3, -3.86, -3.32, -10.1532,
-           -10.4028, -10.5363]
 
 if __name__ == '__main__':
+    opt = [0, 0, 0, 0, 0, 0, 0, -418.98 * 50, 0, 0, 0, 0, 0, 1, 0.00030, -1.0316, 0.398, 3, -3.86, -3.32, -10.1532,
+           -10.4028, -10.5363]
     # parameter_combination.combination()
     # com_df = parameter_combination.read_com()
     com_df = pd.read_csv("./best_combination_20.csv",
@@ -34,8 +34,9 @@ if __name__ == '__main__':
             print(time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time())))
             if i % 5 == 4:
                 print("\033[0;37;45m {0} combinations are tested.\033[0m".format(i + 1))
-            data, short_data, temp = improved_evolution.multiple(Times=10, L=[0, 1], Com=com[i], type_list=type_list,
-                                                                 mode="Baldwin")
+            data,temp = improved_evolution.multipleF(Times=10, L=[0, 1], Com=com[i], type_list=type_list,
+                                                                 mode="Baldwin",function_list=[1])
+            # improved_evolution.Caltime()
             data.to_excel(writer, sheet_name="combination" + str(index[i]))
 
     sheet_name = ["combination" + str(i) for i in index]

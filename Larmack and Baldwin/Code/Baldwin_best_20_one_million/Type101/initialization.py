@@ -2,7 +2,7 @@
 # Profession: Artificial Intelligence
 # Time and date: 7/30/22 15:31
 import numpy as np
-
+import time
 
 class Individual:
     def __init__(self, num_genes, genotype_range, genotype, local_search, local_search_range, pattern,
@@ -14,24 +14,30 @@ class Individual:
 
         local_search_rate = local_search / num_genes
         k = self.genotype
+        # print(self.genotype)
 
+        # print("phenotype")
+        # print(time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time())))
         if local_search_type == 0:  # uniform
             for i in range(len(k)):
                 if np.random.rand() < local_search_rate:
-                    k[i] = k[i] + np.random.uniform(-local_search_range, local_search_range)
-                if k[i] < genotype_range[0]:  # check domain
-                    k[i] = genotype_range[0]
-                elif k[i] > genotype_range[1]:
-                    k[i] = genotype_range[1]
+                    k[i] = k[i] + float(np.random.uniform(-local_search_range, local_search_range))
+                    if k[i] < genotype_range[0]:  # check domain
+                        k[i] = genotype_range[0]
+                    elif k[i] > genotype_range[1]:
+                        k[i] = genotype_range[1]
         elif local_search_type == 1:  # normal
             for i in range(len(k)):
                 if np.random.rand() < local_search_rate:
-                    k[i] = k[i] + np.random.normal(loc=0, scale=2 * local_search_range, size=1) - local_search_range
-                if k[i] < genotype_range[0]:  # check domain
-                    k[i] = genotype_range[0]
-                elif k[i] > genotype_range[1]:
-                    k[i] = genotype_range[1]
+                    k[i] = k[i] + float(np.random.normal(loc=0, scale=2 * local_search_range, size=1) - local_search_range)
+                    if k[i] < genotype_range[0]:  # check domain
+                        k[i] = genotype_range[0]
+                    elif k[i] > genotype_range[1]:
+                        k[i] = genotype_range[1]
         self.phenotype = k
+        # print(self.phenotype)
+        # print(self.phenotype)
+        # print(time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time())))
 
 
 def initialization(num_genes, num_individual, genotype_range, local_search, local_search_range, local_search_type):
