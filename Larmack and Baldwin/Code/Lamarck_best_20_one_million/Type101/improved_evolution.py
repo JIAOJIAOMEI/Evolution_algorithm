@@ -18,7 +18,7 @@ global_opt = opt = [0, 0, 0, 0, 0, 0, 0, -418.98 * 50, 0, 0, 0, 0, 0, 1, 0.00030
 
 
 def test(function, mode, parameter_list, opt, mutation_type, crossover_type, local_search_type):
-    iterations = 1000
+    iterations = 1000000
     mutation_rate = parameter_list[1]
     local_search = mutation_rate
     num_individuals = int(parameter_list[2])
