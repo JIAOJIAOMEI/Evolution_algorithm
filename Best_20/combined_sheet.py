@@ -27,12 +27,12 @@ def read_file(sheetname, path):
     return df
 
 
-path = "Baseline_table_short_best_combination_30000.xlsx"
+path = "Baseline_table_short_best_combination.xlsx"
 df = [read_file(name, path) for name in sheet_name]
 df = pd.concat(df, axis=1)
 df.columns = sheet_name
 
-df.to_csv("./SSGA_f1_f24_30000_50d_rawdata.csv")
+df.to_csv("./SSGA_f1_f24_one_million_50d_rawdata.csv")
 
 
 def percent(Function, optimal):
@@ -63,4 +63,4 @@ percent_df.sort_values(by=["Function"],ascending=[True])
 index = ["F"+str(i) for i in range(1,24,1)]
 percent_df.index=index
 display(percent_df)
-percent_df.to_csv("./SSGA_percent_f1_f24_30000_50d.csv")
+percent_df.to_csv("./SSGA_percent_f1_f24_one_million_50d.csv")
