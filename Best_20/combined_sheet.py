@@ -15,7 +15,7 @@ index = com_df.index.tolist()
 
 # display(com_df.nunique(axis=0))
 sheet_name = ["combination" + str(i) for i in index]
-opt = [0, 0, 0, 0, 0, 0, 0, -418.98 * 50, 0, 0, 0, 0, 0, 1, 0.00030, -1.0316, 0.398, 3, -3.86, -3.32, -10.1532,
+opt = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -418.98 * 50, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.00030, -1.0316, 0.398, 3.0, -3.86, -3.32, -10.1532,
        -10.4028, -10.5363]
 
 
@@ -27,12 +27,12 @@ def read_file(sheetname, path):
     return df
 
 
-path = "Baseline_table_short_best_combination.xlsx"
+path = "Baseline_table_short_best_combination_100000.xlsx"
 df = [read_file(name, path) for name in sheet_name]
 df = pd.concat(df, axis=1)
 df.columns = sheet_name
 
-df.to_csv("./SSGA_f1_f24_one_million_50d_rawdata.csv")
+df.to_csv("./SSGA_f1_f23_100000_50d_rawdata.csv")
 
 
 def percent(Function, optimal):
@@ -56,11 +56,10 @@ def percent(Function, optimal):
 
 
 function_list = np.arange(1, 24, 1)
-percent_df = [percent(Function="F" + str(i), optimal=opt[i - 1]) for i in function_list]
+percent_df = [percent(Function="F" + str(i), optimal=opt[i-1]) for i in function_list]
 percent_df = pd.concat(percent_df, axis=0)
 percent_df = percent_df.groupby(["Function"]).sum().applymap(lambda x: str(x * 10) + "%")
-percent_df.sort_values(by=["Function"],ascending=[True])
 index = ["F"+str(i) for i in range(1,24,1)]
-percent_df.index=index
+percent_df = percent_df.loc[index]
 display(percent_df)
-percent_df.to_csv("./SSGA_percent_f1_f24_one_million_50d.csv")
+percent_df.to_csv("./SSGA_percent_f1_f23_100000_50d.csv")
