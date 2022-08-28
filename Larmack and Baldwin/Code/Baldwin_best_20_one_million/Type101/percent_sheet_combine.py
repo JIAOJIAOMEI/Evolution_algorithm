@@ -1,6 +1,7 @@
 # Name: Mei Jiaojiao
 # Profession: Artificial Intelligence
 # Time and date: 8/18/22 01:03
+import numpy as np
 import pandas as pd
 from IPython.core.display_functions import display
 
@@ -25,14 +26,16 @@ def read_file(mode):
     df2 = pd.read_csv(path2, index_col=[0, 1], header=0)
     path3 = mode + "910131522.csv"
     df3 = pd.read_csv(path3, index_col=[0, 1], header=0)
-    df = pd.concat([df1, df2, df3], axis=0)
+    path4 = mode + "13612161718192023.csv"
+    df4 = pd.read_csv(path4, index_col=[0, 1], header=0)
+    df = pd.concat([df1, df2, df3,df4], axis=0)
     return df
 
 
 mode = "Baldwin"
 df = read_file(mode)
 df.columns = sheet_name
-df.to_csv("./Baldwin101_f2_4_5_7_8_9_10_11_13_14_15_21_22_1000000_50d_rawdata.csv")
+df.to_csv("./Baldwin101_f1_f23_1000000_50d_rawdata.csv")
 
 
 def percent(Function, optimal):
@@ -56,11 +59,11 @@ def percent(Function, optimal):
 
 
 # function_list = np.arange(1, 24, 1)
-function_list = [2, 4, 5, 7, 8, 9, 10, 11, 13, 14, 15, 21, 22]
+function_list = np.arange(1,24,1)
 percent_df = [percent(Function="F" + str(i), optimal=opt[i - 1]) for i in function_list]
 percent_df = pd.concat(percent_df, axis=0)
 percent_df = percent_df.groupby(["Function"]).sum().applymap(lambda x: str(x * 10) + "%")
 index = ["F" + str(i) for i in function_list]
 percent_df = percent_df.loc[index]
 display(percent_df)
-percent_df.to_csv("./Baldwin101_percent_f2_4_5_7_8_9_10_11_13_14_15_21_22_1000000_50d.csv")
+percent_df.to_csv("./Baldwin101_percent_f1_f23_1000000_50d.csv")

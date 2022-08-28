@@ -381,6 +381,8 @@ def multiple(Times, L, Com):
     for i in range(L[0], L[1], 1):
         result_list_coloum = []
         for f in range(1, 24, 1):
+            # print(time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time())))
+            # print(f)
             result_list = []
             for times in range(Times):
                 result = test(function=f, parameter_list=combination, opt=global_opt[f - 1])
@@ -438,7 +440,7 @@ if __name__ == '__main__':
     with pd.ExcelWriter("Baseline_table_short_best_combination.xlsx") as writer:
         for i in range(0, len(com), 1):
             print(time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time())))
-            data, short_data, temp = multiple(Times=10, L=[0, 1], Com=com[i])
+            data, short_data, temp = multiple(Times=1, L=[0, 1], Com=com[i])
             # with open("Baseline_3Dlist_best_combination.txt", "a") as w:
             #     w.write(json.dumps(temp)+"\n")
             data.to_excel(writer, sheet_name="combination" + str(index[i]))

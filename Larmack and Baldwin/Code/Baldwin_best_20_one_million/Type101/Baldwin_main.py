@@ -28,20 +28,22 @@ if __name__ == '__main__':
     crossover_type 0 or 1 or 2
     local_search_type 0 or 1
     '''
+    # function_list = [2, 4, 5, 7, 8, 9, 10, 11, 13, 14, 15, 21, 22]
 
-    with pd.ExcelWriter("Baldwin8111421.xlsx") as writer:
+    with pd.ExcelWriter("Baldwin13612161718192023.xlsx") as writer:
         for i in range(0, len(com), 1):
             print(time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time())))
             if i % 5 == 4:
                 print("\033[0;37;45m {0} combinations are tested.\033[0m".format(i + 1))
             data,temp = improved_evolution.multipleF(Times=10, L=[0, 1], Com=com[i], type_list=type_list,
-                                                                 mode="Baldwin",function_list=[8,11,14,21])
+                                                                 mode="Baldwin",
+                                                     function_list=[1,3,6,12,16,17,18,19,20,23])
             # improved_evolution.Caltime()
             data.to_excel(writer, sheet_name="combination" + str(index[i]))
 
     sheet_name = ["combination" + str(i) for i in index]
-    path = "Baldwin8111421.xlsx"
+    path = "Baldwin13612161718192023.xlsx"
     df = [read_file(name, path) for name in sheet_name]
     df = pd.concat(df, axis=1)
     df.columns = sheet_name
-    df.to_csv("./Baldwin8111421.csv")
+    df.to_csv("./Baldwin13612161718192023.csv")

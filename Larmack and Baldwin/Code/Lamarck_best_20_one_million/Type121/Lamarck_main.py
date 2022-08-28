@@ -23,22 +23,22 @@ if __name__ == '__main__':
     index = com_df.index.tolist()
     type_list = [1, 2, 1]
 
-    with pd.ExcelWriter("Larmack8111421.xlsx") as writer:
+    with pd.ExcelWriter("Larmack13612161718192023.xlsx") as writer:
         for i in range(0, len(com), 1):
             print(time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time())))
             if i % 10 == 9:
                 print("\033[0;37;45m {0} combinations are tested.\033[0m".format(i + 1))
             data, temp = improved_evolution.multipleF(Times=10, L=[0, 1], Com=com[i], type_list=type_list,
                                                       mode="Lamarck",
-                                                      function_list=[8, 11, 14, 21])
+                                                      function_list=[1, 3, 6, 12, 16, 17, 18, 19, 20, 23])
             data.to_excel(writer, sheet_name="combination" + str(index[i]))
 
     sheet_name = ["combination" + str(i) for i in index]
-    path = "Larmack8111421.xlsx"
+    path = "Larmack13612161718192023.xlsx"
     df = [read_file(name, path) for name in sheet_name]
     df = pd.concat(df, axis=1)
     df.columns = sheet_name
-    df.to_csv("./Larmack8111421.csv")
+    df.to_csv("./Larmack13612161718192023.csv")
 
 
 
