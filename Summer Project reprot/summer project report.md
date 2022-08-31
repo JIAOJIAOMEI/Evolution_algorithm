@@ -162,7 +162,7 @@ A point on both parents' chromosomes is picked randomly, and designated a 'cross
 
 Figure 3 shows the process of single-point-crossover.
 
-<img src="Figure-3.png" alt="Figure-3" height="350px" width="500px" style="zoom:100%;" />
+<img src="Figure-3.png" alt="Figure-3" height="300px" width="500px" style="zoom:100%;" />
 
 #### Probabilistic crossover
 
@@ -234,11 +234,11 @@ In Lamarck algorithm of this study, offsprings are generated based on phenotype 
 
 ### SSGA
 
-<img src="Figure-6.png" alt="Figure-6" height="600px" width="600px" style="zoom:100%;" />
+<img src="Figure-6.png" alt="Figure-6" height="500px" width="600px" style="zoom:100%;" />
 
 ### Baldwin algorithm vs Lamarck algorithm
 
-<img src="Figure-7.png" alt="Figure-7" height="600px" width="600px" style="zoom:100%;" />
+<img src="Figure-7.png" alt="Figure-7" height="500px" width="600px" style="zoom:100%;" />
 
 ## Exploration on parameters
 
@@ -260,7 +260,6 @@ Table 2:
 | num_individuals(number of individuals) | [50, 100, 150]          |
 | m_range(local_search_range)            | [0.5, 1.0, 2.0, 5.0]    |
 | range_mutation(mutation_range)         | [0.5, 1.0, 2.0, 5.0]    |
-|                                        |                         |
 
 3072 parameter combinations in total.
 
@@ -344,11 +343,11 @@ https://github.com/JIAOJIAOMEI/Evolution_algorithm/tree/main/Larmack%20and%20Bal
 
 Violin_F1.png shows how can each paramter influence the fitness value if test function f1 is chosen.
 
-<img src="Violin_F1_experiment1.png" alt="Violin_F1_experiment1" height="600px" width="600px" style="zoom:100%;" />
+<img src="Violin_F1_experiment1.png" alt="Violin_F1_experiment1" height="500px" width="600px" style="zoom:100%;" />
 
 Violin_F5.png shows how can each paramter influence the fitness value if test function f5 is chosen.
 
-<img src="Violin_F5_experiment1.png" alt="Violin_F5_experiment1" height="600px" width="600px" style="zoom:100%;" />
+<img src="Violin_F5_experiment1.png" alt="Violin_F5_experiment1" height="500px" width="600px" style="zoom:100%;" />
 
 #### Conclusion of Experiment 1.
 
@@ -377,7 +376,6 @@ Another reason is that our goal is to find the minimum value, and each time we c
 | m_range(local_search_range)            | [5, 75]                                         |
 | range_mutation(mutation_range)         | [20, 80]                                        |
 | crossover_probability                  | [0.5, 0.9]                                      |
-|                                        |                                                 |
 
 Considering the large number of calculations, only the F1 for Baldwin algorithm was run this time by using single point crossover and uniform mutation.
 
@@ -389,7 +387,7 @@ Of all the solutions, the min value is 49.726447. and the corresponding paramter
 
 Of all the solutions, the max value is 137571.325437,and the corresponding paramter combination is **[50.0,0.06,2.0,50.0,5.0,80.0,0.5]**
 
-<img src="Violin_F1_experiment2.png" alt="Violin_F1_experiment2" height="600px" width="600px" style="zoom:100%;" />
+<img src="Violin_F1_experiment2.png" alt="Violin_F1_experiment2" height="500px" width="600px" style="zoom:100%;" />
 
 #### Conclusion of Experiment 2.
 
@@ -408,7 +406,6 @@ Of all the solutions, the max value is 137571.325437,and the corresponding param
 | m_range(local_search_range)            | [0.05, 0.35, 0.8, 1.2]  |
 | range_mutation(mutation_range)         | [0.01, 0.25, 0.55, 0.9] |
 | crossover_probability                  | [0.4, 1.0]              |
-|                                        |                         |
 
 This time I tried F1 with Baldwin and F22 with Lamarck  using single point crossover and uniform mutation:
 
@@ -416,9 +413,9 @@ Of all the solutions, the min value of F1  is 3.406007(minima is 0). and the cor
 
 Of all the solutions, the min value of F22  is -10.402907(minima is -10.4028),the corresponding paramter combination is **[10000.0,10.0,1.0,800.0,0.05,0.01,1.0]**.
 
-<img src="Violin_F1_Baldwin_experiment3.png" alt="Violin_F1_Baldwin_experiment3" height="600px" width="600px" style="zoom:100%;" />
+<img src="Violin_F1_Baldwin_experiment3.png" alt="Violin_F1_Baldwin_experiment3" height="500px" width="600px" style="zoom:100%;" />
 
-<img src="Violin_F22_Lamarck_experiment3.png" alt="Violin_F22_Lamarck_experiment3" height="600px" width="600px" style="zoom:100%;" />
+<img src="Violin_F22_Lamarck_experiment3.png" alt="Violin_F22_Lamarck_experiment3" height="500px" width="600px" style="zoom:100%;" />
 
 #### Conclusion of Experiment 3.
 
@@ -434,7 +431,6 @@ Of all the solutions, the min value of F22  is -10.402907(minima is -10.4028),th
 | num_individuals(number of individuals) | [100, 200]                                 |
 | range_mutation(mutation_range)         | [0.01, 0.25, 0.55, 0.9, 2.0, 5.0]          |
 | crossover_probability                  | [0.5, 0.6, 0.7]                            |
-|                                        |                                            |
 
 In this experiment, if the dimension of a test function is more than 10, then it changed to 10 dimensions.
 
