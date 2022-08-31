@@ -32,7 +32,7 @@ def splitListOfTuples(lst):
 key, value = splitListOfTuples(count.most_common(20))
 display(key, type(key))
 
-com_file = "/Users/meijiaojiao/Desktop/Evolution_algorithm/Baseline_f3_f6_f12/Linear_combination_crossover_normal/combinations_result_baseline.csv"
+com_file = "/Users/meijiaojiao/Desktop/Evolution_algorithm/Baseline/Baseline_f3_f6_f12_1000000_10/Linear_combination_crossover_normal/combinations_result_baseline.csv"
 df_com = pd.read_csv(com_file, header=0)
 # display(df_com)
 
