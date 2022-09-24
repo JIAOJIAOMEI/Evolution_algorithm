@@ -17,7 +17,7 @@ class Individual:
         if local_pattern_type == 0:
             self.phenotype = best_multi_phenotype(self.genotype, local_search_type, num_phenotypes, local_search_rate,
                                                   local_search_range, genotype_range, func)
-        else:
+        elif local_pattern_type == 1:
             self.phenotype = best_geno_pheno(self.genotype, local_search_type, local_search_rate, local_search_range,
                                              genotype_range, func)
 

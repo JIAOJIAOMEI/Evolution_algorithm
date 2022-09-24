@@ -20,7 +20,7 @@ if __name__ == '__main__':
     print(com_df)
     com = com_df.values.tolist()
     index = com_df.index.tolist()
-    type_list = [1, 0, 1, 0]
+    type_list = [1, 0, 1, 1]
 
     '''
     mutation_type 0 or 1
