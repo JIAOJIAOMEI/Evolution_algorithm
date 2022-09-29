@@ -18,8 +18,8 @@ if __name__ == '__main__':
                          header=0)
     com_df["num_phenotypes"] = 3
     print(com_df)
-    com = com_df.values.tolist()
-    index = com_df.index.tolist()
+    com = com_df.values.tolist()[10:]
+    index = com_df.index.tolist()[10:]
     type_list = [1, 0, 1, 1]
 
     '''
@@ -27,20 +27,20 @@ if __name__ == '__main__':
     crossover_type 0 or 1 or 2
     local_search_type 0 or 1
     '''
-    # function_list = [2, 4, 5, 7, 8, 9, 10, 11, 13, 14, 15, 21, 22]
+    function_list = [i for i in range(1, 24, 1)]
 
-    with pd.ExcelWriter("Baldwin13.xlsx") as writer:
+    with pd.ExcelWriter("Baldwin.xlsx") as writer:
         for i in range(0, len(com), 1):
             print(time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time())))
             if i % 5 == 4:
                 print("\033[0;37;45m {0} combinations are tested.\033[0m".format(i + 1))
             data, temp = improved_evolution.multipleF(Times=10, L=[0, 1], Com=com[i], type_list=type_list,
-                                                      mode="Baldwin",function_list=[16, 18])
+                                                      mode="Baldwin", function_list=function_list)
             data.to_excel(writer, sheet_name="combination" + str(index[i]))
 
     sheet_name = ["combination" + str(i) for i in index]
-    path = "Baldwin13.xlsx"
+    path = "Baldwin.xlsx"
     df = [read_file(name, path) for name in sheet_name]
     df = pd.concat(df, axis=1)
     df.columns = sheet_name
-    df.to_csv("./Baldwin13.csv")
+    df.to_csv("./Baldwin.csv")
