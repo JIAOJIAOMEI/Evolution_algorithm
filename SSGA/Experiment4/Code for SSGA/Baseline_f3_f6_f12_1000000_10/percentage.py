@@ -52,23 +52,23 @@ def plot_overview(Function, num_com, optimal):
     elif Function in ["F1", "F18"]:
         dataframe = dataframe.round(5)
 
-    dataframe = pd.DataFrame(data=dataframe.values,columns=dataframe.columns)
+    dataframe = pd.DataFrame(data=dataframe.values, columns=dataframe.columns)
     columns = dataframe.columns.tolist()[:num_com]
     percent_dataframe = dataframe.loc[:, dataframe.columns != "Type"].applymap(
         lambda x: True if x == optimal else False)
     percent_dataframe["Type"] = dataframe["Type"]
-    percent_df = percent_dataframe.groupby(["Type"]).sum().applymap(lambda x: x*10)
-    percent_df.columns = np.arange(1,201,1)
+    percent_df = percent_dataframe.groupby(["Type"]).sum().applymap(lambda x: x * 10)
+    percent_df.columns = np.arange(1, 201, 1)
     # percent_df.to_csv("./percent_{0}.csv".format(Function), header=True, index=True)
     # display(percent_df)
 
     dataframe = percent_df.stack()
-    dataframe = dataframe.rename_axis(index=["Type","Combinations"])
+    dataframe = dataframe.rename_axis(index=["Type", "Combinations"])
     dataframe = dataframe.reset_index(level=[0, 1], name="Percentage")
     display(dataframe)
 
-    plt.figure(figsize=(20,5))
-    sns.lineplot(data=dataframe, x="Combinations",y="Percentage",hue="Type")
+    plt.figure(figsize=(20, 5))
+    sns.lineplot(data=dataframe, x="Combinations", y="Percentage", hue="Type")
     plt.savefig("./Ex4_{0}1.png".format(Function), dpi=1000)
     plt.show()
 
@@ -90,7 +90,8 @@ def plot_overview(Function, num_com, optimal):
     # plt.savefig("./data_analysis_{0}.pdf".format(Function), dpi=1000)
     # plt.show()
 
-flst=["F1","F3","F6","F12","F18","F22"]
-optlst=[0,3,5,11,17,21]
+
+flst = ["F1", "F3", "F6", "F12", "F18", "F22"]
+optlst = [0, 3, 5, 11, 17, 21]
 for i in range(6):
-    plot_overview(Function=flst[i],num_com=200,optimal=opt[optlst[i]])
+    plot_overview(Function=flst[i], num_com=200, optimal=opt[optlst[i]])

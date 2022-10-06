@@ -24,10 +24,11 @@ df_com = df_com[:200]
 opt = [0, 0, 0, 0, 0, 0, 0, -418.98 * 10, 0, 0, 0, 0, 0, 1, 0.00030, -1.0316, 0.398, 3, -3.86, -3.32, -10.1532,
        -10.4028, -10.5363]
 
-file_name = ["Linear_combination_crossover_normal", "Linear_combination_crossover_uniform",
+file_name = ["Linear_combination_crossover_normal",
+             "Linear_combination_crossover_uniform",
              "Probabilistic_crossover_normal",
              "Probabilistic_crossover_uniform",
-              "singe_point_crossover_normal",
+             "singe_point_crossover_normal",
              "singe_point_crossover_uniform"]
 
 
@@ -47,6 +48,7 @@ df = pd.concat(df, axis=0)
 df = df.rename_axis(index=["Function", "Times"])
 df = df.sort_index(level="Function")
 
+
 # df.to_csv("combined_f3612.csv",header=True,index=True)
 # display(df)
 
@@ -58,13 +60,15 @@ def best_20(Function):
                              columns=dataframe.columns)
     # print(dataframe.columns)
     dataframe.loc["sum"] = dataframe.loc[:, dataframe.columns != "Type"].sum(axis=0)
-    # display(dataframe)
+    display(dataframe)
+    dataframe.to_csv(f"./list({Function}).csv".format(Function),header=True,index=True)
     dataframe = dataframe.sort_values(by="sum", axis=1, ascending=True, na_position="last")
     # display(dataframe)
     k = dataframe.columns.tolist()[:20]
     return k
 
-best_list=[]
+
+best_list = []
 for i in [3, 6, 12]:
     best_ = best_20(Function="F" + str(i))
     best_list.append(best_)
