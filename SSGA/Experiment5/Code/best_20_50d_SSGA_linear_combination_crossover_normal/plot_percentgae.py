@@ -74,6 +74,6 @@ dataframe = dataframe.reset_index(level=[0, 1], name="Percentage")
 display(dataframe)
 
 plt.figure(figsize=(40, 10))
-sns.barplot(data=dataframe, x="Combinations", y="Percentage",hue="Type")
+sns.scatterplot(data=dataframe, x="Combinations", y="Percentage",hue="Type")
 plt.savefig("./Ex5_12.png", dpi=1000)
 plt.show()
