@@ -35,11 +35,11 @@ if __name__ == '__main__':
     # #     data.to_csv("./combination{0}.csv".format(index[i]),header=True,index=True)
     # #     data_budget.to_csv("./budget{0}.csv".format(index[i]),header=True,index=True)
     #
-    with pd.ExcelWriter("Baldwin.xlsx") as writer:
-        for i in range(0, len(com), 1):
-            print(time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time())))
-            data, data_budget = improved_evolution.multipleF(Times=10, L=[0, 1], Com=com[i],
-                                                             mode="Baldwin",
-                                                             function_list=[18])
-            data.to_excel(writer, sheet_name="combination" + str(index[i]))
-            data_budget.to_excel(writer, sheet_name="budget" + str(index[i]))
+    # with pd.ExcelWriter("Baldwin.xlsx") as writer:
+    #     for i in range(0, len(com), 1):
+    #         print(time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time())))
+    #         data, data_budget = improved_evolution.multipleF(Times=10, L=[0, 1], Com=com[i],
+    #                                                          mode="Baldwin",
+    #                                                          function_list=[18])
+    #         data.to_excel(writer, sheet_name="combination" + str(index[i]))
+    #         data_budget.to_excel(writer, sheet_name="budget" + str(index[i]))
