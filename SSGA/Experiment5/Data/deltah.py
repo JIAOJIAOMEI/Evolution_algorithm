@@ -38,8 +38,7 @@ dist_rows = 60
 plt.figure(figsize=(22 * dist_cols,3.5 * dist_rows))
 for i in range(1,60,1):
     plt.subplot(dist_rows, dist_cols, i)
-    x = ["F"+str(i+1)+"_"+str(ratio_list[i]) for i in range(23)]
-    print(x)
+    x = ratio_list
     y1 = df["col"+str(i)].tolist()
     plt.scatter(x,y1)
     plt.xlabel("2/(upper-lower)")
