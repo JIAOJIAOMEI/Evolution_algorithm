@@ -53,7 +53,7 @@ def choose_func(function):
         num_genes = 50
         genotype_range = [-600, 600]
     elif function == 12:
-        func = improved_fitness_functions.F13
+        func = improved_fitness_functions.F12
         num_genes = 50
         genotype_range = [-50, 50]
     elif function == 13:

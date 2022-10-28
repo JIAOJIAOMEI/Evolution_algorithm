@@ -19,7 +19,7 @@ ratio_list=[]
 for i in genotype_range_list:
     low_bound, high_bound = i
     print(low_bound,high_bound)
-    k = np.round(1/(high_bound-low_bound),4)
+    k = np.round((2*0.25)/(high_bound-low_bound),4)
     ratio_list.append(k)
 print(ratio_list)
 
@@ -39,7 +39,7 @@ x = ratio_list
 for i in range(1,61,1):
     y = df["col"+str(i)].tolist()
     plt.scatter(x,y)
-plt.xlabel("1/(upper-lower)")
+plt.xlabel("2*0.25/(upper-lower)")
 plt.ylabel("percentage value")
-plt.savefig("./deltah2.pdf", dpi=1000)
+plt.savefig("./deltah0.25.pdf", dpi=1000)
 plt.show()

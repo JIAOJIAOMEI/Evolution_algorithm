@@ -5,6 +5,10 @@ import time
 
 import pandas as pd
 
+# 显示所有列
+pd.set_option('display.max_columns', None)
+# 显示所有行
+pd.set_option('display.max_rows', None)
 import improved_evolution
 from parameter_combination import read_file
 
@@ -15,24 +19,33 @@ if __name__ == '__main__':
     com_df = pd.read_csv("./best_20_pm.csv",
                          index_col=[0],
                          header=0)
-    com_df["num_phenotypes"] = 3
-    print(com_df)
-    com = com_df.values.tolist()
-    index = com_df.index.tolist()
-    function_list = [i for i in range(1, 24, 1)]
+    com_df["L"] = 5
+    com_df["K"] = 1
+    com_df["R"] = 0.01  # 0.05
 
-    with pd.ExcelWriter("Lamarck.xlsx") as writer:
-        for i in range(0, len(com), 1):
-            print(time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time())))
-            # if i % 5 == 4:
-            #     print("\033[0;37;45m {0} combinations are tested.\033[0m".format(i + 1))
-            data, temp = improved_evolution.multipleF(Times=10, L=[0, 1], Com=com[i], mode="Lamarck",
-                                                      function_list=function_list)
-            data.to_excel(writer, sheet_name="combination" + str(index[i]))
+    df_col = com_df.columns.tolist()
+    df_col.remove("range_mutation")
+    print([df_col])
+    com_df = com_df[df_col]
+    com_df.to_csv("./best_20com_9pm.csv", header=True, index=True)
+    data_pm = pd.read_csv("./best_20com_9pm.csv", header=0, index_col=[0])
+    com = data_pm.values.tolist()[2:3]
+    index = data_pm.index.tolist()[2:3]
+    print(com, index)
+    #
+    # function_list = [i for i in range(1, 24, 1)]
+    function_list =[1,2,3,4,5,6,10,11,12,13,14,15,16,17,18]  # round(0)
+    # F1, F2, F3, F4, F6, F10, F11, F12, F13, F15, F16, F17, F18.
+    # function_list = [17]  # round(3)
+    # function_list = [8,19,20] # round(2)
+    # function_list = [15,16,21,22,23] # round(4)
+    # function_list = [17] # test
+    print(len(function_list))
 
-    sheet_name = ["combination" + str(i) for i in index]
-    path = "Lamarck.xlsx"
-    df = [read_file(name, path) for name in sheet_name]
-    df = pd.concat(df, axis=1)
-    df.columns = sheet_name
-    df.to_csv("./Lamarck.csv")
+    for i in range(0, len(com), 1):
+        print(time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time())))
+        data, data_budget = improved_evolution.multipleF(Times=10, L=[0, 1], Com=com[i],
+                                                         mode="Lamarck",
+                                                         function_list=function_list)
+    # #     data.to_csv("./combination{0}.csv".format(index[i]),header=True,index=True)
+    # #     data_budget.to_csv("./budget{0}.csv".format(index[i]),header=True,index=True)

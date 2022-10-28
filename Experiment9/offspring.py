@@ -7,8 +7,9 @@ import random
 import numpy as np
 
 
-def offspring(individuals, num_genes, best_fit, worst_fit, mutation_rate, mode, range_mutation, crossover_probability,
-              mutation_type, crossover_type, genotype_range):
+def offspring(individuals, num_genes, best_fit, worst_fit, mutation_rate, mode, crossover_probability,
+              mutation_type, crossover_type, genotype_range, R):
+    STD = (genotype_range[1]-genotype_range[0])*R
     n = []
     if mode == "Lamarck":
         n = [individual.phenotype for individual in individuals]
@@ -54,7 +55,7 @@ def offspring(individuals, num_genes, best_fit, worst_fit, mutation_rate, mode, 
     if mutation_type == "Uniform":
         for i in range(len(result)):
             if np.random.rand() < mutation_rate:
-                result[i] = result[i] + float(np.random.uniform(-range_mutation, range_mutation))
+                result[i] = result[i] + float(np.random.uniform(-3*STD, 3*STD))
                 if result[i] < genotype_range[0]:  # check domain
                     result[i] = genotype_range[0]
                 elif result[i] > genotype_range[1]:
@@ -62,8 +63,7 @@ def offspring(individuals, num_genes, best_fit, worst_fit, mutation_rate, mode, 
     elif mutation_type == "Normal":
         for i in range(len(result)):
             if np.random.rand() < mutation_rate:
-                result[i] = result[i] + float(
-                    np.random.normal(loc=0, scale=2 * range_mutation, size=1) - range_mutation)
+                result[i] = result[i] + float(np.random.normal(loc=0, scale=STD, size=1))
                 if result[i] < genotype_range[0]:  # check domain
                     result[i] = genotype_range[0]
                 elif result[i] > genotype_range[1]:
