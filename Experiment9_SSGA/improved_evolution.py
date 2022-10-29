@@ -63,12 +63,12 @@ def test(function, parameter_list, opt):
         best_individual, best_fv = sort_zipped[0]
 
         best_generation.append(best_fv)
-        if generation % 10000 == 9998:
-            print(Fore.BLUE + f'{best_fv:.5E} is best, minima is {opt},generation is {generation}')
+        # if generation % 10000 == 9998:
+        #     print(Fore.BLUE + f'{best_fv:.5E} is best, minima is {opt},generation is {generation}')
             # print(best_individual.genotype)
         current_optimal = precision_f(best_fv=best_fv, f=function)
         if current_optimal <= opt:
-            print(f"current optimal is {current_optimal},global minima is found")
+            # print(f"current optimal is {current_optimal},global minima is found")
             break
 
         new_individual = offspring(individuals=individuals, best_fit=0, worst_fit=-1, num_genes=num_genes,
@@ -107,11 +107,11 @@ def multipleF(Times, L, Com, function_list):
         result_list_coloum = []
         budget_list_coloum = []
         for f in function_list:
-            print('\033[2;31;43m now is testing F{0} \033[0;0m'.format(f))
+            # print('\033[2;31;43m now is testing F{0} \033[0;0m'.format(f))
             result_list = []
             budget_list = []
             for times in range(Times):
-                print(f"times is {times}")
+                # print(f"times is {times}")
                 result, budget = test(function=f,parameter_list=combination, opt=global_opt[f - 1])
                 result_list.append(float(result))
                 budget_list.append(float(budget))

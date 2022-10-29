@@ -23,28 +23,29 @@ if __name__ == '__main__':
     com_df.to_csv("./best_20com_9pm.csv", header=True, index=True)
     data_pm = pd.read_csv("./best_20com_9pm.csv", header=0, index_col=[0])
 
-    com = data_pm.values.tolist()[2:3]
-    index = data_pm.index.tolist()[2:3]
+    com = data_pm.values.tolist()
+    index = data_pm.index.tolist()
     # print(data_pm)
 
-
     #
-    # function_list = [i for i in range(1, 24, 1)]
+    function_list = [i for i in range(1, 24, 1)]
     # function_list =[1,2,3,4,5,6,7,9,10,11,12,13,14,18]  # round(0)
-    function_list = [1, 2, 3, 4, 5, 6, 10, 11, 12, 13, 14, 15, 16, 17, 18]  # round(0)
+    # function_list = [1, 2, 3, 4, 5, 6, 10, 11, 12, 13, 14, 15, 16, 17, 18]  # round(0)
     # function_list = [17] # round(3)
     # function_list = [8,19,20] # round(2)
     # function_list = [15,16,21,22,23] # round(4)
     # function_list = [17] # test
-    print(len(function_list))
+    # print(len(function_list))
     #
 
     for i in range(0, len(com), 1):
         print(time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time())))
         if i % 5 == 4:
             print("\033[0;37;45m {0} combinations are tested.\033[0m".format(i + 1))
-        data, temp = improved_evolution.multipleF(Times=10, L=[0, 1], Com=com[i],
-                                                  function_list=function_list)
+        data, data_budget = improved_evolution.multipleF(Times=10, L=[0, 1], Com=com[i],
+                                                         function_list=function_list)
+        data.to_csv("./combination{0}.csv".format(index[i]), header=True, index=True)
+        data_budget.to_csv("./budget{0}.csv".format(index[i]), header=True, index=True)
 
     #
     # sheet_name = ["combination" + str(i) for i in index]
