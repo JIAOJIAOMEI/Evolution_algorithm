@@ -6,7 +6,6 @@ import math
 import random
 
 import numpy as np
-
 # from sympy import sin, cos, exp, prod, sqrt,pi
 
 power = math.pow
@@ -79,7 +78,7 @@ def F7(x):
     :param x: 1*50
     :return: fitness
     """
-    fitness = [power(x[i], 4) * (i + 1) + random.choice([0, 1]) for i in range(len(x))]
+    fitness = [power(x[i], 4) * (i + 1) for i in range(len(x))]
     return sum(fitness)
 
 
@@ -310,3 +309,83 @@ def F23(x):
         fitness.append(inner)
     return -sum(fitness)
 
+
+#2,3,4,6,50
+# x = [0 for i in range(50)]
+# F_list = [F1,F2,F3,F4,F7,F9,F10,F11]
+# global_minima = [F(x) for F in F_list]
+# print(f"dimension is 50")
+# print([str(i)+":"+ str(k) for i,k in zip(F_list,global_minima)])
+#
+# x = [1 for i in range(50)]
+# F_list = [F5,F13]
+# global_minima = [F(x) for F in F_list]
+# print(f"dimension is 50")
+# print([str(i)+":"+ str(k) for i,k in zip(F_list,global_minima)])
+#
+# x = [-0.5 for i in range(50)]
+# F_list = [F6]
+# global_minima = [F(x) for F in F_list]
+# print(f"dimension is 50")
+# print([str(i)+":"+ str(k) for i,k in zip(F_list,global_minima)])
+#
+# x = [-1 for i in range(50)]
+# F_list = [F12]
+# global_minima = [F(x) for F in F_list]
+# print(f"dimension is 50")
+# print([str(i)+":"+ str(k) for i,k in zip(F_list,global_minima)])
+#
+# x = [4 for i in range(4)]
+# F_list = [F21,F22,F23]
+# global_minima = [F(x) for F in F_list]
+# print(f"dimension is 4")
+# print([str(i)+":"+ str(k) for i,k in zip(F_list,global_minima)])
+#
+# x = [-32,-32]
+# F_list = [F14]
+# global_minima = [F(x) for F in F_list]
+# print(f"dimension is 2")
+# print([str(i)+":"+ str(k) for i,k in zip(F_list,global_minima)])
+#
+# x=[0.21, 0.15, 0.47, 0.27, 0.3, 0.66]
+# F_list = [F20]
+# global_minima = [F(x) for F in F_list]
+# print(f"dimension is 6")
+# print([str(i)+":"+ str(k) for i,k in zip(F_list,global_minima)])
+#
+# x=[0.065, 0.85, 0.57]
+# F_list = [F19]
+# global_minima = [F(x) for F in F_list]
+# print(f"dimension is 2")
+# print([str(i)+":"+ str(k) for i,k in zip(F_list,global_minima)])
+#
+# x = [421 for i in range(50)]
+# F_list = [F8]
+# global_minima = [F(x) for F in F_list]
+# print(f"dimension is 50")
+# print([str(i)+":"+ str(k) for i,k in zip(F_list,global_minima)])
+#
+#
+# x = [0.186, 0.377, 0.179, 0.214]
+# F_list = [F15]
+# global_minima = [F(x) for F in F_list]
+# print(f"dimension is 4")
+# print([str(i)+":"+ str(k) for i,k in zip(F_list,global_minima)])
+#
+# x=[-0.086, 0.711]
+# F_list = [F16]
+# global_minima = [F(x) for F in F_list]
+# print(f"dimension is 2")
+# print([str(i)+":"+ str(k) for i,k in zip(F_list,global_minima)])
+#
+# x=[3.141, 2.277]
+# F_list = [F17]
+# global_minima = [F(x) for F in F_list]
+# print(f"dimension is 2")
+# print([str(i)+":"+ str(k) for i,k in zip(F_list,global_minima)])
+#
+# x=[0, -1]
+# F_list = [F18]
+# global_minima = [F(x) for F in F_list]
+# print(f"dimension is 2")
+# print([str(i)+":"+ str(k) for i,k in zip(F_list,global_minima)])
