@@ -13,7 +13,7 @@ import improved_evolution
 from parameter_combination import read_file
 
 if __name__ == '__main__':
-    opt = [0, 0, 0, 0, 0, 0, 0, -418.98 * 50, 0, 0, 0, 0, 0, 1, 0.00030, -1.0316, 0.398, 3, -3.86, -3.32, -10.1532,
+    opt = [0, 0, 0, 0, 0, 0, 0, -418.98 * 50, 0, 0, 0, 0, 0, 1, 0.0003, -1.0316, 0.398, 3, -3.86, -3.32, -10.1532,
            -10.4028, -10.5363]
 
     com_df = pd.read_csv("./best_20_pm.csv",
@@ -29,16 +29,16 @@ if __name__ == '__main__':
     com_df = com_df[df_col]
     com_df.to_csv("./best_20com_9pm.csv", header=True, index=True)
     data_pm = pd.read_csv("./best_20com_9pm.csv", header=0, index_col=[0])
-    com = data_pm.values.tolist()[2:3]
-    index = data_pm.index.tolist()[2:3]
+    com = data_pm.values.tolist()[14:16]
+    index = data_pm.index.tolist()[14:16]
     print(com, index)
-    #
+
     function_list = [i for i in range(1, 24, 1)]
 
     for i in range(0, len(com), 1):
         print(time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time())))
         data, data_budget, data_similarity = improved_evolution.multipleF(Times=10, L=[0, 1], Com=com[i],
-                                                                          mode="Lamarck",
+                                                                          mode="Baldwin",
                                                                           function_list=function_list)
         data.to_csv("./combination{0}.csv".format(index[i]), header=True, index=True)
         data_budget.to_csv("./budget{0}.csv".format(index[i]), header=True, index=True)

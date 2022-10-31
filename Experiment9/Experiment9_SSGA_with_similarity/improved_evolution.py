@@ -5,42 +5,37 @@
 import numpy as np
 import pandas as pd
 from colorama import Fore
-from math import *
 
-from Initialization_gradient import initialization, Individual
 from cal_fitness import fitness_single, fitness
 from functions_parameter import choose_func
+from InitializationSSGA import initialization, Individual
 from offspring import offspring
 
-global_opt = opt = [0, 0, 0, 0, 0, 0, 0, -418.98 * 50, 0, 0, 0, 0, 0, 1, 0.0003, -1.0316, 0.398, 3, -3.86, -3.32,
+global_opt = opt = [0, 0, 0, 0, 0, 0, 0, -418.98 * 50, 0, 0, 0, 0, 0, 1, 0.00030, -1.0316, 0.398, 3, -3.86, -3.32,
                     -10.1532, -10.4028, -10.5363]
 
 
-def test(function, mode, parameter_list, opt):
-    # ['iterations', 'mutation_rate', 'num_individuals', 'crossover_probability', 'Mutation_type', 'Crossover_type', 'L', 'K', 'R']
-    iterations = 1000000  # parameter_list[0]
+def test(function, parameter_list, opt):
+    # [['iterations', 'mutation_rate', 'num_individuals', 'crossover_probability', 'Mutation_type', 'Crossover_type', 'R']]
+    # iterations = parameter_list[0]
+    iterations = 1000000
     mutation_rate = parameter_list[1]
     num_individuals = int(parameter_list[2])
     crossover_probability = parameter_list[3]
     mutation_type = parameter_list[4]
     crossover_type = parameter_list[5]
-    L = int(parameter_list[6])
-    K = parameter_list[7]
-    R = parameter_list[8]
+    R = parameter_list[6]
 
     func, num_genes, genotype_range = choose_func(function)
-    individuals = initialization(func=func, num_genes=num_genes,
-                                 num_individual=num_individuals, genotype_range=genotype_range, K=K, L=L, R=R)
+    individuals = initialization(num_genes=num_genes, num_individual=num_individuals, genotype_range=genotype_range)
     best_generation = []
     best, worst, fit_all = fitness(individuals=individuals, func=func)
     best_generation.append(fit_all[best])
     new_individual = offspring(individuals=individuals, best_fit=best, worst_fit=worst, num_genes=num_genes,
-                               mutation_rate=mutation_rate, mode=mode, crossover_probability=crossover_probability,
-                               mutation_type=mutation_type, crossover_type=crossover_type,
-                               genotype_range=genotype_range,
-                               R=R)
-    new = Individual(func=func, num_genes=num_genes, genotype=new_individual,
-                     genotype_range=genotype_range, pattern=1, K=K, L=L, R=R)
+                               mutation_rate=mutation_rate, crossover_probability=crossover_probability,
+                               mutation_type=mutation_type,
+                               crossover_type=crossover_type, genotype_range=genotype_range, R=R)
+    new = Individual(num_genes=num_genes, genotype=new_individual, genotype_range=genotype_range, pattern=1)
 
     del individuals[worst]
     del fit_all[worst]
@@ -60,25 +55,30 @@ def test(function, mode, parameter_list, opt):
     fit_all = [j for i, j in sort_zipped]
 
     count = 1
-    budget = num_individuals * L * (K + 1)
+    budget = num_individuals
     similarity_population = sum(
-        [jaccard_similarity(other.phenotype, individuals[0].phenotype) for other in individuals[1:]])
+        [euclidean_distance(other.phenotype, individuals[0].phenotype) for other in individuals[1:]])
     stuck = 0
 
     for generation in range(iterations - 1):
+        budget = budget+1
         count += 1
         best_individual, best_fv = sort_zipped[0]
+
         best_generation.append(best_fv)
+        # if generation % 10000 == 9998:
+        #     print(Fore.BLUE + f'{best_fv:.5E} is best, minima is {opt},generation is {generation}')
+            # print(best_individual.genotype)
         current_optimal = precision_f(best_fv=best_fv, f=function)
         if current_optimal <= opt:
+            # print(f"current optimal is {current_optimal},global minima is found")
             break
 
         new_individual = offspring(individuals=individuals, best_fit=0, worst_fit=-1, num_genes=num_genes,
-                                   mutation_rate=mutation_rate, mode=mode, crossover_probability=crossover_probability,
-                                   mutation_type=mutation_type,
+                                   mutation_rate=mutation_rate,
+                                   crossover_probability=crossover_probability, mutation_type=mutation_type,
                                    crossover_type=crossover_type, genotype_range=genotype_range, R=R)
-        new = Individual(func=func, num_genes=num_genes, genotype=new_individual,
-                         genotype_range=genotype_range, pattern=1, K=K, L=L, R=R)
+        new = Individual(num_genes=num_genes, genotype=new_individual, genotype_range=genotype_range, pattern=1)
 
         new_fit = fitness_single(individual=new, func=func)
         new_zip = (new, new_fit)
@@ -98,18 +98,17 @@ def test(function, mode, parameter_list, opt):
                 fit_all.append(new_fit)
                 break
         similarity_population = sum(
-            [jaccard_similarity(other.phenotype, individuals[0].phenotype) for other in individuals[1:]])
-        budget = budget + L * (K + 1)
-        if similarity_population == (num_individuals - 1):
+            [euclidean_distance(other.phenotype, individuals[0].phenotype) for other in individuals[1:]])
+        budget = budget + 1
+        if similarity_population == 0:
             stuck = stuck + 1
         if stuck >= 3000:
-            budget = num_individuals * L * (K + 1)+ (1000000-1)*L * (K + 1)
             break
 
     return min(best_generation), budget, similarity_population
 
 
-def multipleF(mode, Times, L, Com, function_list):
+def multipleF(Times, L, Com, function_list):
     result_list_all = []
     budget_list_all = []
     similarity_list_all =[]
@@ -124,7 +123,7 @@ def multipleF(mode, Times, L, Com, function_list):
             budget_list = []
             similarity_list=[]
             for times in range(Times):
-                result, budget,similarity = test(function=f, mode=mode, parameter_list=combination, opt=global_opt[f - 1])
+                result, budget,similarity = test(function=f,parameter_list=combination, opt=global_opt[f - 1])
                 result_list.append(float(result))
                 budget_list.append(float(budget))
                 similarity_list.append(similarity)
