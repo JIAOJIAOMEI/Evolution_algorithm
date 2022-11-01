@@ -61,7 +61,6 @@ def test(function, parameter_list, opt):
     stuck = 0
 
     for generation in range(iterations - 1):
-        budget = budget+1
         count += 1
         best_individual, best_fv = sort_zipped[0]
 
@@ -166,7 +165,4 @@ def euclidean_distance(x, y):
     return np.sqrt(sum(pow(a - b, 2) for a, b in zip(x, y)))
 
 
-def jaccard_similarity(x, y):
-    intersection_cardinality = len(set.intersection(*[set(x), set(y)]))
-    union_cardinality = len(set.union(*[set(x), set(y)]))
-    return intersection_cardinality / float(union_cardinality)
+

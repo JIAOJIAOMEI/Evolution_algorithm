@@ -60,9 +60,9 @@ def test(function, mode, parameter_list, opt):
     fit_all = [j for i, j in sort_zipped]
 
     count = 1
-    budget = num_individuals * L * (K + 1)
+    budget = num_individuals * L * (K*num_genes + 1)
     similarity_population = sum(
-        [jaccard_similarity(other.phenotype, individuals[0].phenotype) for other in individuals[1:]])
+        [euclidean_distance(other.phenotype, individuals[0].phenotype) for other in individuals[1:]])
     stuck = 0
 
     for generation in range(iterations - 1):
@@ -98,12 +98,11 @@ def test(function, mode, parameter_list, opt):
                 fit_all.append(new_fit)
                 break
         similarity_population = sum(
-            [jaccard_similarity(other.phenotype, individuals[0].phenotype) for other in individuals[1:]])
-        budget = budget + L * (K + 1)
-        if similarity_population == (num_individuals - 1):
+            [euclidean_distance(other.phenotype, individuals[0].phenotype) for other in individuals[1:]])
+        budget = budget + L * (K*num_genes + 1)
+        if similarity_population == 0:
             stuck = stuck + 1
         if stuck >= 3000:
-            budget = num_individuals * L * (K + 1)+ (1000000-1)*L * (K + 1)
             break
 
     return min(best_generation), budget, similarity_population
@@ -167,7 +166,4 @@ def euclidean_distance(x, y):
     return np.sqrt(sum(pow(a - b, 2) for a, b in zip(x, y)))
 
 
-def jaccard_similarity(x, y):
-    intersection_cardinality = len(set.intersection(*[set(x), set(y)]))
-    union_cardinality = len(set.union(*[set(x), set(y)]))
-    return intersection_cardinality / float(union_cardinality)
+
