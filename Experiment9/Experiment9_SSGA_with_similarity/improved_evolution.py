@@ -70,7 +70,7 @@ def test(function, parameter_list, opt):
             # print(best_individual.genotype)
         current_optimal = precision_f(best_fv=best_fv, f=function)
         if current_optimal <= opt:
-            # print(f"current optimal is {current_optimal},global minima is found")
+            print(f"current optimal is {current_optimal},global minima is {opt},similarity is {similarity_population}")
             break
 
         new_individual = offspring(individuals=individuals, best_fit=0, worst_fit=-1, num_genes=num_genes,
@@ -101,6 +101,8 @@ def test(function, parameter_list, opt):
         budget = budget + 1
         if similarity_population == 0:
             stuck = stuck + 1
+        else:
+            stuck = 0
         if stuck >= 3000:
             break
 
@@ -118,10 +120,12 @@ def multipleF(Times, L, Com, function_list):
         budget_list_coloum = []
         similarity_list_coloum = []
         for f in function_list:
+            print(Fore.RED+f"Now testing Function{f}")
             result_list = []
             budget_list = []
             similarity_list=[]
             for times in range(Times):
+                print(Fore.YELLOW +f"Time is {times}")
                 result, budget,similarity = test(function=f,parameter_list=combination, opt=global_opt[f - 1])
                 result_list.append(float(result))
                 budget_list.append(float(budget))

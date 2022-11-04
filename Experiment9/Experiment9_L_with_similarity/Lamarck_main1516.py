@@ -19,7 +19,7 @@ if __name__ == '__main__':
     com_df = pd.read_csv("./best_20_pm.csv",
                          index_col=[0],
                          header=0)
-    com_df["L"] = 1
+    com_df["L"] = 5
     com_df["K"] = 1
     com_df["R"] = 0.01  # 0.05
 

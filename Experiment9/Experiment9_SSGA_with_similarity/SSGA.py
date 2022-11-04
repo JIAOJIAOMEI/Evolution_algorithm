@@ -25,6 +25,7 @@ if __name__ == '__main__':
 
     com = data_pm.values.tolist()
     index = data_pm.index.tolist()
+    # print(data_pm["num_individuals"])
 
     function_list = [i for i in range(1, 24, 1)]
 

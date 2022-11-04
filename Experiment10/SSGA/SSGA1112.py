@@ -15,7 +15,7 @@ if __name__ == '__main__':
     com_df = pd.read_csv("./best_20_pm.csv",
                          index_col=[0],
                          header=0)
-    com_df["R"] = 0.01
+    com_df["R"] = 0.4
     df_col = com_df.columns.tolist()
     df_col.remove("range_mutation")
     print([df_col])
@@ -23,8 +23,8 @@ if __name__ == '__main__':
     com_df.to_csv("./best_20com_9pm.csv", header=True, index=True)
     data_pm = pd.read_csv("./best_20com_9pm.csv", header=0, index_col=[0])
 
-    com = data_pm.values.tolist()[0:7]
-    index = data_pm.index.tolist()[0:7]
+    com = data_pm.values.tolist()[10:12]
+    index = data_pm.index.tolist()[10:12]
 
     function_list = [i for i in range(1, 24, 1)]
 
