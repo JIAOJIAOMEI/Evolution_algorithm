@@ -15,7 +15,7 @@ if __name__ == '__main__':
     com_df = pd.read_csv("./best_20_pm.csv",
                          index_col=[0],
                          header=0)
-    com_df["R"] = 0.4
+    com_df["R"] = 0.1
     df_col = com_df.columns.tolist()
     df_col.remove("range_mutation")
     print([df_col])

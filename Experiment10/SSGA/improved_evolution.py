@@ -99,9 +99,11 @@ def test(function, parameter_list, opt):
         similarity_population = sum(
             [euclidean_distance(other.phenotype, individuals[0].phenotype) for other in individuals[1:]])
         budget = budget + 1
-        if similarity_population == 0:
+        if similarity_population < 0.0001:
             stuck = stuck + 1
-        if stuck >= 3000:
+        else:
+            stuck = 0
+        if stuck >= 5000:
             break
 
     return min(best_generation), budget, similarity_population

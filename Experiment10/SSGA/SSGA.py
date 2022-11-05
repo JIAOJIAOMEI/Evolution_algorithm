@@ -33,7 +33,7 @@ if __name__ == '__main__':
         if i % 5 == 4:
             print("\033[0;37;45m {0} combinations are tested.\033[0m".format(i + 1))
         data, data_budget,data_similarity = improved_evolution.multipleF(Times=10, L=[0, 1], Com=com[i],
-                                                         function_list=[20])
+                                                         function_list=[14])
         # data.to_csv("./combination{0}.csv".format(index[i]), header=True, index=True)
         # data_budget.to_csv("./budget{0}.csv".format(index[i]), header=True, index=True)
         # data_similarity.to_csv("./similarity{0}.csv".format(index[i]), header=True, index=True)
