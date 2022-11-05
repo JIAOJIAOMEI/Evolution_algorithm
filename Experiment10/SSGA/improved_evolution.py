@@ -68,10 +68,10 @@ def test(function, parameter_list, opt):
         # if generation % 10000 == 9998:
         #     print(Fore.BLUE + f'{best_fv:.5E} is best, minima is {opt},generation is {generation},similarity is {similarity_population}')
         # print(best_individual.genotype)
-        # current_optimal = precision_f(best_fv=best_fv, f=function)
-        # if current_optimal <= opt:
-        #     print(f"current optimal is {current_optimal},global minima is {opt},similarity is {similarity_population}")
-        #     break
+        current_optimal = precision_f(best_fv=best_fv, f=function)
+        if current_optimal <= opt:
+            print(f"current optimal is {current_optimal},global minima is {opt},similarity is {similarity_population}")
+            break
 
         new_individual = offspring(individuals=individuals, best_fit=0, worst_fit=-1, num_genes=num_genes,
                                    mutation_rate=mutation_rate,
