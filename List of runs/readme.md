@@ -239,7 +239,7 @@ we run best 20 parameter combinations for SSGA with dimension=50, using best 20 
 
 ![image-20221110205750201](image-20221110205750201.png)
 
-- Lamarck using normal mutation,  probabilistic crossover,  normal local search
+- Lamarck using uniform mutation,  probabilistic crossover,  normal local search
 - and strategy that "choosing best of genotype and phenotype as final phenotype" ==is applied==.
 - number of Phenotypes =3
 - best 20 parameter combinations used are obtained in Experiment4.
@@ -255,7 +255,7 @@ we run best 20 parameter combinations for SSGA with dimension=50, using best 20 
 
 ![image-20221110205909333](image-20221110205909333.png)
 
-- Lamarck using normal mutation,  single point crossover,  normal local search
+- Lamarck using uniform mutation,  single point crossover,  normal local search
 - and strategy that "choosing best of genotype and phenotype as final phenotype" ==is applied==.
 - number of Phenotypes =3
 - best 20 parameter combinations used are obtained in Experiment4.
