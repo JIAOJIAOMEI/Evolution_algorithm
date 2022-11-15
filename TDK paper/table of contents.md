@@ -14,31 +14,40 @@ Before exploring Lamarckian and Baldwinian approaches, a baseline framework wher
 
 ## Introduction
 
-## Methods selection
+## Methods -- DELETE: selection
 
-### Terminology 
+### Genetic and Memetic Algorithm
 
-#### Genotype & Phenotype
+General description of GA and that of Memetic Algorithm.
 
-#### Fitness Function
+### DELETE This SECTION Terminology 
 
-#### Probability Crossover
-
-#### Linear Combination Crossover
-
-#### Single Point Crossover
-
-#### Normal Mutation
-
-#### Uniform Mutation
 
 ### Steady-state Genetic Algorithm
+SSGA is a simple variant of GA.
 
 Steady-state genetic algorithm (SSGA) is implemented as a baseline framework in order to demonstrate the progress and improvements which Lamarckian and Baldwinian approaches provide. SSGA maintains a stable population size by generating only one new offspring based on the best individual in the population, while discarding the least adapted individual. The individual holding the lowest position in the fitness landscape is defined as the best individual, as our goal is to find the global minimum. In contrast, the individuals who are least adapted to the environment have the highest position. For all individuals in SSGA, genotypes and phenotypes are vectors of equal dimensions and equal values at corresponding positions in every test function of CEC-BC-2017. Fitness value of an individual is computed based on its phenotype. The genotypes of the primordial populations are randomly created with every gene located within the domain of a test function. 
 
-#### Flowchat of SSGA
+#### Flowchart of SSGA
 
 #### Pseudo-code of SSGA
+
+#### Parameters of SSGA
+
+##### Genotype & Phenotype
+
+##### Fitness Function
+
+##### Probability Crossover
+
+##### Linear Combination Crossover
+
+##### Single Point Crossover
+
+##### Normal Mutation
+
+##### Uniform Mutation
+
 
 ### Baldwinian & Lamarckian Algorithm
 
@@ -46,7 +55,10 @@ Steady-state genetic algorithm (SSGA) is implemented as a baseline framework in 
 
 #### Pseudo-code of Baldwin & Lamarck
 
-## Performance Analysis
+#### Methods for Local Search
+
+
+## Results -- NOT Performance Analysis
 
 ### Experiments
 
