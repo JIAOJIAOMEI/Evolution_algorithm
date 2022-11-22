@@ -109,9 +109,10 @@ def F10(x):
     :param x: 1*50
     :return: fitness
     """
+    dim = len(x)
     part1 = sum([power(i, 2) for i in x])
     part2 = sum([cos(2 * pi * i) for i in x])
-    fitness = (-20) * exp(-0.2 * sqrt(0.02 * part1)) + (-exp(0.02 * part2) + 20 + e)
+    fitness = (-20) * exp(-0.2 * sqrt((1/dim) * part1)) + (-exp((1/dim) * part2) + 20 + e)
     return fitness
 
 

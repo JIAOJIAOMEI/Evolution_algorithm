@@ -65,7 +65,7 @@ def test(function, parameter_list, opt):
         best_individual, best_fv = sort_zipped[0]
 
         best_generation.append(best_fv)
-        if generation % 2000 == 1998:
+        if generation % 200 == 198:
             print(Fore.BLUE + f'Iter at {generation},  best solution is {best_fv:.5E},  optima is {opt},  similarity is {similarity_population:.5E},   phenotype is {best_individual.genotype}')
         current_optimal = precision_f(best_fv=best_fv, f=function)
         if current_optimal <= opt:

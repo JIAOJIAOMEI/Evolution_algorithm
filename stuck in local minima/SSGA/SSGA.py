@@ -26,7 +26,7 @@ if __name__ == '__main__':
     com = data_pm.values.tolist()[1:2]
     index = data_pm.index.tolist()[1:2]
 
-    function_list = [21]
+    function_list = [19]
 
     for i in range(0, len(com), 1):
         print(time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time())))

@@ -83,7 +83,8 @@ def choose_func(function):
     elif function == 19:
         func = improved_fitness_functions.F19
         num_genes = 3
-        genotype_range = [1, 3]
+        # genotype_range = [1, 3]
+        genotype_range = [0, 1]
     elif function == 20:
         func = improved_fitness_functions.F20
         num_genes = 6
