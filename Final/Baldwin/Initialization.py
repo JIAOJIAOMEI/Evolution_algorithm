@@ -28,11 +28,18 @@ class Individual:
                     temp[i] = temp[i] + float(np.random.normal(loc=0, scale=STD, size=1))
                     temp[i] = max(temp[i], genotype_range[0])  # check domain
                     temp[i] = min(temp[i], genotype_range[1])
-
-        if func(temp) <= func(self.genotype):
+        a = func(temp)
+        b = func(self.genotype)
+        if a<=b:
             self.phenotype = temp
+            self.phenotype_fitness = a
         else:
             self.phenotype = self.genotype.copy()
+            self.phenotype_fitness = b
+        # if func(temp) <= func(self.genotype):
+        #     self.phenotype = temp
+        # else:
+        #     self.phenotype = self.genotype.copy()
 
 
 def initialization(func, num_genes, num_individual, genotype_range, local_search_rate, local_search_type, R):

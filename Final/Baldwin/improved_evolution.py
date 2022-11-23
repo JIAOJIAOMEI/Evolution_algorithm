@@ -64,7 +64,7 @@ def test(function, mode, parameter_list, opt):
     fit_all = [j for i, j in sort_zipped]
 
     count = 1
-    budget = num_individuals*3
+    budget = num_individuals*2
     similarity_population = sum(
         [euclidean_distance(other.phenotype, individuals[0].phenotype) for other in individuals[1:]])
     stuck = 0
@@ -107,7 +107,7 @@ def test(function, mode, parameter_list, opt):
                 break
         similarity_population = sum(
             [euclidean_distance(other.phenotype, individuals[0].phenotype) for other in individuals[1:]])
-        budget = budget + 3
+        budget = budget + 2
         if similarity_population < 0.0001:
             stuck = stuck + 1
         else:
