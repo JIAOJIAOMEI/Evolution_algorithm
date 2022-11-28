@@ -29,8 +29,8 @@ if __name__ == '__main__':
     com_df = com_df[df_col]
     com_df.to_csv("./best_20com_9pm.csv", header=True, index=True)
     data_pm = pd.read_csv("./best_20com_9pm.csv", header=0, index_col=[0])
-    com = data_pm.values.tolist()[14:16]
-    index = data_pm.index.tolist()[14:16]
+    com = data_pm.values.tolist()[15:16]
+    index = data_pm.index.tolist()[15:16]
     print(com, index)
 
     function_list = [i for i in range(1, 24, 1)]
