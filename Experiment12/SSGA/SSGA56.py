@@ -39,7 +39,7 @@ if __name__ == '__main__':
         print(time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time())))
         if i % 5 == 4:
             print("\033[0;37;45m {0} combinations are tested.\033[0m".format(i + 1))
-        data, data_budget,data_similarity = improved_evolution.multipleF(Times=10, L=[0, 1], Com=com[i],
+        data, data_budget,data_similarity = improved_evolution.multipleF(Times=20, L=[0, 1], Com=com[i],
                                                          function_list=function_list)
         data.to_csv("./combination{0}.csv".format(index[i]), header=True, index=True)
         data_budget.to_csv("./budget{0}.csv".format(index[i]), header=True, index=True)
