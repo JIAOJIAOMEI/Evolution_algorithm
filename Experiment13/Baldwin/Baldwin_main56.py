@@ -20,7 +20,7 @@ if __name__ == '__main__':
     com_df = pd.read_csv("./best_20_pm.csv",
                          index_col=[0],
                          header=0)
-    com_df["local_search_rate"] = 0.5
+    com_df["local_search_rate"] = 0.2
     com_df["Local_search_type"] = "Uniform"
     com_df["R"] = 0.005
     df_col = com_df.columns.tolist()
