@@ -22,7 +22,7 @@ if __name__ == '__main__':
                          header=0)
     com_df["local_search_rate"] = 0.2
     com_df["Local_search_type"] = "Uniform"
-    com_df["R"] = 0.005
+    com_df["R"] = 0.01
     df_col = com_df.columns.tolist()
     df_col.remove("range_mutation")
     print(f"col names are {[df_col]}")

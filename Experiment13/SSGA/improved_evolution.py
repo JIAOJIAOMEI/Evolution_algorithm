@@ -28,7 +28,7 @@ def test(function, parameter_list, opt):
     mutation_type = parameter_list[4]
     crossover_type = parameter_list[5]
     R = parameter_list[6]
-    budget = dim * 10000
+    budget = dim*1000
 
     func, num_genes, genotype_range = choose_func(function)
     individuals = initialization(num_genes=num_genes, num_individual=num_individuals, genotype_range=genotype_range)

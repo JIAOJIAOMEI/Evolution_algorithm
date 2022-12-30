@@ -29,7 +29,7 @@ def test(function, mode, parameter_list, opt):
     local_search_rate = parameter_list[6]
     local_search_type = parameter_list[7]
     R = parameter_list[8]
-    budget = dim*10000
+    budget = dim*1000
 
     func, num_genes, genotype_range = choose_func(function)
     individuals = initialization(func=func, num_genes=num_genes,
