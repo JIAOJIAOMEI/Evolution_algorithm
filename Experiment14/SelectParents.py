@@ -41,40 +41,20 @@ def sorted_selection(individuals, gg):
 # use rulette wheel to select the N eligible_parents
 # eligible_partners are the individuals in the population except the non_eligible_individuals
 
-def rulette_wheel(individuals, gg):
+
+def roulette_Wheel_Select(individuals, gg):
     # calculate the sum of all the fitnesses
     sum_fitness = 0
     for individual in individuals:
         sum_fitness += individual.fitness
     # calculate the probability of being selected
-    probability = []
-    for individual in individuals:
-        probability.append(individual.fitness / sum_fitness)
-    # use rulette wheel to select the N non_eligible_parents, N = int(population_size*gg)
-    non_eligible_individuals: list[Any] = []
-    for i in range(int(len(individuals) * gg)):
-        # generate a random number between 0 and 1
-        random_num = random.random()
-        # calculate the sum of the probabilities
-        sum_probability = 0
-        for j in range(len(probability)):
-            sum_probability += probability[j]
-            if random_num < sum_probability:
-                non_eligible_individuals.append(individuals[j])
-                break
+    probability = [individual.fitness/sum_fitness for individual in individuals]
+    # calculate the inverse of 1-probability
+    inverse_probability = [1 - i for i in probability]
 
-    # use rulette wheel to select the N eligible_parents
-    eligible_individuals = []
-    for i in range(int(len(individuals) * gg)):
-        # generate a random number between 0 and 1
-        random_num = random.random()
-        # calculate the sum of the probabilities
-        sum_probability = 0
-        for j in range(len(probability)):
-            sum_probability += (1 - probability[j])
-            if random_num < sum_probability:
-                eligible_individuals.append(individuals[j])
-                break
+    k = int(len(individuals) * gg)
+    non_eligible_individuals = random.choices(individuals, weights=probability, k=k, cum_weights=None)
+    eligible_individuals = random.choices(individuals, weights=inverse_probability, k=k, cum_weights=None)
 
     # eligible_partners are the individuals in the population except the non_eligible_individuals
     eligible_partners = []
