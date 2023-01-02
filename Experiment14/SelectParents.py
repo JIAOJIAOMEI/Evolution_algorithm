@@ -53,8 +53,8 @@ def roulette_Wheel_Select(individuals, gg):
     inverse_probability = [1 - i for i in probability]
 
     k = int(len(individuals) * gg)
-    non_eligible_individuals = random.choices(individuals, weights=probability, k=k, cum_weights=None)
-    eligible_individuals = random.choices(individuals, weights=inverse_probability, k=k, cum_weights=None)
+    non_eligible_individuals = [random.choices(individuals, weights=probability, k=k, cum_weights=None)]
+    eligible_individuals = [random.choices(individuals, weights=inverse_probability, k=k, cum_weights=None)]
 
     # eligible_partners are the individuals in the population except the non_eligible_individuals
     eligible_partners = []
