@@ -39,7 +39,7 @@ def generate_parameter_combinations():
     num_generations = [20]
     mutation_rate = [0.5]
     num_individuals = [10]
-    crossover_rate = [0.9]
+    crossover_rate = [0.5]
     mutation_type = ["uniform"]  # "uniform", "gaussian", "frequency_based"
     crossover_type = ["one-point","two-point", "probabilistic", "linear combination", "average", "Roulette wheel"]  # "two-point", "probabilistic", "linear combination", "average", "Roulette wheel"
     local_search_rate = [0.5]
@@ -111,7 +111,5 @@ for i in range(num_rows):
     # the value is the final solution of the run
     # create a dataframe to store the final solutions
     solutions_dataframe = pd.DataFrame(solutions)
-    print(dataframe)
-    print(colorama.Fore.GREEN + "The final solutions are:\n" + str(solutions_dataframe))
     # save the dataframe to a csv file
     solutions_dataframe.to_csv("solutions_dataframe.csv", index=True)

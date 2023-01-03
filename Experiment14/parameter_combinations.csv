@@ -1,4 +1,7 @@
 ,num_generations,mutation_rate,num_individuals,crossover_rate,mutation_type,crossover_type,local_search_rate,local_search_type,search_radius,num_evaluations,fitness_function,dimensions,algorithm,gg,selection_method
-0,20,0.5,10,0.9,uniform,one-point,0.5,uniform,0.1,3000,1,5,Baseline,0.5,best_and_worst
-1,20,0.5,10,0.9,gaussian,one-point,0.5,uniform,0.1,3000,1,5,Baseline,0.5,best_and_worst
-2,20,0.5,10,0.9,frequency-based,one-point,0.5,uniform,0.1,3000,1,5,Baseline,0.5,best_and_worst
+0,20,0.5,10,0.5,uniform,one-point,0.5,uniform,0.1,3000,1,5,Baseline,0.5,best_and_worst
+1,20,0.5,10,0.5,uniform,two-point,0.5,uniform,0.1,3000,1,5,Baseline,0.5,best_and_worst
+2,20,0.5,10,0.5,uniform,probabilistic,0.5,uniform,0.1,3000,1,5,Baseline,0.5,best_and_worst
+3,20,0.5,10,0.5,uniform,linear combination,0.5,uniform,0.1,3000,1,5,Baseline,0.5,best_and_worst
+4,20,0.5,10,0.5,uniform,average,0.5,uniform,0.1,3000,1,5,Baseline,0.5,best_and_worst
+5,20,0.5,10,0.5,uniform,Roulette wheel,0.5,uniform,0.1,3000,1,5,Baseline,0.5,best_and_worst

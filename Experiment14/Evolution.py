@@ -57,8 +57,8 @@ def evolution_loop(algorithm_parameters):
     for individual in eligible_individuals:
         # find a partner
         partner = np.random.choice(eligible_partners,replace=True)
-        print(colorama.Fore.GREEN + "Individual: " + str(individual))
-        print(colorama.Fore.GREEN + "Partner: " + str(partner))
+        # print(colorama.Fore.GREEN + "Individual: " + str(individual))
+        # print(colorama.Fore.GREEN + "Partner: " + str(partner))
         child = crossover(individual1=individual, individual2=partner, crossover_type=crossover_type,
                           crossover_rate=crossover_rate, algorithm=algorithm)
         child = mutation(mutation_type=mutation_type, mutation_rate=mutation_rate, child=child,
@@ -75,7 +75,7 @@ def evolution_loop(algorithm_parameters):
         # create a list to store the new individuals
         new_individuals.append(new_individual)
         # print length of new individuals
-    print(colorama.Fore.RED + "The length of new individuals is: " + str(len(new_individuals)))
+    # print(colorama.Fore.RED + "The length of new individuals is: " + str(len(new_individuals)))
     # delete the non_eligible_individuals from the population
     for individual in non_eligible_individuals:
         population.remove(individual)
@@ -108,9 +108,9 @@ def evolution_loop(algorithm_parameters):
         # selection
         eligible_individuals, eligible_partners, non_eligible_individuals = selection(individuals=population, gg=gg,
                                                                                       selection_method=selection_method)
-        print(colorama.Fore.BLUE + "Now we are in the loop")
-        print(colorama.Fore.GREEN + "Eligible individuals: " + str(eligible_individuals))
-        print(colorama.Fore.GREEN + "Non-eligible individuals: " + str(non_eligible_individuals))
+        # print(colorama.Fore.BLUE + "Now we are in the loop")
+        # print(colorama.Fore.GREEN + "Eligible individuals: " + str(eligible_individuals))
+        # print(colorama.Fore.GREEN + "Non-eligible individuals: " + str(non_eligible_individuals))
         # for each individual in eligible_individuals, find a partner in eligible_partners
         # and then do cross over and mutation
         new_individuals = []
