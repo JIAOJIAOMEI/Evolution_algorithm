@@ -3,6 +3,8 @@
 # Time and date: 1/1/23 20:56
 from random import random
 
+import numpy as np
+
 
 # parameters: mutation_type, mutation_rate, the child of two individuals, genotype_range, num_genes,search_radius
 # create multiple methods based on mutation_type,it can be 'uniform', 'gaussian',"frequency-based"
@@ -23,7 +25,7 @@ def uniform_mutation(mutation_rate, child, genotype_range, num_genes, search_rad
     mutation_range = [search_radius * genotype_range[0], search_radius * genotype_range[1]]
     for i in range(num_genes):
         if random() < mutation_rate:
-            child[i] = child[i] + random.uniform(mutation_range[0], mutation_range[1])
+            child[i] = child[i] + np.random.uniform(mutation_range[0], mutation_range[1])
             # check if the child is within the range of genotype_range use max and min function
             child[i] = max(child[i], genotype_range[0])
             child[i] = min(child[i], genotype_range[1])
@@ -34,11 +36,14 @@ def guassian_mutation(mutation_rate, child, genotype_range, num_genes, search_ra
     mutation_range = [search_radius * genotype_range[0], search_radius * genotype_range[1]]
     for i in range(num_genes):
         if random() < mutation_rate:
-            child[i] = child[i] + random.gauss(0, (mutation_range[1] - mutation_range[0]) / 6)
+            child[i] = child[i] + np.random.normal(loc=0, scale=(mutation_range[1] - mutation_range[0]) / 6)
             # check if the child is within the range of genotype_range use max and min function
             child[i] = max(child[i], genotype_range[0])
             child[i] = min(child[i], genotype_range[1])
     return child
+
+
+import colorama
 
 
 def frequency_based_mutation(mutation_rate, child, genotype_range, num_genes, search_radius):
@@ -52,20 +57,33 @@ def frequency_based_mutation(mutation_rate, child, genotype_range, num_genes, se
         categories.append([min(child) + i * category_range, min(child) + (i + 1) * category_range])
     # calculate the frequency of each category
     category_frequency = []
+    # print(categories)
+    # print(colorama.Fore.RED + 'category frequency: ' + str(categories))
     for i in range(10):
         count = 0
         for j in range(num_genes):
             if categories[i][0] <= child[j] < categories[i][1]:
                 count += 1
         category_frequency.append(count / num_genes)
-    # calculate the probability of mutation for each gene in one line code
-    # probability of mutation = 1 - frequency of the gene
-    probability_of_mutation = [1 - category_frequency[int((child[i] - min(child)) / category_range)] for i in
-                               range(num_genes)]
+    # print(colorama.Fore.RED + 'category frequency: ' + str(category_frequency))
+    # rewrite the code for probability_of_mutation, check the first and last category separately, and then check the other categories
+    probability_of_mutation = []
+    minimum = min(child)
+    for i in range(num_genes):
+        # check the first category
+        if child[i] < categories[0][1]:
+            probability_of_mutation.append(1 - category_frequency[0])
+        # check the last category
+        elif child[i] >= categories[9][0]:
+            probability_of_mutation.append(1 - category_frequency[9])
+        # check the other categories
+        else:
+            probability_of_mutation.append(1 - category_frequency[int(np.floor((child[i] - minimum) / category_range))])
+    # print(colorama.Fore.RED + 'probability of mutation: ' + str(probability_of_mutation))
     # mutate the gene
     for i in range(num_genes):
         if probability_of_mutation[i] > mutation_rate:
-            child[i] = child[i] + random.uniform(mutation_range[0], mutation_range[1])
+            child[i] = child[i] + np.random.uniform(mutation_range[0], mutation_range[1])
             # check if the child is within the range of genotype_range use max and min function
             child[i] = max(child[i], genotype_range[0])
             child[i] = min(child[i], genotype_range[1])

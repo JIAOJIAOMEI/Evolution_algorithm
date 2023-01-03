@@ -1,7 +1,8 @@
 # Name: Mei Jiaojiao
 # Profession: Artificial Intelligence
 # Time and date: 1/1/23 22:12
-from random import random
+import random
+import numpy as np
 
 
 # crossover_type: the type of crossover, it can be 'one-point', 'two-point', 'probabilistic', 'arithmetic', 'linear_combination',"Roulette wheel"
@@ -14,7 +15,7 @@ from random import random
 def one_point_crossover(individual1, individual2, algorithm):
     # choose a random point to crossover
     global child1, child2
-    crossover_point = random.randint(0, len(individual1.genotype) - 1)
+    crossover_point = np.random.randint(0, len(individual1.genotype) - 1)
     if algorithm == "Baseline" or algorithm == "Baldwin":
         # crossover genotypes of two individuals
         individual1.genotype[crossover_point:], individual2.genotype[crossover_point:] = individual2.genotype[crossover_point:], individual1.genotype[crossover_point:]
@@ -26,7 +27,7 @@ def one_point_crossover(individual1, individual2, algorithm):
         child1 = individual1.phenotype
         child2 = individual2.phenotype
     # if this crossover method create two children, then randomly choose one of them to return
-    return child1 if random.random() < 0.5 else child2
+    return child1 if np.random.random() < 0.5 else child2
 
 
 def two_point_crossover(individual1, individual2, algorithm):
@@ -55,9 +56,9 @@ def probabilistic_crossover(individual1, individual2, algorithm, crossover_rate)
     # for each gene in the child, generate a random number between 0 and 1, compare it with crossover_rate, if it is less than crossover_rate, then assign the gene of individual1 to the child, else assign the gene of individual2 to the child
     child = []
     if algorithm == "Baseline" or algorithm == "Baldwin":
-        child = [gene1 if random.random() < crossover_rate else gene2 for gene1, gene2 in zip(individual1.genotype, individual2.genotype)]
+        child = [gene1 if np.random.random() < crossover_rate else gene2 for gene1, gene2 in zip(individual1.genotype, individual2.genotype)]
     elif algorithm == "Lamarck":
-        child = [gene1 if random.random() < crossover_rate else gene2 for gene1, gene2 in zip(individual1.phenotype, individual2.phenotype)]
+        child = [gene1 if np.random.random() < crossover_rate else gene2 for gene1, gene2 in zip(individual1.phenotype, individual2.phenotype)]
     return child
 
 
@@ -102,13 +103,13 @@ def roulette_wheel_crossover(individual1, individual2, algorithm,crossover_rate)
 def crossover(individual1, individual2, crossover_type, crossover_rate, algorithm):
 
     if crossover_type == "one-point":
-        if random.random() < crossover_rate:
+        if np.random.random() < crossover_rate:
             return one_point_crossover(individual1, individual2, algorithm)
         else:
             if algorithm == "Baseline" or algorithm == "Baldwin":
-                return individual1.genotype if random.random() < 0.5 else individual2.genotype
+                return random.choice([individual1.genotype, individual2.genotype])
             elif algorithm == "Lamarck":
-                return individual1.phenotype if random.random() < 0.5 else individual2.phenotype
+                return random.choice([individual1.phenotype, individual2.phenotype])
 
     elif crossover_type == "two-point":
         if random.random() < crossover_rate:

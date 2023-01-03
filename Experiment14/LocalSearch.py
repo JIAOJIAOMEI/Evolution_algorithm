@@ -32,24 +32,19 @@ def guass_local_search(genotype, genotype_range, num_genes, local_search_rate):
 
 def hill_climbing_local_search(genotype, num_genes, local_search_rate):
     phenotype = []
-    # each gene in the phenotype is the minimum of the gene in the genotype,front gene and back gene if a random number is less than local_search_rate, otherwise it is the gene in the genotype
+    # if a random number is less than local_search_rate,each gene in the phenotype is the minimum of the absolute value of gene in the genotype,the absolute value of front gene and the absolute value of back gene
+    #  otherwise it is the absolute gene in the genotype
     # for the first one and the last one, only compare with the front one and the back one
     for i in range(num_genes):
-        if i == 0:
-            if random.random() < local_search_rate:
-                phenotype.append(min(genotype[i], genotype[i + 1]))
+        if random.random() < local_search_rate:
+            if i == 0:
+                phenotype.append(min(abs(genotype[i]), abs(genotype[i + 1])))
+            elif i == num_genes - 1:
+                phenotype.append(min(abs(genotype[i]), abs(genotype[i - 1])))
             else:
-                phenotype.append(genotype[i])
-        elif i == num_genes - 1:
-            if random.random() < local_search_rate:
-                phenotype.append(min(genotype[i], genotype[i - 1]))
-            else:
-                phenotype.append(genotype[i])
+                phenotype.append(min(abs(genotype[i]), abs(genotype[i - 1]), abs(genotype[i + 1])))
         else:
-            if random.random() < local_search_rate:
-                phenotype.append(min(genotype[i], genotype[i - 1], genotype[i + 1]))
-            else:
-                phenotype.append(genotype[i])
+            phenotype.append(abs(genotype[i]))
     return phenotype
 
 

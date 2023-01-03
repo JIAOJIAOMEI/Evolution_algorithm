@@ -28,8 +28,8 @@ from LocalSearch import local_search
 # search_radius is a float number, it is used to calculate the range of mutation, the range of mutation is search_radius*genotype_range
 
 class Individual:
-    def __init__(self, func, num_genes, genotype_range, mutation_rate, crossover_rate, mutation_type, crossover_type,search_radius,local_search_type=None,local_search_rate=None,
-                 genotype=None):
+    def __init__(self, func, num_genes, genotype_range, mutation_rate, crossover_rate, mutation_type, crossover_type,
+                 search_radius, algorithm,local_search_type=None, local_search_rate=None,genotype=None):
         self.rank = None
         self.func = func
         self.num_genes = num_genes
@@ -45,13 +45,16 @@ class Individual:
             self.genotype = genotype
         # if locao_search_method is None, phenotype is the same as genotype
         # if local_search_type is not None, phenotype is the result of local search
-        if local_search_type == "None":
+        if local_search_type is None or local_search_rate is None:
             self.phenotype = self.genotype.copy()
         else:
             self.phenotype = local_search(genotype, genotype_range, num_genes, local_search_type, local_search_rate)
         # calculate the fitness of the genotype and phenotype
         # the smaller one is the fitness
-        self.fitness = min(self.func(self.genotype), self.func(self.phenotype))
+        if algorithm == "Baseline":
+            self.fitness = self.func(self.genotype)
+        else:
+            self.fitness = min(self.func(self.genotype), self.func(self.phenotype))
 
 
 # create a method to generate multiple individuals, with the parameter: population_size, func, num_genes, genotype_range, mutation_rate, crossover_rate,mutation_type, crossover_type
@@ -59,11 +62,11 @@ class Individual:
 # return a list of individuals, the length of the list is population_size
 
 def create_individuals(population_size, func, num_genes, genotype_range, mutation_rate, crossover_rate, mutation_type,
-                       crossover_type, search_radius, local_search_type, local_search_rate):
+                       crossover_type, search_radius,algorithm,local_search_type, local_search_rate,genotype):
     individuals = []
     for _ in range(population_size):
         individuals.append(Individual(func, num_genes, genotype_range, mutation_rate, crossover_rate, mutation_type,
-                                      crossover_type,search_radius,local_search_type,local_search_rate))
+                                      crossover_type, search_radius,algorithm,local_search_type, local_search_rate,genotype))
     # sort the individuals by their fitness by an ascending order
     # add a new parameter to the individuals, which is the rank of the individual,
     # the rank of the individual is the index of the individual in the sorted list, if the rank is 1, then the fitness is the smallest
@@ -71,4 +74,3 @@ def create_individuals(population_size, func, num_genes, genotype_range, mutatio
     for i in range(len(individuals)):
         individuals[i].rank = i + 1
     return individuals
-
