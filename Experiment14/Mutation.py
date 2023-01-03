@@ -23,6 +23,8 @@ import numpy as np
 
 def uniform_mutation(mutation_rate, child, genotype_range, num_genes, search_radius):
     mutation_range = [search_radius * genotype_range[0], search_radius * genotype_range[1]]
+    # print(num_genes)
+    # print(len(child))
     for i in range(num_genes):
         if random() < mutation_rate:
             child[i] = child[i] + np.random.uniform(mutation_range[0], mutation_range[1])

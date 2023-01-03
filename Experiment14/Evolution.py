@@ -40,13 +40,19 @@ def evolution_loop(algorithm_parameters):
                                     local_search_type=local_search_type, local_search_rate=local_search_rate,
                                     genotype=None)
     # print the length of initial population
-    print(colorama.Fore.RED + "The length of initial population is: " + str(len(population)))
+    # print(colorama.Fore.RED + "The length of initial population is: " + str(len(population)))
     # selection
     from SelectParents import selection
     # one line code : create empyty to store eligible_individuals, eligible_partners, non_eligible_individuals
     eligible_individuals, eligible_partners, non_eligible_individuals = selection(individuals=population, gg=gg,
                                                                                   selection_method=selection_method)
     # print(colorama.Fore.GREEN + "Eligible individuals: " + str(eligible_individuals))
+    # print genotyoe and phenotype of eligible individuals
+    # for i in range(len(eligible_individuals)):
+    #     print(colorama.Fore.GREEN + "The genotype of eligible individual " + str(i) + " is: " + str(
+    #         eligible_individuals[i].genotype))
+    #     print(colorama.Fore.GREEN + "The phenotype of eligible individual " + str(i) + " is: " + str(
+    #         eligible_individuals[i].phenotype))
     # print(colorama.Fore.GREEN + "Eligible partners: " + str(eligible_partners))
     # print(colorama.Fore.GREEN + "Non-eligible individuals: " + str(non_eligible_individuals))
     # for each individual in eligible_individuals, find a partner in eligible_partners
@@ -61,6 +67,7 @@ def evolution_loop(algorithm_parameters):
         # print(colorama.Fore.GREEN + "Partner: " + str(partner))
         child = crossover(individual1=individual, individual2=partner, crossover_type=crossover_type,
                           crossover_rate=crossover_rate, algorithm=algorithm)
+        # print(colorama.Fore.GREEN + "Child: " + str(child))
         child = mutation(mutation_type=mutation_type, mutation_rate=mutation_rate, child=child,
                          genotype_range=genotype_range, num_genes=num_genes, search_radius=search_radius)
         # child is a list of genes, use it as a genotype to create a new individual
@@ -137,10 +144,10 @@ def evolution_loop(algorithm_parameters):
             # create a list to store the new individuals
             new_individuals.append(new_individual)
         # delete the non_eligible_individuals from the population,one line code
-        print(colorama.Fore.RED + "Length of population before deletion: " + str(len(population)))
+        # print(colorama.Fore.RED + "Length of population before deletion: " + str(len(population)))
         population = [individual for individual in population if individual not in non_eligible_individuals]
         # print length of population
-        print(colorama.Fore.RED + "Length of population after deletion: " + str(len(population)))
+        # print(colorama.Fore.RED + "Length of population after deletion: " + str(len(population)))
         # the individuals are soeted in the population, the lower the fitness, the lower the rank
         # now insert the new individuals into the population based on their fitness and update the ranks
         # for
@@ -153,7 +160,7 @@ def evolution_loop(algorithm_parameters):
                     population.append(new_individual)
                     break
         # update the ranks of the individuals in the population
-        print(colorama.Fore.RED + "The length of new individuals is: " + str(len(new_individuals)))
+        # print(colorama.Fore.RED + "The length of new individuals is: " + str(len(new_individuals)))
         for i in range(len(population)):
             population[i].rank = i + 1
         best_fitness_list.append(population[0].fitness)

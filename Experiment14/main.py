@@ -41,17 +41,16 @@ def generate_parameter_combinations():
     num_individuals = [10]
     crossover_rate = [0.5]
     mutation_type = ["uniform"]  # "uniform", "gaussian", "frequency_based"
-    crossover_type = ["one-point","two-point", "probabilistic", "linear combination", "average", "Roulette wheel"]  # "two-point", "probabilistic", "linear combination", "average", "Roulette wheel"
+    crossover_type = ["one-point"]  # "two-point", "probabilistic", "linear combination", "average", "Roulette wheel"
     local_search_rate = [0.5]
-    local_search_type = ["uniform"]  # "uniform", "gaussian", "hill climbing"
+    local_search_type = ["uniform", "gaussian", "hill_climbing"]  # "uniform", "gaussian", "hill climbing"
     search_radius = [0.1]
     num_evaluations = [3000]
     fitness_function = [1]
-    dimensions = [5]
-    algorithm = ["Baseline"]  # , "Lamarck", "Baldwin"
+    dimensions = [10]
+    algorithm = ["Lamarck"]  # "Baseline","Lamarck", "Baldwin"
     gg = [0.5]
-    selection_method = [
-        "best_and_worst"]  # "best_and_worst", "sorted_selection_part", "sorted_selection_all", "roulette_Wheel_Select"
+    selection_method = ["best_and_worst"]  # "best_and_worst", "sorted_selection_part", "sorted_selection_all", "roulette_Wheel_Select"
     parameter_combinations = []
     for i in num_generations:
         for j in mutation_rate:

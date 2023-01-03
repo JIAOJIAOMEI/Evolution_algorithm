@@ -30,7 +30,11 @@ def guass_local_search(genotype, genotype_range, num_genes, local_search_rate):
     return phenotype
 
 
+import colorama
+
+
 def hill_climbing_local_search(genotype, num_genes, local_search_rate):
+    # print(colorama.Fore.GREEN + "hill_climbing_local_search" + colorama.Fore.RESET)
     phenotype = []
     # if a random number is less than local_search_rate,each gene in the phenotype is the minimum of the absolute value of gene in the genotype,the absolute value of front gene and the absolute value of back gene
     #  otherwise it is the absolute gene in the genotype
@@ -45,6 +49,8 @@ def hill_climbing_local_search(genotype, num_genes, local_search_rate):
                 phenotype.append(min(abs(genotype[i]), abs(genotype[i - 1]), abs(genotype[i + 1])))
         else:
             phenotype.append(abs(genotype[i]))
+
+    # print(colorama.Fore.GREEN + "genotype: " + str(genotype) + colorama.Fore.RESET)
     return phenotype
 
 
