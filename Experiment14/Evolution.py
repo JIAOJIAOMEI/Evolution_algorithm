@@ -116,8 +116,9 @@ def evolution_loop(algorithm_parameters):
         eligible_individuals, eligible_partners, non_eligible_individuals = selection(individuals=population, gg=gg,
                                                                                       selection_method=selection_method)
         # print(colorama.Fore.BLUE + "Now we are in the loop")
-        # print(colorama.Fore.GREEN + "Eligible individuals: " + str(eligible_individuals))
-        # print(colorama.Fore.GREEN + "Non-eligible individuals: " + str(non_eligible_individuals))
+        # print(colorama.Fore.BLUE + "Eligible individuals: " + str(len(eligible_individuals)))
+        # print(colorama.Fore.BLUE + "Eligible partners: " + str(len(eligible_partners)))
+        # print(colorama.Fore.BLUE + "Non-eligible individuals: " + str(len(non_eligible_individuals)))
         # for each individual in eligible_individuals, find a partner in eligible_partners
         # and then do cross over and mutation
         new_individuals = []

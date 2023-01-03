@@ -36,21 +36,21 @@ class AlgorithmParameters:
 # create a function to generate parameter combinations using each parameter from above
 # and store it in a dataframe, each row is a combination of parameters
 def generate_parameter_combinations():
-    num_generations = [20]
-    mutation_rate = [0.5]
-    num_individuals = [10]
-    crossover_rate = [0.5]
-    mutation_type = ["uniform"]  # "uniform", "gaussian", "frequency_based"
-    crossover_type = ["one-point"]  # "two-point", "probabilistic", "linear combination", "average", "Roulette wheel"
-    local_search_rate = [0.5]
-    local_search_type = ["uniform", "gaussian", "hill_climbing"]  # "uniform", "gaussian", "hill climbing"
-    search_radius = [0.1]
+    num_generations = [100]
+    mutation_rate = [0.2,0.8]
+    num_individuals = [500]
+    crossover_rate = [0.2,0.8]
+    mutation_type = ["uniform", "gaussian", "frequency_based"]  # "uniform", "gaussian", "frequency_based"
+    crossover_type = ["one-point","two-point", "probabilistic", "linear combination", "average", "Roulette wheel"]  # "two-point", "probabilistic", "linear combination", "average", "Roulette wheel"
+    local_search_rate = [0.2, 0.8]
+    local_search_type = ["uniform", "gaussian", "hill_climbing"]  # "uniform", "gaussian", "hill_climbing"
+    search_radius = [0.01,0.1]
     num_evaluations = [3000]
     fitness_function = [1]
     dimensions = [10]
-    algorithm = ["Lamarck"]  # "Baseline","Lamarck", "Baldwin"
-    gg = [0.5]
-    selection_method = ["best_and_worst"]  # "best_and_worst", "sorted_selection_part", "sorted_selection_all", "roulette_Wheel_Select"
+    algorithm = ["Baseline","Lamarck", "Baldwin"]  # "Baseline","Lamarck", "Baldwin"
+    gg = [0.01,0.2,0.99]
+    selection_method = ["best_and_worst", "sorted_selection_part", "sorted_selection_all", "roulette_Wheel_Select"]  # "best_and_worst", "sorted_selection_part", "sorted_selection_all", "roulette_Wheel_Select"
     parameter_combinations = []
     for i in num_generations:
         for j in mutation_rate:
@@ -81,15 +81,20 @@ def generate_parameter_combinations():
 
 
 import colorama
-
+# count time for the whole program
+import time
+start_time = time.time()
 parameter_combinations = generate_parameter_combinations()
 dataframe = pd.read_csv("parameter_combinations.csv", header=0, index_col=0)
 num_rows, num_columns = dataframe.shape
+print("The number of parameter combinations is: " + str(num_rows))
 solutions = []
-for i in range(num_rows):
+for i in range(3000):
+    if i % 1000 == 0:
+        print("The number of parameter combinations that have been tested is: " + str(i))
     # create a list to store the final solution of each run
     parameter_combination = dataframe.iloc[i, :]
-    print(colorama.Fore.GREEN + "The parameter combination is:\n" + str(parameter_combination))
+    # print(colorama.Fore.GREEN + "The parameter combination is:\n" + str(parameter_combination))
     # simply the following code
     algorithm_parameters = AlgorithmParameters(parameter_combination[0], parameter_combination[1],
                                                parameter_combination[2], parameter_combination[3],
@@ -112,3 +117,6 @@ for i in range(num_rows):
     solutions_dataframe = pd.DataFrame(solutions)
     # save the dataframe to a csv file
     solutions_dataframe.to_csv("solutions_dataframe.csv", index=True)
+
+end_time = time.time()
+print("The total time is: " + str(end_time - start_time))

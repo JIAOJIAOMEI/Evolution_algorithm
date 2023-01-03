@@ -98,7 +98,7 @@ def mutation(mutation_type, mutation_rate, child, genotype_range, num_genes, sea
         return uniform_mutation(mutation_rate, child, genotype_range, num_genes, search_radius)
     elif mutation_type == 'gaussian':
         return guassian_mutation(mutation_rate, child, genotype_range, num_genes, search_radius)
-    elif mutation_type == 'frequency-based':
+    elif mutation_type == 'frequency_based':
         return frequency_based_mutation(mutation_rate, child, genotype_range, num_genes, search_radius)
     else:
         print('mutation_type is not valid')

@@ -4,6 +4,8 @@
 import random
 from typing import List, Any
 
+import numpy as np
+
 
 # Selection methond: Best and worst
 # Return the parents
@@ -25,6 +27,10 @@ def best_and_worst(individuals):
 
 def sorted_selection_part(individuals, gg):
     size = int(gg * len(individuals))
+    if size == 0:
+        size = 1
+    elif size >= len(individuals):
+        size = len(individuals) - 1
     # noneligible_individuals are the last individuals in the individuals list
     # the first individuals in the individuals list are the eligible individuals
     eligible_individuals = individuals[0:size]
@@ -35,6 +41,11 @@ def sorted_selection_part(individuals, gg):
 
 def sorted_selection_all(individuals, gg):
     size = int(gg * len(individuals))
+    # make sure that at least one individual is selected
+    if size == 0:
+        size = 1
+    elif size >= len(individuals):
+        size = len(individuals) - 1
     # noneligible_individuals are the last individuals in the individuals list
     # the first individuals in the individuals list are the eligible individuals
     eligible_individuals = individuals[0:size]
@@ -51,26 +62,36 @@ def sorted_selection_all(individuals, gg):
 # use rulette wheel to select the N eligible_parents
 # eligible_partners are the individuals in the population except the non_eligible_individuals
 
-
+import colorama
 def roulette_Wheel_Select(individuals, gg):
-    # calculate the sum of all the fitnesses
-    sum_fitness = 0
-    for individual in individuals:
-        sum_fitness += individual.fitness
-    # calculate the probability of being selected
-    probability = [individual.fitness / sum_fitness for individual in individuals]
+    # calculate the sum of all the fitnesses adn the probability of each individual, one line code, use abs() to make sure that the fitness is positive
+    sum_fitness = sum([abs(individual.fitness) for individual in individuals])
+    probability = [abs(individual.fitness) / sum_fitness for individual in individuals]
+    # print in red
+    # print(colorama.Fore.RED + "probability: " + str(probability))
+    # sum of the probability
+    # print(colorama.Fore.RED + "sum of the probability: " + str(sum(probability)))
     # calculate the inverse of 1-probability
     inverse_probability = [1 - i for i in probability]
+    # normalize the inverse_probability
+    inverse_probability = [i / sum(inverse_probability) for i in inverse_probability]
+    # print in green
+    # print(colorama.Fore.GREEN + "inverse_probability: " + str(inverse_probability))
+    # sum of the inverse_probability
+    # print(colorama.Fore.GREEN + "sum of the inverse_probability: " + str(sum(inverse_probability)))
 
-    k = int(len(individuals) * gg)
-    non_eligible_individuals = random.choices(individuals, weights=probability, k=k, cum_weights=None)
-    eligible_individuals = random.choices(individuals, weights=inverse_probability, k=k, cum_weights=None)
+    size = int(gg * len(individuals))
+    if size == 0:
+        size = 1
+    elif size >= len(individuals):
+        size = len(individuals) - 1
 
+    # use rulette wheel to select the N non_eligible_parents, N = int(population_size*gg), one line code
+    non_eligible_individuals = np.random.choice(individuals, size, p=probability, replace=False)
+    # use rulette wheel to select the N eligible_parents, one line code
+    eligible_individuals = np.random.choice(individuals, size, p=inverse_probability, replace=False)
     # eligible_partners are the individuals in the population except the non_eligible_individuals
-    eligible_partners = []
-    for individual in individuals:
-        if individual not in non_eligible_individuals:
-            eligible_partners.append(individual)
+    eligible_partners = [individual for individual in individuals if individual not in non_eligible_individuals]
 
     return eligible_individuals, eligible_partners, non_eligible_individuals
 
