@@ -74,6 +74,10 @@ The range of each gene is checked and all of them falls into the domain of the f
 
 That's all for this experiment.
 
+## stopping condition
+
+If **num_generations** or **num_evaluations** is reached, then stop. No one knows the global minimum.
+
 # values that might be run
 
 1. **num_generations**: [1000]
