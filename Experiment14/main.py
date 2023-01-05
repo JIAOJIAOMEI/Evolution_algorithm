@@ -89,7 +89,7 @@ dataframe = pd.read_csv("parameter_combinations.csv", header=0, index_col=0)
 num_rows, num_columns = dataframe.shape
 print("The number of parameter combinations is: " + str(num_rows))
 solutions = []
-for i in range(3000):
+for i in range(num_rows):
     if i % 1000 == 0:
         print("The number of parameter combinations that have been tested is: " + str(i))
     # create a list to store the final solution of each run
