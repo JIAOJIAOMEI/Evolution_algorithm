@@ -63,6 +63,8 @@ def sorted_selection_all(individuals, gg):
 # eligible_partners are the individuals in the population except the non_eligible_individuals
 
 import colorama
+
+
 def roulette_Wheel_Select(individuals, gg):
     # calculate the sum of all the fitnesses adn the probability of each individual, one line code, use abs() to make sure that the fitness is positive
     sum_fitness = sum([abs(individual.fitness) for individual in individuals])

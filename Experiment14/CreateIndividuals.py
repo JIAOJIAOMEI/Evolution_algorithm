@@ -48,7 +48,7 @@ class Individual:
         if local_search_type is None or local_search_rate is None:
             self.phenotype = self.genotype.copy()
         else:
-            self.phenotype = local_search(self.genotype, genotype_range, num_genes, local_search_type, local_search_rate)
+            self.phenotype = local_search(self.genotype, genotype_range, num_genes, local_search_type, local_search_rate,search_radius)
         # calculate the fitness of the genotype and phenotype
         # the smaller one is the fitness
         if algorithm == "Baseline":

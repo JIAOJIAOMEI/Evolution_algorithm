@@ -43,7 +43,7 @@ def generate_parameter_combinations():
     mutation_type = ["uniform", "gaussian", "frequency_based"]  # "uniform", "gaussian", "frequency_based"
     crossover_type = ["one-point","two-point", "probabilistic", "linear combination", "average", "Roulette wheel"]  # "two-point", "probabilistic", "linear combination", "average", "Roulette wheel"
     local_search_rate = [0.2, 0.8]
-    local_search_type = ["uniform", "gaussian", "hill_climbing"]  # "uniform", "gaussian", "hill_climbing"
+    local_search_type = ["uniform", "gaussian", "neighbor_search"]  # "uniform", "gaussian", "neighbor_search"
     search_radius = [0.01,0.1]
     num_evaluations = [3000]
     fitness_function = [1]

@@ -10,21 +10,23 @@ import random
 # based on the local search method, create a phenotype based on the genotype
 # return the phenotype
 
-def uniform_local_search(genotype, genotype_range, num_genes, local_search_rate):
+def uniform_local_search(genotype, genotype_range, num_genes, local_search_rate, search_radius):
+    mutation_range = [search_radius * genotype_range[0], search_radius * genotype_range[1]]
     phenotype = []
     for i in range(num_genes):
         if random.random() < local_search_rate:
-            phenotype.append(random.uniform(genotype_range[0], genotype_range[1]))
+            phenotype.append(genotype[i]+random.uniform(mutation_range[0], mutation_range[1]))
         else:
             phenotype.append(genotype[i])
     return phenotype
 
 
-def guass_local_search(genotype, genotype_range, num_genes, local_search_rate):
+def guass_local_search(genotype, genotype_range, num_genes, local_search_rate, search_radius):
+    mutation_range = [search_radius * genotype_range[0], search_radius * genotype_range[1]]
     phenotype = []
     for i in range(num_genes):
         if random.random() < local_search_rate:
-            phenotype.append(random.gauss(genotype[i], (genotype_range[1] - genotype_range[0]) / 6))
+            phenotype.append(random.gauss(genotype[i], (mutation_range[1] - mutation_range[0]) / 6))
         else:
             phenotype.append(genotype[i])
     return phenotype
@@ -33,8 +35,8 @@ def guass_local_search(genotype, genotype_range, num_genes, local_search_rate):
 import colorama
 
 
-def hill_climbing_local_search(genotype, num_genes, local_search_rate):
-    # print(colorama.Fore.GREEN + "hill_climbing_local_search" + colorama.Fore.RESET)
+def neighbor_search(genotype, num_genes, local_search_rate):
+    # print(colorama.Fore.GREEN + "neighbor_search" + colorama.Fore.RESET)
     phenotype = []
     # if a random number is less than local_search_rate,each gene in the phenotype is the minimum of the absolute value of gene in the genotype,the absolute value of front gene and the absolute value of back gene
     #  otherwise it is the absolute gene in the genotype
@@ -54,12 +56,12 @@ def hill_climbing_local_search(genotype, num_genes, local_search_rate):
     return phenotype
 
 
-def local_search(genotype, genotype_range, num_genes, local_search_type, local_search_rate):
+def local_search(genotype, genotype_range, num_genes, local_search_type, local_search_rate, search_radius):
     phenotype = []
     if local_search_type == "uniform":
-        phenotype = uniform_local_search(genotype, genotype_range, num_genes, local_search_rate)
+        phenotype = uniform_local_search(genotype, genotype_range, num_genes, local_search_rate,search_radius)
     elif local_search_type == "gaussian":
-        phenotype = guass_local_search(genotype, genotype_range, num_genes, local_search_rate)
-    elif local_search_type == "hill_climbing":
-        phenotype = hill_climbing_local_search(genotype, num_genes, local_search_rate)
+        phenotype = guass_local_search(genotype, genotype_range, num_genes, local_search_rate,search_radius)
+    elif local_search_type == "neighbor_search":
+        phenotype = neighbor_search(genotype, num_genes, local_search_rate)
     return phenotype
