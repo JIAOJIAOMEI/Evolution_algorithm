@@ -10,7 +10,7 @@ import numpy as np
 # Selection methond: Best and worst
 # Return the parents
 
-def best_and_worst(individuals):
+def SSGA(individuals):
     # return a list of the best and worst individuals
     # the first one is the best individual
     # the second one is the worst individual
@@ -101,8 +101,8 @@ def roulette_Wheel_Select(individuals, gg):
 # write a function to summary the selection methods
 # return the parents
 def selection(individuals, gg, selection_method):
-    if selection_method == "best_and_worst":
-        eligible_individuals, eligible_partners, non_eligible_individuals = best_and_worst(individuals)
+    if selection_method == "SSGA":
+        eligible_individuals, eligible_partners, non_eligible_individuals = SSGA(individuals)
     elif selection_method == "sorted_selection_part":
         eligible_individuals, eligible_partners, non_eligible_individuals = sorted_selection_part(individuals, gg)
     elif selection_method == "sorted_selection_all":

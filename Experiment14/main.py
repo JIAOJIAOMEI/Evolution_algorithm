@@ -50,7 +50,7 @@ def generate_parameter_combinations():
     dimensions = [10]
     algorithm = ["Baseline","Lamarck", "Baldwin"]  # "Baseline","Lamarck", "Baldwin"
     gg = [0.01,0.2,0.99]
-    selection_method = ["best_and_worst", "sorted_selection_part", "sorted_selection_all", "roulette_Wheel_Select"]  # "best_and_worst", "sorted_selection_part", "sorted_selection_all", "roulette_Wheel_Select"
+    selection_method = ["SSGA", "sorted_selection_part", "sorted_selection_all", "roulette_Wheel_Select"]  # "SSGA", "sorted_selection_part", "sorted_selection_all", "roulette_Wheel_Select"
     parameter_combinations = []
     for i in num_generations:
         for j in mutation_rate:

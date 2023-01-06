@@ -2,7 +2,7 @@
 
 The process of whole algorithm is:
 
-1. create a population
+1. create a population(everyone has a genotype and a phenotype)
 2. selection
 3. crossover (two parents--------->one child)
 4. mutation (one child-------->one mutation result)
@@ -15,10 +15,12 @@ The process of whole algorithm is:
 
 In each selection operator, the population is divided into 3 groups: the first group is "eligible individuals", the second group is "eligible partners", the third group is "non eligible individuals".
 
-1. **best and worst**: "eligible individuals" only contain the best individual who has the lowest fitness value in the entire population, "non eligible individuals" only contain the worst individual who has the highest fitness value, and "eligible partners" contain the whole population except for "non eligible individuals". 
-2. **sorted_selection_part**: "eligible individuals" contain the best **N** individuals who has the lowest fitness value in the entire population, wherein *N=number of individuals times generation gap*, "non eligible individuals" contain the worst **N** individuals who has the highest fitness value, and "eligible partners" contain the whole population except for "non eligible individuals".  **If "generation gap" is 0.01 or 0.99, then at least one individual is selected.**
-3. **sorted_selection_all**: "eligible individuals" contain the best **N** individuals who has the lowest fitness value in the entire population, wherein *N=number of individuals times generation gap*, "non eligible individuals" contain the worst **N** individuals who has the highest fitness value, **and "eligible partners" contain the whole population**.
-4. **roulette_Wheel_Select**: "non eligible individuals" contain **N** individuals, which are selected based on their probabilities. The higher the fitness value, the higher the probability to be selected. *Probability= abs(fitness value)/ sum of abs(fitness values) for the entire population*. "eligible individuals" also contain **N** individuals, which are selected based on the inverse probabilities. *Inverse probablity = 1-probability*.The lower the fitness value, the higher the probability to be selected, and "eligible partners" contain the whole population except for "non eligible individuals". 
+*height=f.(x)*, *f*  is the test function and *x* is a genotype or a phenotype.
+
+1. **SSGA**: "eligible individuals" only contain the best individual who has the lowest height value in the entire population, "non eligible individuals" only contain the worst individual who has the highest height value, and "eligible partners" contain the whole population except for "non eligible individuals". 
+2. **sorted_selection_part**: "eligible individuals" contain the best **N** individuals who has the lowest height value in the entire population, wherein *N=number of individuals times generation gap*, "non eligible individuals" contain the worst **N** individuals who has the highest height value, and "eligible partners" contain the whole population except for "non eligible individuals".  **If "generation gap" is 0.01 or 0.99, then at least one individual is selected.**
+3. **sorted_selection_all**: "eligible individuals" contain the best **N** individuals who has the lowest height value in the entire population, wherein *N=number of individuals times generation gap*, "non eligible individuals" contain the worst **N** individuals who has the highest height value, **and "eligible partners" contain the whole population**.
+4. **roulette_Wheel_Select**: "non eligible individuals" contain **N** individuals, which are selected based on their probabilities. The higher the height value, the higher the probability to be selected. *Probability= abs(height value)/ sum of abs(height value) for the entire population*. "eligible individuals" also contain **N** individuals, which are selected based on the inverse probabilities. *Inverse probablity = 1-probability*.The lower the height value, the higher the probability to be selected, and "eligible partners" contain the whole population except for "non eligible individuals". 
 
 ## crossover operators
 
@@ -30,7 +32,7 @@ parent1 in an eligible individual, and parent2 is the partner.
 2. **two point**: if a random probability is more than "crossover rate", then randomly pick a parent as the result. Otherwise, choose two random crossover points and exchange the middle parts of the parents, then randomly choose one child as the result.  
 3. **probabilistic crossover**: for each gene, if a random probability is less than "crossover rate", then the child gets the gene from parent1, otherwise he gets the gene from parent2.
 4. **linear_combination_crossover**: for each gene, *child= "crossover rate" times parent1+(1-"crossover rate") times parent2*.
-5. **average**: for each gene, *child = (parent1+parent2) times (1-"crossover rate") /2*.
+5. **average**: for each gene *i*, $child_{i} = (parent1_{i}+parent2_{i})$ times (1-"crossover rate") /2.
 6. **roulette_wheel_crossover**: for parent1, calculate the probability for each gene based on the fitness value. *prob1 = abs(fitness)/sum of abs(fitness) of parent1*.  get the same thing *prob2* for parent2. Then if *prob1* or *prob2* is more than "crossover rate", then child will get the minimum gene of parent1 and parent2, otherwise the child will get a new gene between gene of parent1 and gene of parent2.
 
 ## mutation operators
@@ -39,7 +41,7 @@ after get the one child of crossover, then begin the mutation.
 
 3 mutation operators are implemented:
 
-1. **uniform**: each gene must fall into the domain of a function. The domian of the function is "genotype_range", it contains a lower value and a higher value, an interval. "search radius" controls the range for mutation. *"mutation_range" =["search radius" times lower value, "search radius" time higher value]*.  For each gene, if a random probability is less than "mutation rate", then plus a uniformly sampled variable in "mutation range".
+1. **uniform**: each gene must fall into the domain of a function. The domian of the function is "genotype_range", it contains a lower value and a higher value, an interval. "search radius" controls the range for mutation. *"mutation_range" =["search radius" times lower value, "search radius" times higher value]*.  For each gene, if a random probability is less than "mutation rate", then plus a uniformly sampled variable in "mutation range".
 2. **guassian**: same as above, just the variable is sampled from a gussian distribution. *mean=0, std = "mutation_range"/6*
 3. **frequency_based_mutation**: the domian is divdied equally into 10 categories. Count the number of the genes falling into each category. *probability of each category=number of genes in one catergory/ number of genes*. The probability for each gene is depending on which category it falls in. *probability of each gene = 1- probability of its catergory*. For each gene, if the probability is more than "mutation rate", then plus a uniformly sampled variable within the "mutation_range".
 

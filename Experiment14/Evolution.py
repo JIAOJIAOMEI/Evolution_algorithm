@@ -103,7 +103,7 @@ def evolution_loop(algorithm_parameters):
     best_fitness_list.append(population[0].fitness)
     num_generations_counter += 1
     if algorithm == "Baseline":
-        if crossover_type != "best_and_worst":
+        if crossover_type != "SSGA":
             num_evaluations_counter += num_individuals + 1
         else:
             num_evaluations_counter += num_individuals + int(gg * len(population))
@@ -167,7 +167,7 @@ def evolution_loop(algorithm_parameters):
         best_fitness_list.append(population[0].fitness)
         num_generations_counter += 1
         if algorithm == "Baseline":
-            if crossover_type != "best_and_worst":
+            if crossover_type != "SSGA":
                 num_evaluations_counter += num_individuals + 1
             else:
                 num_evaluations_counter += num_individuals + int(gg * len(population))
