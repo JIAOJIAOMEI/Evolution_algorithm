@@ -37,20 +37,20 @@ class AlgorithmParameters:
 # create a function to generate parameter combinations using each parameter from above
 # and store it in a dataframe, each row is a combination of parameters
 def generate_parameter_combinations():
-    num_generations = [100]
+    num_generations = [2000]
     mutation_rate = [0.2,0.8]
-    num_individuals = [500]
+    num_individuals = [200]
     crossover_rate = [0.2,0.8]
     mutation_type = ["uniform", "gaussian", "frequency_based"]  # "uniform", "gaussian", "frequency_based"
-    crossover_type = ["one-point","two-point", "probabilistic", "linear combination", "average", "Roulette wheel"]  # "two-point", "probabilistic", "linear combination", "average", "Roulette wheel"
+    crossover_type = ["one-point","two-point", "probabilistic", "linear combination", "average"]  # "two-point", "probabilistic", "linear combination", "average", "Roulette wheel"
     local_search_rate = [0.2, 0.8]
-    local_search_type = ["uniform", "gaussian", "neighbor_search"]  # "uniform", "gaussian", "neighbor_search"
+    local_search_type = ["uniform", "gaussian"]  # "uniform", "gaussian", "neighbor_search"
     search_radius = [0.01,0.1]
-    num_evaluations = [3000]
-    fitness_function = [1]
-    dimensions = [10]
+    num_evaluations = [2000]
+    fitness_function = [1,8,12,15,20,21]
+    dimensions = [50, 400]
     algorithm = ["Baseline","Lamarck", "Baldwin"]  # "Baseline","Lamarck", "Baldwin"
-    gg = [0.01,0.2,0.99]
+    gg = [0.01,0.2,0.5,0.8,0.99]
     selection_method = ["SSGA", "sorted_selection_part", "sorted_selection_all", "roulette_Wheel_Select"]  # "SSGA", "sorted_selection_part", "sorted_selection_all", "roulette_Wheel_Select"
     threshold = [0.0001]
     parameter_combinations = []

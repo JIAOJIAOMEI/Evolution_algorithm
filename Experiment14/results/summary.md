@@ -61,7 +61,7 @@ The range of each gene is checked and all of them falls into the domain of the f
 2. **mutation_rate**: a float number between 0 and 1
 3. **num_individuals**: number of the whole population
 4. **crossover_rate**: a float number between 0 and 1
-5. **mutation_type**: 4 mutation operators
+5. **mutation_type**: 3 mutation operators
 6. **crossover_type**: 6 crossover operators
 7. **local_search_rate**: a float number between 0 and 1
 8. **local_search_type**: 3 local search operators
@@ -82,18 +82,18 @@ If **num_generations** or **num_evaluations** is reached, then stop. No one know
 
 # values that might be run
 
-1. **num_generations**: [1000]
+1. **num_generations**: [2000]
 2. **mutation_rate**: [0.2 , 0.8]
-3. **num_individuals**: [500]
+3. **num_individuals**: [200]
 4. **crossover_rate**: [0.2 , 0.8]
-5. **mutation_type**: 4 mutation operators
-6. **crossover_type**: 6 crossover operators
+5. **mutation_type**: 3 mutation operators
+6. **crossover_type**: 5 crossover operators
 7. **local_search_rate**: [0.2 , 0.8]
-8. **local_search_type**: 3 local search operators
-9. **search_radius**: [0.05, 0.1]
+8. **local_search_type**: 2 local search operators
+9. **search_radius**: [0.01, 0.1]
 10. **num_evaluations**: [2000]
 11. **fitness_function**: [1,8,12,15,20,21] (these 6 functions are chosen because they are the most different functions among all 23 functions, only the first 13 functions' dimensions can be changed by the parameter **dimensions**)
-12. **dimensions**: [100, 400]
+12. **dimensions**: [50, 400]
 13. **algorithm**: 3 algorithms, "Baseline","Baldwin" and "Lamarck"
 14. **gg**: [0.01,0.2,0.5,0.8,0.99]
 15. **selection_method**: 4 selection operators
