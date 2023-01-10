@@ -71,8 +71,8 @@ def generate_parameter_combinations():
                                                             for w in selection_method:
                                                                 for x in threshold:
                                                                     parameter_combinations.append(
-                                                                        AlgorithmParameters(i, j, k, l, m, n, o, p, q, r, s,
-                                                                                            t, u, v, w, x))
+                                                                        [i, j, k, l, m, n, o, p, q, r, s,
+                                                                                            t, u, v, w, x])
     parameter_combinations = pd.DataFrame(parameter_combinations,
                                           columns=["num_generations", "mutation_rate", "num_individuals",
                                                    "crossover_rate", "mutation_type", "crossover_type",
@@ -93,7 +93,7 @@ dataframe = pd.read_csv("parameter_combinations.csv", header=0, index_col=0)
 num_rows, num_columns = dataframe.shape
 print("The number of parameter combinations is: " + str(num_rows))
 solutions = []
-for i in range(num_rows):
+for i in range(3):
     if i % 1000 == 0:
         print("The number of parameter combinations that have been tested is: " + str(i))
     # create a list to store the final solution of each run
@@ -109,7 +109,7 @@ for i in range(num_rows):
                                                parameter_combination[12], parameter_combination[13],
                                                parameter_combination[14], parameter_combination[15])
     # create a list to store the final solution of multiple runs
-    num_runs = 1
+    num_runs = 10
     final_solutions = []
     for run in range(num_runs):
         final_solutions.append(evolution_loop(algorithm_parameters))
