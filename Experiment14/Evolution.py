@@ -24,6 +24,7 @@ def evolution_loop(algorithm_parameters):
     gg = algorithm_parameters.gg
     selection_method = algorithm_parameters.selection_method
     algorithm = algorithm_parameters.algorithm
+    threshold = algorithm_parameters.threshold
     # create a list to store the best fitness value of each generation
     best_fitness_list = []
     # set a counter to count the number of evaluations
@@ -31,6 +32,8 @@ def evolution_loop(algorithm_parameters):
     # set a counter to count the number of generations
     num_generations_counter = 0
     # initialize the population
+    # create a list to store the sum of fitness values of the whole population
+    fitness_sum_list = []
     # create an initial population by calling the function create_individuals in CreateIndividuals.py
     from CreateIndividuals import create_individuals
     population = create_individuals(population_size=num_individuals, func=func, num_genes=num_genes,
@@ -42,6 +45,7 @@ def evolution_loop(algorithm_parameters):
     # print the length of initial population
     # print(colorama.Fore.RED + "The length of initial population is: " + str(len(population)))
     # selection
+    fitness_sum_list.append(sum([individual.fitness for individual in population]))
     from SelectParents import selection
     # one line code : create empyty to store eligible_individuals, eligible_partners, non_eligible_individuals
     eligible_individuals, eligible_partners, non_eligible_individuals = selection(individuals=population, gg=gg,
@@ -112,6 +116,16 @@ def evolution_loop(algorithm_parameters):
 
     # start the evolution loop
     while num_generations_counter < num_generations and num_evaluations_counter < num_evaluations:
+        fitness_sum_list.append(sum([individual.fitness for individual in population]))
+        # set a counter for convergence
+        convergence_counter = 0
+        # last value in fitness_sum_list minus the previous value is less than the threshold
+        if fitness_sum_list[-1]-fitness_sum_list[-2] <= threshold:
+            convergence_counter += 1
+        else:
+            convergence_counter = 0
+        if convergence_counter >= 20:
+            break
         # selection
         eligible_individuals, eligible_partners, non_eligible_individuals = selection(individuals=population, gg=gg,
                                                                                       selection_method=selection_method)

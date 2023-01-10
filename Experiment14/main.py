@@ -10,7 +10,7 @@ import pandas as pd
 class AlgorithmParameters:
     def __init__(self, num_generations, mutation_rate, num_individuals, crossover_rate, mutation_type, crossover_type,
                  local_search_rate, local_search_type, search_radius, num_evaluations, fitness_function, dimensions,
-                 algorithm, gg, selection_method):
+                 algorithm, gg, selection_method,threshold):
         self.num_generations = num_generations
         self.mutation_rate = mutation_rate
         self.num_individuals = num_individuals
@@ -31,6 +31,7 @@ class AlgorithmParameters:
         self.gg = gg
         self.selection_method = selection_method
         self.algorithm = algorithm
+        self.threshold = threshold
 
 
 # create a function to generate parameter combinations using each parameter from above
@@ -51,6 +52,7 @@ def generate_parameter_combinations():
     algorithm = ["Baseline","Lamarck", "Baldwin"]  # "Baseline","Lamarck", "Baldwin"
     gg = [0.01,0.2,0.99]
     selection_method = ["SSGA", "sorted_selection_part", "sorted_selection_all", "roulette_Wheel_Select"]  # "SSGA", "sorted_selection_part", "sorted_selection_all", "roulette_Wheel_Select"
+    threshold = [0.0001]
     parameter_combinations = []
     for i in num_generations:
         for j in mutation_rate:
@@ -67,14 +69,16 @@ def generate_parameter_combinations():
                                                     for u in algorithm:
                                                         for v in gg:
                                                             for w in selection_method:
-                                                                parameter_combinations.append(
-                                                                    [i, j, k, l, m, n, o, p, q, r, s, t, u, v, w])
+                                                                for x in threshold:
+                                                                    parameter_combinations.append(
+                                                                        AlgorithmParameters(i, j, k, l, m, n, o, p, q, r, s,
+                                                                                            t, u, v, w, x))
     parameter_combinations = pd.DataFrame(parameter_combinations,
                                           columns=["num_generations", "mutation_rate", "num_individuals",
                                                    "crossover_rate", "mutation_type", "crossover_type",
                                                    "local_search_rate", "local_search_type", "search_radius",
                                                    "num_evaluations", "fitness_function", "dimensions",
-                                                   "algorithm", "gg", "selection_method"])
+                                                   "algorithm", "gg", "selection_method", "threshold"])
     # save the dataframe to a csv file
     parameter_combinations.to_csv("parameter_combinations.csv", index=True)
     return parameter_combinations
@@ -103,7 +107,7 @@ for i in range(num_rows):
                                                parameter_combination[8], parameter_combination[9],
                                                parameter_combination[10], parameter_combination[11],
                                                parameter_combination[12], parameter_combination[13],
-                                               parameter_combination[14])
+                                               parameter_combination[14], parameter_combination[15])
     # create a list to store the final solution of multiple runs
     num_runs = 1
     final_solutions = []
