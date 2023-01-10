@@ -87,13 +87,14 @@ def generate_parameter_combinations():
 import colorama
 # count time for the whole program
 import time
-start_time = time.time()
+from datetime import datetime
 parameter_combinations = generate_parameter_combinations()
 dataframe = pd.read_csv("parameter_combinations.csv", header=0, index_col=0)
 num_rows, num_columns = dataframe.shape
 print("The number of parameter combinations is: " + str(num_rows))
 solutions = []
-for i in range(3):
+start_time = datetime.now()
+for i in range(50000):
     if i % 1000 == 0:
         print("The number of parameter combinations that have been tested is: " + str(i))
     # create a list to store the final solution of each run
@@ -122,5 +123,5 @@ for i in range(3):
     # save the dataframe to a csv file
     solutions_dataframe.to_csv("solutions_dataframe.csv", index=True)
 
-end_time = time.time()
-print("The total time is: " + str(end_time - start_time))
+end_time = datetime.now()
+print('The total time is: {}'.format(end_time - start_time))
