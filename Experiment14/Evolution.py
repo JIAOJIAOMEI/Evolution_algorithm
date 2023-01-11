@@ -120,7 +120,7 @@ def evolution_loop(algorithm_parameters):
         # set a counter for convergence
         convergence_counter = 0
         # last value in fitness_sum_list minus the previous value is less than the threshold
-        if fitness_sum_list[-1]-fitness_sum_list[-2] <= threshold:
+        if abs(fitness_sum_list[-1]-fitness_sum_list[-2]) <= threshold:
             convergence_counter += 1
         else:
             convergence_counter = 0
