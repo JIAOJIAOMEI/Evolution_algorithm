@@ -10,7 +10,7 @@ import pandas as pd
 class AlgorithmParameters:
     def __init__(self, num_generations, mutation_rate, num_individuals, crossover_rate, mutation_type, crossover_type,
                  local_search_rate, local_search_type, search_radius, num_evaluations, fitness_function, dimensions,
-                 algorithm, gg, selection_method,threshold):
+                 algorithm, gg, selection_method, threshold):
         self.num_generations = num_generations
         self.mutation_rate = mutation_rate
         self.num_individuals = num_individuals
@@ -38,21 +38,23 @@ class AlgorithmParameters:
 # and store it in a dataframe, each row is a combination of parameters
 def generate_parameter_combinations():
     num_generations = [2000]
-    mutation_rate = [0.2,0.8]
+    mutation_rate = [0.2, 0.8]
     num_individuals = [200]
-    crossover_rate = [0.2,0.8]
+    crossover_rate = [0.2, 0.8]
     mutation_type = ["uniform", "gaussian", "frequency_based"]  # "uniform", "gaussian", "frequency_based"
-    crossover_type = ["one-point","two-point", "probabilistic", "linear combination", "average"]  # "two-point", "probabilistic", "linear combination", "average", "Roulette wheel"
+    crossover_type = ["one-point", "two-point", "probabilistic", "linear combination",
+                      "average"]  # "two-point", "probabilistic", "linear combination", "average", "Roulette wheel"
     local_search_rate = [0.2, 0.8]
     local_search_type = ["uniform", "gaussian"]  # "uniform", "gaussian", "neighbor_search"
-    search_radius = [0.01,0.1]
+    search_radius = [0.01, 0.1]
     num_evaluations = [2000]
-    fitness_function = [1,8,12,15,20,21]
-    dimensions = [50, 400]
-    algorithm = ["Baseline","Lamarck", "Baldwin"]  # "Baseline","Lamarck", "Baldwin"
-    gg = [0.01,0.2,0.5,0.8,0.99]
-    selection_method = ["SSGA", "sorted_selection_part", "sorted_selection_all", "roulette_Wheel_Select"]  # "SSGA", "sorted_selection_part", "sorted_selection_all", "roulette_Wheel_Select"
     threshold = [0.0001]
+    gg = [0.01, 0.2, 0.5, 0.8, 0.99]
+    dimensions = [50, 400]
+    selection_method = ["SSGA", "sorted_selection_part", "sorted_selection_all",
+                        "roulette_Wheel_Select"]  # "SSGA", "sorted_selection_part", "sorted_selection_all", "roulette_Wheel_Select"
+    fitness_function = [1, 8, 12, 15, 20, 21]
+    algorithm = ["Baseline", "Lamarck", "Baldwin"]  # "Baseline","Lamarck", "Baldwin"
     parameter_combinations = []
     for i in num_generations:
         for j in mutation_rate:
@@ -64,21 +66,20 @@ def generate_parameter_combinations():
                                 for p in local_search_type:
                                     for q in search_radius:
                                         for r in num_evaluations:
-                                            for s in fitness_function:
-                                                for t in dimensions:
-                                                    for u in algorithm:
-                                                        for v in gg:
-                                                            for w in selection_method:
-                                                                for x in threshold:
+                                            for s in threshold:
+                                                for t in gg:
+                                                    for u in dimensions:
+                                                        for v in selection_method:
+                                                            for w in fitness_function:
+                                                                for x in algorithm:
                                                                     parameter_combinations.append(
-                                                                        [i, j, k, l, m, n, o, p, q, r, s,
-                                                                                            t, u, v, w, x])
+                                                                        [i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x])
     parameter_combinations = pd.DataFrame(parameter_combinations,
                                           columns=["num_generations", "mutation_rate", "num_individuals",
                                                    "crossover_rate", "mutation_type", "crossover_type",
                                                    "local_search_rate", "local_search_type", "search_radius",
-                                                   "num_evaluations", "fitness_function", "dimensions",
-                                                   "algorithm", "gg", "selection_method", "threshold"])
+                                                   "num_evaluations", "threshold", "gg", "dimensions",
+                                                   "selection_method", "fitness_function", "algorithm"])
     # save the dataframe to a csv file
     parameter_combinations.to_csv("parameter_combinations.csv", index=True)
     return parameter_combinations
@@ -88,6 +89,7 @@ import colorama
 # count time for the whole program
 import time
 from datetime import datetime
+
 parameter_combinations = generate_parameter_combinations()
 dataframe = pd.read_csv("parameter_combinations.csv", header=0, index_col=0)
 num_rows, num_columns = dataframe.shape
@@ -101,14 +103,22 @@ for i in range(50000):
     parameter_combination = dataframe.iloc[i, :]
     # print(colorama.Fore.GREEN + "The parameter combination is:\n" + str(parameter_combination))
     # simply the following code
-    algorithm_parameters = AlgorithmParameters(parameter_combination[0], parameter_combination[1],
-                                               parameter_combination[2], parameter_combination[3],
-                                               parameter_combination[4], parameter_combination[5],
-                                               parameter_combination[6], parameter_combination[7],
-                                               parameter_combination[8], parameter_combination[9],
-                                               parameter_combination[10], parameter_combination[11],
-                                               parameter_combination[12], parameter_combination[13],
-                                               parameter_combination[14], parameter_combination[15])
+    algorithm_parameters = AlgorithmParameters(num_generations=parameter_combination["num_generations"],
+                                               mutation_rate=parameter_combination["mutation_rate"],
+                                               num_individuals=parameter_combination["num_individuals"],
+                                               crossover_rate=parameter_combination["crossover_rate"],
+                                               mutation_type=parameter_combination["mutation_type"],
+                                               crossover_type=parameter_combination["crossover_type"],
+                                               local_search_rate=parameter_combination["local_search_rate"],
+                                               local_search_type=parameter_combination["local_search_type"],
+                                               search_radius=parameter_combination["search_radius"],
+                                               num_evaluations=parameter_combination["num_evaluations"],
+                                               threshold=parameter_combination["threshold"],
+                                               gg=parameter_combination["gg"],
+                                               dimensions=parameter_combination["dimensions"],
+                                               selection_method=parameter_combination["selection_method"],
+                                               fitness_function=parameter_combination["fitness_function"],
+                                               algorithm=parameter_combination["algorithm"])
     # create a list to store the final solution of multiple runs
     num_runs = 10
     final_solutions = []
