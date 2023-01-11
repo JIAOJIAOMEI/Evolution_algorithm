@@ -16,10 +16,10 @@ budget = dim*1000, dim=400.
 
 Last time, budget = 50,000. This is budget = 400,000.
 
-![distance](distance-3432817.png)
+![distance](distance-3433082.png)
 
 And this time:
 
-![distance](distance-3346136.png)
+![distance](distance.png)
 
 Some decreases exist in the y axis(sum of abs distance from global minimum), but they are not very obvious.
