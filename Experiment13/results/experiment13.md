@@ -16,7 +16,7 @@ budget = dim*1000, dim=400.
 
 Last time, budget = 50,000. This is budget = 400,000.
 
-![distance](distance.png)
+![distance](distance-3432817.png)
 
 And this time:
 
