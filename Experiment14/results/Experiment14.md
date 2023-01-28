@@ -66,7 +66,7 @@ The left column is the performance plots of dimension=50, and the right column i
 
 - For crossover type, the overal performance is as this: Average > Linear combination > Probabilistic > Two point $\approx$ One point. But crossover type: Average performs the worst when it comes to F8. (The average operator: $**child = (gene1 + gene2) * (1 - crossover_rate) / 2**$, the global minimum for most functions is 0, but the global minimum for F8 is dim * -498.18, I think this is why average oprator has bad effects on F8.)
 
-- For selection method: sorted_selection_part > sorted_selection_all > SSGA $\approx$ roulette_Wheel_Select. (sorted_selection_part: the eligible partners do not include the individuals marked to be deleted; sorted_selection_all: the eligible partners include all the individuals, this means the worst genes might be passed on to the next generation.)
+- For selection method: sorted_selection_part > sorted_selection_all > SSGA > roulette_Wheel_Select. (sorted_selection_part: the eligible partners do not include the individuals marked to be deleted; sorted_selection_all: the eligible partners include all the individuals, this means the worst genes might be passed on to the next generation.)
 
 - For generation gap: we have tried 5 values: 0.01, 0.2, 0.5, 0.8, 0.99. The final solutions are comparable, but the range for the final solutions produced by 0.99 are much more wider than the results produced by others.
 
