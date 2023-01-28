@@ -2,9 +2,9 @@
 
 
 
-# performance of parameters
 
-## Stopping conditions
+
+# Stopping conditions
 
 3 stopping conditions in total:
 
@@ -12,11 +12,35 @@
 - max number of evaluations is reached(for this time, number of evaluations is 2000.)
 - if the sum of fitnesses of phenotypes in all the population does not change in continous 20 iterations, then stop. (The threshold for defining "not change" is 0.0001)
 
+# performance of parameters
+
 ## Mutation rate
 
 The left column is the performance plots of dimension=50, and the right column is dimension = 400. The x axis represents the values we tried for parameter mutation rate. The y axis is the average/mean of 10 solutions produced by each parameter combination.
 
 ![mutation_rate](mutation_rate.png)
+
+## Mutation type
+
+![mutation_type](mutation_type.png)
+
+## Local seach rate
+
+![local_search_rate](local_search_rate.png)
+
+## Local search type
+
+![local_search_type](local_search_type.png)
+
+## Crossover rate
+
+![crossover_rate](crossover_rate.png)
+
+## Crossover type
+
+![crossover_type](crossover_type.png)
+
+
 
 # best 20 parameter combinations
 
