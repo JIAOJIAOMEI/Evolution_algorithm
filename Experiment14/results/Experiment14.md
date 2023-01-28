@@ -14,7 +14,7 @@
 
 ## Mutation rate
 
-The left column is the performance plots of dimension=50, and the right column is dimension = 400. The x axis represents the values we tried for parameter mutation rate. The y axis is the average/mean of 10 solutions produced by each parameter combination.
+The left column is the performance plots of dimension=50, and the right column is dimension = 400. The x axis represents the values we tried for parameter mutation rate. The y axis is the average/mean of 10 solutions produced by each parameter combination.Different color of bars represent different algorithms.
 
 ![mutation_rate](mutation_rate.png)
 
