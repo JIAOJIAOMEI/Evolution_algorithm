@@ -15,7 +15,10 @@ def uniform_local_search(genotype, genotype_range, num_genes, local_search_rate,
     phenotype = []
     for i in range(num_genes):
         if random.random() < local_search_rate:
-            phenotype.append(genotype[i]+random.uniform(mutation_range[0], mutation_range[1]))
+            k = genotype[i]+random.uniform(mutation_range[0], mutation_range[1])
+            k = min(k, genotype_range[1])
+            k = max(k, genotype_range[0])
+            phenotype.append(k)
         else:
             phenotype.append(genotype[i])
     return phenotype
@@ -26,7 +29,10 @@ def guass_local_search(genotype, genotype_range, num_genes, local_search_rate, s
     phenotype = []
     for i in range(num_genes):
         if random.random() < local_search_rate:
-            phenotype.append(random.gauss(genotype[i], (mutation_range[1] - mutation_range[0]) / 6))
+            k = random.gauss(genotype[i], (mutation_range[1] - mutation_range[0]) / 6)
+            k = min(k, genotype_range[1])
+            k = max(k, genotype_range[0])
+            phenotype.append(k)
         else:
             phenotype.append(genotype[i])
     return phenotype
