@@ -13,7 +13,7 @@ import improved_evolution
 from parameter_combination import read_file
 
 if __name__ == '__main__':
-    dim=400
+    dim=100
     opt = [0, 0, 0, 0, 0, 0, 0, -418.98 * dim, 0, 0, 0, 0, 0, 1, 0.0003, -1.0316, 0.398, 3, -3.86, -3.32, -10.1532,
            -10.4028, -10.5363]
 

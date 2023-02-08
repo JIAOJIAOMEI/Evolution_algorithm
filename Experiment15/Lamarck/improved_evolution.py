@@ -12,7 +12,7 @@ from cal_fitness import fitness_single, fitness
 from functions_parameter import choose_func
 from offspring import offspring
 
-dim=400
+dim=100
 global_opt = opt = [0, 0, 0, 0, 0, 0, 0, -418.98 * dim, 0, 0, 0, 0, 0, 1, 0.0003, -1.0316, 0.398, 3, -3.86, -3.32, -10.1532,-10.4028, -10.5363]
 
 threshold = 0.0001
