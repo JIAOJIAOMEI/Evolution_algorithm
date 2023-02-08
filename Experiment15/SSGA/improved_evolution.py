@@ -11,7 +11,7 @@ from functions_parameter import choose_func
 from InitializationSSGA import initialization, Individual
 from offspring import offspring
 
-dim = 400
+dim=100
 global_opt = opt = [0, 0, 0, 0, 0, 0, 0, -418.98 * dim, 0, 0, 0, 0, 0, 1, 0.0003, -1.0316, 0.398, 3, -3.86, -3.32,
                     -10.1532, -10.4028, -10.5363]
 
@@ -28,7 +28,7 @@ def test(function, parameter_list, opt):
     mutation_type = parameter_list[4]
     crossover_type = parameter_list[5]
     R = parameter_list[6]
-    budget = dim*1000
+    budget = dim*10000
 
     func, num_genes, genotype_range = choose_func(function)
     individuals = initialization(num_genes=num_genes, num_individual=num_individuals, genotype_range=genotype_range)

@@ -12,7 +12,7 @@ from cal_fitness import fitness_single, fitness
 from functions_parameter import choose_func
 from offspring import offspring
 
-dim=400
+dim=100
 global_opt = opt = [0, 0, 0, 0, 0, 0, 0, -418.98 * dim, 0, 0, 0, 0, 0, 1, 0.0003, -1.0316, 0.398, 3, -3.86, -3.32, -10.1532,-10.4028, -10.5363]
 
 threshold = 0.0001
@@ -29,7 +29,7 @@ def test(function, mode, parameter_list, opt):
     local_search_rate = parameter_list[6]
     local_search_type = parameter_list[7]
     R = parameter_list[8]
-    budget = dim*1000
+    budget = dim*10000
 
     func, num_genes, genotype_range = choose_func(function)
     individuals = initialization(func=func, num_genes=num_genes,
