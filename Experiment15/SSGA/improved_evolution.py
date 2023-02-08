@@ -11,24 +11,22 @@ from functions_parameter import choose_func
 from InitializationSSGA import initialization, Individual
 from offspring import offspring
 
-dim=100
-global_opt = opt = [0, 0, 0, 0, 0, 0, 0, -418.98 * dim, 0, 0, 0, 0, 0, 1, 0.0003, -1.0316, 0.398, 3, -3.86, -3.32,
-                    -10.1532, -10.4028, -10.5363]
+dim=400
+global_opt = opt = [0, 0, 0, 0, 0, 0, 0, -418.98 * dim, 0, 0, 0, 0, 0, 1, 0.0003, -1.0316, 0.398, 3, -3.86, -3.32, -10.1532,-10.4028, -10.5363]
 
 threshold = 0.0001
-
 
 def test(function, parameter_list, opt):
     # [['iterations', 'mutation_rate', 'num_individuals', 'crossover_probability', 'Mutation_type', 'Crossover_type', 'R']]
     # iterations = parameter_list[0]
     iterations = 1000000
-    mutation_rate = parameter_list[1]*10
+    mutation_rate = parameter_list[1]
     num_individuals = int(parameter_list[2])
     crossover_probability = parameter_list[3]
     mutation_type = parameter_list[4]
     crossover_type = parameter_list[5]
     R = parameter_list[6]
-    budget = dim*10000
+    budget = parameter_list[7]
 
     func, num_genes, genotype_range = choose_func(function)
     individuals = initialization(num_genes=num_genes, num_individual=num_individuals, genotype_range=genotype_range)
@@ -59,7 +57,7 @@ def test(function, parameter_list, opt):
     fit_all = [j for i, j in sort_zipped]
 
     count = 1
-    budget = budget - num_individuals
+    budget = budget- num_individuals
     similarity_population = sum(
         [euclidean_distance(other.phenotype, individuals[0].phenotype) for other in individuals[1:]])
     stuck = 0

@@ -10,7 +10,7 @@ import improved_evolution
 
 if __name__ == '__main__':
 
-    dim=100
+    dim=400
     opt = [0, 0, 0, 0, 0, 0, 0, -418.98 * dim, 0, 0, 0, 0, 0, 1, 0.0003, -1.0316, 0.398, 3, -3.86, -3.32, -10.1532,
            -10.4028, -10.5363]
 
@@ -18,6 +18,7 @@ if __name__ == '__main__':
                          index_col=[0],
                          header=0)
     com_df["R"] = 0.005
+    com_df["Budget"] = 50000
     df_col = com_df.columns.tolist()
     df_col.remove("range_mutation")
     print(f"col names are {[df_col]}")
@@ -39,7 +40,7 @@ if __name__ == '__main__':
         print(time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time())))
         if i % 5 == 4:
             print("\033[0;37;45m {0} combinations are tested.\033[0m".format(i + 1))
-        data, data_budget,data_similarity = improved_evolution.multipleF(Times=10, L=[0, 1], Com=com[i],
+        data, data_budget,data_similarity = improved_evolution.multipleF(Times=20, L=[0, 1], Com=com[i],
                                                          function_list=function_list)
         data.to_csv("./combination{0}.csv".format(index[i]), header=True, index=True)
         data_budget.to_csv("./budget{0}.csv".format(index[i]), header=True, index=True)

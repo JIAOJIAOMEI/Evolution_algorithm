@@ -13,7 +13,7 @@ import improved_evolution
 from parameter_combination import read_file
 
 if __name__ == '__main__':
-    dim=100
+    dim=400
     opt = [0, 0, 0, 0, 0, 0, 0, -418.98 * dim, 0, 0, 0, 0, 0, 1, 0.0003, -1.0316, 0.398, 3, -3.86, -3.32, -10.1532,
            -10.4028, -10.5363]
 
@@ -23,6 +23,7 @@ if __name__ == '__main__':
     com_df["local_search_rate"] = 0.5
     com_df["Local_search_type"] = "Uniform"
     com_df["R"] = 0.005
+    com_df["Budget"] = 50000
     df_col = com_df.columns.tolist()
     df_col.remove("range_mutation")
     print(f"col names are {[df_col]}")
@@ -42,7 +43,7 @@ if __name__ == '__main__':
 
     for i in range(0, len(com), 1):
         print(time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time())))
-        data, data_budget, data_similarity = improved_evolution.multipleF(Times=10, L=[0, 1], Com=com[i],
+        data, data_budget, data_similarity = improved_evolution.multipleF(Times=20, L=[0, 1], Com=com[i],
                                                                           mode="Baldwin",
                                                                           function_list=function_list)
         data.to_csv("./combination{0}.csv".format(index[i]), header=True, index=True)
