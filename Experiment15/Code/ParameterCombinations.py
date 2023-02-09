@@ -26,5 +26,3 @@ def generate_parameter_combinations():
     parameter_combinations.columns = fixed_parameters_columns + ["gg", "selection_method", "fitness_function",
                                                                  "algorithm"]
     return parameter_combinations
-
-
