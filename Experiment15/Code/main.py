@@ -52,7 +52,7 @@ print("The number of parameter combinations is: " + str(num_rows))
 solutions = []
 start_time = datetime.now()
 for i in range(10):
-    if i % 1000 == 0:
+    if i % 500 == 0:
         print("The number of parameter combinations that have been tested is: " + str(i))
     # create a list to store the final solution of each run
     parameter_combination = dataframe.iloc[i, :]
