@@ -5,7 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fda0da58-6538-4a27-a41e-5ca59058e509" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Code/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/Code/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Code(0~720)/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/Code(0~720)/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Code(1440~2160)/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/Code(1440~2160)/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Code(2160~2880)/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/Code(2160~2880)/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Code(720~1440)/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/Code(720~1440)/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
