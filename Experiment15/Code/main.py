@@ -36,7 +36,9 @@ class AlgorithmParameters:
 
 # create a function to generate parameter combinations using each parameter from above
 # and store it in a dataframe, each row is a combination of parameters
-
+from ParameterCombinations import generate_parameter_combinations
+parameter_combinations = generate_parameter_combinations()
+parameter_combinations.to_csv("parameter_combinations.csv")
 
 import colorama
 # count time for the whole program
@@ -65,7 +67,7 @@ for i in range(50000):
                                                local_search_rate=parameter_combination["local_search_rate"],
                                                local_search_type=parameter_combination["local_search_type"],
                                                search_radius=parameter_combination["search_radius"],
-                                               num_evaluations=parameter_combination["num_evaluations"],
+                                               num_evaluations=parameter_combination['dimension'] * 10000,
                                                threshold=parameter_combination["threshold"],
                                                gg=parameter_combination["gg"],
                                                dimensions=parameter_combination["dimensions"],

@@ -28,7 +28,3 @@ def generate_parameter_combinations():
     return parameter_combinations
 
 
-if __name__ == '__main__':
-    parameter_combinations = generate_parameter_combinations()
-    parameter_combinations.to_csv("parameter_combinations.csv")
-    print("The number of parameter combinations is: " + str(parameter_combinations.shape[0]))
