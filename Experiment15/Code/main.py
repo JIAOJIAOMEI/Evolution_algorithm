@@ -51,42 +51,42 @@ num_rows, num_columns = dataframe.shape
 print("The number of parameter combinations is: " + str(num_rows))
 solutions = []
 start_time = datetime.now()
-# for i in range(50000):
-#     if i % 1000 == 0:
-#         print("The number of parameter combinations that have been tested is: " + str(i))
-#     # create a list to store the final solution of each run
-#     parameter_combination = dataframe.iloc[i, :]
-#     # print(colorama.Fore.GREEN + "The parameter combination is:\n" + str(parameter_combination))
-#     # simply the following code
-#     algorithm_parameters = AlgorithmParameters(num_generations=parameter_combination["num_generations"],
-#                                                mutation_rate=parameter_combination["mutation_rate"],
-#                                                num_individuals=parameter_combination["num_individuals"],
-#                                                crossover_rate=parameter_combination["crossover_rate"],
-#                                                mutation_type=parameter_combination["mutation_type"],
-#                                                crossover_type=parameter_combination["crossover_type"],
-#                                                local_search_rate=parameter_combination["local_search_rate"],
-#                                                local_search_type=parameter_combination["local_search_type"],
-#                                                search_radius=parameter_combination["search_radius"],
-#                                                threshold=parameter_combination["threshold"],
-#                                                gg=parameter_combination["gg"],
-#                                                dimensions=parameter_combination["dimensions"],
-#                                                num_evaluations=parameter_combination['dimension'] * 10000,
-#                                                selection_method=parameter_combination["selection_method"],
-#                                                fitness_function=parameter_combination["fitness_function"],
-#                                                algorithm=parameter_combination["algorithm"])
-#     # create a list to store the final solution of multiple runs
-#     num_runs = 10
-#     final_solutions = []
-#     for run in range(num_runs):
-#         final_solutions.append(evolution_loop(algorithm_parameters))
-#     solutions.append(final_solutions)
-#     # index is the index of the parameter combination
-#     # columns are the runs
-#     # the value is the final solution of the run
-#     # create a dataframe to store the final solutions
-#     solutions_dataframe = pd.DataFrame(solutions)
-#     # save the dataframe to a csv file
-#     solutions_dataframe.to_csv("solutions_dataframe.csv", index=True)
-#
-# end_time = datetime.now()
-# print('The total time is: {}'.format(end_time - start_time))
+for i in range(50000):
+    if i % 1000 == 0:
+        print("The number of parameter combinations that have been tested is: " + str(i))
+    # create a list to store the final solution of each run
+    parameter_combination = dataframe.iloc[i, :]
+    # print(colorama.Fore.GREEN + "The parameter combination is:\n" + str(parameter_combination))
+    # simply the following code
+    algorithm_parameters = AlgorithmParameters(num_generations=parameter_combination["num_generations"],
+                                               mutation_rate=parameter_combination["mutation_rate"],
+                                               num_individuals=parameter_combination["num_individuals"],
+                                               crossover_rate=parameter_combination["crossover_rate"],
+                                               mutation_type=parameter_combination["mutation_type"],
+                                               crossover_type=parameter_combination["crossover_type"],
+                                               local_search_rate=parameter_combination["local_search_rate"],
+                                               local_search_type=parameter_combination["local_search_type"],
+                                               search_radius=parameter_combination["search_radius"],
+                                               threshold=parameter_combination["threshold"],
+                                               gg=parameter_combination["gg"],
+                                               dimensions=parameter_combination["dimensions"],
+                                               num_evaluations=parameter_combination['dimension'] * 10000,
+                                               selection_method=parameter_combination["selection_method"],
+                                               fitness_function=parameter_combination["fitness_function"],
+                                               algorithm=parameter_combination["algorithm"])
+    # create a list to store the final solution of multiple runs
+    num_runs = 10
+    final_solutions = []
+    for run in range(num_runs):
+        final_solutions.append(evolution_loop(algorithm_parameters))
+    solutions.append(final_solutions)
+    # index is the index of the parameter combination
+    # columns are the runs
+    # the value is the final solution of the run
+    # create a dataframe to store the final solutions
+    solutions_dataframe = pd.DataFrame(solutions)
+    # save the dataframe to a csv file
+    solutions_dataframe.to_csv("solutions_dataframe.csv", index=True)
+
+end_time = datetime.now()
+print('The total time is: {}'.format(end_time - start_time))
