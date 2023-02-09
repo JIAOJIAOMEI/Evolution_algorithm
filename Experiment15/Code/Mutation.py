@@ -22,27 +22,27 @@ import numpy as np
 
 
 def uniform_mutation(mutation_rate, child, genotype_range, num_genes, search_radius):
-    mutation_range = [search_radius * genotype_range[0], search_radius * genotype_range[1]]
-    # print(num_genes)
-    # print(len(child))
+    STD = (genotype_range[1] - genotype_range[0]) * search_radius
+    temp = child.copy()
     for i in range(num_genes):
-        if random() < mutation_rate:
-            child[i] = child[i] + np.random.uniform(mutation_range[0], mutation_range[1])
-            # check if the child is within the range of genotype_range use max and min function
-            child[i] = max(child[i], genotype_range[0])
-            child[i] = min(child[i], genotype_range[1])
-    return child
+        if np.random.rand() < mutation_rate:
+            temp[i] = temp[i] + float(np.random.uniform(-3 * STD, 3 * STD))
+            temp[i] = max(temp[i], genotype_range[0])  # check domain
+            temp[i] = min(temp[i], genotype_range[1])
+    new_child = temp
+    return new_child
 
 
 def guassian_mutation(mutation_rate, child, genotype_range, num_genes, search_radius):
-    mutation_range = [search_radius * genotype_range[0], search_radius * genotype_range[1]]
+    STD = (genotype_range[1] - genotype_range[0]) * search_radius
+    temp = child.copy()
     for i in range(num_genes):
-        if random() < mutation_rate:
-            child[i] = child[i] + np.random.normal(loc=0, scale=(mutation_range[1] - mutation_range[0]) / 6)
-            # check if the child is within the range of genotype_range use max and min function
-            child[i] = max(child[i], genotype_range[0])
-            child[i] = min(child[i], genotype_range[1])
-    return child
+        if np.random.rand() < mutation_rate:
+            temp[i] = temp[i] + float(np.random.normal(loc=0, scale=STD, size=1))
+            temp[i] = max(temp[i], genotype_range[0])  # check domain
+            temp[i] = min(temp[i], genotype_range[1])
+    new_child = temp
+    return new_child
 
 
 import colorama

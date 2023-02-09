@@ -3,6 +3,8 @@
 # Time and date: 1/1/23 23:40
 import random
 
+import numpy as np
+
 
 # parameters: genotype, genotype_range, num_genes, local_search_type, local_search_rate
 # local_search_type: 1: "uniform",2: "guass" 2: hill climbing, 3: simulated annealing
@@ -11,24 +13,26 @@ import random
 # return the phenotype
 
 def uniform_local_search(genotype, genotype_range, num_genes, local_search_rate, search_radius):
-    mutation_range = [search_radius * genotype_range[0], search_radius * genotype_range[1]]
-    phenotype = []
+    STD = (genotype_range[1] - genotype_range[0]) * search_radius
+    temp = genotype.copy()
     for i in range(num_genes):
-        if random.random() < local_search_rate:
-            phenotype.append(genotype[i]+random.uniform(mutation_range[0], mutation_range[1]))
-        else:
-            phenotype.append(genotype[i])
+        if np.random.rand() < local_search_rate:
+            temp[i] = temp[i] + float(np.random.uniform(-3 * STD, 3 * STD))
+            temp[i] = max(temp[i], genotype_range[0])  # check domain
+            temp[i] = min(temp[i], genotype_range[1])
+    phenotype = temp
     return phenotype
 
 
 def guass_local_search(genotype, genotype_range, num_genes, local_search_rate, search_radius):
-    mutation_range = [search_radius * genotype_range[0], search_radius * genotype_range[1]]
-    phenotype = []
+    STD = (genotype_range[1] - genotype_range[0]) * search_radius
+    temp = genotype.copy()
     for i in range(num_genes):
-        if random.random() < local_search_rate:
-            phenotype.append(random.gauss(genotype[i], (mutation_range[1] - mutation_range[0]) / 6))
-        else:
-            phenotype.append(genotype[i])
+        if np.random.rand() < local_search_rate:
+            temp[i] = temp[i] + float(np.random.normal(loc=0, scale=STD, size=1))
+            temp[i] = max(temp[i], genotype_range[0])  # check domain
+            temp[i] = min(temp[i], genotype_range[1])
+    phenotype = temp
     return phenotype
 
 
@@ -42,7 +46,7 @@ def neighbor_search(genotype, num_genes, local_search_rate):
     #  otherwise it is the absolute gene in the genotype
     # for the first one and the last one, only compare with the front one and the back one
     for i in range(num_genes):
-        if random.random() < local_search_rate:
+        if np.random.rand() < local_search_rate:
             if i == 0:
                 phenotype.append(min(abs(genotype[i]), abs(genotype[i + 1])))
             elif i == num_genes - 1:
@@ -59,9 +63,9 @@ def neighbor_search(genotype, num_genes, local_search_rate):
 def local_search(genotype, genotype_range, num_genes, local_search_type, local_search_rate, search_radius):
     phenotype = []
     if local_search_type == "Uniform":
-        phenotype = uniform_local_search(genotype, genotype_range, num_genes, local_search_rate,search_radius)
+        phenotype = uniform_local_search(genotype, genotype_range, num_genes, local_search_rate, search_radius)
     elif local_search_type == "Normal":
-        phenotype = guass_local_search(genotype, genotype_range, num_genes, local_search_rate,search_radius)
+        phenotype = guass_local_search(genotype, genotype_range, num_genes, local_search_rate, search_radius)
     elif local_search_type == "neighbor_search":
         phenotype = neighbor_search(genotype, num_genes, local_search_rate)
     return phenotype
