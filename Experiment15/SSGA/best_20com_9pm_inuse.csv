@@ -1,9 +1,0 @@
-,iterations,mutation_rate,num_individuals,crossover_probability,Mutation_type,Crossover_type,R,Budget
-590,1000000,2.0,100,0.5,Normal,Probabilistic_crossover,0.005,50000
-579,1000000,1.0,200,0.6,Normal,Probabilistic_crossover,0.005,50000
-588,1000000,2.0,100,0.6,Normal,Probabilistic_crossover,0.005,50000
-589,1000000,2.0,100,0.7,Normal,Probabilistic_crossover,0.005,50000
-569,1000000,1.0,200,0.5,Normal,Probabilistic_crossover,0.005,50000
-558,1000000,1.0,100,0.6,Normal,Probabilistic_crossover,0.005,50000
-542,1000000,0.5,200,0.5,Normal,Probabilistic_crossover,0.005,50000
-562,1000000,1.0,100,0.7,Normal,Probabilistic_crossover,0.005,50000

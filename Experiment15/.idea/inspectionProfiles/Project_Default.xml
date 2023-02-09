@@ -41,6 +41,11 @@
           <option value="cv2.namedWindow" />
           <option value="cv2.imshow" />
           <option value="list.__getitem__" />
+          <option value="random.random.uniform" />
+          <option value="random.random.gauss" />
+          <option value="random.random.random" />
+          <option value="random.random.randint" />
+          <option value="random.random.normal" />
         </list>
       </option>
     </inspection_tool>
