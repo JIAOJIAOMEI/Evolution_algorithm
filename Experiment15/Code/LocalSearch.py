@@ -58,9 +58,9 @@ def neighbor_search(genotype, num_genes, local_search_rate):
 
 def local_search(genotype, genotype_range, num_genes, local_search_type, local_search_rate, search_radius):
     phenotype = []
-    if local_search_type == "uniform":
+    if local_search_type == "Uniform":
         phenotype = uniform_local_search(genotype, genotype_range, num_genes, local_search_rate,search_radius)
-    elif local_search_type == "gaussian":
+    elif local_search_type == "Normal":
         phenotype = guass_local_search(genotype, genotype_range, num_genes, local_search_rate,search_radius)
     elif local_search_type == "neighbor_search":
         phenotype = neighbor_search(genotype, num_genes, local_search_rate)

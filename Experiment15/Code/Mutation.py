@@ -94,9 +94,9 @@ def frequency_based_mutation(mutation_rate, child, genotype_range, num_genes, se
 
 # create a function to choose the mutation method
 def mutation(mutation_type, mutation_rate, child, genotype_range, num_genes, search_radius):
-    if mutation_type == 'uniform':
+    if mutation_type == 'Uniform':
         return uniform_mutation(mutation_rate, child, genotype_range, num_genes, search_radius)
-    elif mutation_type == 'gaussian':
+    elif mutation_type == 'Normal':
         return guassian_mutation(mutation_rate, child, genotype_range, num_genes, search_radius)
     elif mutation_type == 'frequency_based':
         return frequency_based_mutation(mutation_rate, child, genotype_range, num_genes, search_radius)

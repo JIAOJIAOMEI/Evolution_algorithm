@@ -175,7 +175,7 @@ def crossover(individual1, individual2, crossover_type, crossover_rate, algorith
             elif algorithm == "Lamarck":
                 return random.choice([individual1.phenotype, individual2.phenotype])
 
-    elif crossover_type == "probabilistic":
+    elif crossover_type == "Probabilistic_crossover":
         return probabilistic_crossover(individual1, individual2, algorithm, crossover_rate)
     elif crossover_type == "linear combination":
         return linear_combination_crossover(individual1, individual2, algorithm, crossover_rate)
