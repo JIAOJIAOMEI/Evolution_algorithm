@@ -1,0 +1,9 @@
+,num_generations,mutation_rate,num_individuals,crossover_rate,mutation_type,crossover_type,local_search_rate,local_search_type,search_radius,num_evaluations,threshold,dimensions
+590,1000000,0.04,100,0.5,Normal,Probabilistic_crossover,0.5,Uniform,0.1,1000000,0.0001,100
+579,1000000,0.02,200,0.6,Normal,Probabilistic_crossover,0.5,Uniform,0.1,1000000,0.0001,100
+588,1000000,0.04,100,0.6,Normal,Probabilistic_crossover,0.5,Uniform,0.1,1000000,0.0001,100
+589,1000000,0.04,100,0.7,Normal,Probabilistic_crossover,0.5,Uniform,0.1,1000000,0.0001,100
+569,1000000,0.02,200,0.5,Normal,Probabilistic_crossover,0.5,Uniform,0.1,1000000,0.0001,100
+558,1000000,0.02,100,0.6,Normal,Probabilistic_crossover,0.5,Uniform,0.1,1000000,0.0001,100
+542,1000000,0.01,200,0.5,Normal,Probabilistic_crossover,0.5,Uniform,0.1,1000000,0.0001,100
+562,1000000,0.02,100,0.7,Normal,Probabilistic_crossover,0.5,Uniform,0.1,1000000,0.0001,100
