@@ -89,3 +89,4 @@ Last but not least, gg are [0.01, 0.2, 0.5, 0.8, 0.99],**the middle three parame
 
 selection_method are ['SSGA', 'sorted_selection_part', 'sorted_selection_all', 'roulette_Wheel_Select'], **'sorted_selection_part'>'sorted_selection_all'>'SSGA'>'roulette_Wheel_Select'**
 
+Also, it should be mentioned that mutation_rate has not changed, but the dimensionality has been increased from 50 to 100, which means that the difficulty of the task has been upgraded, but the ability to generate new genes has not changed, which will slow down the convergence rate to some extent.
