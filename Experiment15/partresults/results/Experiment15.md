@@ -85,7 +85,7 @@ But now the number of generations is different, because the conditions for meeti
 
 As to why Baldwin and Lamarck are so far apart, I need to think some more about that.
 
-Last but not least, gg are [0.01, 0.2, 0.5, 0.8, 0.99],**the middle three parameters are better than 0.01 and 0.99.**
+Last but not least, gg are [0.01, 0.2, 0.5, 0.8, 0.99],**the middle three parameters are better than 0.01 and 0.99.**I personally think 0.8 is the best.
 
 selection_method are ['SSGA', 'sorted_selection_part', 'sorted_selection_all', 'roulette_Wheel_Select'], **'sorted_selection_part'>'sorted_selection_all'>'SSGA'>'roulette_Wheel_Select'**
 
