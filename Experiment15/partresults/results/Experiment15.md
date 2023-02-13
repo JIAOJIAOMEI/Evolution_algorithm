@@ -17,7 +17,7 @@ At the time of TDK, we have 8 unique parameter combinations, as follows
 | 542  | 1000000         | 0.01          | 200             | 0.5            | Normal        | Probabilistic_crossover | 0.5               | Uniform           | 0.1           | 0.0001    |
 | 562  | 1000000         | 0.02          | 100             | 0.7            | Normal        | Probabilistic_crossover | 0.5               | Uniform           | 0.1           | 0.0001    |
 
-The function we tested at that time was of 50 dimensions.
+The function we tested at that time of TDK was of 50 dimensions.
 
 Later we added two more parameters, generation gap and selection method.
 
