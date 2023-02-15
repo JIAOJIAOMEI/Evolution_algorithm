@@ -4,16 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fda0da58-6538-4a27-a41e-5ca59058e509" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/csv-editor.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/csv-editor.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Code(0~720)/solutions_dataframe.csv" beforeDir="false" afterPath="$PROJECT_DIR$/Code(0~720)/solutions_dataframe.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Code(1440~2160)/solutions_dataframe.csv" beforeDir="false" afterPath="$PROJECT_DIR$/Code(1440~2160)/solutions_dataframe.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Code(2160~2880)/solutions_dataframe.csv" beforeDir="false" afterPath="$PROJECT_DIR$/Code(2160~2880)/solutions_dataframe.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Code(720~1440)/solutions_dataframe.csv" beforeDir="false" afterPath="$PROJECT_DIR$/Code(720~1440)/solutions_dataframe.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/best_20_baseline.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/result.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/results/result.ipynb" afterDir="false" />
-    </list>
+    <list default="true" id="fda0da58-6538-4a27-a41e-5ca59058e509" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -232,7 +223,7 @@
       <workItem from="1674840748220" duration="2000" />
       <workItem from="1674844185604" duration="6964000" />
       <workItem from="1675683300029" duration="682000" />
-      <workItem from="1676448133684" duration="1275000" />
+      <workItem from="1676448133684" duration="1928000" />
     </task>
     <servers />
   </component>
