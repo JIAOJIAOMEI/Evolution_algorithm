@@ -118,13 +118,11 @@ def evolution_loop(algorithm_parameters):
             elif new_individual.fitness <= population[i].fitness:
                 population.insert(i, new_individual)
                 break
-    # update the ranks of the individuals in the population
-    for i in range(len(population)):
-        population[i].rank = i + 1
+
     best_fitness_list.append(population[0].fitness)
     num_generations_counter += 1
     if algorithm == "Baseline":
-        if crossover_type != "SSGA":
+        if selection_method == "SSGA":
             num_evaluations_counter += num_individuals + 1
         else:
             num_evaluations_counter += num_individuals + int(gg * len(population))
@@ -207,20 +205,16 @@ def evolution_loop(algorithm_parameters):
                     population.insert(i, new_individual)
                     break
 
-        # update the ranks of the individuals in the population
-        # print(colorama.Fore.RED + "The length of new individuals is: " + str(len(new_individuals)))
-        for i in range(len(population)):
-            population[i].rank = i + 1
         best_fitness_list.append(population[0].fitness)
         num_generations_counter += 1
         if algorithm == "Baseline":
-            if crossover_type != "SSGA":
-                num_evaluations_counter += 1
+            if selection_method == "SSGA":
+                num_evaluations_counter += num_individuals + 1
             else:
-                num_evaluations_counter += int(gg * len(population))
+                num_evaluations_counter += num_individuals + int(gg * len(population))
         else:
-            num_evaluations_counter += (1 + length_of_local_search) * int(
-                gg * len(population)) + length_of_local_search * num_redo_local_search_counter
+            num_evaluations_counter += (1 + length_of_local_search) * (num_individuals + int(
+                gg * len(population))) + length_of_local_search * num_redo_local_search_counter
             num_redo_local_search_counter = 0
     # after the evolution loop, return the minimum fitness
     return min(best_fitness_list)
