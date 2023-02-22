@@ -31,7 +31,6 @@ class Individual:
     def __init__(self, func, num_genes, genotype_range, mutation_rate, crossover_rate, mutation_type, crossover_type,
                  search_radius, algorithm, local_search_type=None, local_search_rate=None, genotype=None,
                  length_of_local_search=None):
-        self.rank = None
         self.func = func
         self.num_genes = num_genes
         self.genotype_range = genotype_range
@@ -68,9 +67,5 @@ def create_individuals(population_size, func, num_genes, genotype_range, mutatio
                                       crossover_type, search_radius, algorithm, local_search_type, local_search_rate,
                                       genotype, length_of_local_search))
     # sort the individuals by their fitness by an ascending order
-    # add a new parameter to the individuals, which is the rank of the individual,
-    # the rank of the individual is the index of the individual in the sorted list, if the rank is 1, then the fitness is the smallest
     individuals.sort(key=lambda x: x.fitness)
-    for i in range(len(individuals)):
-        individuals[i].rank = i + 1
     return individuals
