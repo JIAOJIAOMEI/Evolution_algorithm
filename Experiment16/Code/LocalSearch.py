@@ -61,13 +61,10 @@ def neighbor_search(genotype, num_genes, local_search_rate):
 
 
 def local_search(genotype, genotype_range, num_genes, local_search_type, local_search_rate, search_radius,length_of_local_search,func):
-    # i want to generate a phenotype based on the genotype, if p1 is better than p0, then p1 is the phenotype, otherwise p0 is the phenotype
-    # and based on the phenotype, generate a new genotype
-    # the number of iteration is length_of_local_search
-    # i also want to use the fitness function to calculate the fitness of the phenotype, the number of using the fitness function is length_of_local_search
-    # write the code
+
     phenotype = []
     fitness = func(genotype)
+
     if local_search_type == "Uniform":
         for _ in range(length_of_local_search):
             p0 = genotype.copy()
