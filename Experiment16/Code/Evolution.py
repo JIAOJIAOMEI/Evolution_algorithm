@@ -30,7 +30,7 @@ def evolution_loop(algorithm_parameters):
     # set a counter to count the number of evaluations
     num_evaluations_counter = 0
     # set a counter to count the number of generations
-    num_generations_counter = 0
+    num_generations_counter = 1
     # set a counter to count the number of redo_local search
     num_redo_local_search_counter = 0
     # initialize the population
@@ -44,6 +44,7 @@ def evolution_loop(algorithm_parameters):
                                     crossover_type=crossover_type, search_radius=search_radius, algorithm=algorithm,
                                     local_search_type=local_search_type, local_search_rate=local_search_rate,
                                     genotype=None, length_of_local_search=length_of_local_search)
+    best_fitness_list.append(population[0].fitness)
     # print the length of initial population
     # print(colorama.Fore.RED + "The length of initial population is: " + str(len(population)))
     # selection
@@ -118,9 +119,8 @@ def evolution_loop(algorithm_parameters):
             elif new_individual.fitness <= population[i].fitness:
                 population.insert(i, new_individual)
                 break
-
-    best_fitness_list.append(population[0].fitness)
     num_generations_counter += 1
+    best_fitness_list.append(population[0].fitness)
     if algorithm == "Baseline":
         num_evaluations_counter += num_individuals + len(eligible_individuals)
     else:
@@ -130,7 +130,7 @@ def evolution_loop(algorithm_parameters):
     # set a counter for convergence
     convergence_counter = 0
     # start the evolution loop
-    while num_generations_counter < num_generations and num_evaluations_counter < num_evaluations:
+    while num_generations_counter <= num_generations and num_evaluations_counter <= num_evaluations:
         fitness_sum_list.append(sum([individual.fitness for individual in population]))
         # last value in fitness_sum_list minus the previous value is less than the threshold
         if abs(fitness_sum_list[-1] - fitness_sum_list[-2]) <= threshold:
@@ -200,9 +200,8 @@ def evolution_loop(algorithm_parameters):
                 elif new_individual.fitness <= population[i].fitness:
                     population.insert(i, new_individual)
                     break
-
-        best_fitness_list.append(population[0].fitness)
         num_generations_counter += 1
+        best_fitness_list.append(population[0].fitness)
         if algorithm == "Baseline":
             num_evaluations_counter += num_individuals + len(eligible_individuals)
         else:
