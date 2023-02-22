@@ -48,7 +48,7 @@ class Individual:
         # if local_search_type is not None, phenotype is the result of local search
         if algorithm == "Baseline":
             self.phenotype = self.genotype.copy()
-            self.fitness = self.func(self.genotype)
+            self.fitness = 2 * self.func(self.genotype)
         else:
             self.phenotype, self.fitness = local_search(self.genotype, genotype_range, num_genes, local_search_type,
                                                         local_search_rate, search_radius, length_of_local_search, func)

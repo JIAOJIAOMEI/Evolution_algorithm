@@ -64,6 +64,7 @@ def local_search(genotype, genotype_range, num_genes, local_search_type, local_s
 
     phenotype = []
     fitness = func(genotype)
+    k = fitness
 
     if local_search_type == "Uniform":
         for _ in range(length_of_local_search):
@@ -77,7 +78,6 @@ def local_search(genotype, genotype_range, num_genes, local_search_type, local_s
             else:
                 phenotype = p0.copy()
                 genotype = p0.copy()
-                fitness = fitness
 
     elif local_search_type == "Normal":
         for _ in range(length_of_local_search):
@@ -91,7 +91,6 @@ def local_search(genotype, genotype_range, num_genes, local_search_type, local_s
             else:
                 phenotype = p0.copy()
                 genotype = p0.copy()
-                fitness = fitness
 
     elif local_search_type == "neighbor_search":
         for _ in range(length_of_local_search):
@@ -105,5 +104,5 @@ def local_search(genotype, genotype_range, num_genes, local_search_type, local_s
             else:
                 phenotype = p0.copy()
                 genotype = p0.copy()
-                fitness = fitness
-    return phenotype, fitness
+
+    return phenotype, fitness + k
