@@ -122,10 +122,7 @@ def evolution_loop(algorithm_parameters):
     best_fitness_list.append(population[0].fitness)
     num_generations_counter += 1
     if algorithm == "Baseline":
-        if selection_method == "SSGA":
-            num_evaluations_counter += num_individuals + 1
-        else:
-            num_evaluations_counter += num_individuals + len(eligible_individuals)
+        num_evaluations_counter += num_individuals + len(eligible_individuals)
     else:
         num_evaluations_counter += (1 + length_of_local_search) * (num_individuals + len(
             eligible_individuals)) + length_of_local_search * num_redo_local_search_counter
@@ -208,10 +205,7 @@ def evolution_loop(algorithm_parameters):
         best_fitness_list.append(population[0].fitness)
         num_generations_counter += 1
         if algorithm == "Baseline":
-            if selection_method == "SSGA":
-                num_evaluations_counter += num_individuals + 1
-            else:
-                num_evaluations_counter += num_individuals + len(eligible_individuals)
+            num_evaluations_counter += num_individuals + len(eligible_individuals)
         else:
             num_evaluations_counter += (1 + length_of_local_search) * (num_individuals + len(
                 eligible_individuals)) + length_of_local_search * num_redo_local_search_counter
