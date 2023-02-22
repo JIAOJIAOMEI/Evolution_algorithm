@@ -10,7 +10,7 @@ import pandas as pd
 class AlgorithmParameters:
     def __init__(self, num_generations, mutation_rate, num_individuals, crossover_rate, mutation_type, crossover_type,
                  local_search_rate, local_search_type, search_radius, num_evaluations, fitness_function, dimensions,
-                 algorithm, gg, selection_method, threshold, length_of_local_search):
+                 algorithm, gg, selection_method, threshold, length_of_local_search,redo_local_search_rate):
         self.num_generations = num_generations
         self.mutation_rate = mutation_rate
         self.num_individuals = num_individuals
@@ -22,6 +22,7 @@ class AlgorithmParameters:
         self.search_radius = search_radius
         self.num_evaluations = num_evaluations
         self.length_of_local_search = length_of_local_search
+        self.redo_local_search_rate = redo_local_search_rate
         func, num_genes, genotype_range = get_functions_parameter(fitness_function, flexible_dimensions=dimensions)
         self.func = func
         self.num_genes = num_genes
@@ -30,6 +31,7 @@ class AlgorithmParameters:
             self.local_search_type = None
             self.local_search_rate = None
             self.length_of_local_search = None
+            self.redo_local_search_rate = None
         self.gg = gg
         self.selection_method = selection_method
         self.algorithm = algorithm
@@ -77,7 +79,8 @@ for i in range(1):
                                                selection_method=parameter_combination["selection_method"],
                                                fitness_function=parameter_combination["fitness_function"],
                                                algorithm=parameter_combination["algorithm"],
-                                               length_of_local_search=parameter_combination["length_of_local_search"])
+                                               length_of_local_search=parameter_combination["length_of_local_search"],
+                                               redo_local_search_rate=parameter_combination["redo_local_search_rate"])
     # create a list to store the final solution of multiple runs
     num_runs = 10
     final_solutions = []

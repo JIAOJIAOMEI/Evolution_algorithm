@@ -1,8 +1,6 @@
 # Name: Mei Jiaojiao
 # Profession: Artificial Intelligence
 # Time and date: 1/2/23 00:32
-import random
-import colorama
 import numpy as np
 
 
@@ -26,12 +24,15 @@ def evolution_loop(algorithm_parameters):
     algorithm = algorithm_parameters.algorithm
     threshold = algorithm_parameters.threshold
     length_of_local_search = algorithm_parameters.length_of_local_search
+    redo_local_search_rate = algorithm_parameters.redo_local_search_rate
     # create a list to store the best fitness value of each generation
     best_fitness_list = []
     # set a counter to count the number of evaluations
     num_evaluations_counter = 0
     # set a counter to count the number of generations
     num_generations_counter = 0
+    # set a counter to count the number of redo_local search
+    num_redo_local_search_counter = 0
     # initialize the population
     # create a list to store the sum of fitness values of the whole population
     fitness_sum_list = []
@@ -42,7 +43,7 @@ def evolution_loop(algorithm_parameters):
                                     crossover_rate=crossover_rate, mutation_type=mutation_type,
                                     crossover_type=crossover_type, search_radius=search_radius, algorithm=algorithm,
                                     local_search_type=local_search_type, local_search_rate=local_search_rate,
-                                    genotype=None,length_of_local_search=length_of_local_search)
+                                    genotype=None, length_of_local_search=length_of_local_search)
     # print the length of initial population
     # print(colorama.Fore.RED + "The length of initial population is: " + str(len(population)))
     # selection
@@ -67,7 +68,7 @@ def evolution_loop(algorithm_parameters):
     new_individuals = []
     for individual in eligible_individuals:
         # find a partner
-        partner = np.random.choice(eligible_partners,replace=True)
+        partner = np.random.choice(eligible_partners, replace=True)
         # print(colorama.Fore.GREEN + "Individual: " + str(individual))
         # print(colorama.Fore.GREEN + "Partner: " + str(partner))
         child = crossover(individual1=individual, individual2=partner, crossover_type=crossover_type,
@@ -92,6 +93,20 @@ def evolution_loop(algorithm_parameters):
     # delete the non_eligible_individuals from the population
     for individual in non_eligible_individuals:
         population.remove(individual)
+    # randomly select some individuals from the eligible_partners to redo local search
+    # the probability of redoing local search is redo_local_search_rate
+    from LocalSearch import local_search
+    if algorithm != "Baseline":
+        for individual in population:  # non_eligible_individuals is not included in the population now
+            if np.random.rand() < redo_local_search_rate:
+                num_redo_local_search_counter += 1
+                individual.phenotype, individual.fitness = local_search(individual.genotype, individual.genotype_range,
+                                                                        individual.num_genes, local_search_type,
+                                                                        local_search_rate, individual.search_radius,
+                                                                        length_of_local_search, individual.func,
+                                                                        individual.fitness_genotype)
+    # sort the population based on the fitness values
+    population.sort(key=lambda x: x.fitness)
     # the individuals are soeted in the population, the lower the fitness, the lower the rank
     # now insert the new individuals into the population based on their fitness and update the ranks
     # for each new individual, find the position to insert it into the population
@@ -114,7 +129,9 @@ def evolution_loop(algorithm_parameters):
         else:
             num_evaluations_counter += num_individuals + int(gg * len(population))
     else:
-        num_evaluations_counter += (1+length_of_local_search) * (num_individuals + int(gg * len(population)))
+        num_evaluations_counter += (1 + length_of_local_search) * (num_individuals + int(
+            gg * len(population))) + length_of_local_search * num_redo_local_search_counter
+        num_redo_local_search_counter = 0
 
     # start the evolution loop
     while num_generations_counter < num_generations and num_evaluations_counter < num_evaluations:
@@ -122,7 +139,7 @@ def evolution_loop(algorithm_parameters):
         # set a counter for convergence
         convergence_counter = 0
         # last value in fitness_sum_list minus the previous value is less than the threshold
-        if abs(fitness_sum_list[-1]-fitness_sum_list[-2]) <= threshold:
+        if abs(fitness_sum_list[-1] - fitness_sum_list[-2]) <= threshold:
             convergence_counter += 1
         else:
             convergence_counter = 0
@@ -142,7 +159,7 @@ def evolution_loop(algorithm_parameters):
             # find a partner
             # print length of population
             # print(colorama.Fore.RED + "Length of population: " + str(len(population)))
-            partner = np.random.choice(eligible_partners,replace=True)
+            partner = np.random.choice(eligible_partners, replace=True)
             # print length of eligible_partners
             # print(colorama.Fore.RED + "Length of eligible partners: " + str(len(eligible_partners)))
             child = crossover(individual1=individual, individual2=partner, crossover_type=crossover_type,
@@ -164,6 +181,18 @@ def evolution_loop(algorithm_parameters):
         # delete the non_eligible_individuals from the population,one line code
         # print(colorama.Fore.RED + "Length of population before deletion: " + str(len(population)))
         population = [individual for individual in population if individual not in non_eligible_individuals]
+        if algorithm != "Baseline":
+            for individual in population:  # non_eligible_individuals is not included in the population now
+                if np.random.rand() < redo_local_search_rate:
+                    num_redo_local_search_counter += 1
+                    individual.phenotype, individual.fitness = local_search(individual.genotype,
+                                                                            individual.genotype_range,
+                                                                            individual.num_genes, local_search_type,
+                                                                            local_search_rate, individual.search_radius,
+                                                                            length_of_local_search, individual.func,
+                                                                            individual.fitness_genotype)
+        # sort the population based on the fitness values
+        population.sort(key=lambda x: x.fitness)
         # print length of population
         # print(colorama.Fore.RED + "Length of population after deletion: " + str(len(population)))
         # the individuals are soeted in the population, the lower the fitness, the lower the rank
@@ -185,10 +214,12 @@ def evolution_loop(algorithm_parameters):
         num_generations_counter += 1
         if algorithm == "Baseline":
             if crossover_type != "SSGA":
-                num_evaluations_counter += num_individuals + 1
+                num_evaluations_counter += 1
             else:
-                num_evaluations_counter += num_individuals + int(gg * len(population))
+                num_evaluations_counter += int(gg * len(population))
         else:
-            num_evaluations_counter += (1+length_of_local_search) * (num_individuals + int(gg * len(population)))
+            num_evaluations_counter += (1 + length_of_local_search) * int(
+                gg * len(population)) + length_of_local_search * num_redo_local_search_counter
+            num_redo_local_search_counter = 0
     # after the evolution loop, return the minimum fitness
     return min(best_fitness_list)

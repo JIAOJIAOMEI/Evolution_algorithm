@@ -50,8 +50,9 @@ class Individual:
             self.phenotype = self.genotype.copy()
             self.fitness = 2 * self.func(self.genotype)
         else:
+            self.fitness_genotype = self.func(self.genotype)
             self.phenotype, self.fitness = local_search(self.genotype, self.genotype_range, self.num_genes, local_search_type,
-                                                        local_search_rate, self.search_radius, length_of_local_search, self.func)
+                                                        local_search_rate, self.search_radius, length_of_local_search, self.func,self.fitness_genotype)
 
 
 # create a method to generate multiple individuals, with the parameter: population_size, func, num_genes, genotype_range, mutation_rate, crossover_rate,mutation_type, crossover_type

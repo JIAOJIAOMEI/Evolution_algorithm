@@ -8,14 +8,16 @@ import pandas as pd
 def generate_parameter_combinations():
 
     length_of_local_search = [3]
-    fitness_function = [1, 5, 7, 8, 10, 13]
+    redo_local_search_rate = [0.1]
+    fitness_function = [5,21]
     algorithm = ["Baseline", "Lamarck", "Baldwin"]
     rest_parameters = []
 
     for length in length_of_local_search:
-        for func in fitness_function:
-            for algo in algorithm:
-                rest_parameters.append([length, func, algo])
+        for redo in redo_local_search_rate:
+            for func in fitness_function:
+                for algo in algorithm:
+                    rest_parameters.append([length,redo,func, algo])
 
     fixed_parameters = pd.read_csv("best_20_baseline_experiment15.csv", header=0,
                                    index_col=[0])  # this csv could be changed
@@ -30,7 +32,7 @@ def generate_parameter_combinations():
         for j in range(len(rest_parameters)):
             parameter_combinations.append(fixed_parameters[i] + rest_parameters[j])
     parameter_combinations = pd.DataFrame(parameter_combinations)
-    parameter_combinations.columns = fixed_parameters_columns + ["length_of_local_search", "fitness_function",
+    parameter_combinations.columns = fixed_parameters_columns + ["length_of_local_search","redo_local_search_rate","fitness_function",
                                                                  "algorithm"]
 
     return parameter_combinations
