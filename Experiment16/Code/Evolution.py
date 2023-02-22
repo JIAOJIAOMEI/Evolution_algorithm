@@ -114,7 +114,7 @@ def evolution_loop(algorithm_parameters):
         else:
             num_evaluations_counter += num_individuals + int(gg * len(population))
     else:
-        num_evaluations_counter += 2 * (num_individuals + int(gg * len(population)))
+        num_evaluations_counter += (1+length_of_local_search) * (num_individuals + int(gg * len(population)))
 
     # start the evolution loop
     while num_generations_counter < num_generations and num_evaluations_counter < num_evaluations:
