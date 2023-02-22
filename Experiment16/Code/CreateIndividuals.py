@@ -46,12 +46,12 @@ class Individual:
             self.genotype = genotype
         # if locao_search_method is None, phenotype is the same as genotype
         # if local_search_type is not None, phenotype is the result of local search
-        if local_search_type is None or local_search_rate is None or length_of_local_search is None:
+        if algorithm == "Baseline":
             self.phenotype = self.genotype.copy()
             self.fitness = self.func(self.genotype)
         else:
-            self.phenotype,self.fitness = local_search(self.genotype, genotype_range, num_genes, local_search_type, local_search_rate,search_radius,length_of_local_search,func)
-
+            self.phenotype, self.fitness = local_search(self.genotype, genotype_range, num_genes, local_search_type,
+                                                        local_search_rate, search_radius, length_of_local_search, func)
 
 
 # create a method to generate multiple individuals, with the parameter: population_size, func, num_genes, genotype_range, mutation_rate, crossover_rate,mutation_type, crossover_type
@@ -59,11 +59,13 @@ class Individual:
 # return a list of individuals, the length of the list is population_size
 
 def create_individuals(population_size, func, num_genes, genotype_range, mutation_rate, crossover_rate, mutation_type,
-                       crossover_type, search_radius,algorithm,local_search_type, local_search_rate,genotype,length_of_local_search):
+                       crossover_type, search_radius, algorithm, local_search_type, local_search_rate, genotype,
+                       length_of_local_search):
     individuals = []
     for _ in range(population_size):
         individuals.append(Individual(func, num_genes, genotype_range, mutation_rate, crossover_rate, mutation_type,
-                                      crossover_type, search_radius,algorithm,local_search_type, local_search_rate,genotype,length_of_local_search))
+                                      crossover_type, search_radius, algorithm, local_search_type, local_search_rate,
+                                      genotype, length_of_local_search))
     # sort the individuals by their fitness by an ascending order
     # add a new parameter to the individuals, which is the rank of the individual,
     # the rank of the individual is the index of the individual in the sorted list, if the rank is 1, then the fitness is the smallest

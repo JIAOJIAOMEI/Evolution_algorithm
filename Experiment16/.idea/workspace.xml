@@ -5,10 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fda0da58-6538-4a27-a41e-5ca59058e509" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/Experiment14.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Experiment14.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Code/CreateIndividuals.py" beforeDir="false" afterPath="$PROJECT_DIR$/Code/CreateIndividuals.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Code/LocalSearch.py" beforeDir="false" afterPath="$PROJECT_DIR$/Code/LocalSearch.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -111,7 +108,7 @@
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Code/main.py" />
       <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="true" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
       <option name="REDIRECT_INPUT" value="false" />
@@ -145,7 +142,7 @@
       <workItem from="1677027518792" duration="189000" />
       <workItem from="1677027711914" duration="351000" />
       <workItem from="1677028085878" duration="121000" />
-      <workItem from="1677028220999" duration="356000" />
+      <workItem from="1677028220999" duration="476000" />
     </task>
     <servers />
   </component>
