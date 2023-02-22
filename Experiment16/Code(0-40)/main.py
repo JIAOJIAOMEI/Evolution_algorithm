@@ -75,7 +75,7 @@ for i in range(40):
                                                threshold=parameter_combination["threshold"],
                                                gg=0.05,
                                                dimensions=100,
-                                               num_evaluations=parameter_combination['dimensions'] * 10000,
+                                               num_evaluations= 100 * 10000,
                                                selection_method=parameter_combination["selection_method"],
                                                fitness_function=parameter_combination["fitness_function"],
                                                algorithm=parameter_combination["algorithm"],
