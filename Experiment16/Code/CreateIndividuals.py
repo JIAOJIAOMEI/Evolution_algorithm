@@ -48,14 +48,10 @@ class Individual:
         # if local_search_type is not None, phenotype is the result of local search
         if local_search_type is None or local_search_rate is None or length_of_local_search is None:
             self.phenotype = self.genotype.copy()
-        else:
-            self.phenotype = local_search(self.genotype, genotype_range, num_genes, local_search_type, local_search_rate,search_radius,length_of_local_search,func)
-        # calculate the fitness of the genotype and phenotype
-        # the smaller one is the fitness
-        if algorithm == "Baseline":
             self.fitness = self.func(self.genotype)
         else:
-            self.fitness = self.func(self.phenotype)
+            self.phenotype,self.fitness = local_search(self.genotype, genotype_range, num_genes, local_search_type, local_search_rate,search_radius,length_of_local_search,func)
+
 
 
 # create a method to generate multiple individuals, with the parameter: population_size, func, num_genes, genotype_range, mutation_rate, crossover_rate,mutation_type, crossover_type
