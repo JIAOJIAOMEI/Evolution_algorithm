@@ -5,7 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fda0da58-6538-4a27-a41e-5ca59058e509" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Code/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/Code/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Code/Evolution.py" beforeDir="false" afterPath="$PROJECT_DIR$/Code/Evolution.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Code/LocalSearch.py" beforeDir="false" afterPath="$PROJECT_DIR$/Code/LocalSearch.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Code/fixed_parameters.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Code/parameter_combinations.csv" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -142,7 +146,7 @@
       <workItem from="1677027518792" duration="189000" />
       <workItem from="1677027711914" duration="351000" />
       <workItem from="1677028085878" duration="121000" />
-      <workItem from="1677028220999" duration="837000" />
+      <workItem from="1677028220999" duration="3236000" />
     </task>
     <servers />
   </component>
@@ -165,7 +169,7 @@
     <SUITE FILE_PATH="coverage/Experiment11$Baldwin_main.coverage" NAME="Baldwin_main Coverage Results" MODIFIED="1671799325831" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Baldwin" />
     <SUITE FILE_PATH="coverage/Final$Baldwin_main1920.coverage" NAME="Baldwin_main1920 Coverage Results" MODIFIED="1669586596076" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Baldwin" />
     <SUITE FILE_PATH="coverage/Final$SSGA12.coverage" NAME="SSGA12 Coverage Results" MODIFIED="1669218039758" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SSGA" />
-    <SUITE FILE_PATH="coverage/Experiment16$main.coverage" NAME="main Coverage Results" MODIFIED="1677028907570" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Code" />
+    <SUITE FILE_PATH="coverage/Experiment16$main.coverage" NAME="main Coverage Results" MODIFIED="1677029415119" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Code" />
     <SUITE FILE_PATH="coverage/Final$Baldwin_main12.coverage" NAME="Baldwin_main12 Coverage Results" MODIFIED="1669219672027" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Baldwin" />
     <SUITE FILE_PATH="coverage/Experiment11$SSGA12.coverage" NAME="SSGA12 Coverage Results" MODIFIED="1671800431742" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SSGA" />
     <SUITE FILE_PATH="coverage/Final$Baldwin_main1718.coverage" NAME="Baldwin_main1718 Coverage Results" MODIFIED="1669581525126" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Baldwin" />

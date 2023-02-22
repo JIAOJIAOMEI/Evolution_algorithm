@@ -61,46 +61,52 @@ def neighbor_search(genotype, num_genes, local_search_rate):
 
 
 def local_search(genotype, genotype_range, num_genes, local_search_type, local_search_rate, search_radius,length_of_local_search,func):
+    # i want to generate a phenotype based on the genotype, if p1 is better than p0, then p1 is the phenotype, otherwise p0 is the phenotype
+    # and based on the phenotype, generate a new genotype
+    # the number of iteration is length_of_local_search
+    # i also want to use the fitness function to calculate the fitness of the phenotype, the number of using the fitness function is length_of_local_search
+    # write the code
     phenotype = []
-    fitness_p1 = 0
-    fitness_p0 = 0
+    fitness = func(genotype)
     if local_search_type == "Uniform":
         for _ in range(length_of_local_search):
-            p0= genotype.copy()
+            p0 = genotype.copy()
             p1 = uniform_local_search(genotype=p0, genotype_range=genotype_range, num_genes=num_genes, local_search_rate=local_search_rate, search_radius=search_radius)
             fitness_p1 = func(p1)
-            fitness_p0 = func(p0)
-            if fitness_p1 < fitness_p0:
+            if fitness_p1 < fitness:
                 phenotype = p1.copy()
                 genotype = p1.copy()
+                fitness = fitness_p1.copy()
             else:
                 phenotype = p0.copy()
                 genotype = p0.copy()
+                fitness = fitness.copy()
+
     elif local_search_type == "Normal":
         for _ in range(length_of_local_search):
             p0 = genotype.copy()
             p1 = guass_local_search(genotype=p0, genotype_range=genotype_range, num_genes=num_genes, local_search_rate=local_search_rate, search_radius=search_radius)
             fitness_p1 = func(p1)
-            fitness_p0 = func(p0)
-            if fitness_p1 < fitness_p0:
+            if fitness_p1 < fitness:
                 phenotype = p1.copy()
                 genotype = p1.copy()
+                fitness = fitness_p1.copy()
             else:
                 phenotype = p0.copy()
                 genotype = p0.copy()
+                fitness = fitness.copy()
+
     elif local_search_type == "neighbor_search":
         for _ in range(length_of_local_search):
             p0 = genotype.copy()
             p1 = neighbor_search(genotype=p0, num_genes=num_genes, local_search_rate=local_search_rate)
             fitness_p1 = func(p1)
-            fitness_p0 = func(p0)
-            if fitness_p1 < fitness_p0:
+            if fitness_p1 < fitness:
                 phenotype = p1.copy()
                 genotype = p1.copy()
+                fitness = fitness_p1.copy()
             else:
                 phenotype = p0.copy()
                 genotype = p0.copy()
-    if fitness_p1 < fitness_p0:
-        return phenotype,fitness_p1
-    else:
-        return phenotype,fitness_p0
+                fitness = fitness.copy()
+    return phenotype, fitness

@@ -189,6 +189,6 @@ def evolution_loop(algorithm_parameters):
             else:
                 num_evaluations_counter += num_individuals + int(gg * len(population))
         else:
-            num_evaluations_counter += 2 * (num_individuals + int(gg * len(population)))
+            num_evaluations_counter += (1+length_of_local_search) * (num_individuals + int(gg * len(population)))
     # after the evolution loop, return the minimum fitness
     return min(best_fitness_list)
