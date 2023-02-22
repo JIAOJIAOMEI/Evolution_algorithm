@@ -84,10 +84,10 @@ def probabilistic_crossover(individual1, individual2, algorithm, crossover_rate)
     # for each gene in the child, generate a random number between 0 and 1, compare it with crossover_rate, if it is less than crossover_rate, then assign the gene of individual1 to the child, else assign the gene of individual2 to the child
     child = []
     if algorithm == "Baseline" or algorithm == "Baldwin":
-        child = [gene1 if np.random.random() < crossover_rate else gene2 for gene1, gene2 in
+        child = [gene1 if np.random.random() <= crossover_rate else gene2 for gene1, gene2 in
                  zip(individual1.genotype, individual2.genotype)]
     elif algorithm == "Lamarck":
-        child = [gene1 if np.random.random() < crossover_rate else gene2 for gene1, gene2 in
+        child = [gene1 if np.random.random() <= crossover_rate else gene2 for gene1, gene2 in
                  zip(individual1.phenotype, individual2.phenotype)]
     # print(colorama.Fore.GREEN + "child: " + str(child))
     return child
