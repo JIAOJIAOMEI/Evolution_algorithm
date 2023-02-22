@@ -7,8 +7,8 @@ import pandas as pd
 # This function is used to generate the parameter combinations for the experiments
 def generate_parameter_combinations():
 
-    length_of_local_search = [3]
-    redo_local_search_rate = [0.8]
+    length_of_local_search = [1,4]
+    redo_local_search_rate = [0,0.7]
     fitness_function = [5,21]
     algorithm = ["Baseline", "Lamarck", "Baldwin"]
     rest_parameters = []
@@ -21,6 +21,9 @@ def generate_parameter_combinations():
 
     fixed_parameters = pd.read_csv("best_20_baseline_experiment15.csv", header=0,
                                    index_col=[0])  # this csv could be changed
+    # first 10 rows of fixed_parameters are the best 10 parameters
+    # get first 10 rows
+    fixed_parameters = fixed_parameters.iloc[:10, :]
     # it contains good parameters selected based on previous experiments
     # this generation_parameters.py is used to generate the parameters for some new parameters
     # drop the columns algorithm
