@@ -40,9 +40,9 @@ class AlgorithmParameters:
 
 # create a function to generate parameter combinations using each parameter from above
 # and store it in a dataframe, each row is a combination of parameters
-from ParameterCombinations import generate_parameter_combinations
-parameter_combinations = generate_parameter_combinations()
-parameter_combinations.to_csv("parameter_combinations.csv")
+# from ParameterCombinations import generate_parameter_combinations
+# parameter_combinations = generate_parameter_combinations()
+# parameter_combinations.to_csv("parameter_combinations.csv")
 
 import colorama
 # count time for the whole program

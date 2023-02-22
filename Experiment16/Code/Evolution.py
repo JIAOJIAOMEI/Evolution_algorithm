@@ -112,11 +112,11 @@ def evolution_loop(algorithm_parameters):
     # for each new individual, find the position to insert it into the population
     for new_individual in new_individuals:
         for i in range(len(population)):
-            if new_individual.fitness < population[i].fitness:
-                population.insert(i, new_individual)
-                break
-            else:
+            if new_individual.fitness >= population[-1].fitness:
                 population.append(new_individual)
+                break
+            elif new_individual.fitness <= population[i].fitness:
+                population.insert(i, new_individual)
                 break
     # update the ranks of the individuals in the population
     for i in range(len(population)):
@@ -200,12 +200,13 @@ def evolution_loop(algorithm_parameters):
         # for
         for new_individual in new_individuals:
             for i in range(len(population)):
-                if new_individual.fitness < population[i].fitness:
-                    population.insert(i, new_individual)
-                    break
-                else:
+                if new_individual.fitness >= population[-1].fitness:
                     population.append(new_individual)
                     break
+                elif new_individual.fitness <= population[i].fitness:
+                    population.insert(i, new_individual)
+                    break
+
         # update the ranks of the individuals in the population
         # print(colorama.Fore.RED + "The length of new individuals is: " + str(len(new_individuals)))
         for i in range(len(population)):

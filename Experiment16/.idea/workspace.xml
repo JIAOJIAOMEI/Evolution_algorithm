@@ -5,11 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fda0da58-6538-4a27-a41e-5ca59058e509" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/csv-editor.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/csv-editor.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Code/CreateIndividuals.py" beforeDir="false" afterPath="$PROJECT_DIR$/Code/CreateIndividuals.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Code/Evolution.py" beforeDir="false" afterPath="$PROJECT_DIR$/Code/Evolution.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Code/LocalSearch.py" beforeDir="false" afterPath="$PROJECT_DIR$/Code/LocalSearch.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Code/ParameterCombinations.py" beforeDir="false" afterPath="$PROJECT_DIR$/Code/ParameterCombinations.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Code/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/Code/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -151,7 +149,7 @@
       <workItem from="1677027711914" duration="351000" />
       <workItem from="1677028085878" duration="121000" />
       <workItem from="1677028220999" duration="4023000" />
-      <workItem from="1677078650235" duration="4761000" />
+      <workItem from="1677078650235" duration="6852000" />
     </task>
     <servers />
   </component>
@@ -169,12 +167,23 @@
       </map>
     </option>
   </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/Code/Evolution.py</url>
+          <line>93</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Experiment11$improved_fitness_functions.coverage" NAME="improved_fitness_functions Coverage Results" MODIFIED="1671798273827" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Baldwin" />
     <SUITE FILE_PATH="coverage/Experiment11$Baldwin_main.coverage" NAME="Baldwin_main Coverage Results" MODIFIED="1671799325831" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Baldwin" />
     <SUITE FILE_PATH="coverage/Final$Baldwin_main1920.coverage" NAME="Baldwin_main1920 Coverage Results" MODIFIED="1669586596076" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Baldwin" />
     <SUITE FILE_PATH="coverage/Final$SSGA12.coverage" NAME="SSGA12 Coverage Results" MODIFIED="1669218039758" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SSGA" />
-    <SUITE FILE_PATH="coverage/Experiment16$main.coverage" NAME="main Coverage Results" MODIFIED="1677031928236" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Code" />
+    <SUITE FILE_PATH="coverage/Experiment16$main.coverage" NAME="main Coverage Results" MODIFIED="1677089673420" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Code" />
     <SUITE FILE_PATH="coverage/Final$Baldwin_main12.coverage" NAME="Baldwin_main12 Coverage Results" MODIFIED="1669219672027" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Baldwin" />
     <SUITE FILE_PATH="coverage/Experiment11$SSGA12.coverage" NAME="SSGA12 Coverage Results" MODIFIED="1671800431742" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SSGA" />
     <SUITE FILE_PATH="coverage/Final$Baldwin_main1718.coverage" NAME="Baldwin_main1718 Coverage Results" MODIFIED="1669581525126" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Baldwin" />
