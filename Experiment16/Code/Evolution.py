@@ -191,7 +191,7 @@ def evolution_loop(algorithm_parameters):
         # print(colorama.Fore.RED + "Length of population after deletion: " + str(len(population)))
         # the individuals are soeted in the population, the lower the fitness, the lower the rank
         # now insert the new individuals into the population based on their fitness and update the ranks
-        # for
+
         for new_individual in new_individuals:
             for i in range(len(population)):
                 if new_individual.fitness >= population[-1].fitness:
