@@ -8,7 +8,7 @@ import pandas as pd
 def generate_parameter_combinations():
 
     length_of_local_search = [3]
-    redo_local_search_rate = [0.1]
+    redo_local_search_rate = [0.8]
     fitness_function = [5,21]
     algorithm = ["Baseline", "Lamarck", "Baldwin"]
     rest_parameters = []
