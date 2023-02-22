@@ -21,8 +21,8 @@ def generate_parameter_combinations():
                                    index_col=[0])  # this csv could be changed
     # it contains good parameters selected based on previous experiments
     # this generation_parameters.py is used to generate the parameters for some new parameters
-    # drop the columns that are not needed
-    fixed_parameters = fixed_parameters.drop(["algorithm"])  # this list could be changed
+    # drop the columns algorithm
+    fixed_parameters = fixed_parameters.drop(["algorithm"], axis=1)  # this list could be changed
     fixed_parameters_columns = fixed_parameters.columns.tolist()
     fixed_parameters = fixed_parameters.values.tolist()
     parameter_combinations = []

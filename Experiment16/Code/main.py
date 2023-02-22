@@ -54,9 +54,10 @@ print("The number of parameter combinations is: " + str(num_rows))
 solutions = []
 start_time = datetime.now()
 print(f"start time is {start_time}")
-for i in range(720):
+for i in range(1):
     if i % 100 == 0:
         print("The number of parameter combinations that have been tested is: " + str(i))
+        print(datetime.now())
     # create a list to store the final solution of each run
     parameter_combination = dataframe.iloc[i, :]
     # print(colorama.Fore.GREEN + "The parameter combination is:\n" + str(parameter_combination))
