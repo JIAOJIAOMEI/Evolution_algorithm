@@ -56,7 +56,7 @@ print("The number of parameter combinations is: " + str(num_rows))
 solutions = []
 start_time = datetime.now()
 print(f"start time is {start_time}")
-for i in range(num_rows):
+for i in range(80,120,1):
     if i % 100 == 0:
         print("The number of parameter combinations that have been tested is: " + str(i))
     # create a list to store the final solution of each run
@@ -73,8 +73,8 @@ for i in range(num_rows):
                                                local_search_type=parameter_combination["local_search_type"],
                                                search_radius=0.05,
                                                threshold=parameter_combination["threshold"],
-                                               gg=parameter_combination["gg"],
-                                               dimensions=50,
+                                               gg=0.05,
+                                               dimensions=100,
                                                num_evaluations=parameter_combination['dimensions'] * 10000,
                                                selection_method=parameter_combination["selection_method"],
                                                fitness_function=parameter_combination["fitness_function"],
