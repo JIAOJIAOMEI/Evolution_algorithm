@@ -127,12 +127,11 @@ def evolution_loop(algorithm_parameters):
         num_evaluations_counter += (1 + length_of_local_search) * (num_individuals + len(
             eligible_individuals)) + length_of_local_search * num_redo_local_search_counter
         num_redo_local_search_counter = 0
-
+    # set a counter for convergence
+    convergence_counter = 0
     # start the evolution loop
     while num_generations_counter < num_generations and num_evaluations_counter < num_evaluations:
         fitness_sum_list.append(sum([individual.fitness for individual in population]))
-        # set a counter for convergence
-        convergence_counter = 0
         # last value in fitness_sum_list minus the previous value is less than the threshold
         if abs(fitness_sum_list[-1] - fitness_sum_list[-2]) <= threshold:
             convergence_counter += 1
