@@ -203,10 +203,10 @@ def evolution_loop(algorithm_parameters):
         num_generations_counter += 1
         best_fitness_list.append(population[0].fitness)
         if algorithm == "Baseline":
-            num_evaluations_counter += num_individuals + len(eligible_individuals)
+            num_evaluations_counter += len(eligible_individuals)
         else:
-            num_evaluations_counter += (1 + length_of_local_search) * (num_individuals + len(
-                eligible_individuals)) + length_of_local_search * num_redo_local_search_counter
+            num_evaluations_counter += (1 + length_of_local_search) * len(
+                eligible_individuals) + length_of_local_search * num_redo_local_search_counter
             num_redo_local_search_counter = 0
     # after the evolution loop, return the minimum fitness
     return min(best_fitness_list)
