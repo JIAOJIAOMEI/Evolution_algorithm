@@ -73,11 +73,11 @@ def local_search(genotype, genotype_range, num_genes, local_search_type, local_s
             if fitness_p1 < fitness:
                 phenotype = p1.copy()
                 genotype = p1.copy()
-                fitness = fitness_p1.copy()
+                fitness = fitness_p1
             else:
                 phenotype = p0.copy()
                 genotype = p0.copy()
-                fitness = fitness.copy()
+                fitness = fitness
 
     elif local_search_type == "Normal":
         for _ in range(length_of_local_search):
@@ -87,11 +87,11 @@ def local_search(genotype, genotype_range, num_genes, local_search_type, local_s
             if fitness_p1 < fitness:
                 phenotype = p1.copy()
                 genotype = p1.copy()
-                fitness = fitness_p1.copy()
+                fitness = fitness_p1
             else:
                 phenotype = p0.copy()
                 genotype = p0.copy()
-                fitness = fitness.copy()
+                fitness = fitness
 
     elif local_search_type == "neighbor_search":
         for _ in range(length_of_local_search):
@@ -101,9 +101,9 @@ def local_search(genotype, genotype_range, num_genes, local_search_type, local_s
             if fitness_p1 < fitness:
                 phenotype = p1.copy()
                 genotype = p1.copy()
-                fitness = fitness_p1.copy()
+                fitness = fitness_p1
             else:
                 phenotype = p0.copy()
                 genotype = p0.copy()
-                fitness = fitness.copy()
+                fitness = fitness
     return phenotype, fitness
