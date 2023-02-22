@@ -125,10 +125,10 @@ def evolution_loop(algorithm_parameters):
         if selection_method == "SSGA":
             num_evaluations_counter += num_individuals + 1
         else:
-            num_evaluations_counter += num_individuals + int(gg * len(population))
+            num_evaluations_counter += num_individuals + len(eligible_individuals)
     else:
-        num_evaluations_counter += (1 + length_of_local_search) * (num_individuals + int(
-            gg * len(population))) + length_of_local_search * num_redo_local_search_counter
+        num_evaluations_counter += (1 + length_of_local_search) * (num_individuals + len(
+            eligible_individuals)) + length_of_local_search * num_redo_local_search_counter
         num_redo_local_search_counter = 0
 
     # start the evolution loop
@@ -211,10 +211,10 @@ def evolution_loop(algorithm_parameters):
             if selection_method == "SSGA":
                 num_evaluations_counter += num_individuals + 1
             else:
-                num_evaluations_counter += num_individuals + int(gg * len(population))
+                num_evaluations_counter += num_individuals + len(eligible_individuals)
         else:
-            num_evaluations_counter += (1 + length_of_local_search) * (num_individuals + int(
-                gg * len(population))) + length_of_local_search * num_redo_local_search_counter
+            num_evaluations_counter += (1 + length_of_local_search) * (num_individuals + len(
+                eligible_individuals)) + length_of_local_search * num_redo_local_search_counter
             num_redo_local_search_counter = 0
     # after the evolution loop, return the minimum fitness
     return min(best_fitness_list)
