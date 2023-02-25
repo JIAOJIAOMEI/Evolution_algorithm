@@ -19,7 +19,7 @@
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+    <option name="RECENT_GIT_ROOT_PATH" value="$USER_HOME$" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -32,31 +32,11 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/meijiaojiao/Desktop/Evolution_algorithm/Experiment16&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
-  },
-  &quot;keyToStringList&quot;: {
-    &quot;beansoft.intellij.ide.scratch.LRUPopupBuilderEx$3/New Note&quot;: [
-      &quot;note.id&quot;
-    ],
-    &quot;com.intellij.ide.scratch.LRUPopupBuilder$1/New Code Note in Evernote&quot;: [
-      &quot;TEXT&quot;
-    ]
-  }
-}</component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+  </component>
   <component name="PyConsoleOptionsProvider">
     <option name="myPythonConsoleState">
       <console-settings>
@@ -98,6 +78,9 @@
       <module name="Experiment14" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
       <option name="SDK_HOME" value="" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Experiment1" />
       <option name="IS_MODULE_SDK" value="true" />
@@ -117,6 +100,9 @@
       <module name="Experiment14" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
       <option name="SDK_HOME" value="" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Experiment2" />
       <option name="IS_MODULE_SDK" value="true" />
@@ -136,6 +122,9 @@
       <module name="Experiment14" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
       <option name="SDK_HOME" value="" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Experiment3" />
       <option name="IS_MODULE_SDK" value="true" />
@@ -211,7 +200,7 @@
       <workItem from="1677028085878" duration="121000" />
       <workItem from="1677028220999" duration="4023000" />
       <workItem from="1677078650235" duration="13265000" />
-      <workItem from="1677139460048" duration="1658000" />
+      <workItem from="1677139460048" duration="1353000" />
     </task>
     <servers />
   </component>
@@ -228,31 +217,6 @@
         </entry>
       </map>
     </option>
-  </component>
-  <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/Experiment11$improved_fitness_functions.coverage" NAME="improved_fitness_functions Coverage Results" MODIFIED="1671798273827" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Baldwin" />
-    <SUITE FILE_PATH="coverage/Experiment11$Baldwin_main.coverage" NAME="Baldwin_main Coverage Results" MODIFIED="1671799325831" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Baldwin" />
-    <SUITE FILE_PATH="coverage/Final$Baldwin_main1920.coverage" NAME="Baldwin_main1920 Coverage Results" MODIFIED="1669586596076" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Baldwin" />
-    <SUITE FILE_PATH="coverage/Final$SSGA12.coverage" NAME="SSGA12 Coverage Results" MODIFIED="1669218039758" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SSGA" />
-    <SUITE FILE_PATH="coverage/Experiment16$main.coverage" NAME="main Coverage Results" MODIFIED="1677098746700" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Code" />
-    <SUITE FILE_PATH="coverage/Final$Baldwin_main12.coverage" NAME="Baldwin_main12 Coverage Results" MODIFIED="1669219672027" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Baldwin" />
-    <SUITE FILE_PATH="coverage/Experiment11$SSGA12.coverage" NAME="SSGA12 Coverage Results" MODIFIED="1671800431742" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SSGA" />
-    <SUITE FILE_PATH="coverage/Final$Baldwin_main1718.coverage" NAME="Baldwin_main1718 Coverage Results" MODIFIED="1669581525126" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Baldwin" />
-    <SUITE FILE_PATH="coverage/Experiment16$experiment3.coverage" NAME="experiment3 Coverage Results" MODIFIED="1677140058477" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Experiment3" />
-    <SUITE FILE_PATH="coverage/Final$Lamarck_main910.coverage" NAME="Lamarck_main910 Coverage Results" MODIFIED="1669237421426" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Lamarck" />
-    <SUITE FILE_PATH="coverage/Experiment11$Lamarck_main56.coverage" NAME="Lamarck_main56 Coverage Results" MODIFIED="1671800386780" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Lamarck" />
-    <SUITE FILE_PATH="coverage/Final$Lamarck_main78.coverage" NAME="Lamarck_main78 Coverage Results" MODIFIED="1669237418538" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Lamarck" />
-    <SUITE FILE_PATH="coverage/Experiment11$Lamarck_main78.coverage" NAME="Lamarck_main78 Coverage Results" MODIFIED="1671800392509" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Lamarck" />
-    <SUITE FILE_PATH="coverage/Final$Lamarck_main56.coverage" NAME="Lamarck_main56 Coverage Results" MODIFIED="1669237415203" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Lamarck" />
-    <SUITE FILE_PATH="coverage/Final$Baldwin_main1314.coverage" NAME="Baldwin_main1314 Coverage Results" MODIFIED="1669563143464" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Baldwin" />
-    <SUITE FILE_PATH="coverage/Experiment16$experiment1.coverage" NAME="experiment1 Coverage Results" MODIFIED="1677139981015" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Experiment1" />
-    <SUITE FILE_PATH="coverage/Final$Lamarck_main34.coverage" NAME="Lamarck_main34 Coverage Results" MODIFIED="1669237412342" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Lamarck" />
-    <SUITE FILE_PATH="coverage/Final$Baldwin_main1516.coverage" NAME="Baldwin_main1516 Coverage Results" MODIFIED="1669581508428" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Baldwin" />
-    <SUITE FILE_PATH="coverage/Final$Lamarck_main12.coverage" NAME="Lamarck_main12 Coverage Results" MODIFIED="1669237407865" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Lamarck" />
-    <SUITE FILE_PATH="coverage/Final$Baldwin_main1112.coverage" NAME="Baldwin_main1112 Coverage Results" MODIFIED="1669563138890" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Baldwin" />
-    <SUITE FILE_PATH="coverage/Experiment11$SSGA34.coverage" NAME="SSGA34 Coverage Results" MODIFIED="1671800435508" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SSGA" />
-    <SUITE FILE_PATH="coverage/Experiment11$SSGA78.coverage" NAME="SSGA78 Coverage Results" MODIFIED="1671800442130" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SSGA" />
-    <SUITE FILE_PATH="coverage/Experiment14$main.coverage" NAME="main Coverage Results" MODIFIED="1673435775615" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/Experiment11$SSGA56.coverage" NAME="SSGA56 Coverage Results" MODIFIED="1671800438293" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SSGA" />
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
 </project>

@@ -5,17 +5,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fda0da58-6538-4a27-a41e-5ca59058e509" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Code/CreateIndividuals.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Code/Crossover.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Code/Evolution.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Code/FunctionsParameter.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Code/LocalSearch.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Code/Mutation.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Code/ParameterCombinations.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Code/SelectParents.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Code/TestFunctions.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Code/best_20_baseline_experiment15.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Code/main.py" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/Experiment16/Experiment1/result.ipynb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Experiment16/Experiment2/result.ipynb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Experiment16/Experiment3/parameter_combinations.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Experiment16/Experiment3/solutions_dataframe.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/csv-editor.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/csv-editor.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Experiment16/.idea/Experiment14.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Experiment16/.idea/Experiment14.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Experiment16/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Experiment16/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Experiment16/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Experiment16/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Experiment16/Experiment1/CreateIndividuals.py" beforeDir="false" afterPath="$PROJECT_DIR$/Experiment16/Experiment1/CreateIndividuals.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Experiment16/Experiment1/LocalSearch.py" beforeDir="false" afterPath="$PROJECT_DIR$/Experiment16/Experiment1/LocalSearch.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Experiment16/Experiment1/experiment1.py" beforeDir="false" afterPath="$PROJECT_DIR$/Experiment16/Experiment1/experiment1.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Experiment16/Experiment2/CreateIndividuals.py" beforeDir="false" afterPath="$PROJECT_DIR$/Experiment16/Experiment2/CreateIndividuals.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Experiment16/Experiment2/LocalSearch.py" beforeDir="false" afterPath="$PROJECT_DIR$/Experiment16/Experiment2/LocalSearch.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Experiment16/Experiment2/experiment2.py" beforeDir="false" afterPath="$PROJECT_DIR$/Experiment16/Experiment2/experiment2.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Experiment16/Experiment3/CreateIndividuals.py" beforeDir="false" afterPath="$PROJECT_DIR$/Experiment16/Experiment3/CreateIndividuals.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Experiment16/Experiment3/LocalSearch.py" beforeDir="false" afterPath="$PROJECT_DIR$/Experiment16/Experiment3/LocalSearch.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Experiment16/Experiment3/experiment3.py" beforeDir="false" afterPath="$PROJECT_DIR$/Experiment16/Experiment3/experiment3.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/Experiment16.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/result.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/results/result.ipynb" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,31 +53,31 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/meijiaojiao/Desktop/Evolution_algorithm/Experiment16&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "/Users/meijiaojiao/Desktop/Evolution_algorithm/Experiment16/Experiment16/Experiment3",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "settings.editor.selected.configurable": "vcs.Git",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;beansoft.intellij.ide.scratch.LRUPopupBuilderEx$3/New Note&quot;: [
-      &quot;note.id&quot;
+  "keyToStringList": {
+    "beansoft.intellij.ide.scratch.LRUPopupBuilderEx$3/New Note": [
+      "note.id"
     ],
-    &quot;com.intellij.ide.scratch.LRUPopupBuilder$1/New Code Note in Evernote&quot;: [
-      &quot;TEXT&quot;
+    "com.intellij.ide.scratch.LRUPopupBuilder$1/New Code Note in Evernote": [
+      "TEXT"
     ]
   }
-}</component>
+}]]></component>
   <component name="PyConsoleOptionsProvider">
     <option name="myPythonConsoleState">
       <console-settings>
@@ -78,12 +87,14 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/Experiment16/Experiment3" />
+      <recent name="$PROJECT_DIR$/Experiment16/Experiment2" />
+      <recent name="$PROJECT_DIR$/Experiment16" />
+      <recent name="$PROJECT_DIR$/Experiment16/Experiment1" />
       <recent name="$PROJECT_DIR$/Code" />
-      <recent name="$PROJECT_DIR$/results" />
-      <recent name="$PROJECT_DIR$" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Python.experiment3">
     <configuration default="true" type="PythonConfigurationType" factoryName="Python">
       <module name="Experiment14" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -106,10 +117,32 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="experiment3" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Experiment14" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Experiment16/Experiment3" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Experiment16/Experiment3/experiment3.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="main" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Experiment14" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
       <option name="SDK_HOME" value="" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Code(0-40)" />
       <option name="IS_MODULE_SDK" value="true" />
@@ -147,8 +180,13 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <list>
+      <item itemvalue="Python.experiment3" />
+      <item itemvalue="Python.main" />
+    </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.experiment3" />
         <item itemvalue="Python.main" />
         <item itemvalue="Python.main" />
       </list>
@@ -177,6 +215,7 @@
       <workItem from="1677028085878" duration="121000" />
       <workItem from="1677028220999" duration="4023000" />
       <workItem from="1677078650235" duration="15053000" />
+      <workItem from="1677318039450" duration="7887000" />
     </task>
     <servers />
   </component>
@@ -203,6 +242,7 @@
     <SUITE FILE_PATH="coverage/Final$Baldwin_main12.coverage" NAME="Baldwin_main12 Coverage Results" MODIFIED="1669219672027" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Baldwin" />
     <SUITE FILE_PATH="coverage/Experiment11$SSGA12.coverage" NAME="SSGA12 Coverage Results" MODIFIED="1671800431742" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SSGA" />
     <SUITE FILE_PATH="coverage/Final$Baldwin_main1718.coverage" NAME="Baldwin_main1718 Coverage Results" MODIFIED="1669581525126" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Baldwin" />
+    <SUITE FILE_PATH="coverage/Experiment16$experiment3.coverage" NAME="experiment3 Coverage Results" MODIFIED="1677325954181" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Experiment16/Experiment3" />
     <SUITE FILE_PATH="coverage/Final$Lamarck_main910.coverage" NAME="Lamarck_main910 Coverage Results" MODIFIED="1669237421426" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Lamarck" />
     <SUITE FILE_PATH="coverage/Experiment11$Lamarck_main56.coverage" NAME="Lamarck_main56 Coverage Results" MODIFIED="1671800386780" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Lamarck" />
     <SUITE FILE_PATH="coverage/Final$Lamarck_main78.coverage" NAME="Lamarck_main78 Coverage Results" MODIFIED="1669237418538" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Lamarck" />
