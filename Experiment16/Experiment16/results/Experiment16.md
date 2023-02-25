@@ -128,10 +128,7 @@ the selection_method are ['sorted_selection_part']
 the algorithm are ['Baseline', 'Lamarck', 'Baldwin']
 ```
 
-For F5, baseline's algorithm performs better than memetic algorithm.
-For F21, it is difficult to give a conclusion. For example, when mutation_rate=0.03, the memetic algorithm is better, but when crossover_rate=0.7, again baseline is better, and other times, such as when mutation_rate=0.06 or crossover_rate=0.6, baseline and memetic algorithms perform about the same.
 
-This graph shows the case where length_of_local_search = 4, redo_local_search_rate = 0. It also needs to be compared with other experimental results.
 
 ## Experiment3
 

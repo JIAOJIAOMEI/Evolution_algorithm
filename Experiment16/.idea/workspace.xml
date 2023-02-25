@@ -5,17 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fda0da58-6538-4a27-a41e-5ca59058e509" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Experiment16/Experiment3/CreateIndividuals.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Experiment16/Experiment3/Crossover.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Experiment16/Experiment3/Evolution.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Experiment16/Experiment3/FunctionsParameter.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Experiment16/Experiment3/LocalSearch.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Experiment16/Experiment3/Mutation.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Experiment16/Experiment3/ParameterCombinations.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Experiment16/Experiment3/SelectParents.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Experiment16/Experiment3/TestFunctions.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Experiment16/Experiment3/best_20_baseline_experiment15.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Experiment16/Experiment3/experiment3.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Experiment16/Experiment2/experiment2.py" beforeDir="false" afterPath="$PROJECT_DIR$/Experiment16/Experiment2/experiment2.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -206,7 +197,7 @@
       <workItem from="1677028085878" duration="121000" />
       <workItem from="1677028220999" duration="4023000" />
       <workItem from="1677078650235" duration="15053000" />
-      <workItem from="1677318039450" duration="8223000" />
+      <workItem from="1677318039450" duration="8352000" />
     </task>
     <servers />
   </component>
