@@ -5,26 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fda0da58-6538-4a27-a41e-5ca59058e509" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Experiment16/Experiment1/result.ipynb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Experiment16/Experiment2/result.ipynb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Experiment16/Experiment3/parameter_combinations.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Experiment16/Experiment3/solutions_dataframe.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/csv-editor.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/csv-editor.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Experiment16/.idea/Experiment14.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Experiment16/.idea/Experiment14.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Experiment16/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Experiment16/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Experiment16/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Experiment16/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Experiment16/Experiment1/CreateIndividuals.py" beforeDir="false" afterPath="$PROJECT_DIR$/Experiment16/Experiment1/CreateIndividuals.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Experiment16/Experiment1/LocalSearch.py" beforeDir="false" afterPath="$PROJECT_DIR$/Experiment16/Experiment1/LocalSearch.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Experiment16/Experiment1/experiment1.py" beforeDir="false" afterPath="$PROJECT_DIR$/Experiment16/Experiment1/experiment1.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Experiment16/Experiment2/CreateIndividuals.py" beforeDir="false" afterPath="$PROJECT_DIR$/Experiment16/Experiment2/CreateIndividuals.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Experiment16/Experiment2/LocalSearch.py" beforeDir="false" afterPath="$PROJECT_DIR$/Experiment16/Experiment2/LocalSearch.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Experiment16/Experiment2/experiment2.py" beforeDir="false" afterPath="$PROJECT_DIR$/Experiment16/Experiment2/experiment2.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Experiment16/Experiment3/CreateIndividuals.py" beforeDir="false" afterPath="$PROJECT_DIR$/Experiment16/Experiment3/CreateIndividuals.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Experiment16/Experiment3/LocalSearch.py" beforeDir="false" afterPath="$PROJECT_DIR$/Experiment16/Experiment3/LocalSearch.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Experiment16/Experiment3/experiment3.py" beforeDir="false" afterPath="$PROJECT_DIR$/Experiment16/Experiment3/experiment3.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/Experiment16.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/result.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/results/result.ipynb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Experiment16/Experiment3/CreateIndividuals.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Experiment16/Experiment3/Crossover.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Experiment16/Experiment3/Evolution.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Experiment16/Experiment3/FunctionsParameter.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Experiment16/Experiment3/LocalSearch.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Experiment16/Experiment3/Mutation.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Experiment16/Experiment3/ParameterCombinations.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Experiment16/Experiment3/SelectParents.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Experiment16/Experiment3/TestFunctions.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Experiment16/Experiment3/best_20_baseline_experiment15.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Experiment16/Experiment3/experiment3.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,7 +52,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "/Users/meijiaojiao/Desktop/Evolution_algorithm/Experiment16/Experiment16/Experiment3",
+    "last_opened_file_path": "/Users/meijiaojiao/Desktop/Evolution_algorithm/Experiment16/Experiment16",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -87,9 +78,9 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/Experiment16" />
       <recent name="$PROJECT_DIR$/Experiment16/Experiment3" />
       <recent name="$PROJECT_DIR$/Experiment16/Experiment2" />
-      <recent name="$PROJECT_DIR$/Experiment16" />
       <recent name="$PROJECT_DIR$/Experiment16/Experiment1" />
       <recent name="$PROJECT_DIR$/Code" />
     </key>
@@ -215,7 +206,7 @@
       <workItem from="1677028085878" duration="121000" />
       <workItem from="1677028220999" duration="4023000" />
       <workItem from="1677078650235" duration="15053000" />
-      <workItem from="1677318039450" duration="7887000" />
+      <workItem from="1677318039450" duration="8223000" />
     </task>
     <servers />
   </component>
