@@ -92,16 +92,16 @@ the selection_method are ['sorted_selection_part']
 the algorithm are ['Baseline', 'Lamarck', 'Baldwin']
 ```
 
-![mutation_rate](mutation_rate.png)
+![mutation_rate](mutation_rate_exp1.png)
 
-![crossover_rate](crossover_rate.png)
+![crossover_rate](crossover_rate_exp1.png)
 
 For F5, Baseline performs better results than the memetic algorithms.
-For F21, the memetic algorithm performs better than baseline, especially when crossover_rate = 0.7, Baldwin and Lamarck are significantly lower than Baseline, where the minimum value is -20.3, because fitness = f(genotyope) + f( phenotype), which is exactly twice the global minima.
+For F21, the memetic algorithm performs better than baseline, especially when crossover_rate = 0.7, Baldwin and Lamarck are significantly lower than Baseline, where the minimum value is -20.3, because fitness = f(genotyope) + f( phenotype), which is exactly twice of the global minima.
 
 Here comes the place we care most about.
 
-![length_of_local_searchcombine](length_of_local_searchcombine.png)
+![length_of_local_searchcombine](length_of_local_searchcombine_exp1.png)
 
 This graph shows the case where length_of_local_search = 1, redo_local_search_rate = 0. It also needs to be compared with other experimental results.
 
@@ -155,11 +155,52 @@ the algorithm are ['Baseline', 'Lamarck', 'Baldwin']
 
 
 
+## Experiment4
 
+| length_of_local_search | redo_local_search_rate | fitness_function | algorithm                        | Fitness【                |
+| ---------------------- | ---------------------- | ---------------- | -------------------------------- | ------------------------ |
+| [1,4]                  | [0,0.2]                | [5,21]           | ["Baseline","Lamarck","Baldwin"] | f(genotype)+f(phenotype) |
 
+```
+the functions are [5, 21]
+the dimensions are [100]
+the mutation_rate are [0.06, 0.03]
+the cross_rate are [0.5, 0.6, 0.7]
+the mutation_type are ['Normal']
+the crossover_type are ['Probabilistic_crossover']
+the local_search_rate are [0.5]
+the local_search_type are ['Uniform']
+the search_radius are [0.05]
+the gg are [0.05]
+the redo_local_search_rate are [0.0, 0.2]
+the length_of_local_search are [1, 4]
+the selection_method are ['sorted_selection_part']
+the algorithm are ['Baseline', 'Lamarck', 'Baldwin']
+```
 
+![mutation_rate_exp4](mutation_rate_exp4.png)
 
+![crossover_rate_exp4](crossover_rate_exp4.png)
 
+For F5, baseline is better.
+For F21, baseline and memtic seem to perform about the same.
 
-# Results
+Let's look at it in a little more detail.
 
+![length_of_local_searchcombine_exp4](length_of_local_searchcombine_exp4.png)
+
+In the case of redo_local_search_rate=0 (**look at the left column**), for F5, baseline is better than the memetic algorithm. When length_of_local_search=4, the gap between baseline and memetic algorithm is even bigger, which I think is caused by the fact that local search does not help much. For one thing, the lcoal search of this experiment could not produce better solutions, and also took up budget leading to a much lower number of iterations of the memetic algorithms.
+But for F21, increasing the length_of_local_search is helpful. F21 is a multimodal function, and the biggest obstacle to finding global minima is not to get stuck in local minima, and the memetic algorithm is obviously better than baseline. This shows that the current local search procedures can help jump out of local minimas although they cannot produce better solutions.
+
+In the case of redo_local_search_rate=0.2 (**look at the right column**),for F5, I think the gap between baseline and memetic algorithms has increased, i.e., the gap between baseline and memetic algorithms (length_of_local_search = 1, redo_local_search_rate = 0.2) is higher than the gap between baseline and memetic algorithms (length_of_local_search = 1, redo_local_search_rate = 0). 
+F5 is an unimodal function, and as long as the local search procedure can produce better solutions, it is possible for the memetic algorithm to exceed the baseline, because the unimodal function does not have the problem of being stuck in the local minima.
+
+Finally I think redo_local_search_rate is helpful for finding the minimum value.The right side is significantly lower than the left side.
+
+![image-20230225134610113](image-20230225134610113.png)
+
+Strictly speaking, the performance of the baseline should be the same, because the baseline does not have local search. So no matter how the parameters related to local search change, the baseline is not affected, as to why the second baseline box from left to right is not the same, I do not know, the actual results are like this.
+
+# Conclusion
+
+In general, the main advantage of the current local search is to bring the multimodal function out of local minima, which needs to be improved for producing better solutions. The newly introduced parameters, length_of_local_search and redo_local_search_rate, are useful, i.e., they can help jump out of the local minima faster, but they still cannot produce better solutions, as shown by the results of F5, where every time baseline performed better in F5.
