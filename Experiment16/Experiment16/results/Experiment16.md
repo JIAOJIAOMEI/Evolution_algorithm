@@ -75,35 +75,9 @@ Global minima for F5 is 0. Global minima for F21 is -10.1532.
 | ---------------------- | ---------------------- | ---------------- | -------------------------------- | ------------------------ |
 | 1                      | 0                      | [5,21]           | ["Baseline","Lamarck","Baldwin"] | f(genotype)+f(phenotype) |
 
-```
-the functions are [5, 21]
-the dimensions are [100]
-the mutation_rate are [0.06, 0.03]
-the cross_rate are [0.5, 0.6, 0.7]
-the mutation_type are ['Normal']
-the crossover_type are ['Probabilistic_crossover']
-the local_search_rate are [0.5]
-the local_search_type are ['Uniform']
-the search_radius are [0.05]
-the gg are [0.05]
-the redo_local_search_rate are [0]
-the length_of_local_search are [1]
-the selection_method are ['sorted_selection_part']
-the algorithm are ['Baseline', 'Lamarck', 'Baldwin']
-```
-
-![mutation_rate](mutation_rate_exp1.png)
-
-![crossover_rate](crossover_rate_exp1.png)
-
-For F5, Baseline performs better results than the memetic algorithms.
-For F21, the memetic algorithm performs better than baseline, especially when crossover_rate = 0.7, Baldwin and Lamarck are significantly lower than Baseline, where the minimum value is -20.3, because fitness = f(genotyope) + f( phenotype), which is exactly twice of the global minima.
-
-Here comes the place we care most about.
+This graph shows the case where length_of_local_search = 1, redo_local_search_rate = 0. It also needs to be compared with other experimental results.
 
 ![length_of_local_searchcombine](length_of_local_searchcombine_exp1.png)
-
-This graph shows the case where length_of_local_search = 1, redo_local_search_rate = 0. It also needs to be compared with other experimental results.
 
 ## Experiment2
 
@@ -111,47 +85,19 @@ This graph shows the case where length_of_local_search = 1, redo_local_search_ra
 | ---------------------- | ---------------------- | ---------------- | -------------------------------- | ------------ |
 | 4                      | 0                      | [5,21]           | ["Baseline","Lamarck","Baldwin"] | f(phenotype) |
 
-```
-the functions are [5, 21]
-the dimensions are [100]
-the mutation_rate are [0.06, 0.03]
-the cross_rate are [0.5, 0.6, 0.7]
-the mutation_type are ['Normal']
-the crossover_type are ['Probabilistic_crossover']
-the local_search_rate are [0.5]
-the local_search_type are ['Uniform']
-the search_radius are [0.05]
-the gg are [0.05]
-the redo_local_search_rate are [0]
-the length_of_local_search are [4]
-the selection_method are ['sorted_selection_part']
-the algorithm are ['Baseline', 'Lamarck', 'Baldwin']
-```
+![length_of_local_searchcombine_exp2](length_of_local_searchcombine_exp2.png)
 
+This graph shows the case where length_of_local_search = 4, redo_local_search_rate = 0. It also needs to be compared with other experimental results.
 
+Obviously, for an unimodal function like F5, local search does not produce better solutions, so baseline performs better. For a function like F21, local search, although not primarily useful for generating better solutions, can help solve the problem of being stuck in the local minima, so that it has a chance to find the global minima, and the memetic algorithm performs better.
+
+In the case of redo_local_search_rate=0 (**Experiment1 and Experiment2**), for F5, baseline is better than the memetic algorithms. When length_of_local_search=4, the gap between baseline and memetic algorithm is even bigger, which I think is caused by the fact that local search does not help much. For one thing, the lcoal search procedure could not produce better solutions, and also took up budget leading to a much lower number of iterations of the memetic algorithms. This leads to better performance of baseline for unimodal functions like F5.
 
 ## Experiment3
 
 | length_of_local_search | redo_local_search_rate | fitness_function | algorithm                        | Fitness      |
 | ---------------------- | ---------------------- | ---------------- | -------------------------------- | ------------ |
 | 1                      | 0.1                    | [5,21]           | ["Baseline","Lamarck","Baldwin"] | f(phenotype) |
-
-```
-the functions are [5, 21]
-the dimensions are [100]
-the mutation_rate are [0.06, 0.03]
-the cross_rate are [0.5, 0.6, 0.7]
-the mutation_type are ['Normal']
-the crossover_type are ['Probabilistic_crossover']
-the local_search_rate are [0.5]
-the local_search_type are ['Uniform']
-the search_radius are [0.05]
-the gg are [0.05]
-the redo_local_search_rate are [0.1]
-the length_of_local_search are [1]
-the selection_method are ['sorted_selection_part']
-the algorithm are ['Baseline', 'Lamarck', 'Baldwin']
-```
 
 
 
@@ -160,32 +106,6 @@ the algorithm are ['Baseline', 'Lamarck', 'Baldwin']
 | length_of_local_search | redo_local_search_rate | fitness_function | algorithm                        | Fitness【                |
 | ---------------------- | ---------------------- | ---------------- | -------------------------------- | ------------------------ |
 | [1,4]                  | [0,0.2]                | [5,21]           | ["Baseline","Lamarck","Baldwin"] | f(genotype)+f(phenotype) |
-
-```
-the functions are [5, 21]
-the dimensions are [100]
-the mutation_rate are [0.06, 0.03]
-the cross_rate are [0.5, 0.6, 0.7]
-the mutation_type are ['Normal']
-the crossover_type are ['Probabilistic_crossover']
-the local_search_rate are [0.5]
-the local_search_type are ['Uniform']
-the search_radius are [0.05]
-the gg are [0.05]
-the redo_local_search_rate are [0.0, 0.2]
-the length_of_local_search are [1, 4]
-the selection_method are ['sorted_selection_part']
-the algorithm are ['Baseline', 'Lamarck', 'Baldwin']
-```
-
-![mutation_rate_exp4](mutation_rate_exp4.png)
-
-![crossover_rate_exp4](crossover_rate_exp4.png)
-
-For F5, baseline is better.
-For F21, baseline and memtic seem to perform about the same.
-
-Let's look at it in a little more detail.
 
 ![length_of_local_searchcombine_exp4](length_of_local_searchcombine_exp4.png)
 
