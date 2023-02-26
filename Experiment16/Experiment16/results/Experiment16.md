@@ -60,7 +60,9 @@ $$
 F 5=\sum_{i=1}^{49}\left(100\left(x_{i+1}-x_i^2\right)^2+\left(x_i-1\right)^2\right)
 $$
 $$
-\begin{aligned} & \mathrm{a}=[[4,4,4,4],[1,1,1,1],[8,8,8,8],[6,6,6,6],[3,7,3,7]] ; \mathrm{c}=[.1, .2, .2, .4, .4] \\ & F 21=-\sum_{i=1}^5\left(\left(X-a_i\right)\left(X-a_i\right)^T+c_i\right)^{-1}\end{aligned}
+ F21=-\sum_{i=1}^5\left(\left(X-a_i\right)\left(X-a_i\right)^T+c_i\right)^{-1}\\
+{a}=[[4,4,4,4],[1,1,1,1],[8,8,8,8],[6,6,6,6],[3,7,3,7]] ;\\
+{c}=[.1, .2, .2, .4, .4] \\ 
 $$
 
 Global minima for F5 is 0. Global minima for F21 is -10.1532.
