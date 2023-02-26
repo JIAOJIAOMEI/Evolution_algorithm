@@ -99,7 +99,10 @@ In the case of redo_local_search_rate=0 (**Experiment1 and Experiment2**), for F
 | ---------------------- | ---------------------- | ---------------- | -------------------------------- | ------------ |
 | 1                      | 0.1                    | [5,21]           | ["Baseline","Lamarck","Baldwin"] | f(phenotype) |
 
+![length_of_local_searchcombine_exp3](length_of_local_searchcombine_exp3.png)
 
+The results are basically similar to those of Experiment 2, just not as apparent as Experiment 2.
+I think it is because the improvement brought by redo_local_search_rate=0.1 is not as obvious as length_of_local_search=4.
 
 ## Experiment4
 
@@ -109,17 +112,19 @@ In the case of redo_local_search_rate=0 (**Experiment1 and Experiment2**), for F
 
 ![length_of_local_searchcombine_exp4](length_of_local_searchcombine_exp4.png)
 
-In the case of redo_local_search_rate=0 (**look at the left column**), for F5, baseline is better than the memetic algorithm. When length_of_local_search=4, the gap between baseline and memetic algorithm is even bigger, which I think is caused by the fact that local search does not help much. For one thing, the lcoal search of this experiment could not produce better solutions, and also took up budget leading to a much lower number of iterations of the memetic algorithms.
-But for F21, increasing the length_of_local_search is helpful. F21 is a multimodal function, and the biggest obstacle to finding global minima is not to get stuck in local minima, and the memetic algorithm is obviously better than baseline. This shows that the current local search procedures can help jump out of local minimas although they cannot produce better solutions.
+If we only look at F5, the increase in redo_local_search_rate and length_of_local_search leads to an increase in the gap between the baseline and memetic algorithms.
 
-In the case of redo_local_search_rate=0.2 (**look at the right column**),for F5, I think the gap between baseline and memetic algorithms has increased, i.e., the gap between baseline and memetic algorithms (length_of_local_search = 1, redo_local_search_rate = 0.2) is higher than the gap between baseline and memetic algorithms (length_of_local_search = 1, redo_local_search_rate = 0). 
-F5 is an unimodal function, and as long as the local search procedure can produce better solutions, it is possible for the memetic algorithm to exceed the baseline, because the unimodal function does not have the problem of being stuck in the local minima.
+![image-20230226014759016](image-20230226014759016.png)
 
-Finally I think redo_local_search_rate is helpful for finding the minimum value.The right side is significantly lower than the left side.
+This indicates that the local search procedure does not produce better solutions and also takes up a lot of budget, resulting in fewer iterations of the memetic algorithms, which ultimately leads to low performance of the memetic algorithms.
 
-![image-20230225134610113](image-20230225134610113.png)
+Next we look at F21, the left side shows that the increase of length_of_local_search is beneficial to improve the performance of the memetic algorithms, better than baseline.
 
-Strictly speaking, the performance of the baseline should be the same, because the baseline does not have local search. So no matter how the parameters related to local search change, the baseline is not affected, as to why the second baseline box from left to right is not the same, I do not know, the actual results are like this.
+![image-20230226015040033](image-20230226015040033.png)
+
+The right side performs better than the left side, as can be seen by the fact that the mean line is lowered (Baldwin), as well as the 1/4 line is lowered (Lamarck).
+
+Theoretically, baseline should behave consistently because baseline does not have local search, and no matter how the parameters related to local search change, it has no effect on baseline,but that's what this run turned out to be. Overall, however, for F21, the memetic algorithms perform better.
 
 # Conclusion
 

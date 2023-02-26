@@ -36,7 +36,7 @@
 34,1000000,0.06,200,0.5,Normal,Probabilistic_crossover,0.5,Uniform,0.05,0.0001,100,0.05,sorted_selection_part,4,0,21,Baseline,3,Run5,-10.15319965303115
 35,1000000,0.06,200,0.5,Normal,Probabilistic_crossover,0.5,Uniform,0.05,0.0001,100,0.05,sorted_selection_part,4,0,21,Baseline,3,Run6,-2.63047160514783
 36,1000000,0.06,200,0.5,Normal,Probabilistic_crossover,0.5,Uniform,0.05,0.0001,100,0.05,sorted_selection_part,4,0,21,Baseline,3,Run7,-10.153199621391686
-37,1000000,0.06,200,0.5,Normal,Probabilistic_crossover,0.5,Uniform,0.05,0.0001,100,0.05,sorted_selection_part,4,0,21,Baseline,3,Run8,-2.6828603860839397
+37,1000000,0.06,200,0.5,Normal,Probabilistic_crossover,0.5,Uniform,0.05,0.0001,100,0.05,sorted_selection_part,4,0,21,Baseline,3,Run8,-2.68286038608394
 38,1000000,0.06,200,0.5,Normal,Probabilistic_crossover,0.5,Uniform,0.05,0.0001,100,0.05,sorted_selection_part,4,0,21,Baseline,3,Run9,-10.153199656446835
 39,1000000,0.06,200,0.5,Normal,Probabilistic_crossover,0.5,Uniform,0.05,0.0001,100,0.05,sorted_selection_part,4,0,21,Baseline,3,Run10,-10.153199662980224
 40,1000000,0.06,200,0.5,Normal,Probabilistic_crossover,0.5,Uniform,0.05,0.0001,100,0.05,sorted_selection_part,4,0,21,Lamarck,4,Run1,-5.100772088627459
@@ -63,7 +63,7 @@
 61,1000000,0.03,200,0.5,Normal,Probabilistic_crossover,0.5,Uniform,0.05,0.0001,100,0.05,sorted_selection_part,4,0,5,Baseline,6,Run2,197.6971383662516
 62,1000000,0.03,200,0.5,Normal,Probabilistic_crossover,0.5,Uniform,0.05,0.0001,100,0.05,sorted_selection_part,4,0,5,Baseline,6,Run3,296.1042637761407
 63,1000000,0.03,200,0.5,Normal,Probabilistic_crossover,0.5,Uniform,0.05,0.0001,100,0.05,sorted_selection_part,4,0,5,Baseline,6,Run4,320.509535201636
-64,1000000,0.03,200,0.5,Normal,Probabilistic_crossover,0.5,Uniform,0.05,0.0001,100,0.05,sorted_selection_part,4,0,5,Baseline,6,Run5,243.20899351467037
+64,1000000,0.03,200,0.5,Normal,Probabilistic_crossover,0.5,Uniform,0.05,0.0001,100,0.05,sorted_selection_part,4,0,5,Baseline,6,Run5,243.2089935146704
 65,1000000,0.03,200,0.5,Normal,Probabilistic_crossover,0.5,Uniform,0.05,0.0001,100,0.05,sorted_selection_part,4,0,5,Baseline,6,Run6,296.01038499002584
 66,1000000,0.03,200,0.5,Normal,Probabilistic_crossover,0.5,Uniform,0.05,0.0001,100,0.05,sorted_selection_part,4,0,5,Baseline,6,Run7,250.15560110264545
 67,1000000,0.03,200,0.5,Normal,Probabilistic_crossover,0.5,Uniform,0.05,0.0001,100,0.05,sorted_selection_part,4,0,5,Baseline,6,Run8,178.77847224039022
@@ -98,7 +98,7 @@
 96,1000000,0.03,200,0.5,Normal,Probabilistic_crossover,0.5,Uniform,0.05,0.0001,100,0.05,sorted_selection_part,4,0,21,Baseline,9,Run7,-5.100772135813276
 97,1000000,0.03,200,0.5,Normal,Probabilistic_crossover,0.5,Uniform,0.05,0.0001,100,0.05,sorted_selection_part,4,0,21,Baseline,9,Run8,-5.100771904914081
 98,1000000,0.03,200,0.5,Normal,Probabilistic_crossover,0.5,Uniform,0.05,0.0001,100,0.05,sorted_selection_part,4,0,21,Baseline,9,Run9,-2.682860349140477
-99,1000000,0.03,200,0.5,Normal,Probabilistic_crossover,0.5,Uniform,0.05,0.0001,100,0.05,sorted_selection_part,4,0,21,Baseline,9,Run10,-2.6304716503354517
+99,1000000,0.03,200,0.5,Normal,Probabilistic_crossover,0.5,Uniform,0.05,0.0001,100,0.05,sorted_selection_part,4,0,21,Baseline,9,Run10,-2.630471650335452
 100,1000000,0.03,200,0.5,Normal,Probabilistic_crossover,0.5,Uniform,0.05,0.0001,100,0.05,sorted_selection_part,4,0,21,Lamarck,10,Run1,-10.153198196319266
 101,1000000,0.03,200,0.5,Normal,Probabilistic_crossover,0.5,Uniform,0.05,0.0001,100,0.05,sorted_selection_part,4,0,21,Lamarck,10,Run2,-2.682860308433506
 102,1000000,0.03,200,0.5,Normal,Probabilistic_crossover,0.5,Uniform,0.05,0.0001,100,0.05,sorted_selection_part,4,0,21,Lamarck,10,Run3,-5.10077208937752
