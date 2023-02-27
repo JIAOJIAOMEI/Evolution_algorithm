@@ -17,7 +17,49 @@
             </Attribute>
           </value>
         </entry>
+        <entry key="/Experiment16/Experiment2/parameter_combinations.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
         <entry key="/Experiment16/Experiment2/solutions_dataframe.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="/Experiment16/Experiment2/solutions_dataframe1.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="/Experiment16/Experiment2/solutions_dataframe2.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="/Experiment16/Experiment2/solutions_dataframe3.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="/Experiment16/Experiment2/solutions_dataframe4.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="/Experiment16/Experiment2/solutions_dataframe5.csv">
           <value>
             <Attribute>
               <option name="separator" value="," />
@@ -31,7 +73,28 @@
             </Attribute>
           </value>
         </entry>
+        <entry key="/Experiment16/Experiment3/pm.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="/Experiment16/Experiment3/sd.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
         <entry key="/Experiment16/Experiment3/solutions_dataframe.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="/Experiment16/Experiment4/results/solutions_dataframe.csv">
           <value>
             <Attribute>
               <option name="separator" value="," />
