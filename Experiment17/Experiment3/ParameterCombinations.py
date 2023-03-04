@@ -9,7 +9,7 @@ def generate_parameter_combinations():
 
     length_of_local_search = [1]
     redo_local_search_rate = [0.1]
-    fitness_function = [5,21]
+    fitness_function = [14, 15, 16, 17, 18, 19, 20, 21, 22, 23]
     algorithm = ["Baseline", "Lamarck", "Baldwin"]
     rest_parameters = []
 
