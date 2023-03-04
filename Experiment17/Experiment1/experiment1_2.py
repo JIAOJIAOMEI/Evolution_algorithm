@@ -56,7 +56,7 @@ print("The number of parameter combinations is: " + str(num_rows))
 solutions = []
 start_time = datetime.now()
 print(f"start time is {start_time}")
-for i in range(10):
+for i in range(20, num_rows,1):
     if i % 5 == 0:
         print("The number of parameter combinations that have been tested is: " + str(i))
     # create a list to store the final solution of each run
@@ -93,7 +93,7 @@ for i in range(10):
     # create a dataframe to store the final solutions
     solutions_dataframe = pd.DataFrame(solutions)
     # save the dataframe to a csv file
-    solutions_dataframe.to_csv("solutions_dataframe1.csv", index=True)
+    solutions_dataframe.to_csv("solutions_dataframe3.csv", index=True)
 
 end_time = datetime.now()
 print('The total time is: {}'.format(end_time - start_time))
