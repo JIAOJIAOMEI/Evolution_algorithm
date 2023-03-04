@@ -56,7 +56,7 @@ print("The number of parameter combinations is: " + str(num_rows))
 solutions = []
 start_time = datetime.now()
 print(f"start time is {start_time}")
-for i in range(20, num_rows,1):
+for i in range(40, num_rows,1):
     if i % 5 == 0:
         print("The number of parameter combinations that have been tested is: " + str(i))
     # create a list to store the final solution of each run
