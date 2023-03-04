@@ -5,24 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fda0da58-6538-4a27-a41e-5ca59058e509" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../Experiment17/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Experiment17/.idea/Experiment17.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Experiment17/.idea/csv-editor.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Experiment17/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Experiment17/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Experiment17/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Experiment17/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Experiment17/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Experiment17/Experiment1/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Experiment17/Experiment1/.idea/Experiment1.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Experiment17/Experiment1/.idea/csv-editor.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Experiment17/Experiment1/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Experiment17/Experiment1/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Experiment17/Experiment1/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Experiment17/Experiment1/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Experiment17/Experiment1/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/csv-editor.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/csv-editor.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Experiment17/Experiment1/experiment1.py" beforeDir="false" afterPath="$PROJECT_DIR$/../Experiment17/Experiment1/experiment1.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Experiment17/Experiment1/experiment1_1.py" beforeDir="false" afterPath="$PROJECT_DIR$/../Experiment17/Experiment1/experiment1_1.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Experiment17/Experiment1/experiment1_2.py" beforeDir="false" afterPath="$PROJECT_DIR$/../Experiment17/Experiment1/experiment1_2.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Experiment17/Experiment2/experiment2.py" beforeDir="false" afterPath="$PROJECT_DIR$/../Experiment17/Experiment2/experiment2.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -297,7 +283,7 @@
       <workItem from="1677318039450" duration="8609000" />
       <workItem from="1677326766077" duration="11865000" />
       <workItem from="1677875642261" duration="2000" />
-      <workItem from="1677929071907" duration="2744000" />
+      <workItem from="1677929071907" duration="3042000" />
     </task>
     <servers />
   </component>
