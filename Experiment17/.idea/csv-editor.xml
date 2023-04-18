@@ -3,6 +3,55 @@
   <component name="CsvFileAttributes">
     <option name="attributeMap">
       <map>
+        <entry key="/Experiment1 copy/parameter_combinations.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="/Experiment1 copy/solutions_dataframe1.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="/Experiment1 copy/solutions_dataframe2.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="/Experiment1 copy/solutions_dataframe3.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="/Experiment1/solutions_dataframe1.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="/Experiment1/solutions_dataframe2.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="/Experiment1/solutions_dataframe3.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
         <entry key="/Experiment2/parameter_combinations.csv">
           <value>
             <Attribute>
@@ -45,6 +94,13 @@
             </Attribute>
           </value>
         </entry>
+        <entry key="/Experiment3/df.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
         <entry key="/Experiment3/parameter_combinations.csv">
           <value>
             <Attribute>
@@ -59,7 +115,7 @@
             </Attribute>
           </value>
         </entry>
-        <entry key="/pm.csv">
+        <entry key="/results/df.csv">
           <value>
             <Attribute>
               <option name="separator" value="," />
