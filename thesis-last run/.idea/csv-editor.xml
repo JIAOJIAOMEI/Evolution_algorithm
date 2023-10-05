@@ -52,6 +52,27 @@
             </Attribute>
           </value>
         </entry>
+        <entry key="/Experiment_multimodal_fixed/parameter_combination.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="/Experiment_multimodal_fixed/parameter_combinations.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="/Experiment_multimodal_fixed/pm_table.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
         <entry key="/Experiment_multimodal_fixed/solutions_dataframe.csv">
           <value>
             <Attribute>
