@@ -45,6 +45,27 @@
             </Attribute>
           </value>
         </entry>
+        <entry key="/Experiment20/Experiment_F21/pm_table.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="/Experiment20/Experiment_F5/pm_table.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="/Experiment20/Experiment_F8/pm_table.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
         <entry key="/thesis-last run/Experiment_multimodal_fixed/pm_table.csv">
           <value>
             <Attribute>

@@ -1,0 +1,4 @@
+,num_generations,mutation_rate,num_individuals,crossover_rate,mutation_type,crossover_type,local_search_rate,local_search_type,search_radius,threshold,dimensions,gg,selection_method,length_of_local_search,redo_local_search_rate,fitness_function,algorithm
+0,1000000,0.03,200,0.7,Normal,Probabilistic_crossover,0.5,Uniform,0.05,0.0001,100,0.05,sorted_selection_part,1,0,5,Baseline
+1,1000000,0.03,200,0.7,Normal,Probabilistic_crossover,0.5,Uniform,0.05,0.0001,100,0.05,sorted_selection_part,1,0,5,Lamarck
+2,1000000,0.03,200,0.7,Normal,Probabilistic_crossover,0.5,Uniform,0.05,0.0001,100,0.05,sorted_selection_part,1,0,5,Baldwin
