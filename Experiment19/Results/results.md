@@ -5,16 +5,16 @@ F5, F8, and F21. I saved the all the genotypes, penotypes, fitness of the popula
 
 For the following pictures, only the best fitness value is used. I think it is enough to show the trend of the fitness value.
 
-# first 100
+# First 100
 ![picture4.png](picture4.png)
 
-# first 250
+# First 250
 ![picture3.png](picture3.png)
 
-# first 500
+# First 500
 ![picture2.png](picture2.png)
 
-# first 2000
+# First 2000
 ![picture1.png](picture1.png)
 
 # Conclusion
